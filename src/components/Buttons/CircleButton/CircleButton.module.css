@@ -1,0 +1,116 @@
+.button {
+  width: 260px;
+  height: 260px;
+  position: relative;
+
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 60px;
+  flex-direction: column;
+  gap: 7px;
+  border-radius: 50%;
+  background-color: transparent;
+  outline: none;
+  border: solid 1px var(--text);
+  color: var(--text);
+}
+
+.button.empty {
+  align-items: center;
+  padding-left: 0;
+}
+
+.button.centered {
+  align-items: center;
+  padding-left: 0;
+}
+
+.button.centered span {
+  position: absolute;
+  left: 50%;
+  margin-left: 28px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  max-width: 282px;
+}
+
+.button.secondary {
+  padding-left: 48px;
+  padding-bottom: 40px;
+  justify-content: flex-end;
+}
+
+.button.dark {
+  border-color: var(--bg);
+  color: var(--bg);
+}
+
+.button span {
+  max-width: 133px;
+  margin-left: 7px;
+  text-align: left;
+}
+
+.button:hover {
+  background: rgba(200, 152, 106, 0.1);
+}
+
+.button:active {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+
+.button.dark:active {
+  background-color: var(--bg);
+  border-color: var(--bg);
+  color: var(--text);
+}
+
+.button:disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--grey);
+  border-color: var(--grey);
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: 160px;
+    height: 160px;
+    padding-left: 24px;
+    gap: 4px;
+  }
+
+  .button span {
+    margin-left: 8px;
+    max-width: 104px;
+  }
+
+  .button.secondary {
+    padding-left: 24px;
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .button.centered {
+    align-items: center;
+    padding-left: 0;
+  }
+
+  .button.centered span {
+    position: absolute;
+    left: 50%;
+    margin-left: 0;
+    margin-top: 25px;
+    top: 50%;
+    transform: translate(-18px, 0%);
+    max-width: 177px;
+  }
+}

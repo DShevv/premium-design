@@ -1,0 +1,57 @@
+.container {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 671px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(18, 19, 24, 0.2);
+  background: transparent;
+  color: var(--bg);
+  transition: all 0.2s ease;
+}
+
+.container:has(.field:disabled) {
+  border-color: var(--grey);
+  color: var(--grey);
+}
+
+.container:has(.field.error) {
+  border-color: var(--red);
+}
+
+.container:has(.field:focus) {
+  border-color: var(--beige);
+}
+
+.field {
+  color: var(--bg);
+  flex: 1 1 auto;
+  border: none;
+  outline: none;
+  min-width: 0px;
+  background-color: transparent;
+}
+
+.field::placeholder {
+  color: var(--bg);
+}
+
+.field:disabled::placeholder {
+  color: var(--grey);
+}
+
+.field.error {
+  color: var(--red);
+}
+
+.field.error::placeholder {
+  color: var(--red);
+}
+
+.message {
+  position: absolute;
+  top: calc(100% + 29px);
+  left: 0;
+  color: var(--red);
+}

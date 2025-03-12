@@ -1,0 +1,148 @@
+"use client";
+import Image from "next/image";
+import styles from "./Services.module.css";
+import clsx from "clsx";
+import picture1 from "@/assets/images/slider-1.png";
+import picture2 from "@/assets/images/slider-2.png";
+import picture3 from "@/assets/images/slider-3.png";
+import picture4 from "@/assets/images/slider-4.png";
+import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+const Services = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const itemRefs = useRef([]);
+
+  const setRef = useCallback((el, index) => {
+    if (el) {
+      itemRefs.current[index] = el;
+    }
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let maxRatio = 0;
+        let indexToActivate = null;
+
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            indexToActivate = Number(entry.target.dataset.index);
+          }
+        });
+
+        setActiveIndex(indexToActivate);
+      },
+      {
+        root: null,
+        rootMargin: "-20% 0px -35% 0px",
+        threshold: [0.9, 1],
+      }
+    );
+
+    itemRefs.current.forEach((el) => el && observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className={styles.container}>
+      <div
+        className={clsx(styles.item, {
+          [styles.active]: activeIndex === 0,
+        })}
+        ref={(el) => setRef(el, 0)}
+        data-index={0}
+      >
+        <div className={styles.bg}>
+          <Image src={picture1} alt="" />
+        </div>
+        <div className={clsx("h3", styles.title)}>
+          Дизайн-
+          <br />
+          проект
+        </div>
+
+        <CircleButton
+          type="link"
+          href={`/services/1`}
+          centered={true}
+          className={styles.button}
+        >
+          Дизайн-
+          <br />
+          проект
+        </CircleButton>
+      </div>
+
+      <div
+        className={clsx(styles.item, {
+          [styles.active]: activeIndex === 1,
+        })}
+        ref={(el) => setRef(el, 1)}
+        data-index={1}
+      >
+        <div className={styles.bg}>
+          <Image src={picture2} alt="" />
+        </div>
+        <div className={clsx("h3", styles.title)}>Дизайнерский свет</div>
+
+        <CircleButton
+          type="link"
+          href={`/services/1`}
+          centered={true}
+          className={styles.button}
+        >
+          Дизайнерский свет
+        </CircleButton>
+      </div>
+
+      <div
+        className={clsx(styles.item, {
+          [styles.active]: activeIndex === 2,
+        })}
+        ref={(el) => setRef(el, 2)}
+        data-index={2}
+      >
+        <div className={styles.bg}>
+          <Image src={picture3} alt="" />
+        </div>
+        <div className={clsx("h3", styles.title)}>Черновая отделка</div>
+
+        <CircleButton
+          type="link"
+          href={`/services/1`}
+          centered={true}
+          className={styles.button}
+        >
+          Черновая отделка
+        </CircleButton>
+      </div>
+
+      <div
+        className={clsx(styles.item, {
+          [styles.active]: activeIndex === 3,
+        })}
+        ref={(el) => setRef(el, 3)}
+        data-index={3}
+      >
+        <div className={styles.bg}>
+          <Image src={picture4} alt="" />
+        </div>
+        <div className={clsx("h3", styles.title)}>Установка сантехники</div>
+
+        <CircleButton
+          type="link"
+          href={`/services/1`}
+          centered={true}
+          className={styles.button}
+        >
+          Установка сантехники
+        </CircleButton>
+      </div>
+    </section>
+  );
+};
+
+export default Services;

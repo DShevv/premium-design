@@ -1,0 +1,153 @@
+.container {
+  position: relative;
+  height: 940px;
+  overflow: hidden;
+  display: flex;
+}
+
+.item {
+  flex: 1 1 480px;
+  width: 480px;
+  height: 100%;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 52px;
+}
+
+.item:hover {
+  flex: 1 1 889px;
+  width: 889px;
+}
+
+.bg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.bg::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(11, 11, 11, 0) 0%, #0b0b0b 100%);
+}
+
+.bg img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  position: relative;
+  z-index: 2;
+  color: var(--grey);
+  transition: all 0.2s ease;
+  max-width: 282px;
+}
+
+.item:hover .title {
+  opacity: 0;
+}
+
+.item .button {
+  opacity: 0;
+  position: absolute;
+  left: 197px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  z-index: 2;
+}
+
+.item:hover .button {
+  opacity: 1;
+}
+
+@media (max-width: 1440px) {
+  .container {
+  }
+
+  .item .button {
+    left: 69px;
+  }
+
+  .item {
+    flex: 1 1 284px;
+    width: 284px;
+    height: 100%;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 52px;
+  }
+
+  .item:hover {
+    flex: 1 1 588px;
+    width: 588px;
+  }
+
+  .title {
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+  }
+
+  .item {
+    flex: 1 1 160px;
+    height: 160px;
+    width: 100%;
+
+    transition: all 0.2s ease;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+
+  .item:hover {
+    flex: 1 1 300px;
+    height: 300px;
+    width: 100%;
+  }
+
+  .item.active {
+    flex: 1 1 300px;
+    height: 300px;
+    width: 100%;
+  }
+
+  .title {
+    max-width: 177px;
+    color: var(--text);
+  }
+
+  .item .button {
+    left: 17.06%;
+  }
+
+  .item.active .title {
+    opacity: 0;
+  }
+  .item.active .button {
+    opacity: 1;
+  }
+}

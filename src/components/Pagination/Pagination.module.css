@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.prev {
+}
+
+.next {
+  transform: rotate(180deg);
+}
+
+.page {
+  color: var(--text);
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.page:hover {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.active {
+  color: var(--beige);
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+
+@media (max-width: 768px) {
+  .container {
+    gap: 16px;
+  }
+}

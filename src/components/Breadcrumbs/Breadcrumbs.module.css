@@ -1,0 +1,46 @@
+.container {
+  margin-top: 32px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--beige);
+}
+
+.container > div {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: fit-content;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--text);
+}
+
+a.link {
+  color: var(--grey);
+}
+a.link:hover {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.icon {
+  width: 6px;
+  height: 6px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 8px;
+    justify-content: center;
+  }
+
+  .link {
+    font-size: 13px;
+    text-align: center;
+  }
+}

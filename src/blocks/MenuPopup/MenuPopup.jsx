@@ -1,0 +1,424 @@
+"use client";
+import clsx from "clsx";
+import styles from "./MenuPopup.module.css";
+import Link from "next/link";
+import Image from "next/image";
+import { observer } from "mobx-react-lite";
+import globalStore from "@/stores/global-store";
+import IconButton from "@/components/Buttons/IconButton/IconButton";
+import { SvgArrowCorner, SvgArrowRight } from "@/assets/icons/svgs";
+import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion as m } from "motion/react";
+import service1 from "@/assets/images/services-1.png";
+import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
+
+const MenuPopup = observer(() => {
+  const { popupStore } = globalStore;
+  const { menu, closePopup } = popupStore;
+  const [isActive, setActive] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const itemRefs = useRef([]);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
+
+  const setRef = useCallback(
+    (el, index) => {
+      if (el) {
+        itemRefs.current[index] = el;
+      }
+    },
+    [isActive]
+  );
+
+  useEffect(() => {
+    if (!isAnimationComplete) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let maxRatio = 0;
+        let indexToActivate = null;
+
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            indexToActivate = Number(entry.target.dataset.index);
+          }
+        });
+
+        setActiveIndex(indexToActivate);
+      },
+      {
+        root: null,
+        rootMargin: "-140px 0px -55% 0px",
+        threshold: [0.8, 1],
+      }
+    );
+
+    itemRefs.current.forEach((el) => el && observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [isAnimationComplete]);
+
+  return (
+    <div
+      className={clsx(styles.bgWrapper, { [styles.active]: menu })}
+      onClick={(e) => {
+        setActive(false);
+      }}
+    >
+      <div className={clsx(styles.container, { [styles.active]: isActive })}>
+        <div className={clsx(styles.menu, styles.desktop)}>
+          <Link className={clsx("h2", styles.link)} href={"/"}>
+            главная
+          </Link>
+          <Link
+            className={clsx("h2", styles.link, styles.desktop, {
+              [styles.active]: isActive,
+            })}
+            href={"/services"}
+            onMouseEnter={() => setActive(true)}
+          >
+            Услуги
+            <SvgArrowRight />
+          </Link>
+          <m.div
+            className={clsx("h2", styles.link, styles.laptop, {
+              [styles.active]: isActive,
+            })}
+            href={"/services"}
+            onClick={(e) => {
+              e.stopPropagation();
+              setActive(true);
+            }}
+          >
+            Услуги
+            <SvgArrowRight />
+          </m.div>
+          <Link className={clsx("h2", styles.link)} href={"/portfolio"}>
+            Портфолио
+          </Link>
+          <Link className={clsx("h2", styles.link)} href={"/about"}>
+            О компании
+          </Link>
+          <Link className={clsx("h2", styles.link)} href={"/news"}>
+            Новости
+          </Link>
+          <Link className={clsx("h2", styles.link)} href={"/contacts"}>
+            Контакты
+          </Link>
+        </div>
+        <AnimatePresence>
+          {!isActive && (
+            <m.div
+              layout
+              className={clsx(styles.menu, styles.laptop)}
+              exit={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 100 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link className={clsx("h2", styles.link)} href={"/"}>
+                главная
+              </Link>
+
+              <div
+                className={clsx("h2", styles.link, styles.laptop, {
+                  [styles.active]: isActive,
+                })}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActive(true);
+                }}
+              >
+                Услуги
+                <SvgArrowRight />
+              </div>
+
+              <Link className={clsx("h2", styles.link)} href={"/portfolio"}>
+                Портфолио
+              </Link>
+
+              <Link className={clsx("h2", styles.link)} href={"/about"}>
+                О компании
+              </Link>
+
+              <Link className={clsx("h2", styles.link)} href={"/news"}>
+                Новости
+              </Link>
+
+              <Link className={clsx("h2", styles.link)} href={"/contacts"}>
+                Контакты
+              </Link>
+            </m.div>
+          )}
+
+          {isActive && (
+            <m.div
+              key={"laptopSide"}
+              layout
+              exit={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onAnimationComplete={() => setIsAnimationComplete(true)}
+            >
+              <div className={clsx("h2", styles.link, styles.laptopTitle)}>
+                Услуги
+              </div>
+              <div className={clsx(styles.side, styles.laptop)}>
+                <Link
+                  href={"/services/design"}
+                  className={clsx(styles.service, {
+                    [styles.activeService]: activeIndex === 0,
+                  })}
+                  ref={(el) => setRef(el, 0)}
+                  data-index={0}
+                >
+                  <div className={styles.serviceBg}>
+                    <Image src={service1} alt="" />
+                  </div>
+                  <div className={styles.caption}>
+                    <span className="h4">
+                      Дизайн <br /> проект
+                    </span>
+                    <SvgArrowCorner className={styles.arrow} />
+                    <InlineButton className={styles.more}>
+                      Подробнее
+                    </InlineButton>
+                  </div>
+                </Link>
+                <Link
+                  href={"/services/design"}
+                  className={clsx(styles.service, {
+                    [styles.activeService]: activeIndex === 1,
+                  })}
+                  data-index={1}
+                  ref={(el) => setRef(el, 1)}
+                >
+                  <div className={styles.serviceBg}>
+                    <Image src={service1} alt="" />
+                  </div>
+                  <div className={styles.caption}>
+                    <span className="h4">
+                      Дизайн проект <br /> с комплектацией
+                    </span>
+                    <SvgArrowCorner className={styles.arrow} />
+                    <InlineButton className={styles.more}>
+                      Подробнее
+                    </InlineButton>
+                  </div>
+                </Link>
+                <Link
+                  href={"/services/design"}
+                  className={clsx(styles.service, {
+                    [styles.activeService]: activeIndex === 2,
+                  })}
+                  data-index={2}
+                  ref={(el) => setRef(el, 2)}
+                >
+                  <div className={styles.serviceBg}>
+                    <Image src={service1} alt="" />
+                  </div>
+                  <div className={styles.caption}>
+                    <span className="h4">
+                      Ремонт под ключ <br /> (с дизайн проектом заказчика)
+                    </span>
+                    <SvgArrowCorner className={styles.arrow} />
+                    <InlineButton className={styles.more}>
+                      Подробнее
+                    </InlineButton>
+                  </div>
+                </Link>
+                <Link
+                  href={"/services/design"}
+                  className={clsx(styles.service, {
+                    [styles.activeService]: activeIndex === 3,
+                  })}
+                  data-index={3}
+                  ref={(el) => setRef(el, 3)}
+                >
+                  <div className={styles.serviceBg}>
+                    <Image src={service1} alt="" />
+                  </div>
+                  <div className={styles.caption}>
+                    <span className="h4">
+                      Ремонт под ключ с комплектацией (с дизайн проектом
+                      заказчика)
+                    </span>
+                    <SvgArrowCorner className={styles.arrow} />
+                    <InlineButton className={styles.more}>
+                      Подробнее
+                    </InlineButton>
+                  </div>
+                </Link>
+              </div>
+            </m.div>
+          )}
+
+          {isActive && (
+            <m.div
+              key={"side"}
+              layout
+              initial={{ opacity: 0, transform: "translateX(100%)" }}
+              animate={{ opacity: 1, transform: "none" }}
+              exit={{ opacity: 0, transform: "translateX(100%)" }}
+              className={clsx(styles.side)}
+            >
+              <Link href={"/services/design"} className={styles.service}>
+                <div className={styles.serviceBg}>
+                  <Image src={service1} alt="" />
+                </div>
+                <div className={styles.caption}>
+                  <span className="h4">
+                    Дизайн <br /> проект
+                  </span>
+                  <SvgArrowCorner className={styles.arrow} />
+                </div>
+              </Link>
+              <Link href={"/services/design"} className={styles.service}>
+                <div className={styles.serviceBg}>
+                  <Image src={service1} alt="" />
+                </div>
+                <div className={styles.caption}>
+                  <span className="h4">
+                    Дизайн проект <br /> с комплектацией
+                  </span>
+                  <SvgArrowCorner className={styles.arrow} />
+                </div>
+              </Link>
+              <Link href={"/services/design"} className={styles.service}>
+                <div className={styles.serviceBg}>
+                  <Image src={service1} alt="" />
+                </div>
+                <div className={styles.caption}>
+                  <span className="h4">
+                    Ремонт под ключ <br /> (с дизайн проектом заказчика)
+                  </span>
+                  <SvgArrowCorner className={styles.arrow} />
+                </div>
+              </Link>
+              <Link href={"/services/design"} className={styles.service}>
+                <div className={styles.serviceBg}>
+                  <Image src={service1} alt="" />
+                </div>
+                <div className={styles.caption}>
+                  <span className="h4">
+                    Ремонт под ключ с комплектацией (с дизайн проектом
+                    заказчика)
+                  </span>
+                  <SvgArrowCorner className={styles.arrow} />
+                </div>
+              </Link>
+            </m.div>
+          )}
+        </AnimatePresence>
+
+        <div className={styles.info}>
+          <div className={styles.contacts}>
+            <div className={styles.line}>
+              <div className={clsx("body-2", styles.title)}>Телефон:</div>
+              <Link
+                href={"tel:+375299999999"}
+                className={clsx("h4", styles.value)}
+              >
+                +375 (29) 999-99-99
+              </Link>
+            </div>
+
+            <div className={styles.line}>
+              <div className={clsx("body-2", styles.title)}>Адрес офиса:</div>
+              <div
+                href={"tel:+375299999999"}
+                className={clsx("h4", styles.value)}
+              >
+                Российская федерация, г. Москва, ул. Ленина, 1
+              </div>
+            </div>
+
+            <div className={styles.line}>
+              <div className={clsx("body-2", styles.title)}>Email:</div>
+              <Link
+                href={"mailto:info@interior.ru"}
+                className={clsx("h4", styles.value)}
+              >
+                info@interior.ru
+              </Link>
+            </div>
+
+            <div className={styles.line}>
+              <div className={clsx("body-2", styles.title)}>
+                Социальные сети:
+              </div>
+              <div className={styles.socials}>
+                <Link
+                  href={"wa.com"}
+                  target="_blank"
+                  className={styles.socialItem}
+                >
+                  <svg
+                    width="36"
+                    height="36"
+                    viewBox="0 0 36 36"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18 3C9.72865 3 3 9.72865 3 18C3 20.8217 3.78404 23.561 5.27135 25.9396C4.67885 28.0154 3.60865 31.9419 3.59712 31.9829C3.54173 32.186 3.60115 32.4029 3.75288 32.5488C3.90462 32.6948 4.12385 32.7467 4.32346 32.6856L10.2692 30.8567C12.5983 32.2598 15.2654 33 18 33C26.2713 33 33 26.2713 33 18C33 9.72865 26.2713 3 18 3ZM18 31.8462C15.3929 31.8462 12.8533 31.1175 10.6552 29.7398C10.5623 29.6815 10.4556 29.6521 10.3488 29.6521C10.2917 29.6521 10.2346 29.6608 10.1792 29.6775L4.9875 31.2756C5.36885 29.8835 6.05423 27.3935 6.45173 26.0083C6.49788 25.8479 6.47192 25.6748 6.38135 25.5346C4.92404 23.2921 4.15385 20.6867 4.15385 18C4.15385 10.3656 10.3656 4.15385 18 4.15385C25.6344 4.15385 31.8462 10.3656 31.8462 18C31.8462 25.6344 25.6344 31.8462 18 31.8462Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M27.8016 21.5341C26.7366 20.9428 25.8296 20.3497 25.1679 19.917C24.6625 19.587 24.2973 19.3487 24.0296 19.2143C23.2814 18.841 22.7142 19.1047 22.4985 19.3228C22.4714 19.3499 22.4471 19.3793 22.4264 19.4105C21.6492 20.5764 20.6344 21.6916 20.3373 21.7516C19.9941 21.698 18.3873 20.7847 16.7904 19.4549C15.16 18.0962 14.1342 16.7953 13.9837 15.9091C15.0296 14.8326 15.4064 14.1553 15.4064 13.3845C15.4064 12.5901 13.5533 9.27334 13.2181 8.93815C12.8817 8.60238 12.1242 8.54988 10.9664 8.78065C10.855 8.80315 10.7523 8.85796 10.6716 8.93815C10.5314 9.07834 7.25098 12.4228 8.80982 16.4762C10.521 20.9249 14.9131 26.0958 20.5127 26.9358C21.1491 27.031 21.7456 27.0783 22.3041 27.0783C25.5983 27.0783 27.5425 25.4208 28.09 22.133C28.131 21.8924 28.015 21.6524 27.8016 21.5341ZM20.6841 25.7947C14.7625 24.9068 11.0327 19.0401 9.88694 16.062C8.7504 13.1081 10.8464 10.4745 11.3725 9.87911C11.8006 9.80642 12.2512 9.77584 12.4392 9.80526C12.8321 10.3516 14.1925 12.9218 14.2525 13.3845C14.2525 13.6874 14.1539 14.1091 12.9792 15.2843C12.8708 15.3922 12.8102 15.5387 12.8102 15.6922C12.8102 18.713 19.1817 22.9037 20.3102 22.9037C21.2916 22.9037 22.5712 21.2543 23.2998 20.1795C23.3419 20.1812 23.4129 20.1956 23.5139 20.2464C23.7216 20.3508 24.0816 20.5856 24.5367 20.8833C25.1379 21.2762 25.9364 21.7978 26.8791 22.3383C26.451 24.398 25.2544 26.4812 20.6841 25.7947Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </Link>
+                <Link
+                  href={"instagram.com"}
+                  target="_blank"
+                  className={styles.socialItem}
+                >
+                  <svg
+                    width="36"
+                    height="36"
+                    viewBox="0 0 36 36"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3.82693 11.6018C3.89708 10.0688 4.13711 9.08013 4.46172 8.24089L4.46609 8.2293C4.78777 7.37529 5.29169 6.60165 5.94278 5.9622L5.95192 5.95323L5.96089 5.94409C6.60086 5.29216 7.37478 4.78873 8.22804 4.46791L8.24276 4.46229C9.08009 4.13665 10.0668 3.89751 11.6011 3.82737M3.82693 11.6018C3.75317 13.2397 3.73438 13.7475 3.73438 17.9943C3.73438 22.242 3.75214 22.7486 3.82688 24.3869M3.82693 11.6018V12.015M11.6011 3.82737C13.2394 3.75262 13.747 3.73486 17.9937 3.73486C22.2405 3.73486 22.7478 3.75364 24.3857 3.82738M11.6011 3.82737H12.0154M3.82688 24.3869C3.89702 25.9212 4.13617 26.9079 4.4618 27.7452L4.46743 27.7601M3.82688 24.3869L3.852 24.5192M3.82688 24.3869V23.9727M3.82693 12.015C3.83266 11.8837 3.83883 11.7469 3.84545 11.6014C3.92232 9.92407 4.20746 8.94406 4.47925 8.24896C4.831 7.34119 5.27657 6.6562 5.9573 5.97265C6.60434 5.3089 7.39092 4.79742 8.26004 4.47523C8.95206 4.20682 9.92948 3.92254 11.6005 3.84595C11.7464 3.83932 11.8837 3.83313 12.0154 3.82737M3.82693 12.015C3.76622 13.403 3.75317 14.1687 3.75317 17.9943C3.75317 21.8186 3.76622 22.5854 3.82688 23.9727M3.82693 12.015L3.82688 23.9727M4.46743 27.7601C4.78825 28.6133 5.29167 29.3871 5.9436 30.0272L5.95272 30.0362L5.96168 30.0452C6.60116 30.6963 7.37483 31.2003 8.22884 31.5219L8.24159 31.5267C9.07968 31.8518 10.0669 32.091 11.6011 32.1612M4.46743 27.7601L4.4482 27.6587M4.4482 27.6587L3.852 24.5192M4.4482 27.6587C4.19498 26.9898 3.93425 26.0564 3.852 24.5192M4.4482 27.6587C4.45708 27.6822 4.46594 27.7053 4.47481 27.7281C4.79591 28.5938 5.3047 29.3777 5.96461 30.0233C6.61004 30.6831 7.39358 31.1918 8.25896 31.5129C8.95343 31.7834 9.932 32.0661 11.6009 32.1426C13.2851 32.2193 13.8054 32.2349 17.9937 32.2349C22.1822 32.2349 22.703 32.2193 24.3872 32.1426C26.058 32.066 27.0354 31.7817 27.7275 31.5134C28.5933 31.1924 29.3774 30.6834 30.023 30.0233C30.6827 29.3778 31.1913 28.5944 31.5125 27.729C31.7829 27.0345 32.0657 26.0561 32.142 24.3872C32.2187 22.703 32.2344 22.1816 32.2344 17.9943C32.2344 13.8069 32.2187 13.2851 32.142 11.6009C32.0651 9.92127 31.7783 8.94238 31.5086 8.24974C31.1561 7.33969 30.7091 6.65142 30.0219 5.96427C29.3361 5.27985 28.6497 4.83255 27.7389 4.47967C27.0438 4.20792 26.0643 3.92283 24.3872 3.84595C24.2412 3.83932 24.1041 3.83314 23.9726 3.82738M3.852 24.5192C3.84968 24.4758 3.8475 24.432 3.84546 24.3876C3.83883 24.2417 3.83264 24.1044 3.82688 23.9727M23.9726 3.82738H24.3857M23.9726 3.82738L12.0154 3.82737M23.9726 3.82738C22.5851 3.76672 21.8184 3.75366 17.9937 3.75366C14.1694 3.75366 13.4026 3.76671 12.0154 3.82737M24.3857 3.82738C25.919 3.89752 26.9078 4.13752 27.7472 4.46217L27.7587 4.46658C28.6127 4.78825 29.3864 5.29218 30.0258 5.94327L30.0347 5.95231L30.0438 5.96119C30.695 6.60069 31.1988 7.37455 31.5203 8.2288L31.5257 8.24325C31.8513 9.08058 32.0906 10.0673 32.1606 11.6016M32.1606 24.3869C32.0906 25.9211 31.8513 26.9084 31.5263 27.7464L31.5215 27.7592C31.1997 28.6133 30.6959 29.3868 30.0447 30.0263L30.0356 30.0353L30.0267 30.0444C29.3867 30.6963 28.6128 31.1997 27.7595 31.5206L27.7448 31.5263C26.9075 31.8519 25.9206 32.091 24.3864 32.1612M15.4577 24.117C16.2617 24.45 17.1234 24.6215 17.9937 24.6215C19.7514 24.6215 21.4371 23.9232 22.68 22.6805C23.9228 21.4376 24.621 19.7519 24.621 17.9943C24.621 16.2366 23.9228 14.5509 22.68 13.3081C21.4371 12.0652 19.7514 11.367 17.9937 11.367C17.1234 11.367 16.2617 11.5384 15.4577 11.8715C14.6535 12.2045 13.923 12.6927 13.3076 13.3081C12.6922 13.9235 12.2041 14.6541 11.871 15.4581C11.538 16.2621 11.3665 17.124 11.3665 17.9943C11.3665 18.8646 11.538 19.7264 11.871 20.5304C12.2041 21.3345 12.6922 22.065 13.3076 22.6805C13.923 23.2958 14.6535 23.784 15.4577 24.117ZM13.2929 13.2933C14.5397 12.0466 16.2306 11.3461 17.9937 11.3461C19.757 11.3461 21.4479 12.0466 22.6947 13.2933C23.9415 14.5401 24.6419 16.2311 24.6419 17.9943C24.6419 19.7574 23.9415 21.4484 22.6947 22.6952C21.4479 23.942 19.757 24.6423 17.9937 24.6423C16.2306 24.6423 14.5397 23.942 13.2929 22.6952C12.0461 21.4484 11.3457 19.7574 11.3457 17.9943C11.3457 16.2311 12.0461 14.5401 13.2929 13.2933ZM28.3854 9.7983C28.3854 10.303 28.1849 10.7869 27.8282 11.1438C27.4713 11.5006 26.9873 11.7011 26.4827 11.7011C25.9779 11.7011 25.494 11.5006 25.1372 11.1438C24.7803 10.7869 24.5798 10.303 24.5798 9.7983C24.5798 9.29364 24.7803 8.80965 25.1372 8.45281C25.494 8.09596 25.9779 7.89549 26.4827 7.89549C26.9873 7.89549 27.4713 8.09596 27.8282 8.45281C28.1849 8.80965 28.3854 9.29364 28.3854 9.7983Z"
+                      stroke="currentColor"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </Link>
+                <Link
+                  href={"t.me"}
+                  target="_blank"
+                  className={styles.socialItem}
+                >
+                  <svg
+                    width="36"
+                    height="36"
+                    viewBox="0 0 36 36"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M33 18C33 26.2842 26.2842 33 18 33C9.71574 33 3 26.2842 3 18C3 9.71572 9.71574 3 18 3C26.2842 3 33 9.71572 33 18ZM18.5375 14.0737C17.0786 14.6805 14.1627 15.9364 9.78985 17.8416C9.07978 18.124 8.70781 18.4003 8.67394 18.6703C8.61672 19.1269 9.18838 19.3066 9.96684 19.5514C10.0727 19.5847 10.1824 19.6192 10.2949 19.6557C11.0608 19.9047 12.091 20.196 12.6266 20.2075C13.1124 20.218 13.6546 20.0178 14.2533 19.6066C18.3389 16.8487 20.448 15.4548 20.5803 15.4246C20.6738 15.4035 20.8032 15.3768 20.891 15.4548C20.9787 15.5328 20.97 15.6804 20.9607 15.72C20.9042 15.9615 18.6602 18.0477 17.4989 19.1272C17.1369 19.4638 16.8801 19.7025 16.8276 19.7571C16.71 19.8792 16.5902 19.9947 16.475 20.1057C15.7635 20.7916 15.2298 21.306 16.5045 22.146C17.117 22.5496 17.6072 22.8834 18.0962 23.2164C18.6302 23.5801 19.1628 23.9428 19.8521 24.3946C20.0276 24.5097 20.1953 24.6292 20.3586 24.7456C20.9801 25.1887 21.5384 25.5868 22.2282 25.5232C22.629 25.4865 23.043 25.1095 23.2533 23.9854C23.7503 21.3289 24.7271 15.573 24.9528 13.2012C24.9726 12.9934 24.9477 12.7275 24.9276 12.6107C24.9077 12.494 24.866 12.3276 24.7142 12.2045C24.5345 12.0587 24.257 12.0279 24.1329 12.03C23.5688 12.04 22.7031 12.341 18.5375 14.0737Z"
+                      stroke="currentColor"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+          <CircleButton>Оставить Заявку</CircleButton>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+export default MenuPopup;

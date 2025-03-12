@@ -1,0 +1,41 @@
+.button {
+  width: 36px;
+  height: 36px;
+
+  cursor: pointer;
+  border: 1px solid rgba(251, 247, 244, 0.5);
+  outline: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(251, 247, 244, 0.1);
+  outline: none;
+
+  color: var(--text);
+}
+
+.button:hover {
+  background: rgba(200, 152, 106, 0.1);
+  color: var(--beige);
+}
+
+.button:active {
+  background: var(--beige);
+  border-color: var(--beige);
+  color: var(--text);
+}
+
+.button:disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--grey);
+}
+
+.button.disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--grey);
+}

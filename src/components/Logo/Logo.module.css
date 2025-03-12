@@ -1,0 +1,27 @@
+.container {
+  position: absolute;
+  left: calc(50% - (100% - 1630px) / 2);
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    left: calc(50% - (100% - 1200px) / 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    left: 20px;
+    transform: translateY(-50%);
+  }
+}

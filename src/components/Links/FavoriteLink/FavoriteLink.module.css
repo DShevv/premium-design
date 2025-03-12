@@ -1,0 +1,71 @@
+.button {
+  width: fit-content;
+  border-radius: 6px;
+  padding: 5.5px 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--gray-1);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.button svg {
+  color: var(--red);
+}
+
+.button:hover path {
+  fill: var(--red);
+}
+
+.button:hover path:last-of-type {
+  fill: transparent;
+}
+
+.button:hover path:first-of-type {
+  fill: var(--red);
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  gap: 2px;
+}
+
+.button.disabled {
+  cursor: default;
+  background: var(--gray-2);
+  color: rgba(23, 23, 23, 0.5);
+}
+
+.button.disabled svg {
+  color: transparent;
+}
+
+.button.disabled svg {
+  fill: rgba(23, 23, 23, 0.5);
+}
+
+.text {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .button {
+    padding: 0;
+    border: none;
+  }
+
+  .button svg {
+    color: var(--text);
+  }
+
+  .caption {
+    display: none;
+  }
+}

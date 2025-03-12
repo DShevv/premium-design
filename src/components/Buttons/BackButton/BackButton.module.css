@@ -1,0 +1,36 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  width: fit-content;
+  color: var(--text);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+
+.button svg {
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  color: var(--text);
+}
+
+.button:hover svg {
+  color: var(--beige);
+}
+
+.button:active {
+  color: var(--beige);
+}
+
+.button:disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--grey);
+}
