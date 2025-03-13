@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "./SearchButton.module.css";
+import styles from "./SearchButton.module.scss";
 import Link from "next/link";
 
 const SearchButton = ({

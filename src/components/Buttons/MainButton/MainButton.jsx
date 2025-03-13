@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "./MainButton.module.css";
+import styles from "./MainButton.module.scss";
 import Link from "next/link";
 
 const MainButton = ({

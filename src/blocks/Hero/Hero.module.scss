@@ -1,11 +1,13 @@
+@import "../../assets/sass/_functions.scss";
+
 .container {
-  padding-top: 339px;
-  padding-bottom: 80px;
+  padding-top: vw-1920(339);
+  padding-bottom: vw-1920(80);
   position: relative;
 }
 
 .wrapper {
-  max-width: 1630px;
+  max-width: vw-1920(1630);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -34,8 +36,8 @@
 
 .spotlight {
   position: absolute;
-  width: 721px;
-  height: 721px;
+  width: 720px;
+  height: 720px;
   border-radius: 50%;
   pointer-events: none;
   background-color: transparent;
@@ -46,9 +48,9 @@
 
 .title {
   position: relative;
-  max-width: 995px;
+  max-width: vw-1920(995);
   z-index: 2;
-  margin-bottom: 45px;
+  margin-bottom: vw-1920(45);
   text-align: right;
 }
 
@@ -60,8 +62,8 @@
 }
 
 .caption {
-  max-width: 526px;
-  margin-top: 35px;
+  max-width: vw-1920(526);
+  margin-top: vw-1920(35);
   text-align: right;
   mix-blend-mode: difference;
   pointer-events: none;
@@ -69,21 +71,41 @@
 
 .block .button {
   position: relative;
-  right: -149px;
+  right: vw-1920(-149);
 }
 
 .subtitle {
-  margin-bottom: 12px;
+  margin-bottom: vw-1920(12);
 }
 
 @media (max-width: 1440px) {
   .container {
-    padding-top: 239px;
-    padding-bottom: 100px;
+    padding-top: vw-1440(239);
+    padding-bottom: vw-1440(100);
   }
 
   .wrapper {
-    max-width: 1200px;
+    max-width: vw-1440(1200);
+  }
+
+  .title {
+    max-width: vw-1440(995);
+
+    margin-bottom: vw-1440(45);
+  }
+
+  .caption {
+    max-width: vw-1440(526);
+
+    margin-top: vw-1440(35);
+  }
+
+  .block .button {
+    right: vw-1440(-149);
+  }
+
+  .subtitle {
+    margin-bottom: vw-1440(12);
   }
 }
 
@@ -99,6 +121,7 @@
   }
 
   .title {
+    max-width: initial;
     text-align: left;
     margin-bottom: 20px;
   }

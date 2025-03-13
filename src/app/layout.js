@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./globals.scss";
 import "@/assets/fonts/fonts.css";
 import Script from "next/script";
 import { Suspense } from "react";

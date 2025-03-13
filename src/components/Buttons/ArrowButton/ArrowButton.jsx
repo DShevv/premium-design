@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "./ArrowButton.module.css";
+import styles from "./ArrowButton.module.scss";
 import Link from "next/link";
 
 const ArrowButton = ({

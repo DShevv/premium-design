@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "./IconButton.module.css";
+import styles from "./IconButton.module.scss";
 import Link from "next/link";
 
 const IconButton = ({

@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import styles from "./MenuPopup.module.css";
+import styles from "./MenuPopup.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { observer } from "mobx-react-lite";

@@ -1,25 +1,27 @@
+@import "../../assets/sass/_functions.scss";
+
 .container {
   position: relative;
-  height: 940px;
+  height: vw-1920(940);
   overflow: hidden;
   display: flex;
 }
 
 .item {
-  flex: 1 1 480px;
-  width: 480px;
+  flex: 1 1 vw-1920(480);
+  width: vw-1920(480);
   height: 100%;
   transition: all 0.2s ease;
   overflow: hidden;
   position: relative;
   display: flex;
   align-items: flex-end;
-  padding: 52px;
+  padding: vw-1920(52);
 }
 
 .item:hover {
-  flex: 1 1 889px;
-  width: 889px;
+  flex: 1 1 vw-1920(889);
+  width: vw-1920(889);
 }
 
 .bg {
@@ -52,7 +54,7 @@
   z-index: 2;
   color: var(--grey);
   transition: all 0.2s ease;
-  max-width: 282px;
+  max-width: vw-1920(282);
 }
 
 .item:hover .title {
@@ -62,7 +64,7 @@
 .item .button {
   opacity: 0;
   position: absolute;
-  left: 197px;
+  left: vw-1920(197);
   top: 50%;
   transform: translate(0%, -50%);
   z-index: 2;
@@ -74,32 +76,37 @@
 
 @media (max-width: 1440px) {
   .container {
+    height: vw-1440(940);
   }
 
   .item .button {
-    left: 69px;
+    left: vw-1440(69);
   }
 
   .item {
-    flex: 1 1 284px;
-    width: 284px;
+    flex: 1 1 vw-1440(284);
+    width: vw-1440(284);
     height: 100%;
     transition: all 0.2s ease;
     overflow: hidden;
     position: relative;
     display: flex;
     align-items: flex-end;
-    padding: 52px;
+    padding: vw-1440(52);
   }
 
   .item:hover {
-    flex: 1 1 588px;
-    width: 588px;
+    flex: 1 1 vw-1440(588);
+    width: vw-1440(588);
   }
 
   .title {
     max-width: 100%;
     word-wrap: break-word;
+  }
+
+  .item .button {
+    left: vw-1440(80);
   }
 }
 

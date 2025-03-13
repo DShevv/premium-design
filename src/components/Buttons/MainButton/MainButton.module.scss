@@ -1,6 +1,8 @@
+@import "../../../assets/sass/_functions.scss";
+
 .button {
   width: fit-content;
-  padding: 36px 24px;
+  padding: vw-1920(36) vw-1920(23);
   background: var(--green-1);
   color: var(--text);
   cursor: pointer;
@@ -11,7 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 320px;
+  min-width: vw-1920(320);
 }
 
 .button:hover {
@@ -32,7 +34,14 @@
 
 @media (max-width: 1440px) {
   .button {
-    min-width: 275px;
+    min-width: vw-1440(275);
+    padding: vw-1440(28) vw-1440(24);
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
     padding: 28px 24px;
+    min-width: 275px;
   }
 }

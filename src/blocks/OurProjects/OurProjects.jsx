@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import styles from "./OurProjects.module.css";
+import styles from "./OurProjects.module.scss";
 import clsx from "clsx";
 import picture1 from "@/assets/images/works-1.png";
 import picture2 from "@/assets/images/works-2.png";

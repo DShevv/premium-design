@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "./MenuButton.module.css";
+import styles from "./MenuButton.module.scss";
 import Link from "next/link";
 
 const MenuButton = ({

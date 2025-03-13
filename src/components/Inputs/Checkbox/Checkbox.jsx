@@ -1,6 +1,6 @@
 "use client";
 import { Field } from "formik";
-import styles from "./Checkbox.module.css";
+import styles from "./Checkbox.module.scss";
 import clsx from "clsx";
 
 const Checkbox = ({ disabled, children, className, ...other }) => {

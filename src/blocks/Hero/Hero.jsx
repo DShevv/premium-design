@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import styles from "./Hero.module.css";
+import styles from "./Hero.module.scss";
 import picture from "@/assets/images/hero.png";
 import { useEffect } from "react";
 import { motion as m, useMotionValue, useSpring } from "motion/react";

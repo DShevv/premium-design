@@ -1,6 +1,6 @@
 "use client";
 import MenuButton from "@/components/Buttons/MenuButton/MenuButton";
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 import Link from "next/link";
 import { SvgPhone } from "@/assets/icons/svgs";
 import SearchButton from "@/components/Buttons/SearchButton/SearchButton";

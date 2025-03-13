@@ -1,9 +1,11 @@
+@import "../../../assets/sass/_functions.scss";
+
 .button {
-  width: 36px;
-  height: 36px;
+  width: vw-1920(36);
+  height: vw-1920(36);
 
   cursor: pointer;
-  border: 1px solid rgba(251, 247, 244, 0.5);
+  border: vw-1920(1) solid rgba(251, 247, 244, 0.5);
   outline: none;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -38,4 +40,20 @@
   cursor: default;
   pointer-events: none;
   color: var(--grey);
+}
+
+@media (max-width: 1440px) {
+  .button {
+    width: vw-1440(36);
+    height: vw-1440(36);
+    border-width: vw-1440(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: 36px;
+    height: 36px;
+    border-width: 1px;
+  }
 }

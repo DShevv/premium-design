@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "./CircleButton.module.css";
+import styles from "./CircleButton.module.scss";
 import Link from "next/link";
 
 const CircleButton = ({

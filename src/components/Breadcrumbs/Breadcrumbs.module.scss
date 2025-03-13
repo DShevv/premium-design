@@ -1,8 +1,10 @@
+@import "../../assets/sass/_functions.scss";
+
 .container {
-  margin-top: 32px;
+  margin-top: vw-1920(32);
   margin-bottom: 24px;
   display: flex;
-  gap: 12px;
+  gap: vw-1920(12);
   align-items: center;
   flex-wrap: wrap;
   color: var(--beige);
@@ -10,7 +12,7 @@
 
 .container > div {
   display: flex;
-  gap: 12px;
+  gap: vw-1920(12);
   align-items: center;
   width: fit-content;
 }
@@ -29,18 +31,45 @@ a.link:hover {
 }
 
 .icon {
-  width: 6px;
-  height: 6px;
+  width: vw-1920(6);
+  height: vw-1920(6);
+}
+
+@media (max-width: 1440px) {
+  .container {
+    margin-top: vw-1440(32);
+    gap: vw-1440(12);
+  }
+
+  .container > div {
+    gap: vw-1440(12);
+  }
+
+  .icon {
+    width: vw-1440(6);
+    height: vw-1440(6);
+  }
 }
 
 @media (max-width: 768px) {
   .container {
+    margin-bottom: 24px;
     margin-top: 8px;
     justify-content: center;
+    gap: 12px;
   }
 
   .link {
     font-size: 13px;
     text-align: center;
+  }
+
+  .container > div {
+    gap: 12px;
+  }
+
+  .icon {
+    width: 6px;
+    height: 6px;
   }
 }

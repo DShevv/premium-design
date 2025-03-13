@@ -1,7 +1,9 @@
+@import "../../../assets/sass/_functions.scss";
+
 .button {
   display: flex;
   align-items: flex-end;
-  gap: 8px;
+  gap: vw-1920(8);
   width: fit-content;
   color: var(--text);
   cursor: pointer;
@@ -14,7 +16,7 @@
 }
 
 .button span {
-  height: 23px;
+  height: vw-1920(23);
 }
 
 .button svg {
@@ -37,6 +39,16 @@
   cursor: default;
   pointer-events: none;
   color: var(--grey);
+}
+
+@media (max-width: 1440px) {
+  .button {
+    gap: vw-1440(8);
+  }
+
+  .button span {
+    height: vw-1440(23);
+  }
 }
 
 @media (max-width: 768px) {

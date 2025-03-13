@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "./BackButton.module.css";
+import styles from "./BackButton.module.scss";
 import Link from "next/link";
 
 const BackButton = ({

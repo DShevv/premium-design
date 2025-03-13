@@ -1,5 +1,5 @@
 "use client";
-import styles from "./ProjectItem.module.css";
+import styles from "./ProjectItem.module.scss";
 import { motion as m, useInView } from "motion/react";
 import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
 import Link from "next/link";

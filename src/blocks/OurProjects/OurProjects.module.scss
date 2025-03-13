@@ -1,27 +1,29 @@
+@import "../../assets/sass/_functions.scss";
+
 .container {
   position: relative;
-  margin-top: 160px;
+  margin-top: vw-1920(160);
 }
 
 .wrapper {
-  max-width: 1630px;
+  max-width: vw-1920(1630);
   margin: 0 auto;
   position: relative;
 }
 
 .header {
-  margin-bottom: 25px;
+  margin-bottom: vw-1920(25);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .caption {
-  max-width: 670px;
+  max-width: vw-1920(670);
 }
 
 .title {
-  margin-top: 32px;
+  margin-top: vw-1920(32);
 }
 
 .slide {
@@ -30,8 +32,8 @@
 
 .navigation {
   position: absolute;
-  bottom: 356px;
-  width: calc(100% + 166px);
+  bottom: vw-1920(356);
+  width: calc(100% + vw-1920(166));
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -44,14 +46,14 @@
 
 .navigation .next,
 .navigation .prev {
-  width: 47px;
-  height: 47px;
+  width: vw-1920(47);
+  height: vw-1920(47);
 }
 
 .navigation .next svg,
 .navigation .prev svg {
-  width: 24px;
-  height: 24px;
+  width: vw-1920(24);
+  height: vw-1920(24);
 }
 
 .mobileContainer {
@@ -64,14 +66,40 @@
 
 @media (max-width: 1440px) {
   .container {
+    margin-top: vw-1440(160);
   }
 
   .wrapper {
-    max-width: 1200px;
+    max-width: vw-1440(1200);
   }
 
+  .header {
+    margin-bottom: vw-1440(25);
+  }
+
+  .caption {
+    max-width: vw-1440(670);
+  }
+
+  .title {
+    margin-top: vw-1440(32);
+  }
   .navigation {
-    bottom: 256px;
+    bottom: vw-1440(250);
+
+    width: calc(100% + vw-1440(166));
+  }
+
+  .navigation .next,
+  .navigation .prev {
+    width: vw-1440(47);
+    height: vw-1440(47);
+  }
+
+  .navigation .next svg,
+  .navigation .prev svg {
+    width: vw-1440(24);
+    height: vw-1440(24);
   }
 }
 
@@ -82,12 +110,17 @@
 
   .wrapper {
     width: calc(100% - 40px);
+    max-width: 100%;
   }
 
   .header {
     flex-direction: column;
     margin-bottom: 24px;
     align-items: flex-start;
+  }
+
+  .caption {
+    max-width: initial;
   }
 
   .container .swiper {

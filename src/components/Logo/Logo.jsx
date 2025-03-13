@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./Logo.module.css";
+import styles from "./Logo.module.scss";
 import clsx from "clsx";
 
 const Logo = ({ className, ...other }) => {

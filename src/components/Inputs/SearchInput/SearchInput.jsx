@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import styles from "./SearchInput.module.css";
+import styles from "./SearchInput.module.scss";
 import MainButton from "@/components/Buttons/MainButton/MainButton";
 import Link from "next/link";
 import Image from "next/image";

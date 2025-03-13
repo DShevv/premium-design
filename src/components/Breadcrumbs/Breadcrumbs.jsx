@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./Breadcrumbs.module.css";
+import styles from "./Breadcrumbs.module.scss";
 import clsx from "clsx";
 
 const Breadcrumbs = ({ items, className, ...other }) => {

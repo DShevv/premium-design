@@ -1,3 +1,5 @@
+@import "../assets/sass/_functions.scss";
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -49,7 +51,7 @@ main {
 .h1 {
   font-family: var(--second-family);
   font-weight: 400;
-  font-size: 90px;
+  font-size: vw-1920(90);
   line-height: 120%;
   text-transform: uppercase;
 }
@@ -57,7 +59,7 @@ main {
 .h1-news {
   font-family: var(--second-family);
   font-weight: 400;
-  font-size: 64px;
+  font-size: vw-1920(64);
   line-height: 120%;
   text-transform: uppercase;
 }
@@ -65,7 +67,7 @@ main {
 .h2 {
   font-family: var(--second-family);
   font-weight: 400;
-  font-size: 60px;
+  font-size: vw-1920(60);
   line-height: 120%;
   text-transform: uppercase;
 }
@@ -73,7 +75,7 @@ main {
 .h3 {
   font-family: var(--second-family);
   font-weight: 400;
-  font-size: 32px;
+  font-size: vw-1920(32);
   line-height: 120%;
   text-transform: uppercase;
 }
@@ -81,7 +83,7 @@ main {
 .h4 {
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 26px;
+  font-size: vw-1920(26);
   line-height: 140%;
   text-transform: uppercase;
 }
@@ -89,28 +91,28 @@ main {
 .body-1 {
   font-family: var(--font-family);
   font-weight: 200;
-  font-size: 20px;
+  font-size: vw-1920(20);
   line-height: 130%;
 }
 
 .body-1-regular {
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 20px;
+  font-size: vw-1920(20);
   line-height: 130%;
 }
 
 .body-2 {
   font-family: var(--font-family);
   font-weight: 200;
-  font-size: 18px;
+  font-size: vw-1920(18);
   line-height: 130%;
 }
 
 .body-3 {
   font-family: var(--font-family);
   font-weight: 200;
-  font-size: 18px;
+  font-size: vw-1920(18);
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
@@ -118,7 +120,7 @@ main {
 .body-4 {
   font-family: var(--font-family);
   font-weight: 200;
-  font-size: 16px;
+  font-size: vw-1920(16);
   line-height: 120%;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -127,14 +129,14 @@ main {
 .body-5 {
   font-family: var(--font-family);
   font-weight: 200;
-  font-size: 16px;
+  font-size: vw-1920(16);
   line-height: 120%;
 }
 
 .t-button {
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 18px;
+  font-size: vw-1920(18);
   line-height: 130%;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -143,15 +145,73 @@ main {
 .t-button-back {
   font-family: var(--second-family);
   font-weight: 400;
-  font-size: 18px;
+  font-size: vw-1920(18);
   text-transform: uppercase;
 }
 
 .t-placeholder {
   font-family: var(--font-family);
   font-weight: 200;
-  font-size: 20px;
+  font-size: vw-1920(20);
   line-height: 130%;
+}
+
+@media (max-width: 1440px) {
+  .h1 {
+    font-size: vw-1440(90);
+  }
+
+  .h1-news {
+    font-size: vw-1440(64);
+  }
+
+  .h2 {
+    font-size: vw-1440(60);
+  }
+
+  .h3 {
+    font-size: vw-1440(32);
+  }
+
+  .h4 {
+    font-size: vw-1440(26);
+  }
+
+  .body-1 {
+    font-size: vw-1440(20);
+  }
+
+  .body-1-regular {
+    font-size: vw-1440(20);
+  }
+
+  .body-2 {
+    font-size: vw-1440(18);
+  }
+
+  .body-3 {
+    font-size: vw-1440(18);
+  }
+
+  .body-4 {
+    font-size: vw-1440(16);
+  }
+
+  .body-5 {
+    font-size: vw-1440(16);
+  }
+
+  .t-button {
+    font-size: vw-1440(18);
+  }
+
+  .t-button-back {
+    font-size: vw-1440(18);
+  }
+
+  .t-placeholder {
+    font-size: vw-1440(20);
+  }
 }
 
 @media (max-width: 768px) {

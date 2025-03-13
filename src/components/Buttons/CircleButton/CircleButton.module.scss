@@ -1,6 +1,8 @@
+@import "../../../assets/sass/_functions.scss";
+
 .button {
-  width: 260px;
-  height: 260px;
+  width: vw-1920(260);
+  height: vw-1920(260);
   position: relative;
 
   cursor: pointer;
@@ -11,13 +13,13 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 60px;
+  padding-left: vw-1920(60);
   flex-direction: column;
-  gap: 7px;
+  gap: vw-1920(7);
   border-radius: 50%;
   background-color: transparent;
   outline: none;
-  border: solid 1px var(--text);
+  border: solid vw-1920(1) var(--text);
   color: var(--text);
 }
 
@@ -34,15 +36,15 @@
 .button.centered span {
   position: absolute;
   left: 50%;
-  margin-left: 28px;
+  margin-left: vw-1920(28);
   top: 50%;
   transform: translate(0%, -50%);
-  max-width: 282px;
+  max-width: vw-1920(282);
 }
 
 .button.secondary {
-  padding-left: 48px;
-  padding-bottom: 40px;
+  padding-left: vw-1920(48);
+  padding-bottom: vw-1920(40);
   justify-content: flex-end;
 }
 
@@ -52,8 +54,8 @@
 }
 
 .button span {
-  max-width: 133px;
-  margin-left: 7px;
+  max-width: vw-1920(133);
+  margin-left: vw-1920(7);
   text-align: left;
 }
 
@@ -78,6 +80,36 @@
   pointer-events: none;
   color: var(--grey);
   border-color: var(--grey);
+}
+
+@media (max-width: 1440px) {
+  .button {
+    width: vw-1440(260);
+    height: vw-1440(260);
+    padding-left: vw-1440(60);
+
+    gap: vw-1440(7);
+
+    border: solid vw-1440(1) var(--text);
+  }
+
+  .button.centered span {
+    margin-left: vw-1440(28);
+
+    max-width: vw-1440(282);
+  }
+
+  .button.secondary {
+    padding-left: vw-1440(48);
+
+    padding-bottom: vw-1440(40);
+  }
+
+  .button span {
+    max-width: vw-1440(133);
+
+    margin-left: vw-1440(7);
+  }
 }
 
 @media (max-width: 768px) {

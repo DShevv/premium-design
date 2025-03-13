@@ -1,0 +1,11 @@
+@function vw-1920($px) {
+  @return min((($px * 100) / 1920) * 1vw, $px * 1px);
+}
+
+@function vw-1440($px) {
+  @return min((($px * 100) / 1440) * 1vw, $px * 1px);
+}
+
+@function vw-768($px) {
+  @return max((($px * 100) / 768) * 1vw, $px * 1px);
+}

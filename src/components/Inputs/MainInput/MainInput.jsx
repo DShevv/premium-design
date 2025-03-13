@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import styles from "./MainInput.module.css";
+import styles from "./MainInput.module.scss";
 import InputMask from "@mona-health/react-input-mask";
 
 const MainInput = ({
