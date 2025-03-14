@@ -10,7 +10,7 @@ import picture4 from "@/assets/images/works-1.png";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import ProjectItem from "./ProjectItem";
+import ProjectItem from "../../components/ProjectItem/ProjectItem";
 import { useCallback, useRef } from "react";
 import ArrowButton from "@/components/Buttons/ArrowButton/ArrowButton";
 

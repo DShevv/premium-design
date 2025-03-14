@@ -1,4 +1,6 @@
+import CompareBlock from "@/blocks/CompareBlock/CompareBlock";
 import Hero from "@/blocks/Hero/Hero";
+import History from "@/blocks/History/History";
 import OurProjects from "@/blocks/OurProjects/OurProjects";
 import Services from "@/blocks/Services/Services";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
@@ -20,6 +22,8 @@ export default function Home() {
       <Hero />
       <Services />
       <OurProjects />
+      <History />
+      <CompareBlock />
     </>
   );
 }
