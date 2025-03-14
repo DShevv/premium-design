@@ -1,0 +1,216 @@
+@import "../../assets/sass/_functions.scss";
+
+.container {
+  position: relative;
+  margin-top: vw-1920(160);
+}
+
+.wrapper {
+  max-width: vw-1920(1630);
+  margin: 0 auto;
+  position: relative;
+}
+
+.header {
+  margin-bottom: vw-1920(25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.caption {
+  max-width: vw-1920(780);
+}
+
+.title {
+  margin-top: vw-1920(32);
+}
+
+.content {
+  display: flex;
+  gap: vw-1920(48);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: vw-1920(32);
+}
+
+.line {
+  padding-bottom: vw-1920(32);
+  border-bottom: 1px solid rgba(251, 247, 244, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: vw-1920(32);
+  color: var(--text);
+  transition: all 0.2s ease;
+}
+
+.line:hover {
+  color: var(--beige);
+}
+
+.line:last-of-type:hover {
+  color: var(--text);
+}
+
+.value {
+  color: var(--text);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.line:hover .value {
+  color: var(--beige);
+}
+
+.map {
+  width: vw-1920(780);
+}
+
+.socials {
+  display: flex;
+  gap: vw-1920(16);
+}
+
+.socialItem {
+  width: vw-1920(64);
+  height: vw-1920(64);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--text);
+  color: var(--text);
+  transition: all 0.2s ease;
+}
+
+.socialItem:hover {
+  background-color: var(--text);
+  color: var(--bg);
+}
+
+.socialItem svg {
+  width: vw-1920(36);
+  height: vw-1920(36);
+}
+
+@media (max-width: 1440px) {
+  .container {
+    margin-top: vw-1440(160);
+  }
+
+  .wrapper {
+    max-width: vw-1440(1200);
+  }
+
+  .header {
+    margin-bottom: vw-1440(48);
+  }
+
+  .caption {
+    max-width: vw-1440(780);
+  }
+
+  .title {
+    margin-top: vw-1440(32);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: vw-1440(48);
+  }
+
+  .imageSmall {
+    display: none;
+  }
+
+  .image {
+    width: vw-1440(526);
+    height: auto;
+  }
+
+  .text {
+    width: vw-1440(626);
+  }
+
+  .info {
+    gap: vw-1440(32);
+  }
+
+  .line {
+    padding-bottom: vw-1440(32);
+
+    gap: vw-1440(32);
+  }
+
+  .socials {
+    gap: vw-1440(16);
+  }
+
+  .socialItem {
+    width: vw-1440(64);
+    height: vw-1440(64);
+  }
+
+  .socialItem svg {
+    width: vw-1440(36);
+    height: vw-1440(36);
+  }
+
+  .map {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 72px;
+    width: 100%;
+  }
+
+  .wrapper {
+    width: calc(100% - 40px);
+    max-width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+
+  .caption {
+    max-width: initial;
+  }
+
+  .title {
+    margin-top: 16px;
+  }
+
+  .content {
+    flex-direction: column-reverse;
+    gap: 32px;
+    width: 100%;
+  }
+
+  .info {
+    gap: 24px;
+  }
+
+  .line {
+    padding-bottom: 24px;
+    gap: 24px;
+  }
+
+  .socials {
+    gap: 16px;
+  }
+
+  .socialItem {
+    width: 64px;
+    height: 64px;
+  }
+}

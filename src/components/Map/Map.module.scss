@@ -1,0 +1,18 @@
+@import "../../assets/sass/_functions.scss";
+
+.container {
+  width: 100%;
+  height: vw-1920(550);
+}
+
+@media (max-width: 1440px) {
+  .container {
+    height: vw-1440(550);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: 400px;
+  }
+}

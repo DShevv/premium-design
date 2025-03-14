@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import styles from "./InlineButton.module.scss";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 const InlineButton = ({
   onClick,
@@ -9,6 +10,8 @@ const InlineButton = ({
   className,
   type = "button",
   href,
+  layout = "position",
+  transition = { type: "tween", ease: "linear", duration: 0.3 },
   ...other
 }) => {
   if (type === "link") {
@@ -40,7 +43,11 @@ const InlineButton = ({
   }
 
   return (
-    <button
+    <motion.button
+      layout={layout || "position"}
+      transition={
+        transition || { type: "tween", ease: "linear", duration: 0.3 }
+      }
       className={clsx("t-button", styles.button, className)}
       onClick={onClick}
       disabled={disabled}
@@ -64,7 +71,7 @@ const InlineButton = ({
           strokeLinejoin="round"
         />
       </svg>
-    </button>
+    </motion.button>
   );
 };
 
