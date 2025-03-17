@@ -17,13 +17,14 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .caption {
   max-width: vw-1920(780);
+  color: var(--brown);
 }
 
 .title {
   margin-top: vw-1920(32);
+  color: var(--bg);
 }
 
 .content {
@@ -43,26 +44,26 @@
   display: flex;
   flex-direction: column;
   gap: vw-1920(32);
-  color: var(--text);
+  color: var(--brown);
   transition: all 0.2s ease;
 }
 
 .line:hover {
-  color: var(--beige);
+  color: var(--brown);
 }
 
 .line:last-of-type:hover {
-  color: var(--text);
+  color: var(--brown);
 }
 
 .value {
-  color: var(--text);
+  color: var(--brown);
   transition: all 0.2s ease;
   text-decoration: none;
 }
 
 .line:hover .value {
-  color: var(--beige);
+  color: var(--brown);
 }
 
 .map {
@@ -81,14 +82,14 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: 1px solid var(--text);
-  color: var(--text);
+  border: 1px solid var(--brown);
+  color: var(--brown);
   transition: all 0.2s ease;
 }
 
 .socialItem:hover {
-  background-color: var(--text);
-  color: var(--bg);
+  background-color: var(--brown);
+  color: var(--text);
 }
 
 .socialItem svg {
@@ -212,5 +213,10 @@
   .socialItem {
     width: 64px;
     height: 64px;
+  }
+
+  .socialItem svg {
+    width: 36px;
+    height: 36px;
   }
 }

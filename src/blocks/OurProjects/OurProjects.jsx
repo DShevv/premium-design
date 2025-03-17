@@ -60,7 +60,11 @@ const OurProjects = () => {
               Реализованные проекты компании
             </h2>
           </div>
-          <CircleButton className={"desktop"} href={"/our-projects"}>
+          <CircleButton
+            dark={true}
+            className={"desktop"}
+            href={"/our-projects"}
+          >
             смотреть все проекты
           </CircleButton>
         </div>

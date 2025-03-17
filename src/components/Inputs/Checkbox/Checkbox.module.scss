@@ -28,6 +28,10 @@
   color: transparent;
 }
 
+.dark .checkbox {
+  border-color: rgba(254, 252, 250, 0.2);
+}
+
 .icon {
   display: none;
   width: vw-1920(18);

@@ -20,10 +20,12 @@
 
 .caption {
   max-width: vw-1920(670);
+  color: var(--brown);
 }
 
 .title {
   margin-top: vw-1920(32);
+  color: var(--bg);
 }
 
 .content {
@@ -50,6 +52,7 @@
 .text {
   grid-row: span 2 / span 2;
   grid-column: span 6 / span 6;
+  color: var(--bg);
 }
 
 .text p {
@@ -65,25 +68,21 @@
 
 .line {
   padding-top: vw-1920(26);
-  border-top: 1px solid rgba(251, 247, 244, 0.2);
+  border-top: 1px solid rgba(18, 19, 24, 0.2);
   display: flex;
   gap: vw-1920(16);
   align-items: center;
   opacity: 0.5;
-  color: var(--text);
+  color: var(--brown);
 }
 
 .line span {
 }
 
 .line:first-of-type {
-  color: var(--beige);
+  color: var(--brown);
   opacity: 1;
   border: none;
-}
-
-.line:first-of-type span {
-  color: var(--text);
 }
 
 @media (max-width: 1440px) {

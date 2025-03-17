@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100dvh;
-  background: var(--bg);
+  background: var(--text);
 
   opacity: 0;
   z-index: -1;
@@ -21,7 +21,7 @@
 }
 
 .container {
-  background-color: var(--bg);
+  background-color: var(--text);
   width: vw-1920(1630);
   height: 100%;
   padding-top: vw-1920(220);
@@ -53,7 +53,7 @@
 }
 
 .link:hover {
-  color: var(--text);
+  color: var(--bg);
 }
 
 .info {
@@ -81,7 +81,7 @@
 }
 
 .value {
-  color: var(--text);
+  color: var(--green-1);
   text-decoration: none;
 }
 
@@ -97,14 +97,19 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: 1px solid var(--text);
-  color: var(--text);
+  border: 1px solid var(--green-1);
+  color: var(--green-1);
   transition: all 0.2s ease;
 }
 
+.socialItem svg {
+  width: vw-1920(36);
+  height: vw-1920(36);
+}
+
 .socialItem:hover {
-  background-color: var(--text);
-  color: var(--bg);
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 .side {
@@ -126,8 +131,8 @@
   align-items: flex-end;
   position: relative;
   width: 100%;
-  border-left: 1px solid rgba(251, 247, 244, 0.2);
-  border-bottom: 1px solid rgba(251, 247, 244, 0.2);
+  border-left: 1px solid rgba(18, 19, 24, 0.2);
+  border-bottom: 1px solid rgba(18, 19, 24, 0.2);
   transition: all 0.2s ease;
 }
 
@@ -170,7 +175,7 @@
   display: flex;
   gap: vw-1920(8);
   align-items: center;
-  color: var(--text);
+  color: var(--bg);
   opacity: 0.5;
   transition: all 0.2s ease;
 }
@@ -189,10 +194,11 @@
 
 .service:hover .caption {
   opacity: 1;
+  color: var(--text);
 }
 
 .link.active {
-  color: var(--text);
+  color: var(--bg);
 }
 
 .laptop {
@@ -289,7 +295,7 @@
   .service {
     padding: vw-1440(24);
     height: vw-1440(235);
-    border: 1px solid rgba(251, 247, 244, 0.2);
+    border: 1px solid rgba(18, 19, 24, 0.2);
   }
 
   .service:nth-child(1),
@@ -302,13 +308,13 @@
   }
 
   .service:last-child {
-    border-bottom: 1px solid rgba(251, 247, 244, 0.2);
+    border-bottom: 1px solid rgba(18, 19, 24, 0.2);
   }
 
   .laptopTitle {
     display: block;
     margin-bottom: vw-1440(32);
-    color: var(--text);
+    color: var(--bg);
     width: fit-content;
   }
 
@@ -323,6 +329,11 @@
   .socialItem {
     width: vw-1440(64);
     height: vw-1440(64);
+  }
+
+  .socialItem svg {
+    width: vw-1440(36);
+    height: vw-1440(36);
   }
 
   .caption {
@@ -392,7 +403,7 @@
   .side .service {
     border: none;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid var(--bg);
     height: fit-content;
     padding: 24px;
     padding-bottom: 48px;
@@ -420,6 +431,7 @@
 
   .caption .more {
     display: flex;
+    color: var(--beige);
   }
 
   .caption .arrow {
@@ -440,5 +452,10 @@
   .socialItem {
     width: 64px;
     height: 64px;
+  }
+
+  .socialItem svg {
+    width: 36px;
+    height: 36px;
   }
 }

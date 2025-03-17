@@ -5,7 +5,7 @@
   height: vw-1920(36);
 
   cursor: pointer;
-  border: vw-1920(1) solid rgba(251, 247, 244, 0.5);
+  border: vw-1920(1) solid rgba(11, 61, 62, 0.5);
   outline: none;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -13,20 +13,21 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-color: rgba(251, 247, 244, 0.1);
+  background-color: rgba(11, 61, 62, 0.1);
   outline: none;
 
-  color: var(--text);
+  color: var(--bg);
 }
 
 .button:hover {
-  background: rgba(200, 152, 106, 0.1);
-  color: var(--beige);
+  background: rgba(57, 89, 78, 0.5);
+  color: var(--green-2);
+  border-color: rgba(57, 89, 78, 0.5);
 }
 
 .button:active {
-  background: var(--beige);
-  border-color: var(--beige);
+  background: var(--green-1);
+  border-color: var(--green-1);
   color: var(--text);
 }
 

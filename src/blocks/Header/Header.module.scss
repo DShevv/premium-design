@@ -1,7 +1,7 @@
 @import "../../assets/sass/_functions.scss";
 
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   width: calc((100% - vw-1920(1630)) / 2 + vw-1920(1630));
@@ -11,6 +11,7 @@
   align-items: center;
   z-index: 101;
   height: vw-1920(95);
+  background-color: transparent;
 }
 
 .controls {
@@ -25,6 +26,19 @@
   gap: vw-1920(4);
   color: var(--text);
   text-decoration: none;
+  mix-blend-mode: difference;
+}
+
+.header .dark {
+  color: var(--bg);
+}
+
+.header .dark svg {
+  color: var(--bg);
+}
+
+.header .dark div {
+  border-color: var(--bg);
 }
 
 .link:hover {
@@ -62,10 +76,12 @@
 
 @media (max-width: 768px) {
   .header {
+    position: fixed;
     padding: 16px 20px;
     height: auto;
     width: 100%;
     justify-content: flex-end;
+    mix-blend-mode: difference;
   }
 
   .header .mobile {
@@ -84,11 +100,16 @@
   .link {
     border-radius: 50%;
     border: 1px solid var(--text);
+    color: var(--text);
     width: 47px;
     height: 47px;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .link svg {
+    color: var(--text);
   }
 
   .link span {
@@ -97,6 +118,21 @@
 
   .phone {
     width: 24px;
+    color: var(--text);
+    border-color: var(--text);
     height: 24px;
+  }
+
+  .phone.dark {
+    border-color: var(--bg);
+  }
+
+  .link.dark {
+    color: var(--bg);
+    border-color: var(--bg);
+  }
+
+  .search.dark {
+    border-color: var(--bg);
   }
 }

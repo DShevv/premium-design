@@ -1,5 +1,6 @@
 import CompareBlock from "@/blocks/CompareBlock/CompareBlock";
 import Contacts from "@/blocks/Contacts/Contacts";
+import Feedback from "@/blocks/Feedback/Feedback";
 import Hero from "@/blocks/Hero/Hero";
 import History from "@/blocks/History/History";
 import News from "@/blocks/News/News";
@@ -26,8 +27,9 @@ export default function Home() {
       <OurProjects />
       <History />
       <CompareBlock />
-      <News />
+
       <Contacts />
+      <Feedback />
     </>
   );
 }

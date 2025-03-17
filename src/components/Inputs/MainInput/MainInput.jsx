@@ -11,13 +11,19 @@ const MainInput = ({
   error,
   disabled,
   className,
+  dark,
   ...other
 }) => {
   return (
-    <label className={clsx("t-placeholder", styles.container, className)}>
+    <label
+      className={clsx("t-placeholder", styles.container, className, {
+        [styles.dark]: dark,
+      })}
+    >
       <InputMask
         className={clsx("t-placeholder", styles.field, {
           [styles.error]: error,
+          [styles.dark]: dark,
         })}
         type={type}
         name={name}

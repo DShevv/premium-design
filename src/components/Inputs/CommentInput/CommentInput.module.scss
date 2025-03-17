@@ -2,20 +2,13 @@
 
 .container {
   position: relative;
-  display: inline-flex;
-  flex-direction: column;
+  display: block;
+  height: vw-1920(122);
   width: 100%;
-  max-width: vw-1920(671);
-  padding: vw-1920(16);
-  border-bottom: vw-1920(1) solid rgba(18, 19, 24, 0.2);
-  background: transparent;
-  color: var(--bg);
-  transition: all 0.2s ease;
-}
 
-.container.dark {
-  border-bottom: vw-1920(1) solid rgba(254, 252, 250, 0.2);
-  color: var(--text);
+  padding: vw-1920(16);
+  border-bottom: 1px solid rgba(254, 252, 250, 0.2);
+  background: transparent;
 }
 
 .container:has(.field:disabled) {
@@ -32,28 +25,21 @@
 }
 
 .field {
-  color: var(--bg);
-  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  color: var(--text);
+  background-color: transparent;
   border: none;
   outline: none;
-  min-width: 0px;
-  background-color: transparent;
-}
-
-.field.dark {
-  color: var(--text);
+  resize: none;
 }
 
 .field::placeholder {
-  color: var(--bg);
-}
-
-.field.dark::placeholder {
   color: var(--text);
 }
 
 .field:disabled::placeholder {
-  color: var(--grey);
+  color: rgba(16, 16, 16, 0.3);
 }
 
 .field.error {
@@ -73,11 +59,8 @@
 
 @media (max-width: 1440px) {
   .container {
-    max-width: vw-1440(671);
-
+    height: vw-1440(122);
     padding: vw-1440(16);
-
-    border-bottom: vw-1440(1) solid rgba(18, 19, 24, 0.2);
   }
 
   .message {
@@ -85,13 +68,10 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
   .container {
-    max-width: 671px;
-
+    height: 142px;
     padding: 16px;
-
-    border-bottom: 1px solid rgba(18, 19, 24, 0.2);
   }
 
   .message {

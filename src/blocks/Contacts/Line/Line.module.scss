@@ -2,38 +2,41 @@
 
 .line {
   padding-bottom: vw-1920(32);
-  border-bottom: 1px solid rgba(251, 247, 244, 0.5);
+  border-bottom: 1px solid var(--brown);
   display: flex;
   flex-direction: column;
   gap: vw-1920(32);
-  color: var(--text);
+  color: var(--brown);
+  opacity: 0.5;
   transition: all 0.2s ease;
 }
 
 .line:hover {
-  color: var(--beige);
+  color: var(--brown);
+  opacity: 1;
 }
 
 .line:last-of-type:hover {
-  color: var(--text);
+  color: var(--brown);
 }
 
 .value {
-  color: var(--text);
+  color: var(--brown);
   transition: all 0.2s ease;
   text-decoration: none;
 }
 
 .line:hover .value {
-  color: var(--beige);
+  color: var(--brown);
 }
 
 .line .hover {
-  color: var(--beige);
+  color: var(--brown);
 }
 
 .line.hover {
-  color: var(--beige);
+  color: var(--brown);
+  opacity: 1;
 }
 
 @media (max-width: 1440px) {

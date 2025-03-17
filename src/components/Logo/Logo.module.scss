@@ -13,6 +13,7 @@
   text-transform: uppercase;
   color: var(--text);
   text-decoration: none;
+  mix-blend-mode: difference;
 }
 
 @media (max-width: 1440px) {

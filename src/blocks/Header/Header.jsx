@@ -21,11 +21,15 @@ const Header = observer(() => {
 
   return (
     <header className={styles.header}>
-      <MenuButton className={"desktop"} onClick={toggleMenu} isOpened={menu}>
+      <MenuButton
+        className={clsx("desktop", { [styles.dark]: menu })}
+        onClick={toggleMenu}
+        isOpened={menu}
+      >
         {menu ? "Закрыть" : "Меню"}
       </MenuButton>
 
-      <Logo>Logo</Logo>
+      <Logo className={clsx({ [styles.dark]: menu })}>Logo</Logo>
 
       <AnimatePresence>
         {!menu && (
@@ -64,14 +68,16 @@ const Header = observer(() => {
         >
           <Link
             href={"tel:+375299999999"}
-            className={clsx("body-3", styles.link)}
+            className={clsx("body-3", styles.link, { [styles.dark]: menu })}
           >
-            <SvgPhone className={styles.phone} />
+            <SvgPhone className={clsx(styles.phone, { [styles.dark]: menu })} />
             <span>+375 (29) 999-99-99</span>
           </Link>
-          <SearchButton />
+          <SearchButton
+            className={clsx(styles.search, { [styles.dark]: menu })}
+          />
           <MenuButton
-            className={styles.mobile}
+            className={clsx(styles.mobile, { [styles.dark]: menu })}
             onClick={toggleMenu}
             isOpened={menu}
           ></MenuButton>

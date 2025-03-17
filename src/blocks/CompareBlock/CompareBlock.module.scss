@@ -30,6 +30,7 @@
 .navigation .prev {
   width: vw-1920(47);
   height: vw-1920(47);
+  color: var(--text);
 }
 
 .navigation .next svg,
@@ -191,5 +192,24 @@
   .navigation .prev svg {
     width: 24px;
     height: 24px;
+  }
+
+  .bulletActive {
+    border: 1px solid rgba(11, 61, 62, 0.5);
+    width: 16px;
+    height: 16px;
+  }
+
+  .bullet::after {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(11, 61, 62, 0.5);
+    transition: all 0.2s ease;
+  }
+
+  .bullet.bulletActive::after {
+    background-color: var(--green-1);
   }
 }

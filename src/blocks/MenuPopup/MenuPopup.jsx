@@ -414,7 +414,7 @@ const MenuPopup = observer(() => {
               </div>
             </div>
           </div>
-          <CircleButton>Оставить Заявку</CircleButton>
+          <CircleButton dark={true}>Оставить Заявку</CircleButton>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@
   z-index: 1;
   right: 0;
   bottom: 0;
-  background-color: var(--text);
+  background-color: var(--bg);
   width: vw-1920(388);
   padding: vw-1920(32);
 }
@@ -37,15 +37,15 @@
 
 .name {
   margin-bottom: vw-1920(20);
-  color: var(--bg);
+  color: var(--text);
 }
 
 .item .button {
-  color: var(--grey);
+  color: var(--beige);
 }
 
 .item .button:hover {
-  color: var(--bg);
+  color: var(--text);
 }
 
 .mobile {

@@ -3,10 +3,12 @@ import { Field } from "formik";
 import styles from "./Checkbox.module.scss";
 import clsx from "clsx";
 
-const Checkbox = ({ disabled, children, className, ...other }) => {
+const Checkbox = ({ disabled, children, dark, className, ...other }) => {
   if (other.name) {
     return (
-      <label className={clsx(styles.container, className)}>
+      <label
+        className={clsx(styles.container, className, { [styles.dark]: dark })}
+      >
         <Field
           type="checkbox"
           className={clsx(styles.input)}
@@ -33,12 +35,14 @@ const Checkbox = ({ disabled, children, className, ...other }) => {
           </svg>
         </div>
 
-        {children && <span className={"body-4"}>{children}</span>}
+        {children && <span className={"body-2"}>{children}</span>}
       </label>
     );
   }
   return (
-    <label className={clsx(styles.container, className)}>
+    <label
+      className={clsx(styles.container, className, { [styles.dark]: dark })}
+    >
       <input
         type="checkbox"
         className={clsx(styles.input)}
@@ -65,7 +69,7 @@ const Checkbox = ({ disabled, children, className, ...other }) => {
         </svg>
       </div>
 
-      {children && <span className={"body-4"}>{children}</span>}
+      {children && <span className={"body-2"}>{children}</span>}
     </label>
   );
 };

@@ -28,6 +28,10 @@
   padding-left: 0;
 }
 
+.button svg {
+  color: var(--beige);
+}
+
 .button.centered {
   align-items: center;
   padding-left: 0;
@@ -53,6 +57,10 @@
   color: var(--bg);
 }
 
+.button.dark svg {
+  color: var(--bg);
+}
+
 .button span {
   max-width: vw-1920(133);
   margin-left: vw-1920(7);
@@ -72,6 +80,10 @@
 .button.dark:active {
   background-color: var(--bg);
   border-color: var(--bg);
+  color: var(--text);
+}
+
+.button.dark:active svg {
   color: var(--text);
 }
 

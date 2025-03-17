@@ -1,21 +1,22 @@
 "use client";
 import clsx from "clsx";
-import styles from "./CommentInput.module.css";
+import styles from "./CommentInput.module.scss";
 import { Field } from "formik";
 
 const CommentInput = ({
   name,
   placeholder,
   error,
+  dark,
   disabled,
   className,
   ...other
 }) => {
   return (
-    <label className={clsx("t-field", styles.container)}>
+    <label className={clsx("t-placeholder", styles.container)}>
       <Field
         className={clsx(
-          "t-field",
+          "t-placeholder",
           styles.field,
           { [styles.error]: error },
           className
@@ -26,7 +27,7 @@ const CommentInput = ({
         component="textarea"
         {...other}
       ></Field>
-      {error && <div className={clsx("t-field", styles.message)}>{error}</div>}
+      {error && <div className={clsx("body-5", styles.message)}>{error}</div>}
     </label>
   );
 };

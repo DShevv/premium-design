@@ -14,7 +14,7 @@ const History = () => {
             <span>[ О компании ]</span>
             <h2 className={clsx("h2", styles.title)}>Наша большая история</h2>
           </div>
-          <CircleButton className={"desktop"} href={"/about"}>
+          <CircleButton dark={true} className={"desktop"} href={"/about"}>
             Подробнее о компании
           </CircleButton>
         </div>

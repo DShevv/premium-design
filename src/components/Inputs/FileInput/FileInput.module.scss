@@ -1,0 +1,82 @@
+@import "../../../assets/sass/_functions.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: vw-1920(8);
+  cursor: pointer;
+  border: 1px solid rgba(254, 252, 250, 0.2);
+  padding: vw-1920(16);
+  width: vw-1920(196);
+  height: vw-1920(93);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: vw-1920(12);
+  transition: all 0.2s ease;
+}
+
+.container:hover {
+  background-color: var(--text);
+  color: var(--bg);
+}
+
+.container svg {
+  transition: all 0.2s ease;
+  width: vw-1920(30);
+  height: vw-1920(30);
+}
+
+.container:active svg {
+  color: var(--beige);
+}
+
+.input {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 0;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    gap: vw-1440(8);
+
+    padding: vw-1440(16);
+
+    width: vw-1440(196);
+
+    height: vw-1440(93);
+
+    gap: vw-1440(12);
+  }
+
+  .container svg {
+    transition: all 0.2s ease;
+    width: vw-1440(30);
+    height: vw-1440(30);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    gap: 8px;
+
+    padding: 16px;
+
+    width: 196px;
+
+    height: 93px;
+
+    gap: 12px;
+  }
+
+  .container svg {
+    transition: all 0.2s ease;
+    width: 30px;
+    height: 30px;
+  }
+}
