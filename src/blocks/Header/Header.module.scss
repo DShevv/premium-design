@@ -58,6 +58,10 @@
   display: none;
 }
 
+.search.dark {
+  border-color: var(--bg);
+}
+
 @media (max-width: 1440px) {
   .header {
     width: calc((100% - vw-1440(1200)) / 2 + vw-1440(1200));
@@ -82,6 +86,11 @@
     width: 100%;
     justify-content: flex-end;
     mix-blend-mode: difference;
+  }
+
+  .header.opened,
+  .header.dark {
+    mix-blend-mode: initial;
   }
 
   .header .mobile {

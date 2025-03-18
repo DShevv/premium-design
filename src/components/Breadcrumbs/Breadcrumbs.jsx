@@ -2,9 +2,13 @@ import Link from "next/link";
 import styles from "./Breadcrumbs.module.scss";
 import clsx from "clsx";
 
-const Breadcrumbs = ({ items, className, ...other }) => {
+const Breadcrumbs = ({ items, className, isWhite, ...other }) => {
   return (
-    <div className={clsx(styles.container, className)}>
+    <div
+      className={clsx(styles.container, className, {
+        [styles.isWhite]: isWhite,
+      })}
+    >
       {items.map((item, index) => (
         <div key={`${index}${item.title}`}>
           {items.length > index + 1 ? (

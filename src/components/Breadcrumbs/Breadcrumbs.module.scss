@@ -1,13 +1,13 @@
 @import "../../assets/sass/_functions.scss";
 
 .container {
-  margin-top: vw-1920(32);
-  margin-bottom: 24px;
+  margin-top: vw-1920(20);
+
   display: flex;
   gap: vw-1920(12);
   align-items: center;
   flex-wrap: wrap;
-  color: var(--beige);
+  color: var(--grey);
 }
 
 .container > div {
@@ -19,12 +19,17 @@
 
 .link {
   text-decoration: none;
+  color: var(--bg);
+}
+
+.isWhite .link {
   color: var(--text);
 }
 
 a.link {
   color: var(--grey);
 }
+
 a.link:hover {
   text-decoration: underline;
   text-decoration-skip-ink: none;
@@ -55,7 +60,7 @@ a.link:hover {
   .container {
     margin-bottom: 24px;
     margin-top: 8px;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
   }
 

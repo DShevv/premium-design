@@ -30,53 +30,57 @@ const itemVariants = {
   },
 };
 
-const ProjectItem = ({ item }) => {
+const ProjectItem = ({ item, className }) => {
   const ref = useRef(null);
   const router = useRouter();
   const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
 
   return (
     <>
-      <m.a
-        onClick={(e) => {
-          e.preventDefault();
-          router.push("/contact");
-        }}
-        ref={ref}
-        className={clsx(styles.item, styles.desktop)}
-        whileHover={"hover"}
-        animate={"rest"}
-        initial={"rest"}
-        href={`/our-projects/${slugifyWithOpts(item.title)}`}
-      >
-        <Image src={item.image} alt="" />
+      <div className={clsx(className, styles.desktop)}>
+        <m.a
+          onClick={(e) => {
+            e.preventDefault();
+            router.push(`/portfolio/${slugifyWithOpts(item.title)}`);
+          }}
+          ref={ref}
+          className={clsx(styles.item, styles.desktop)}
+          whileHover={"hover"}
+          animate={"rest"}
+          initial={"rest"}
+          href={`/portfolio/${slugifyWithOpts(item.title)}`}
+        >
+          <Image src={item.image} alt="" />
 
-        <m.div className={styles.caption} variants={itemVariants}>
-          <div className={clsx("body-2", styles.tag)}>{item.tag}</div>
-          <div className={clsx("h4", styles.name)}>{item.title}</div>
-          <InlineButton className={styles.button}>Подробнее</InlineButton>
-        </m.div>
-      </m.a>
-      <m.a
-        onClick={(e) => {
-          e.preventDefault();
-          router.push("/contact");
-        }}
-        ref={ref}
-        className={clsx(styles.item, styles.mobile)}
-        whileHover={"hover"}
-        animate={isInView ? "hover" : "rest"}
-        initial={"rest"}
-        href={`/our-projects/${slugifyWithOpts(item.title)}`}
-      >
-        <Image src={item.image} alt="" />
+          <m.div className={styles.caption} variants={itemVariants}>
+            <div className={clsx("body-2", styles.tag)}>{item.tag}</div>
+            <div className={clsx("h4", styles.name)}>{item.title}</div>
+            <InlineButton className={styles.button}>Подробнее</InlineButton>
+          </m.div>
+        </m.a>
+      </div>
+      <div className={clsx(className, styles.mobile)}>
+        <m.a
+          onClick={(e) => {
+            e.preventDefault();
+            router.push(`/portfolio/${slugifyWithOpts(item.title)}`);
+          }}
+          ref={ref}
+          className={clsx(styles.item, styles.mobile)}
+          whileHover={"hover"}
+          animate={isInView ? "hover" : "rest"}
+          initial={"rest"}
+          href={`/portfolio/${slugifyWithOpts(item.title)}`}
+        >
+          <Image src={item.image} alt="" />
 
-        <m.div className={styles.caption} variants={itemVariants}>
-          <div className={clsx("body-2", styles.tag)}>{item.tag}</div>
-          <div className={clsx("h4", styles.name)}>{item.title}</div>
-          <InlineButton className={styles.button}>Подробнее</InlineButton>
-        </m.div>
-      </m.a>
+          <m.div className={styles.caption} variants={itemVariants}>
+            <div className={clsx("body-2", styles.tag)}>{item.tag}</div>
+            <div className={clsx("h4", styles.name)}>{item.title}</div>
+            <InlineButton className={styles.button}>Подробнее</InlineButton>
+          </m.div>
+        </m.a>
+      </div>
     </>
   );
 };

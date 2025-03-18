@@ -4,15 +4,19 @@
   align-items: center;
 }
 
-.prev {
+.container .prev {
+  border-color: transparent;
+  background-color: transparent;
 }
 
-.next {
+.container .next {
   transform: rotate(180deg);
+  border-color: transparent;
+  background-color: transparent;
 }
 
 .page {
-  color: var(--text);
+  color: var(--bg);
   background: transparent;
   border: none;
   outline: none;
@@ -35,6 +39,7 @@
   display: flex;
   gap: 16px;
   align-items: baseline;
+  color: var(--bg);
 }
 
 @media (max-width: 768px) {

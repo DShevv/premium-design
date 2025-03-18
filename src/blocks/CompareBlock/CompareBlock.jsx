@@ -34,7 +34,7 @@ const items = [
   },
 ];
 
-const CompareBlock = () => {
+const CompareBlock = ({ className, inside }) => {
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -54,16 +54,18 @@ const CompareBlock = () => {
   };
 
   return (
-    <section className={styles.container}>
-      <div className={styles.header}>
-        <div className={clsx("body-1", styles.caption)}>
-          <span>[ До-после ]</span>
-          <h2 className={clsx("h2", styles.title)}>Результаты наших работ</h2>
+    <section className={clsx(styles.container, className)}>
+      {!inside && (
+        <div className={styles.header}>
+          <div className={clsx("body-1", styles.caption)}>
+            <span>[ До-после ]</span>
+            <h2 className={clsx("h2", styles.title)}>Результаты наших работ</h2>
+          </div>
+          <CircleButton className={"desktop"} href={"/our-projects"}>
+            смотреть все проекты
+          </CircleButton>
         </div>
-        <CircleButton className={"desktop"} href={"/our-projects"}>
-          смотреть все проекты
-        </CircleButton>
-      </div>
+      )}
       <Swiper
         slidesPerView={1}
         ref={sliderRef}

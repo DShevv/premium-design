@@ -5,6 +5,10 @@
   margin-top: vw-1920(160);
 }
 
+.container.noHeader {
+  margin-top: vw-1920(41);
+}
+
 .wrapper {
   max-width: vw-1920(1630);
   margin: 0 auto;
@@ -102,6 +106,10 @@
     margin-top: vw-1440(160);
   }
 
+  .container.noHeader {
+    margin-top: vw-1440(41);
+  }
+
   .wrapper {
     max-width: vw-1440(1200);
   }
@@ -170,6 +178,10 @@
   .container {
     margin-top: 72px;
     width: 100%;
+  }
+
+  .container.noHeader {
+    margin-top: 32px;
   }
 
   .wrapper {

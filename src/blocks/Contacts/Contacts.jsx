@@ -5,18 +5,20 @@ import Map from "@/components/Map/Map";
 import Link from "next/link";
 import Line from "./Line/Line";
 
-const Contacts = () => {
+const Contacts = ({ header }) => {
   return (
-    <section className={styles.container}>
+    <section className={clsx(styles.container, { [styles.noHeader]: header })}>
       <div className={styles.wrapper}>
-        <div className={styles.header}>
-          <div className={clsx("body-1", styles.caption)}>
-            <span>[ Контакты компании ]</span>
-            <h2 className={clsx("h2", styles.title)}>
-              Мы на связи в любое удобное время
-            </h2>
+        {!header && (
+          <div className={styles.header}>
+            <div className={clsx("body-1", styles.caption)}>
+              <span>[ Контакты компании ]</span>
+              <h2 className={clsx("h2", styles.title)}>
+                Мы на связи в любое удобное время
+              </h2>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className={styles.content}>
           <div className={styles.map}>
