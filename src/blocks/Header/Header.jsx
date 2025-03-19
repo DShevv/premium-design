@@ -19,7 +19,10 @@ const Header = observer(() => {
 
   const isDark =
     pathname.includes("contacts") ||
-    (pathname.includes("portfolio") && pathname.split("/").length < 3);
+    (pathname.includes("portfolio") && pathname.split("/").length < 3) ||
+    pathname.includes("policy") ||
+    pathname.includes("404") ||
+    pathname.includes("about");
 
   const toggleMenu = () => {
     if (window && menu) {
@@ -90,7 +93,12 @@ const Header = observer(() => {
               isOpened={menu}
             ></MenuButton>
 
-            <MainButton className={"desktop"}>Связаться с нами</MainButton>
+            <MainButton
+              className={"desktop"}
+              onClick={() => openPopup("feedback")}
+            >
+              Связаться с нами
+            </MainButton>
           </m.div>
         )}
         <m.div
@@ -127,7 +135,12 @@ const Header = observer(() => {
             isOpened={menu}
           ></MenuButton>
 
-          <MainButton className={"desktop"}>Связаться с нами</MainButton>
+          <MainButton
+            className={"desktop"}
+            onClick={() => openPopup("feedback")}
+          >
+            Связаться с нами
+          </MainButton>
         </m.div>
       </AnimatePresence>
     </header>

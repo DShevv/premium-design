@@ -1,0 +1,104 @@
+@import "../assets/sass/_functions.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: vw-1920(143);
+  padding-bottom: vw-1920(121);
+  background-image: url(../assets/images/404-bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: vw-1920(1630);
+  margin: 0 auto;
+}
+
+.image {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  width: vw-1920(1136);
+  height: vw-1920(825);
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: vw-1920(500);
+  line-height: 74%;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.2;
+}
+
+.subtitle {
+  margin-top: vw-1920(32);
+  margin-bottom: vw-1920(8);
+}
+
+@media (max-width: 1440px) {
+  .container {
+    padding-top: vw-1440(141);
+    padding-bottom: vw-1440(63);
+  }
+
+  .wrapper {
+    max-width: vw-1440(1200);
+  }
+
+  .image {
+    width: vw-1920(850);
+    height: vw-1440(630);
+    object-fit: cover;
+    object-position: left;
+  }
+
+  .title {
+    font-size: vw-1440(400);
+  }
+
+  .subtitle {
+    margin-top: vw-1440(36);
+    margin-bottom: vw-1440(8);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-top: 95px;
+    padding-bottom: 233px;
+    width: 100%;
+  }
+
+  .wrapper {
+    max-width: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image {
+    width: 288px;
+    height: 322px;
+    object-fit: cover;
+    object-position: left;
+  }
+
+  .title {
+    font-size: 160px;
+  }
+
+  .subtitle {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+    max-width: 190px;
+  }
+}

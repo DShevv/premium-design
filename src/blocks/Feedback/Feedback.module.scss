@@ -3,6 +3,7 @@
 .container {
   margin: 0 auto;
   margin-top: vw-1920(150);
+  margin-bottom: vw-1920(160);
   max-width: vw-1920(1630);
   background-color: var(--bg);
 }
@@ -82,6 +83,7 @@
   .container {
     margin: 0 auto;
     margin-top: vw-1440(120);
+    margin-bottom: vw-1440(120);
     max-width: vw-1440(1200);
     background-color: var(--bg);
   }
@@ -117,6 +119,7 @@
 @media (max-width: 768px) {
   .container {
     margin-top: 72px;
+    margin-bottom: 72px;
     max-width: calc(100% - 40px);
   }
 

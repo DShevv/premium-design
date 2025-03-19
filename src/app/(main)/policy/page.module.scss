@@ -1,0 +1,65 @@
+@import "../../../assets/sass/_functions.scss";
+
+.wrapper {
+  max-width: vw-1920(1630);
+  margin: 0 auto;
+  margin-top: vw-1920(143);
+}
+
+.title {
+  color: var(--bg);
+}
+
+.text {
+  margin-top: vw-1920(64);
+  color: var(--bg);
+}
+
+.text h4 {
+  margin-top: vw-1920(32);
+}
+
+.text p {
+  margin-top: vw-1920(12);
+}
+
+@media (max-width: 1440px) {
+  .wrapper {
+    max-width: vw-1440(1200);
+    margin: 0 auto;
+    margin-top: vw-1440(115);
+  }
+
+  .text {
+    margin-top: vw-1440(36);
+    color: var(--bg);
+  }
+
+  .text h4 {
+    margin-top: vw-1440(32);
+  }
+
+  .text p {
+    margin-top: vw-1440(12);
+  }
+}
+@media (max-width: 768px) {
+  .wrapper {
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+    margin-top: 87px;
+  }
+
+  .text {
+    margin-top: 32px;
+    color: var(--bg);
+  }
+
+  .text h4 {
+    margin-top: 32px;
+  }
+
+  .text p {
+    margin-top: 12px;
+  }
+}

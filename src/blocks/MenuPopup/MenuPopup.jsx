@@ -15,7 +15,7 @@ import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
 
 const MenuPopup = observer(() => {
   const { popupStore } = globalStore;
-  const { menu, closePopup } = popupStore;
+  const { menu, closePopup, openPopup } = popupStore;
   const [isActive, setActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const itemRefs = useRef([]);
@@ -512,7 +512,9 @@ const MenuPopup = observer(() => {
               </div>
             </div>
           </div>
-          <CircleButton dark={true}>Оставить Заявку</CircleButton>
+          <CircleButton dark={true} onClick={() => openPopup("feedback")}>
+            Оставить Заявку
+          </CircleButton>
         </div>
       </div>
     </div>

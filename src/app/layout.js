@@ -2,6 +2,8 @@ import "./globals.scss";
 import "@/assets/fonts/fonts.css";
 import Script from "next/script";
 import { Suspense } from "react";
+import "@/blocks/Header/Header.module.scss";
+import "@/blocks/Footer/Footer.module.scss";
 
 export const metadata = {
   title: "Create Next App",
