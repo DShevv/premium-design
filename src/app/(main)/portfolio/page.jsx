@@ -84,6 +84,7 @@ const page = () => {
           ]}
         />
         <Swiper
+          className={styles.slider}
           slidesPerView={"auto"}
           spaceBetween={12}
           breakpoints={{
@@ -91,7 +92,6 @@ const page = () => {
               spaceBetween: 24,
             },
           }}
-          className={styles.slider}
         >
           {tags.map((elem) => (
             <SwiperSlide key={elem} className={styles.slide}>
