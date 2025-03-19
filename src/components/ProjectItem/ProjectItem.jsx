@@ -14,7 +14,7 @@ const itemVariants = {
     y: "100%",
     opacity: 0,
     transition: {
-      duration: 0.2,
+      duration: 0.4,
       type: "tween",
       ease: "easeIn",
     },
@@ -23,7 +23,7 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.2,
+      duration: 0.4,
       type: "tween",
       ease: "easeOut",
     },

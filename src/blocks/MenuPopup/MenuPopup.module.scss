@@ -438,7 +438,12 @@
     display: none;
   }
 
-  .activeService {
+  .activeService .caption span {
+    transition: all 0.3s ease;
+  }
+
+  .activeService .caption span {
+    color: var(--text);
   }
 
   .activeService .serviceBg {

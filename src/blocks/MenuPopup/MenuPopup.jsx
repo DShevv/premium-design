@@ -72,6 +72,7 @@ const MenuPopup = observer(() => {
             href={"/"}
             onClick={() => {
               closePopup("menu");
+              document.body.style.position = "static";
             }}
           >
             главная
@@ -84,6 +85,7 @@ const MenuPopup = observer(() => {
             onMouseEnter={() => setActive(true)}
             onClick={() => {
               closePopup("menu");
+              document.body.style.position = "static";
             }}
           >
             Услуги
@@ -107,6 +109,7 @@ const MenuPopup = observer(() => {
             href={"/portfolio"}
             onClick={() => {
               closePopup("menu");
+              document.body.style.position = "static";
             }}
           >
             Портфолио
@@ -116,24 +119,18 @@ const MenuPopup = observer(() => {
             href={"/about"}
             onClick={() => {
               closePopup("menu");
+              document.body.style.position = "static";
             }}
           >
             О компании
           </Link>
-          <Link
-            className={clsx("h2", styles.link)}
-            href={"/news"}
-            onClick={() => {
-              closePopup("menu");
-            }}
-          >
-            Новости
-          </Link>
+
           <Link
             className={clsx("h2", styles.link)}
             href={"/contacts"}
             onClick={() => {
               closePopup("menu");
+              document.body.style.position = "static";
             }}
           >
             Контакты
@@ -154,6 +151,7 @@ const MenuPopup = observer(() => {
                 href={"/"}
                 onClick={() => {
                   closePopup("menu");
+                  document.body.style.position = "static";
                 }}
               >
                 главная
@@ -177,6 +175,7 @@ const MenuPopup = observer(() => {
                 href={"/portfolio"}
                 onClick={() => {
                   closePopup("menu");
+                  document.body.style.position = "static";
                 }}
               >
                 Портфолио
@@ -187,6 +186,7 @@ const MenuPopup = observer(() => {
                 href={"/about"}
                 onClick={() => {
                   closePopup("menu");
+                  document.body.style.position = "static";
                 }}
               >
                 О компании
@@ -194,19 +194,10 @@ const MenuPopup = observer(() => {
 
               <Link
                 className={clsx("h2", styles.link)}
-                href={"/news"}
-                onClick={() => {
-                  closePopup("menu");
-                }}
-              >
-                Новости
-              </Link>
-
-              <Link
-                className={clsx("h2", styles.link)}
                 href={"/contacts"}
                 onClick={() => {
                   closePopup("menu");
+                  document.body.style.position = "static";
                 }}
               >
                 Контакты
@@ -237,6 +228,7 @@ const MenuPopup = observer(() => {
                   data-index={0}
                   onClick={() => {
                     closePopup("menu");
+                    document.body.style.position = "static";
                   }}
                 >
                   <div className={styles.serviceBg}>
@@ -261,6 +253,7 @@ const MenuPopup = observer(() => {
                   ref={(el) => setRef(el, 1)}
                   onClick={() => {
                     closePopup("menu");
+                    document.body.style.position = "static";
                   }}
                 >
                   <div className={styles.serviceBg}>
@@ -285,6 +278,7 @@ const MenuPopup = observer(() => {
                   ref={(el) => setRef(el, 2)}
                   onClick={() => {
                     closePopup("menu");
+                    document.body.style.position = "static";
                   }}
                 >
                   <div className={styles.serviceBg}>
@@ -309,6 +303,7 @@ const MenuPopup = observer(() => {
                   ref={(el) => setRef(el, 3)}
                   onClick={() => {
                     closePopup("menu");
+                    document.body.style.position = "static";
                   }}
                 >
                   <div className={styles.serviceBg}>
@@ -343,6 +338,7 @@ const MenuPopup = observer(() => {
                 className={styles.service}
                 onClick={() => {
                   closePopup("menu");
+                  document.body.style.position = "static";
                 }}
               >
                 <div className={styles.serviceBg}>
@@ -360,6 +356,7 @@ const MenuPopup = observer(() => {
                 className={styles.service}
                 onClick={() => {
                   closePopup("menu");
+                  document.body.style.position = "static";
                 }}
               >
                 <div className={styles.serviceBg}>
@@ -377,6 +374,7 @@ const MenuPopup = observer(() => {
                 className={styles.service}
                 onClick={() => {
                   closePopup("menu");
+                  document.body.style.position = "static";
                 }}
               >
                 <div className={styles.serviceBg}>
@@ -394,6 +392,7 @@ const MenuPopup = observer(() => {
                 className={styles.service}
                 onClick={() => {
                   closePopup("menu");
+                  document.body.style.position = "static";
                 }}
               >
                 <div className={styles.serviceBg}>
