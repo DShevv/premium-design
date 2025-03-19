@@ -67,7 +67,13 @@ const MenuPopup = observer(() => {
     >
       <div className={clsx(styles.container, { [styles.active]: isActive })}>
         <div className={clsx(styles.menu, styles.desktop)}>
-          <Link className={clsx("h2", styles.link)} href={"/"}>
+          <Link
+            className={clsx("h2", styles.link)}
+            href={"/"}
+            onClick={() => {
+              closePopup("menu");
+            }}
+          >
             главная
           </Link>
           <Link
@@ -76,6 +82,9 @@ const MenuPopup = observer(() => {
             })}
             href={"/services"}
             onMouseEnter={() => setActive(true)}
+            onClick={() => {
+              closePopup("menu");
+            }}
           >
             Услуги
             <SvgArrowRight />
@@ -93,16 +102,40 @@ const MenuPopup = observer(() => {
             Услуги
             <SvgArrowRight />
           </m.div>
-          <Link className={clsx("h2", styles.link)} href={"/portfolio"}>
+          <Link
+            className={clsx("h2", styles.link)}
+            href={"/portfolio"}
+            onClick={() => {
+              closePopup("menu");
+            }}
+          >
             Портфолио
           </Link>
-          <Link className={clsx("h2", styles.link)} href={"/about"}>
+          <Link
+            className={clsx("h2", styles.link)}
+            href={"/about"}
+            onClick={() => {
+              closePopup("menu");
+            }}
+          >
             О компании
           </Link>
-          <Link className={clsx("h2", styles.link)} href={"/news"}>
+          <Link
+            className={clsx("h2", styles.link)}
+            href={"/news"}
+            onClick={() => {
+              closePopup("menu");
+            }}
+          >
             Новости
           </Link>
-          <Link className={clsx("h2", styles.link)} href={"/contacts"}>
+          <Link
+            className={clsx("h2", styles.link)}
+            href={"/contacts"}
+            onClick={() => {
+              closePopup("menu");
+            }}
+          >
             Контакты
           </Link>
         </div>
@@ -116,7 +149,13 @@ const MenuPopup = observer(() => {
               initial={{ opacity: 0, y: 100 }}
               transition={{ duration: 0.2 }}
             >
-              <Link className={clsx("h2", styles.link)} href={"/"}>
+              <Link
+                className={clsx("h2", styles.link)}
+                href={"/"}
+                onClick={() => {
+                  closePopup("menu");
+                }}
+              >
                 главная
               </Link>
 
@@ -133,19 +172,43 @@ const MenuPopup = observer(() => {
                 <SvgArrowRight />
               </div>
 
-              <Link className={clsx("h2", styles.link)} href={"/portfolio"}>
+              <Link
+                className={clsx("h2", styles.link)}
+                href={"/portfolio"}
+                onClick={() => {
+                  closePopup("menu");
+                }}
+              >
                 Портфолио
               </Link>
 
-              <Link className={clsx("h2", styles.link)} href={"/about"}>
+              <Link
+                className={clsx("h2", styles.link)}
+                href={"/about"}
+                onClick={() => {
+                  closePopup("menu");
+                }}
+              >
                 О компании
               </Link>
 
-              <Link className={clsx("h2", styles.link)} href={"/news"}>
+              <Link
+                className={clsx("h2", styles.link)}
+                href={"/news"}
+                onClick={() => {
+                  closePopup("menu");
+                }}
+              >
                 Новости
               </Link>
 
-              <Link className={clsx("h2", styles.link)} href={"/contacts"}>
+              <Link
+                className={clsx("h2", styles.link)}
+                href={"/contacts"}
+                onClick={() => {
+                  closePopup("menu");
+                }}
+              >
                 Контакты
               </Link>
             </m.div>
@@ -172,6 +235,9 @@ const MenuPopup = observer(() => {
                   })}
                   ref={(el) => setRef(el, 0)}
                   data-index={0}
+                  onClick={() => {
+                    closePopup("menu");
+                  }}
                 >
                   <div className={styles.serviceBg}>
                     <Image src={service1} alt="" />
@@ -193,6 +259,9 @@ const MenuPopup = observer(() => {
                   })}
                   data-index={1}
                   ref={(el) => setRef(el, 1)}
+                  onClick={() => {
+                    closePopup("menu");
+                  }}
                 >
                   <div className={styles.serviceBg}>
                     <Image src={service1} alt="" />
@@ -214,6 +283,9 @@ const MenuPopup = observer(() => {
                   })}
                   data-index={2}
                   ref={(el) => setRef(el, 2)}
+                  onClick={() => {
+                    closePopup("menu");
+                  }}
                 >
                   <div className={styles.serviceBg}>
                     <Image src={service1} alt="" />
@@ -235,6 +307,9 @@ const MenuPopup = observer(() => {
                   })}
                   data-index={3}
                   ref={(el) => setRef(el, 3)}
+                  onClick={() => {
+                    closePopup("menu");
+                  }}
                 >
                   <div className={styles.serviceBg}>
                     <Image src={service1} alt="" />
@@ -263,7 +338,13 @@ const MenuPopup = observer(() => {
               exit={{ opacity: 0, transform: "translateX(100%)" }}
               className={clsx(styles.side)}
             >
-              <Link href={"/services/design"} className={styles.service}>
+              <Link
+                href={"/services/design"}
+                className={styles.service}
+                onClick={() => {
+                  closePopup("menu");
+                }}
+              >
                 <div className={styles.serviceBg}>
                   <Image src={service1} alt="" />
                 </div>
@@ -274,7 +355,13 @@ const MenuPopup = observer(() => {
                   <SvgArrowCorner className={styles.arrow} />
                 </div>
               </Link>
-              <Link href={"/services/design"} className={styles.service}>
+              <Link
+                href={"/services/design"}
+                className={styles.service}
+                onClick={() => {
+                  closePopup("menu");
+                }}
+              >
                 <div className={styles.serviceBg}>
                   <Image src={service1} alt="" />
                 </div>
@@ -285,7 +372,13 @@ const MenuPopup = observer(() => {
                   <SvgArrowCorner className={styles.arrow} />
                 </div>
               </Link>
-              <Link href={"/services/design"} className={styles.service}>
+              <Link
+                href={"/services/design"}
+                className={styles.service}
+                onClick={() => {
+                  closePopup("menu");
+                }}
+              >
                 <div className={styles.serviceBg}>
                   <Image src={service1} alt="" />
                 </div>
@@ -296,7 +389,13 @@ const MenuPopup = observer(() => {
                   <SvgArrowCorner className={styles.arrow} />
                 </div>
               </Link>
-              <Link href={"/services/design"} className={styles.service}>
+              <Link
+                href={"/services/design"}
+                className={styles.service}
+                onClick={() => {
+                  closePopup("menu");
+                }}
+              >
                 <div className={styles.serviceBg}>
                   <Image src={service1} alt="" />
                 </div>
