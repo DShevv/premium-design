@@ -91,6 +91,7 @@ const page = () => {
               spaceBetween: 24,
             },
           }}
+          className={styles.slider}
         >
           {tags.map((elem) => (
             <SwiperSlide key={elem} className={styles.slide}>
@@ -105,9 +106,7 @@ const page = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className={styles.tagsWrapper}>
-          <div className={styles.tags}></div>
-        </div>
+
         <div className={styles.container}>
           {items.map((elem, index) => (
             <ProjectItem

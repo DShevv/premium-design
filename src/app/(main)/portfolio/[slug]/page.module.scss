@@ -155,6 +155,10 @@
   margin-top: vw-1920(48);
 }
 
+.slider {
+  margin-top: vw-1920(64);
+}
+
 @media (max-width: 1440px) {
   .wrapper {
     max-width: vw-1440(1200);
@@ -239,6 +243,10 @@
   }
 
   .content .back {
+    margin-top: vw-1440(36);
+  }
+
+  .slider {
     margin-top: vw-1440(36);
   }
 }
