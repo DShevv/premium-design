@@ -1,22 +1,14 @@
-"use client";
 import clsx from "clsx";
 import styles from "./not-found.module.scss";
 import Header from "@/blocks/Header/Header";
 import Footer from "@/blocks/Footer/Footer";
 import "./globals.scss";
 import Layout from "./(main)/layout";
-import { redirect, usePathname } from "next/navigation";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import Image from "next/image";
 import pic from "@/assets/images/404.png";
 
 const NotFound = () => {
-  const pathname = usePathname();
-
-  if (!pathname.includes("404")) {
-    redirect("/404");
-  }
-
   return (
     <>
       <Layout>

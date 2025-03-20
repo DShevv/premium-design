@@ -100,7 +100,11 @@ const OurProjects = () => {
           <ArrowButton className={clsx(styles.next)} onClick={handleNext} />
         </div>
 
-        <CircleButton className={styles.mobileButton} href={"/our-projects"}>
+        <CircleButton
+          dark={true}
+          className={styles.mobileButton}
+          href={"/our-projects"}
+        >
           смотреть все проекты
         </CircleButton>
       </div>

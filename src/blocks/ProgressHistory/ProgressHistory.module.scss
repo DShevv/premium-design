@@ -236,6 +236,177 @@
   .title {
     margin-top: vw-1440(32);
   }
+
+  .left {
+    margin-top: vw-1440(112);
+    display: flex;
+    flex-direction: column;
+    gap: vw-1440(220);
+    flex: 1;
+    position: relative;
+    margin-bottom: vw-1440(146);
+    left: vw-1440(2);
+  }
+
+  .right {
+    flex: 1;
+    margin-top: vw-1440(412);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: vw-1440(-2);
+    margin-bottom: vw-1440(146);
+    gap: vw-1440(220);
+  }
+
+  .content::after {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: vw-1440(4);
+    background-color: var(--bg);
+    opacity: 0.2;
+    transform: translateX(-50%);
+  }
+
+  .year {
+    color: var(--bg);
+    margin-bottom: vw-1440(12);
+    transition: all 0.4s ease;
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--bg);
+    transition: all 0.4s ease;
+    position: relative;
+    left: vw-1440(-2);
+  }
+
+  .circle {
+    background-color: var(--bg);
+    position: absolute;
+    width: vw-1440(16);
+    height: vw-1440(16);
+    border-radius: 50%;
+    right: vw-1440(-2);
+    top: 50%;
+    transform: translate(vw-1440(8), -50%);
+    transition: all 0.4s ease;
+
+    z-index: 2;
+  }
+
+  .circle::after {
+    content: "";
+    background-color: var(--bg);
+    opacity: 0.3;
+    position: absolute;
+    width: vw-1440(32);
+    height: vw-1440(32);
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transition: all 0.4s ease;
+    transform: translate(-50%, -50%);
+  }
+
+  .info {
+    margin-left: vw-1440(0);
+    margin-top: vw-1440(36);
+    transition: all 0.4s ease;
+  }
+
+  .name {
+    color: var(--bg);
+    margin-bottom: vw-1440(24);
+    transition: all 0.4s ease;
+  }
+
+  .infoContainer {
+    display: flex;
+    gap: vw-1440(24);
+    transition: all 0.4s ease;
+  }
+
+  .text {
+    color: var(--bg);
+    max-width: vw-1440(402);
+    transition: all 0.4s ease;
+  }
+
+  .right .year {
+    text-align: right;
+  }
+
+  .right .line {
+    left: vw-1440(2);
+  }
+
+  .right .circle {
+    left: vw-1440(-2);
+    transform: translate(vw-1920(-3), -50%);
+    right: initial;
+  }
+
+  .right .info {
+    margin-left: vw-1440(36);
+  }
+
+  .thumb {
+    position: sticky;
+    width: vw-1440(4);
+    height: vw-1440(300);
+    background-color: var(--bg);
+    border-radius: 4px;
+    left: 50%;
+    top: 20%;
+
+    transform: translateX(-50%);
+  }
+
+  .active.item {
+    opacity: 1;
+  }
+
+  .active .year {
+    color: var(--beige);
+  }
+
+  .active .circle {
+    background-color: var(--beige);
+    opacity: 1;
+  }
+
+  .active .circle::after {
+    background-color: var(--beige);
+    opacity: 0;
+    animation: pulse 4s linear 0.5s infinite;
+    z-index: 3;
+  }
+
+  @keyframes pulse {
+    0% {
+      width: vw-1440(12);
+      height: vw-1440(12);
+      opacity: 0.4;
+    }
+
+    50% {
+      opacity: 0.4;
+      width: vw-1440(36);
+      height: vw-1440(36);
+    }
+
+    100% {
+      opacity: 0.4;
+      width: vw-1440(12);
+      height: vw-1440(12);
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -265,5 +436,198 @@
 
   .title {
     margin-top: 16px;
+  }
+
+  .content {
+    overflow: visible;
+    min-height: 110dvh;
+  }
+
+  .container,
+  .wrapper,
+  .content {
+    overflow: visible !important;
+  }
+
+  .left {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 162px;
+    flex: 1;
+    position: relative;
+    margin-bottom: 95px;
+    left: 2px;
+  }
+
+  .right {
+    flex: 1;
+    margin-top: 227px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: -2px;
+    margin-bottom: 95px;
+    gap: 162px;
+  }
+
+  .content::after {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: var(--bg);
+    opacity: 0.2;
+    transform: translateX(-50%);
+  }
+
+  .year {
+    color: var(--bg);
+    margin-bottom: 4px;
+    transition: all 0.4s ease;
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--bg);
+    transition: all 0.4s ease;
+    position: relative;
+    left: -1px;
+  }
+
+  .circle {
+    background-color: var(--bg);
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    right: -1px;
+    top: 50%;
+    transform: translate(3px, -50%);
+    transition: all 0.4s ease;
+
+    z-index: 2;
+  }
+
+  .circle::after {
+    content: "";
+    background-color: var(--bg);
+    opacity: 0.3;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transition: all 0.4s ease;
+    transform: translate(-50%, -50%);
+  }
+
+  .info {
+    margin-left: 0;
+    margin-right: 12px;
+    margin-top: 12px;
+    transition: all 0.4s ease;
+  }
+
+  .name {
+    color: var(--bg);
+    margin-bottom: 8px;
+    transition: all 0.4s ease;
+  }
+
+  .infoContainer {
+    flex-direction: column-reverse;
+    display: flex;
+    gap: 8px;
+    transition: all 0.4s ease;
+  }
+
+  .text {
+    color: var(--bg);
+    max-width: initial;
+    transition: all 0.4s ease;
+  }
+
+  .right .year {
+    text-align: right;
+  }
+
+  .right .line {
+    left: 1px;
+  }
+
+  .right .circle {
+    left: -1px;
+    transform: translate(-3px, -50%);
+    right: initial;
+  }
+
+  .right .info {
+    margin-left: 12px;
+    margin-right: 0;
+  }
+
+  .thumb {
+    flex: 0 0 2px;
+    position: sticky;
+    width: 2px;
+    height: 100px;
+    background-color: var(--bg);
+    border-radius: 2px;
+    left: calc(50% - 1px);
+    top: 200px;
+    transform: none;
+  }
+
+  .active.item {
+    opacity: 1;
+  }
+
+  .active .year {
+    color: var(--beige);
+  }
+
+  .active .circle {
+    background-color: var(--beige);
+    opacity: 1;
+    width: 12px;
+    transform: translate(5px, -50%);
+
+    height: 12px;
+  }
+
+  .right .active .circle {
+    transform: translate(-5px, -50%);
+  }
+
+  .active .circle::after {
+    background-color: var(--beige);
+    opacity: 0;
+    animation: pulse 4s linear 0.5s infinite;
+    z-index: 3;
+  }
+
+  @keyframes pulse {
+    0% {
+      width: 11px;
+      height: 11px;
+      opacity: 0.4;
+    }
+
+    50% {
+      opacity: 0.4;
+      width: 24px;
+      height: 24px;
+    }
+
+    100% {
+      opacity: 0.4;
+      width: 11px;
+      height: 11px;
+    }
   }
 }

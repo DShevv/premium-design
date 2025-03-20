@@ -17,12 +17,10 @@ const Header = observer(() => {
   const { menu, openPopup, closePopup } = popupStore;
   const pathname = usePathname();
 
-  const isDark =
-    pathname.includes("contacts") ||
-    (pathname.includes("portfolio") && pathname.split("/").length < 3) ||
-    pathname.includes("policy") ||
-    pathname.includes("404") ||
-    pathname.includes("about");
+  const isDark = !(
+    (pathname.includes("portfolio") && pathname.split("/").length > 2) ||
+    pathname.length === 1
+  );
 
   const toggleMenu = () => {
     if (window && menu) {

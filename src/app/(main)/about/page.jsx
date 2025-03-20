@@ -6,6 +6,9 @@ import clsx from "clsx";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import { useRef, useState } from "react";
 import ProgressHistory from "@/blocks/ProgressHistory/ProgressHistory";
+import Mission from "@/blocks/Mission/Mission";
+import Principles from "@/blocks/Principles/Principles";
+import Workers from "@/blocks/Workers/Workers";
 
 const page = () => {
   const videoRef = useRef(null);
@@ -91,6 +94,11 @@ const page = () => {
         </div>
       </div>
       <ProgressHistory />
+      <Mission />
+      <Principles />
+      <Workers />
+
+      <Feedback />
     </>
   );
 };

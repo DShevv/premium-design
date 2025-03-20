@@ -18,6 +18,7 @@ const ProgressHistory = () => {
   }, []);
 
   useEffect(() => {
+    document.body.style.overflowX = "visible";
     const handleScroll = () => {
       if (!thumbRef.current) return;
 
@@ -30,7 +31,6 @@ const ProgressHistory = () => {
 
         const circleRect = circle.getBoundingClientRect();
 
-        // Проверяем, пересекается ли .thumb с .circle
         if (
           thumbRect.top < circleRect.bottom &&
           thumbRect.bottom > circleRect.top
@@ -41,7 +41,10 @@ const ProgressHistory = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.body.style.overflowX = "hidden";
+    };
   }, []);
 
   return (
