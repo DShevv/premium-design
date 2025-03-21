@@ -72,20 +72,6 @@
   left: 0;
 }
 
-.item.wide::before {
-  content: "";
-  position: absolute;
-  top: vw-1920(-26);
-  background-color: var(--bg);
-  width: 100%;
-  height: 1px;
-  left: 0;
-}
-
-.item.wide:first-of-type::before {
-  display: none;
-}
-
 .item.wide:nth-last-child(2)::after {
   display: none;
 }
@@ -104,6 +90,11 @@
 
 .slider {
   margin-top: vw-1920(64);
+}
+
+.right a > div {
+  right: initial;
+  left: 0;
 }
 
 @media (max-width: 1440px) {
@@ -142,6 +133,10 @@
 
   .slider {
     margin-top: vw-1440(36);
+  }
+
+  .wide a > div {
+    width: vw-1440(388);
   }
 }
 
@@ -187,5 +182,9 @@
 
   .pagination {
     margin-top: 32px;
+  }
+
+  .wide a > div {
+    width: 234px;
   }
 }

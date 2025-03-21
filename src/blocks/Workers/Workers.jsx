@@ -83,6 +83,10 @@ const Workers = () => {
   useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
+      const windowWidth = window.innerWidth;
+      if (windowWidth > 768) {
+        return;
+      }
       const centerY = windowHeight / 2;
 
       itemRefs.current.forEach((item, index) => {
@@ -117,6 +121,52 @@ const Workers = () => {
         </div>
 
         <div className={styles.content}>
+          <AnimatePresence mode="sync">
+            <m.div className={styles.info}>
+              <div className={styles.head}>
+                <m.div
+                  variants={variants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  key={workers[activeIndex].name}
+                  className={clsx("h4", styles.name)}
+                >
+                  {workers[activeIndex].name}
+                </m.div>
+                <m.div
+                  variants={variants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  key={workers[activeIndex].position}
+                  className={clsx("body-3", styles.position)}
+                >
+                  {workers[activeIndex].position}
+                </m.div>
+              </div>
+              <div className={clsx("body-1", styles.text)}>
+                <m.p
+                  variants={variants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  key={workers[activeIndex].experience}
+                >
+                  {workers[activeIndex].experience}
+                </m.p>
+                <m.p
+                  variants={variants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  key={workers[activeIndex].educ}
+                >
+                  {workers[activeIndex].educ}
+                </m.p>
+              </div>
+            </m.div>
+          </AnimatePresence>
           <m.div layout className={styles.photos}>
             <LayoutGroup>
               {workers.map((elem, index) => (

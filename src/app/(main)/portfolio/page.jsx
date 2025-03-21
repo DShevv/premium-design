@@ -47,21 +47,6 @@ const items = [
     tag: "Дизайн-проект",
     title: "Трёхэтажная квартира в москве",
   },
-  {
-    image: picture2,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-  {
-    image: picture3,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-  {
-    image: picture1,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
 ];
 
 const page = () => {
@@ -112,9 +97,8 @@ const page = () => {
             <ProjectItem
               key={index}
               item={elem}
-              className={clsx(styles.item, {
-                [styles.wide]: index === 0 || index === 4 || index === 7,
-                [styles.medium]: index === 5 || index === 6,
+              className={clsx(styles.item, styles.wide, {
+                [styles.right]: index % 2 === 1,
               })}
             />
           ))}

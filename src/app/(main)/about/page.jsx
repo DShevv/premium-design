@@ -9,6 +9,7 @@ import ProgressHistory from "@/blocks/ProgressHistory/ProgressHistory";
 import Mission from "@/blocks/Mission/Mission";
 import Principles from "@/blocks/Principles/Principles";
 import Workers from "@/blocks/Workers/Workers";
+import AchievementsSlider from "@/blocks/AchivmentsSlider/AchievementsSlider";
 
 const page = () => {
   const videoRef = useRef(null);
@@ -97,7 +98,7 @@ const page = () => {
       <Mission />
       <Principles />
       <Workers />
-
+      <AchievementsSlider />
       <Feedback />
     </>
   );
