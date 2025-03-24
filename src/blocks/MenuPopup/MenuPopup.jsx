@@ -220,7 +220,7 @@ const MenuPopup = observer(() => {
               </div>
               <div className={clsx(styles.side, styles.laptop)}>
                 <Link
-                  href={"/services/design"}
+                  href={"/services/design-project"}
                   className={clsx(styles.service, {
                     [styles.activeService]: activeIndex === 0,
                   })}
@@ -334,7 +334,7 @@ const MenuPopup = observer(() => {
               className={clsx(styles.side)}
             >
               <Link
-                href={"/services/design"}
+                href={"/services/design-project"}
                 className={styles.service}
                 onClick={() => {
                   closePopup("menu");

@@ -23,7 +23,7 @@ const Footer = () => {
         <ul className={styles.list}>
           <div className={clsx("body-3", styles.title)}>[ услуги ]</div>
           <li className={clsx("body-1-regular", styles.item)}>
-            <Link href={"/project-design"}>Дизайн проект</Link>
+            <Link href={"/design-project"}>Дизайн проект</Link>
           </li>
           <li className={clsx("body-1-regular", styles.item)}>
             <Link href={"/project-design-complect"}>

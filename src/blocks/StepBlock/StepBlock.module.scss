@@ -1,0 +1,145 @@
+@import "../../assets/sass/functions";
+
+.container {
+  position: relative;
+  margin-top: vw-1920(160);
+}
+
+.wrapper {
+  max-width: vw-1920(1630);
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+  display: flex;
+}
+
+.reversed .wrapper {
+  flex-direction: row-reverse;
+}
+
+.image {
+  height: vw-1920(800);
+  width: vw-1920(800);
+  object-fit: cover;
+}
+
+.caption {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  max-width: vw-1920(940);
+  width: 100%;
+  background: var(--dark-grey);
+  padding: vw-1920(48);
+}
+
+.reversed .caption {
+  right: initial;
+  left: 0;
+}
+
+.subtitle {
+  color: var(--beige);
+}
+
+.title {
+  margin-top: vw-1920(32);
+  margin-bottom: vw-1920(36);
+}
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    margin-top: vw-1440(160);
+  }
+
+  .wrapper {
+    max-width: vw-1440(1200);
+  }
+
+  .image {
+    height: vw-1440(800);
+    width: vw-1440(690);
+    object-fit: cover;
+  }
+
+  .caption {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    max-width: vw-1440(690);
+    width: 100%;
+    background: var(--dark-grey);
+    padding: vw-1440(42);
+  }
+
+  .reversed .caption {
+    right: initial;
+    left: 0;
+  }
+
+  .subtitle {
+    color: var(--beige);
+  }
+
+  .title {
+    margin-top: vw-1440(32);
+    margin-bottom: vw-1440(24);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 72px;
+    width: 100%;
+  }
+
+  .wrapper {
+    width: calc(100% - 40px);
+    max-width: 100%;
+    flex-direction: column-reverse;
+  }
+
+  .reversed .wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .image {
+    height: 320px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .caption {
+    position: static;
+    max-width: 100%;
+    width: 100%;
+    background: var(--dark-grey);
+    padding: 32px;
+  }
+
+  .reversed .caption {
+    right: initial;
+    left: 0;
+  }
+
+  .subtitle {
+    color: var(--beige);
+  }
+
+  .title {
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+}

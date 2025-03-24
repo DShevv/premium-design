@@ -19,7 +19,8 @@ const Header = observer(() => {
 
   const isDark = !(
     (pathname.includes("portfolio") && pathname.split("/").length > 2) ||
-    pathname.length === 1
+    pathname.length === 1 ||
+    (pathname.includes("services") && pathname.split("/").length > 2)
   );
 
   const toggleMenu = () => {

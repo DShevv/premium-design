@@ -1,0 +1,314 @@
+@import "../../assets/sass/functions";
+
+.container {
+  position: relative;
+  margin-top: vw-1920(160);
+}
+
+.wrapper {
+  max-width: vw-1920(1630);
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+
+.header {
+  margin-bottom: vw-1920(25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.caption {
+  max-width: vw-1920(650);
+  color: var(--brown);
+}
+
+.title {
+  margin-top: vw-1920(32);
+  color: var(--bg);
+}
+
+.steps {
+  width: 100%;
+  height: vw-1920(560);
+  padding-top: vw-1920(64);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg {
+  object-fit: cover;
+  object-position: center 95%;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.bgWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  z-index: 1;
+  top: 0;
+}
+
+.innerContainer {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+}
+
+.buttonsWrapper {
+  width: vw-1920(1630);
+  margin: 0 auto;
+  overflow-x: auto;
+  flex: 0 0 auto;
+}
+
+.buttons {
+  display: flex;
+  width: fit-content;
+  gap: vw-1920(24);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.button {
+  padding: vw-1920(12) vw-1920(26) vw-1920(10) vw-1920(26);
+  background: rgba(254, 252, 250, 0.2);
+  border-radius: vw-1920(32);
+  border: none;
+  outline: none;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.button.active {
+  background-color: var(--green-2);
+}
+
+.text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: vw-1920(32);
+  background: var(--bg);
+  max-width: vw-1920(664);
+}
+
+.textTitle {
+  margin-bottom: vw-1920(20);
+}
+
+.steps .wrapper {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    margin-top: vw-1440(160);
+  }
+
+  .container.noHeader {
+    margin-top: vw-1440(41);
+  }
+
+  .wrapper {
+    max-width: vw-1440(1200);
+  }
+
+  .header {
+    margin-bottom: vw-1440(48);
+  }
+
+  .caption {
+    max-width: vw-1440(780);
+  }
+
+  .title {
+    margin-top: vw-1440(32);
+  }
+
+  .steps {
+    width: 100%;
+    height: vw-1440(534);
+    padding-top: vw-1440(64);
+    position: relative;
+  }
+
+  .bg {
+    object-fit: cover;
+    object-position: center 95%;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bgWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: 1;
+    top: 0;
+  }
+
+  .innerContainer {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+  }
+
+  .buttonsWrapper {
+    max-width: vw-1440(1200);
+    overflow-x: auto;
+  }
+
+  .buttons {
+    display: flex;
+    width: fit-content;
+    gap: vw-1440(24);
+    align-items: center;
+  }
+
+  .button {
+    padding: vw-1440(12) vw-1440(26) vw-1440(10) vw-1440(26);
+    background: rgba(254, 252, 250, 0.2);
+    border-radius: vw-1440(32);
+    border: none;
+    outline: none;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .button.active {
+    background-color: var(--green-2);
+  }
+
+  .text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: vw-1440(32);
+    background: var(--bg);
+    max-width: vw-1440(664);
+  }
+
+  .textTitle {
+    margin-bottom: vw-1440(20);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 72px;
+    width: 100%;
+  }
+
+  .container.noHeader {
+    margin-top: 32px;
+  }
+
+  .wrapper {
+    width: calc(100% - 40px);
+    max-width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+
+  .caption {
+    max-width: initial;
+  }
+
+  .title {
+    margin-top: 16px;
+  }
+
+  .steps {
+    width: 100%;
+    height: 534px;
+    padding-top: 42px;
+    position: relative;
+  }
+
+  .bg {
+    object-fit: cover;
+    object-position: center 95%;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bgWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: 1;
+    top: 0;
+  }
+
+  .innerContainer {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+  }
+
+  .steps .wrapper {
+    margin: 0 20px;
+  }
+
+  .buttonsWrapper {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0;
+    overflow-x: auto;
+  }
+
+  .buttons {
+    display: flex;
+    width: fit-content;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .button {
+    background: rgba(254, 252, 250, 0.2);
+    border-radius: 32px;
+    padding: 8px 26px 6px 26px;
+    border: none;
+    outline: none;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    white-space: nowrap;
+  }
+
+  .button.active {
+    background-color: var(--green-2);
+  }
+
+  .text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 24px;
+    background: var(--bg);
+    max-width: 336px;
+  }
+
+  .textTitle {
+    margin-bottom: 12px;
+  }
+}

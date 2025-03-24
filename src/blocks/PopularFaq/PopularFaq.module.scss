@@ -1,0 +1,85 @@
+@import "../../assets/sass/functions";
+
+.container {
+  position: relative;
+  margin-top: vw-1920(160);
+}
+
+.wrapper {
+  max-width: vw-1920(1630);
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+
+.header {
+  margin-bottom: vw-1920(25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.caption {
+  max-width: vw-1920(765);
+  color: var(--brown);
+}
+
+.title {
+  margin-top: vw-1920(32);
+  color: var(--bg);
+}
+
+@media (max-width: 1440px) {
+  .container {
+    margin-top: vw-1440(160);
+  }
+
+  .container.noHeader {
+    margin-top: vw-1440(41);
+  }
+
+  .wrapper {
+    max-width: vw-1440(1200);
+  }
+
+  .header {
+    margin-bottom: vw-1440(48);
+  }
+
+  .caption {
+    max-width: vw-1440(780);
+  }
+
+  .title {
+    margin-top: vw-1440(32);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 72px;
+    width: 100%;
+  }
+
+  .container.noHeader {
+    margin-top: 32px;
+  }
+
+  .wrapper {
+    width: calc(100% - 40px);
+    max-width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+
+  .caption {
+    max-width: initial;
+  }
+
+  .title {
+    margin-top: 16px;
+  }
+}

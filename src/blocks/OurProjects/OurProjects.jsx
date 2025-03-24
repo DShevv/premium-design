@@ -37,7 +37,7 @@ const items = [
   },
 ];
 
-const OurProjects = () => {
+const OurProjects = ({ title }) => {
   const sliderRef = useRef(null);
 
   const handlePrev = useCallback(() => {
@@ -57,7 +57,7 @@ const OurProjects = () => {
           <div className={clsx("body-1", styles.caption)}>
             <span>[ Наши работы ]</span>
             <h2 className={clsx("h2", styles.title)}>
-              Реализованные проекты компании
+              {title ? title : "Реализованные проекты компании"}
             </h2>
           </div>
           <CircleButton
