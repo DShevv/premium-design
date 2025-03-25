@@ -34,7 +34,7 @@ const items = [
   },
 ];
 
-const CompareBlock = ({ className, inside }) => {
+const CompareBlock = ({ className, sliderClass, title, inside }) => {
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -56,20 +56,24 @@ const CompareBlock = ({ className, inside }) => {
   return (
     <section className={clsx(styles.container, className)}>
       {!inside && (
-        <div className={styles.header}>
+        <div className={clsx(styles.header, { [styles.visible]: title })}>
           <div className={clsx("body-1", styles.caption)}>
             <span>[ До-после ]</span>
-            <h2 className={clsx("h2", styles.title)}>Результаты наших работ</h2>
+            <h2 className={clsx("h2", styles.title)}>
+              {title ? title : "Результаты наших работ"}
+            </h2>
           </div>
-          <CircleButton className={"desktop"} href={"/our-projects"}>
-            смотреть все проекты
-          </CircleButton>
+          {title === undefined && (
+            <CircleButton className={"desktop"} href={"/our-projects"}>
+              смотреть все проекты
+            </CircleButton>
+          )}
         </div>
       )}
       <Swiper
         slidesPerView={1}
         ref={sliderRef}
-        className={styles.swiper}
+        className={clsx(styles.swiper, sliderClass)}
         allowTouchMove={false}
         modules={[Pagination]}
         pagination={{

@@ -3,7 +3,7 @@ import Feedback from "@/blocks/Feedback/Feedback";
 import styles from "./page.module.scss";
 import clsx from "clsx";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import hero from "@/assets/images/services-1.png";
+import hero from "@/assets/images/steps2.png";
 import zoom1 from "@/assets/images/works-2.png";
 import zoom2 from "@/assets/images/portfolio2.png";
 import stepBlock1 from "@/assets/images/portfolio4.png";
@@ -18,6 +18,9 @@ import DesignSlider from "@/blocks/DesignSlider/DesignSlider";
 import StepBlock from "@/blocks/StepBlock/StepBlock";
 import IncludesBlock from "@/blocks/IncludesBlock/IncludesBlock";
 import PopularFaq from "@/blocks/PopularFaq/PopularFaq";
+import image1 from "@/assets/images/design-slider.jpg";
+import image2 from "@/assets/images/hero.png";
+import image3 from "@/assets/images/hero-light.png";
 
 const page = observer(() => {
   const { popupStore } = globalStore;
@@ -97,7 +100,25 @@ const page = observer(() => {
         </CircleButton>
       </div>
 
-      <DesignSlider />
+      <DesignSlider
+        items={[
+          {
+            image: image1,
+            title: "Обмеры",
+            text: `Мы выезжаем на объект для проведения тщательного анализа, выполнения точных замеров и фотофиксации всех необходимых деталей. На основе собранных данных мы разрабатываем подробные обмерные чертежи, включая планы, разрезы и сечения, которые служат надежной основой для дальнейших этапов проектирования и реализации.`,
+          },
+          {
+            image: image2,
+            title: "Работа",
+            text: `Мы выезжаем на  для проведения тщательного анализа, выполнения точных замеров и фотофиксации всех необходимых деталей. На основе собранных данных мы разрабатываем подробные обмерные чертежи, включая планы, разрезы и сечения, которые служат надежной основой для дальнейших этапов проектирования и реализации.`,
+          },
+          {
+            image: image3,
+            title: "Контроль качества",
+            text: `Мы выезжаем на объект для  тщательного анализа,  этапов проектирования и реализации.`,
+          },
+        ]}
+      />
       <StepBlock
         image={stepBlock1}
         subtitle={"[ Авторское сопровождение ]"}

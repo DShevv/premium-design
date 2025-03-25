@@ -4,26 +4,8 @@ import styles from "./DesignSlider.module.scss";
 import { useState } from "react";
 import { AnimatePresence, motion as m } from "motion/react";
 import Image from "next/image";
-import image1 from "@/assets/images/design-slider.jpg";
-import image2 from "@/assets/images/hero.png";
-import image3 from "@/assets/images/hero-light.png";
 
 const AnimatedImage = m.create(Image);
-
-const stepsData = [
-  {
-    title: "Обмеры",
-    text: `Мы выезжаем на объект для проведения тщательного анализа, выполнения точных замеров и фотофиксации всех необходимых деталей. На основе собранных данных мы разрабатываем подробные обмерные чертежи, включая планы, разрезы и сечения, которые служат надежной основой для дальнейших этапов проектирования и реализации.`,
-  },
-  {
-    title: "Работа",
-    text: `Мы выезжаем на  для проведения тщательного анализа, выполнения точных замеров и фотофиксации всех необходимых деталей. На основе собранных данных мы разрабатываем подробные обмерные чертежи, включая планы, разрезы и сечения, которые служат надежной основой для дальнейших этапов проектирования и реализации.`,
-  },
-  {
-    title: "Контроль качества",
-    text: `Мы выезжаем на объект для  тщательного анализа,  этапов проектирования и реализации.`,
-  },
-];
 
 const variants = {
   initial: {
@@ -52,7 +34,7 @@ const variants = {
   },
 };
 
-const DesignSlider = () => {
+const DesignSlider = ({ title, items }) => {
   const [step, setStep] = useState(0);
 
   return (
@@ -62,7 +44,7 @@ const DesignSlider = () => {
           <div className={clsx("body-1", styles.caption)}>
             <span>[ Этапы работы ]</span>
             <h2 className={clsx("h2", styles.title)}>
-              Как строится наша работа
+              {title ? title : "Как строится наша работа"}
             </h2>
           </div>
         </div>
@@ -78,11 +60,7 @@ const DesignSlider = () => {
             variants={variants}
             className={styles.bgWrapper}
           >
-            <Image
-              src={step === 0 ? image1 : step === 1 ? image2 : image3}
-              alt=""
-              className={styles.bg}
-            />
+            <Image src={items[step].image} alt="" className={styles.bg} />
           </m.div>
         </AnimatePresence>
         <div className={styles.buttonsWrapper}>
@@ -122,9 +100,9 @@ const DesignSlider = () => {
                 animate="animate"
                 exit="exit"
                 className={clsx("h3", styles.textTitle)}
-                key={stepsData[step].title}
+                key={items[step].title}
               >
-                {stepsData[step].title}
+                {items[step].title}
               </m.div>
               <m.div
                 variants={variants}
@@ -132,10 +110,22 @@ const DesignSlider = () => {
                 animate="animate"
                 exit="exit"
                 className={clsx("body-1")}
-                key={stepsData[step].text}
+                key={items[step].text}
               >
-                {stepsData[step].text}
+                {items[step].text}
               </m.div>
+              {items[step].time && (
+                <m.div
+                  variants={variants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className={clsx("body-1-regular", styles.time)}
+                  key={items[step].time}
+                >
+                  {items[step].time}
+                </m.div>
+              )}
             </m.div>
           </div>
         </div>

@@ -92,6 +92,18 @@
   display: none;
   justify-content: space-between;
   align-items: center;
+  max-width: vw-1920(1630);
+  margin: 0 auto;
+  margin-bottom: vw-1920(64);
+}
+
+.header.visible {
+  display: flex;
+  color: var(--bg);
+}
+
+.header.visible span {
+  color: var(--beige);
 }
 
 .caption {

@@ -19,7 +19,7 @@
   align-items: center;
 }
 .caption {
-  max-width: vw-1920(650);
+  max-width: vw-1920(740);
   color: var(--brown);
 }
 
@@ -107,6 +107,10 @@
 .steps .wrapper {
   flex: 1 1 auto;
   width: 100%;
+}
+
+.time {
+  margin-top: vw-1920(20);
 }
 
 @media (max-width: 1440px) {
@@ -202,6 +206,10 @@
 
   .textTitle {
     margin-bottom: vw-1440(20);
+  }
+
+  .time {
+    margin-top: vw-1440(20);
   }
 }
 
@@ -310,5 +318,9 @@
 
   .textTitle {
     margin-bottom: 12px;
+  }
+
+  .time {
+    margin-top: 20px;
   }
 }

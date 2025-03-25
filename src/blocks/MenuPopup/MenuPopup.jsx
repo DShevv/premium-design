@@ -245,7 +245,7 @@ const MenuPopup = observer(() => {
                   </div>
                 </Link>
                 <Link
-                  href={"/services/design"}
+                  href={"/services/design-complect"}
                   className={clsx(styles.service, {
                     [styles.activeService]: activeIndex === 1,
                   })}
@@ -352,7 +352,7 @@ const MenuPopup = observer(() => {
                 </div>
               </Link>
               <Link
-                href={"/services/design"}
+                href={"/services/design-complect"}
                 className={styles.service}
                 onClick={() => {
                   closePopup("menu");
@@ -370,7 +370,7 @@ const MenuPopup = observer(() => {
                 </div>
               </Link>
               <Link
-                href={"/services/design"}
+                href={"/services/rebuild-project"}
                 className={styles.service}
                 onClick={() => {
                   closePopup("menu");
@@ -388,7 +388,7 @@ const MenuPopup = observer(() => {
                 </div>
               </Link>
               <Link
-                href={"/services/design"}
+                href={"/services/rebuild-complect"}
                 className={styles.service}
                 onClick={() => {
                   closePopup("menu");
