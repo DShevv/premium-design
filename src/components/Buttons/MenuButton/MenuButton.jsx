@@ -45,13 +45,6 @@ const MenuButton = ({
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <circle
-                opacity="0.5"
-                cx="23.5"
-                cy="23.5"
-                r="23"
-                stroke="currentColor"
-              />
               <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor" />
               <circle cx="23.5" cy="15.5" r="1.5" fill="currentColor" />
               <circle cx="31.5" cy="15.5" r="1.5" fill="currentColor" />
@@ -101,13 +94,6 @@ const MenuButton = ({
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <circle
-              opacity="0.5"
-              cx="23.5"
-              cy="23.5"
-              r="23"
-              stroke="currentColor"
-            />
             <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor" />
             <circle cx="23.5" cy="15.5" r="1.5" fill="currentColor" />
             <circle cx="31.5" cy="15.5" r="1.5" fill="currentColor" />

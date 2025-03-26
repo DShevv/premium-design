@@ -4,6 +4,7 @@ class PopupStore {
   feedback = false;
   service = false;
   menu = false;
+  search = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -20,6 +21,9 @@ class PopupStore {
       case "menu":
         this.menu = true;
         break;
+      case "search":
+        this.search = true;
+        break;
     }
   };
 
@@ -33,6 +37,9 @@ class PopupStore {
         break;
       case "menu":
         this.menu = false;
+        break;
+      case "search":
+        this.search = false;
         break;
     }
   };

@@ -28,5 +28,7 @@
     font-size: 30px;
     left: 20px;
     transform: translateY(-50%);
+    mix-blend-mode: initial;
+    color: var(--bg);
   }
 }

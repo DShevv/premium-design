@@ -20,7 +20,7 @@ const CorrectConfiguration = () => {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflowX = "visible";
+    document.body.style.overflowY = "visible";
     const handleScroll = () => {
       if (!thumbRef.current) return;
 
@@ -45,7 +45,7 @@ const CorrectConfiguration = () => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      document.body.style.overflowX = "hidden";
+      document.body.style.overflowY = "hidden";
     };
   }, []);
 

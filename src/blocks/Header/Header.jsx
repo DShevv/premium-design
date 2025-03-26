@@ -9,13 +9,16 @@ import clsx from "clsx";
 import Logo from "@/components/Logo/Logo";
 import { observer } from "mobx-react-lite";
 import globalStore from "@/stores/global-store";
-import { AnimatePresence, motion as m } from "motion/react";
+import { AnimatePresence, useScroll, motion as m } from "motion/react";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Header = observer(() => {
   const { popupStore } = globalStore;
   const { menu, openPopup, closePopup } = popupStore;
   const pathname = usePathname();
+  const { scrollY } = useScroll();
+  const [isFixed, setFixed] = useState(false);
 
   const isDark = !(
     (pathname.includes("portfolio") && pathname.split("/").length > 2) ||
@@ -26,45 +29,99 @@ const Header = observer(() => {
   const toggleMenu = () => {
     if (window && menu) {
       document.body.style.position = "static";
-      document.body.style.overflowX = "auto";
+      document.body.style.overflowY = "auto";
     }
     if (window && !menu) {
-      document.body.style.overflowX = "scroll";
+      document.body.style.overflowY = "scroll";
       document.body.style.position = "fixed";
     }
     menu ? closePopup("menu") : openPopup("menu");
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 1000) {
+        setFixed(true);
+      } else {
+        setFixed(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header
+    <m.header
       className={clsx(styles.header, {
         [styles.opened]: menu,
         [styles.dark]: isDark,
+        [styles.fixed]: isFixed,
       })}
     >
-      <MenuButton
-        className={clsx("desktop", {
-          [styles.dark]: menu || isDark,
-        })}
-        onClick={toggleMenu}
-        isOpened={menu}
-      >
-        {menu ? "Закрыть" : "Меню"}
-      </MenuButton>
+      <div className={styles.wrapper}>
+        <MenuButton
+          className={clsx("desktop", styles.menu, {
+            [styles.dark]: menu || isDark,
+          })}
+          onClick={toggleMenu}
+          isOpened={menu}
+        >
+          {menu ? "Закрыть" : "Меню"}
+        </MenuButton>
 
-      <Logo
-        className={clsx({
-          [styles.dark]: menu || isDark,
-        })}
-      >
-        Logo
-      </Logo>
+        <Logo
+          className={clsx({
+            [styles.dark]: menu || isDark,
+          })}
+        >
+          Logo
+        </Logo>
 
-      <AnimatePresence>
-        {!menu && (
+        <AnimatePresence>
+          {!menu && (
+            <m.div
+              key={"Menu"}
+              className={styles.controls}
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link
+                href={"tel:+375299999999"}
+                className={clsx("body-3", styles.link, {
+                  [styles.dark]: isDark,
+                })}
+              >
+                <SvgPhone className={styles.phone} />
+                <span>+375 (29) 999-99-99</span>
+              </Link>
+              <SearchButton
+                className={clsx(styles.search, {
+                  [styles.dark]: isDark,
+                })}
+                onClick={() => openPopup("search")}
+              />
+              <MenuButton
+                className={clsx(styles.mobile, styles.menu, {
+                  [styles.dark]: isDark,
+                })}
+                onClick={toggleMenu}
+                isOpened={menu}
+              ></MenuButton>
+
+              <MainButton
+                className={"desktop"}
+                onClick={() => openPopup("feedback")}
+              >
+                Связаться с нами
+              </MainButton>
+            </m.div>
+          )}
           <m.div
-            key={"Menu"}
-            className={styles.controls}
+            key={"SecondMenu"}
+            className={clsx(styles.mobile, styles.controls)}
             initial={{ opacity: 0 }}
             exit={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -73,20 +130,25 @@ const Header = observer(() => {
             <Link
               href={"tel:+375299999999"}
               className={clsx("body-3", styles.link, {
-                [styles.dark]: isDark,
+                [styles.dark]: menu || isDark,
               })}
             >
-              <SvgPhone className={styles.phone} />
+              <SvgPhone
+                className={clsx(styles.phone, {
+                  [styles.dark]: menu || isDark,
+                })}
+              />
               <span>+375 (29) 999-99-99</span>
             </Link>
             <SearchButton
+              onClick={() => openPopup("search")}
               className={clsx(styles.search, {
-                [styles.dark]: isDark,
+                [styles.dark]: menu || isDark,
               })}
             />
             <MenuButton
-              className={clsx(styles.mobile, {
-                [styles.dark]: isDark,
+              className={clsx(styles.mobile, styles.menu, {
+                [styles.dark]: menu || isDark,
               })}
               onClick={toggleMenu}
               isOpened={menu}
@@ -99,50 +161,9 @@ const Header = observer(() => {
               Связаться с нами
             </MainButton>
           </m.div>
-        )}
-        <m.div
-          key={"SecondMenu"}
-          className={clsx(styles.mobile, styles.controls)}
-          initial={{ opacity: 0 }}
-          exit={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Link
-            href={"tel:+375299999999"}
-            className={clsx("body-3", styles.link, {
-              [styles.dark]: menu || isDark,
-            })}
-          >
-            <SvgPhone
-              className={clsx(styles.phone, {
-                [styles.dark]: menu || isDark,
-              })}
-            />
-            <span>+375 (29) 999-99-99</span>
-          </Link>
-          <SearchButton
-            className={clsx(styles.search, {
-              [styles.dark]: menu || isDark,
-            })}
-          />
-          <MenuButton
-            className={clsx(styles.mobile, {
-              [styles.dark]: menu || isDark,
-            })}
-            onClick={toggleMenu}
-            isOpened={menu}
-          ></MenuButton>
-
-          <MainButton
-            className={"desktop"}
-            onClick={() => openPopup("feedback")}
-          >
-            Связаться с нами
-          </MainButton>
-        </m.div>
-      </AnimatePresence>
-    </header>
+        </AnimatePresence>
+      </div>
+    </m.header>
   );
 });
 

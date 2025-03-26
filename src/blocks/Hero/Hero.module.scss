@@ -65,13 +65,17 @@
   max-width: vw-1920(526);
   margin-top: vw-1920(35);
   text-align: right;
-  mix-blend-mode: difference;
   pointer-events: none;
 }
 
 .block .button {
   position: relative;
   right: vw-1920(-149);
+}
+
+.block .button:active {
+  background-color: transparent;
+  color: var(--text);
 }
 
 .subtitle {

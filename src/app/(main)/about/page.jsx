@@ -10,6 +10,10 @@ import Mission from "@/blocks/Mission/Mission";
 import Principles from "@/blocks/Principles/Principles";
 import Workers from "@/blocks/Workers/Workers";
 import AchievementsSlider from "@/blocks/AchivmentsSlider/AchievementsSlider";
+import YourImagine from "@/blocks/YourImagine/YourImagine";
+import DreamRework from "@/blocks/DreamRework/DreamRework";
+import BuyAssets from "@/blocks/BuyAssets/BuyAssets";
+import Companies from "@/blocks/Companies/Companies";
 
 const page = () => {
   const videoRef = useRef(null);
@@ -33,14 +37,6 @@ const page = () => {
             ]}
           />
         </div>
-        <p className={clsx("body-1", styles.text)}>
-          Мы специализируемся на создании дизайнов интерьеров премиум сегмента,
-          где каждая деталь отражает наш подход к сбалансированному сочетанию
-          функциональности и красоты. Наши работы, вдохновленные этой задачей,
-          воплощают в себе современные тенденции и классические элементы,
-          создавая уникальную атмосферу, которая соответствует высоким
-          стандартам наших клиентов.
-        </p>
       </div>
       <div
         className={clsx(styles.videoContainer, { [styles.playing]: isPlaying })}
@@ -94,11 +90,13 @@ const page = () => {
           )}
         </div>
       </div>
-      <ProgressHistory />
+
       <Mission />
+      <YourImagine />
+      <DreamRework />
+      <BuyAssets />
+      <Companies />
       <Principles />
-      <Workers />
-      <AchievementsSlider />
       <Feedback />
     </>
   );

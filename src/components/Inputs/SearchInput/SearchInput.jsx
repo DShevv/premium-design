@@ -70,7 +70,14 @@ const globalSearchOptions = {
   includeScore: true,
 };
 
-const SearchInput = ({ name, placeholder, disabled, className, ...other }) => {
+const SearchInput = ({
+  name,
+  placeholder,
+  disabled,
+  className,
+  setResults,
+  ...other
+}) => {
   const [value, setValue] = useState("");
   const [isResult, setResult] = useState(false);
   const [isActive, setActive] = useState(false);
@@ -158,6 +165,11 @@ const SearchInput = ({ name, placeholder, disabled, className, ...other }) => {
     return () => clearTimeout(timeout);
   }, [value]);
 
+  useEffect(() => {
+    console.log(isResult);
+    setResults(isResult);
+  }, [isResult]);
+
   return (
     <div className={clsx(styles.wrapper, { [styles.error]: error }, className)}>
       <label
@@ -216,56 +228,6 @@ const SearchInput = ({ name, placeholder, disabled, className, ...other }) => {
             </clipPath>
           </defs>
         </svg>
-
-        <div className={styles.bg}>
-          <div
-            className={clsx(styles.resWrapper, { [styles.active]: isResult })}
-          >
-            <div className={styles.results}>
-              <div className={styles.items}>
-                {isResult &&
-                  isResult.map((elem, index) => (
-                    <Link
-                      key={index}
-                      onClick={() => {
-                        setResult(false);
-                      }}
-                      href={elem.url}
-                      className={clsx(styles.item)}
-                    >
-                      <Image
-                        src={elem.img}
-                        alt={elem.img}
-                        width={64}
-                        height={64}
-                        className={styles.image}
-                      />
-
-                      <div className={styles.caption}>
-                        <div className={clsx("body-3", styles.title)}>
-                          {elem.title}
-                        </div>
-                        <div className={clsx("body-4", styles.text)}>
-                          Арт. 1111111
-                        </div>
-                      </div>
-                      <div className={styles.controls}>
-                        <div className={clsx("body-1", styles.price)}>
-                          126 BYN
-                        </div>
-                        <div className={clsx("body-4", styles.discount)}>
-                          130 BYN
-                        </div>
-                        <MainButton href={elem.url} className={styles.buy}>
-                          Купить
-                        </MainButton>
-                      </div>
-                    </Link>
-                  ))}
-              </div>
-            </div>
-          </div>
-        </div>
 
         {error && (
           <div className={clsx("body-5", styles.message)}>

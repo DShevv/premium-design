@@ -95,6 +95,11 @@
   max-width: vw-1920(1630);
   margin: 0 auto;
   margin-bottom: vw-1920(64);
+  color: var(--bg);
+}
+
+.header.hidden {
+  display: none;
 }
 
 .header.visible {

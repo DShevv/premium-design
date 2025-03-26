@@ -16,7 +16,7 @@ import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
 const MenuPopup = observer(() => {
   const { popupStore } = globalStore;
   const { menu, closePopup, openPopup } = popupStore;
-  const [isActive, setActive] = useState(false);
+  const [isActive, setActive] = useState(true);
   const [activeIndex, setActiveIndex] = useState(null);
   const itemRefs = useRef([]);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);

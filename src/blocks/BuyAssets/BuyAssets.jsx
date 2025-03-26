@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
-import styles from "./Mission.module.scss";
+import styles from "./BuyAssets.module.scss";
 import clsx from "clsx";
-import picture from "@/assets/images/portfolio4.png";
+import picture from "@/assets/images/works-2.png";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const Mission = () => {
+const BuyAssets = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const itemRefs = useRef([]);
 
@@ -43,26 +43,29 @@ const Mission = () => {
   return (
     <section className={styles.container}>
       <div className={clsx("body-1", styles.caption, styles.laptop)}>
-        <span>[ Наша миссия ]</span>
+        <span>[ Комплектация ]</span>
         <h2 className={clsx("h2", styles.title)}>
-          Создаем <br /> уникальные решения
+          поможем вам с закупкой материалов
         </h2>
       </div>
       <div className={styles.content}>
         <div className={styles.text}>
           <div className={clsx("body-1", styles.caption, styles.desktop)}>
-            <span>[ Наша миссия ]</span>
+            <span>[ Комплектация ]</span>
             <h2 className={clsx("h2", styles.title)}>
-              Создаем <br /> уникальные решения
+              поможем вам с закупкой материалов
             </h2>
           </div>
 
           <p className={clsx("body-1")}>
-            Мы реализуем проекты по всей стране и по всему миру, создавая
-            уникальные решения, которые превращают мечты в реальность без
-            использования волшебной палочки. Наше основное внимание уделяется
-            структурному дизайну, в то время как дизайн интерьера направлен
-            на создание уютной и вдохновляющей внутренней атмосферы.
+            Мы предлагаем полный цикл профессиональных услуг: от разработки
+            концептуальных решений и детализированного дизайн-проекта
+            с 3D-визуализацией до комплексного сопровождения на всех этапах
+            строительных работ. Наши эксперты осуществляют авторский надзор,
+            проводят технические консультации, подбирают материалы и выполняют
+            поэтапный контроль качества, что позволяет реализовать проектную
+            концепцию без потери эстетики и функциональности, обеспечивая
+            идеальное соответствие задуманному образу.
           </p>
           <div className={styles.info}>
             <div
@@ -106,4 +109,4 @@ const Mission = () => {
   );
 };
 
-export default Mission;
+export default BuyAssets;

@@ -4,14 +4,27 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: calc((100% - vw-1920(1630)) / 2 + vw-1920(1630));
+  width: 100%;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   z-index: 101;
   height: vw-1920(95);
   background-color: transparent;
+  transition: all 0.4s ease;
+}
+
+.wrapper {
+  width: calc((100% - vw-1920(1630)) / 2 + vw-1920(1630));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header.fixed {
+  position: fixed;
+  background-color: var(--text);
 }
 
 .controls {
@@ -62,10 +75,18 @@
   border-color: var(--bg);
 }
 
+.fixed .menu > div {
+  border-color: var(--bg);
+  color: var(--bg);
+}
+
 @media (max-width: 1440px) {
   .header {
-    width: calc((100% - vw-1440(1200)) / 2 + vw-1440(1200));
     height: vw-1440(80);
+  }
+
+  .wrapper {
+    width: calc((100% - vw-1440(1200)) / 2 + vw-1440(1200));
   }
 
   .controls {
@@ -84,8 +105,12 @@
     padding: 16px 20px;
     height: auto;
     width: 100%;
+    background-color: var(--text);
+  }
+
+  .wrapper {
+    width: 100%;
     justify-content: flex-end;
-    mix-blend-mode: difference;
   }
 
   .header.opened,
@@ -108,17 +133,18 @@
 
   .link {
     border-radius: 50%;
-    border: 1px solid var(--text);
-    color: var(--text);
+    border: 1px solid var(--bg);
+    color: var(--bg);
     width: 47px;
     height: 47px;
     display: flex;
     justify-content: center;
     align-items: center;
+    mix-blend-mode: initial;
   }
 
   .link svg {
-    color: var(--text);
+    color: var(--bg);
   }
 
   .link span {
@@ -127,21 +153,27 @@
 
   .phone {
     width: 24px;
-    color: var(--text);
-    border-color: var(--text);
+    color: var(--bg);
+    border-color: var(--bg);
     height: 24px;
   }
 
-  .phone.dark {
+  .phone {
     border-color: var(--bg);
   }
 
-  .link.dark {
+  .link {
     color: var(--bg);
     border-color: var(--bg);
   }
 
-  .search.dark {
+  .header .search {
     border-color: var(--bg);
+    color: var(--bg);
+  }
+
+  .wrapper .menu > div {
+    border-color: var(--bg);
+    color: var(--bg);
   }
 }

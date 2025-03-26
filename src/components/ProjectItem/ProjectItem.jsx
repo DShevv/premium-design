@@ -11,19 +11,20 @@ import Image from "next/image";
 
 const itemVariants = {
   rest: {
-    y: "100%",
+    scaleX: 0,
     opacity: 0,
+    transformOrigin: "right center",
     transition: {
-      duration: 0.4,
+      duration: 0.5,
       type: "tween",
       ease: "easeIn",
     },
   },
   hover: {
+    scaleX: 1,
     opacity: 1,
-    y: 0,
     transition: {
-      duration: 0.4,
+      duration: 0.5,
       type: "tween",
       ease: "easeOut",
     },

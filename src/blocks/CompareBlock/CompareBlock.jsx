@@ -55,21 +55,25 @@ const CompareBlock = ({ className, sliderClass, title, inside }) => {
 
   return (
     <section className={clsx(styles.container, className)}>
-      {!inside && (
-        <div className={clsx(styles.header, { [styles.visible]: title })}>
-          <div className={clsx("body-1", styles.caption)}>
-            <span>[ До-после ]</span>
-            <h2 className={clsx("h2", styles.title)}>
-              {title ? title : "Результаты наших работ"}
-            </h2>
-          </div>
-          {title === undefined && (
-            <CircleButton className={"desktop"} href={"/our-projects"}>
-              смотреть все проекты
-            </CircleButton>
-          )}
+      <div
+        className={clsx(styles.header, {
+          [styles.hidden]: inside,
+          [styles.visible]: title,
+        })}
+      >
+        <div className={clsx("body-1", styles.caption)}>
+          <span>[ До-после ]</span>
+          <h2 className={clsx("h2", styles.title)}>
+            {title ? title : "Результаты наших работ"}
+          </h2>
         </div>
-      )}
+        {title === undefined && (
+          <CircleButton className={"desktop"} href={"/our-projects"}>
+            смотреть все проекты
+          </CircleButton>
+        )}
+      </div>
+
       <Swiper
         slidesPerView={1}
         ref={sliderRef}

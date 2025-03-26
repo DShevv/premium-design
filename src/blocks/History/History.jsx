@@ -1,11 +1,46 @@
+"use client";
 import Image from "next/image";
 import styles from "./History.module.scss";
 import clsx from "clsx";
 import picture from "@/assets/images/history.png";
 import pictureSmall from "@/assets/images/history-small.png";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const History = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const itemRefs = useRef([]);
+
+  const setRef = useCallback((el, index) => {
+    if (el) {
+      itemRefs.current[index] = el;
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+      const centerY = windowHeight / 2;
+
+      itemRefs.current.forEach((item, index) => {
+        if (item) {
+          const rect = item.getBoundingClientRect();
+          const itemCenterY = rect.top + rect.height / 2;
+
+          if (
+            itemCenterY >= centerY - rect.height / 2 &&
+            itemCenterY <= centerY + rect.height / 2
+          ) {
+            setActiveIndex(index);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
@@ -35,19 +70,34 @@ const History = () => {
               клиентов.
             </p>
             <div className={styles.info}>
-              <div className={clsx("h1", styles.line)}>
+              <div
+                ref={(el) => setRef(el, 0)}
+                className={clsx("h1", styles.line, {
+                  [styles.active]: activeIndex === 0,
+                })}
+              >
                 20
                 <span className="h4">
                   лет в сфере <br /> строительства
                 </span>
               </div>
-              <div className={clsx("h1", styles.line)}>
+              <div
+                ref={(el) => setRef(el, 1)}
+                className={clsx("h1", styles.line, {
+                  [styles.active]: activeIndex === 1,
+                })}
+              >
                 90+
                 <span className="h4">
                   реализованных <br /> проектов
                 </span>
               </div>
-              <div className={clsx("h1", styles.line)}>
+              <div
+                ref={(el) => setRef(el, 2)}
+                className={clsx("h1", styles.line, {
+                  [styles.active]: activeIndex === 2,
+                })}
+              >
                 3000+
                 <span className="h4">
                   построенных <br className="mobile" /> квадратных{" "}

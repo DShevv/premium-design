@@ -10,13 +10,13 @@
   align-items: center;
 
   width: 100%;
-  border-bottom: 1px solid var(--text);
+  border-bottom: 1px solid var(--bg);
   padding: 20px 24px;
   background: transparent;
 }
 
 .container:has(.field:focus) {
-  border-color: var(--text);
+  border-color: var(--bg);
 }
 
 .field {
@@ -32,7 +32,7 @@
 }
 
 .search {
-  color: var(--text);
+  color: var(--bg);
   width: 86px;
   height: 86px;
 }
@@ -42,15 +42,15 @@
 }
 
 .field:disabled::placeholder {
-  color: var(--text);
+  color: var(--grey);
 }
 
 .field:focus {
-  color: var(--text);
+  color: var(--bg);
 }
 
 .field:focus::placeholder {
-  color: var(--text);
+  color: var(--bg);
 }
 
 .error {
@@ -212,20 +212,9 @@
   }
 
   .container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 0;
     max-width: 768px;
     width: 100%;
-    height: 54px;
-    border: 1px solid var(--gray-1);
-    border-radius: 6px;
-    padding: 0 16px;
-    background: var(--bg);
-
-    flex-direction: row;
+    padding: 12px 16px;
   }
 
   .container.active {
@@ -233,99 +222,12 @@
     z-index: 50;
   }
 
-  .button {
-    display: none;
+  .field {
+    font-size: 18px;
   }
 
-  .container:has(.field:focus) .button {
-    display: none;
-  }
-
-  .clear {
-    display: block;
-    order: 2;
-  }
-
-  .container:has(.field:disabled) .clear {
-    color: var(--grey-400);
-  }
-
-  .container.active .button {
-    display: none;
-  }
-
-  .bg {
-    height: calc(100dvh - 54px);
-    background: rgba(72, 73, 82, 0.7);
-    bottom: -1px;
-  }
-
-  .wrapper {
-    max-height: initial;
-  }
-
-  .resWrapper {
-    max-height: calc(100dvh - 54px);
-    border: none;
-    border-top: 1px solid var(--grey-400);
-    padding: 16px;
-    border-radius: 0;
-    width: calc(100% + 1px);
-  }
-
-  .results::-webkit-scrollbar {
-    display: none;
-  }
-
-  .results {
-    max-height: calc(100dvh - 86px);
-    padding-right: 0;
-    padding: 0;
-  }
-
-  .cart {
-    margin-right: 0px;
-  }
-
-  .category .caption {
-    margin-left: 12px;
-  }
-
-  .item {
-    align-items: flex-start;
-  }
-
-  .item .image {
-    margin-left: 0;
-    width: 70px;
-    height: 60px;
-    object-fit: contain;
-    flex: 0 0 70px;
-  }
-
-  .wrapper > button {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .wrapper img {
-    width: 26px;
-    height: 26px;
-  }
-
-  .container.active .search {
-    display: block;
-  }
-
-  .container:has(.field:focus) .search {
-    display: block;
-  }
-
-  .container .buy {
-    padding: 11px 25px;
-    font-size: 13px;
-    font-weight: 500;
+  .search {
+    width: 32px;
+    height: 32px;
   }
 }
