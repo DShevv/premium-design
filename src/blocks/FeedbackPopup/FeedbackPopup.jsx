@@ -52,12 +52,43 @@ const FeedbackPopup = observer(() => {
                 file: undefined,
                 isAgree: false,
               }}
-              onSubmit={(values) => {
-                setNotification(
-                  "ваша заявка принята",
-                  "success",
-                  "Наш менеджер свяжется с вами в ближайшее время"
-                );
+              onSubmit={async (values, { resetForm }) => {
+                try {
+                  const res = await fetch(
+                    `${process.env.API_URL}/v1/feedback`,
+                    {
+                      method: "POST",
+                      headers: {
+                        accept: "application/json",
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        name: values.name,
+                        phone: values.phone,
+                        email: values.email,
+                        comment: values.comment,
+                      }),
+                    }
+                  );
+                  console.log(res);
+
+                  if (res.status === 201) {
+                    setNotification(
+                      "ваша заявка принята",
+                      "success",
+                      "Наш менеджер свяжется с вами в ближайшее время"
+                    );
+                    resetForm();
+                    closePopup("feedback");
+                  }
+                } catch (e) {
+                  console.log(e);
+                  setNotification(
+                    "ваша заявка не принята",
+                    "error",
+                    "Пожалуйста, повторите попытку ещё раз"
+                  );
+                }
               }}
               validate={validateFeedBack}
               validateOnBlur={false}

@@ -43,10 +43,14 @@ const Feedback = observer(() => {
               file: undefined,
               isAgree: false,
             }}
-            onSubmit={async (values) => {
+            onSubmit={async (values, { resetForm }) => {
               try {
                 const res = await fetch(`${process.env.API_URL}/v1/feedback`, {
                   method: "POST",
+                  headers: {
+                    accept: "application/json",
+                    "Content-Type": "application/json",
+                  },
                   body: JSON.stringify({
                     name: values.name,
                     phone: values.phone,
@@ -56,12 +60,13 @@ const Feedback = observer(() => {
                 });
                 console.log(res);
 
-                if (res.status === 200) {
+                if (res.status === 201) {
                   setNotification(
                     "ваша заявка принята",
                     "success",
                     "Наш менеджер свяжется с вами в ближайшее время"
                   );
+                  resetForm();
                 }
               } catch (e) {
                 console.log(e);

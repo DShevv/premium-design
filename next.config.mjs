@@ -3,7 +3,7 @@ const nextConfig = {
   env: {
     API_URL: "https://intapi.webspaceteam.site/api",
     STORE_URL: "https://intapi.webspaceteam.site",
-    HOME_URL: "http://localhost:3000",
+    HOME_URL: "https://webspaceteam.site",
   },
   images: {
     remotePatterns: [
