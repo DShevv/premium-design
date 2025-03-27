@@ -1,4 +1,4 @@
-export function validateFeedback(values) {
+export function validateFeedBack(values) {
   const errors = {};
 
   if (!values.name) {

@@ -12,7 +12,7 @@ import MainButton from "@/components/Buttons/MainButton/MainButton";
 import { observer } from "mobx-react-lite";
 import globalStore from "@/stores/global-store";
 import FileInput from "@/components/Inputs/FileInput/FileInput";
-import { validateFeedback } from "@/utils/validateFeedback";
+import { validateFeedBack } from "@/utils/validateFeedBack";
 
 const Feedback = observer(() => {
   const { notificationStore } = globalStore;
@@ -72,7 +72,7 @@ const Feedback = observer(() => {
                 );
               }
             }}
-            validate={validateFeedback}
+            validate={validateFeedBack}
             validateOnBlur={false}
             validateOnMount={false}
             validateOnChange={false}
