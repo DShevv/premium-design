@@ -38,7 +38,13 @@ const ImageZoom = ({ src, zoom = 2, className }) => {
       onMouseLeave={handleMouseLeave}
       style={{ position: "relative", overflow: "hidden" }}
     >
-      <Image src={src} alt="Zoomable" layout="fill" objectFit="cover" />
+      <Image
+        src={src}
+        alt="Zoomable"
+        fill
+        sizes="400px, 400px"
+        style={{ objectFit: "cover" }}
+      />
 
       <AnimatePresence>
         {position.visible && (

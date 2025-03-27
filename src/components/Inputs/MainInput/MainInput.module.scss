@@ -66,7 +66,7 @@
 
 .message {
   position: absolute;
-  top: calc(100% + vw-1920(29));
+  top: calc(100% + vw-1920(8));
   left: 0;
   color: var(--red);
 }
@@ -81,7 +81,7 @@
   }
 
   .message {
-    top: calc(100% + vw-1440(29));
+    top: calc(100% + vw-1440(8));
   }
 }
 
@@ -95,6 +95,6 @@
   }
 
   .message {
-    top: calc(100% + 29px);
+    top: calc(100% + 8px);
   }
 }

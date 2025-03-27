@@ -13,7 +13,7 @@ import { AnimatePresence, useScroll, motion as m } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const Header = observer(() => {
+const Header = observer(({ info }) => {
   const { popupStore } = globalStore;
   const { menu, openPopup, closePopup } = popupStore;
   const pathname = usePathname();
@@ -89,13 +89,13 @@ const Header = observer(() => {
               transition={{ duration: 0.2 }}
             >
               <Link
-                href={"tel:+375299999999"}
+                href={`tel:${info.phones[0]}`}
                 className={clsx("body-3", styles.link, {
                   [styles.dark]: isDark,
                 })}
               >
                 <SvgPhone className={styles.phone} />
-                <span>+375 (29) 999-99-99</span>
+                <span>{info.phones[0]}</span>
               </Link>
               <SearchButton
                 className={clsx(styles.search, {
@@ -128,7 +128,7 @@ const Header = observer(() => {
             transition={{ duration: 0.2 }}
           >
             <Link
-              href={"tel:+375299999999"}
+              href={`tel:${info.phones[0]}`}
               className={clsx("body-3", styles.link, {
                 [styles.dark]: menu || isDark,
               })}
@@ -138,7 +138,7 @@ const Header = observer(() => {
                   [styles.dark]: menu || isDark,
                 })}
               />
-              <span>+375 (29) 999-99-99</span>
+              <span>{info.phones[0]}</span>
             </Link>
             <SearchButton
               onClick={() => openPopup("search")}

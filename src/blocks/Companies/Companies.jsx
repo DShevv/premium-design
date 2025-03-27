@@ -1,15 +1,13 @@
+"use client";
 import Image from "next/image";
 import styles from "./Companies.module.scss";
 import clsx from "clsx";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useCallback, useRef, useState } from "react";
-import cerf from "@/assets/images/brand.png";
 import ArrowButton from "@/components/Buttons/ArrowButton/ArrowButton";
 
-const items = [cerf, cerf, cerf, cerf, cerf, cerf];
-
-const Companies = () => {
+const Companies = ({ items }) => {
   const sliderRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -53,12 +51,17 @@ const Companies = () => {
         >
           {items.map((elem, index) => (
             <SwiperSlide
-              key={index}
+              key={elem.id}
               className={clsx(styles.slide, {
                 [styles.active]: activeIndex === index,
               })}
             >
-              <Image src={elem} alt="" />
+              <Image
+                src={`${process.env.STORE_URL}/storage/${elem.photo_path}`}
+                alt={elem.title}
+                width={388}
+                height={223}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

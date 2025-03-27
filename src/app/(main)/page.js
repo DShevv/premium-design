@@ -18,15 +18,45 @@ import Checkbox from "@/components/Inputs/Checkbox/Checkbox";
 import MainInput from "@/components/Inputs/MainInput/MainInput";
 import SearchInput from "@/components/Inputs/SearchInput/SearchInput";
 import Pagination from "@/components/Pagination/Pagination";
+import { getSeoPage } from "@/services/getSeoPage";
 
-export default function Home() {
+export async function generateMetadata() {
+  const { seo } = await getSeoPage("main");
+
+  return seo
+    ? {
+        title: seo.title || "Разработка",
+        description: seo.description,
+        keywords: seo.keywords,
+        alternates: {
+          canonical: process.env.HOME_URL,
+        },
+        openGraph: {
+          title: seo.og_title,
+          description: seo.og_description,
+        },
+      }
+    : {};
+}
+
+export default async function Home() {
+  const res = await fetch(`${process.env.API_URL}/v1/before-after`);
+  let compareItems;
+  if (res.ok) {
+    compareItems = await res.json();
+  }
+  compareItems = compareItems.data.map((elem) => ({
+    before: elem.before_image,
+    after: elem.after_image,
+  }));
+
   return (
     <>
       <Hero />
       <Services />
       <OurProjects />
       <History />
-      <CompareBlock />
+      <CompareBlock items={compareItems} />
       <Contacts />
       <Feedback />
     </>

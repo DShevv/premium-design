@@ -12,6 +12,7 @@ import MainButton from "@/components/Buttons/MainButton/MainButton";
 import { observer } from "mobx-react-lite";
 import globalStore from "@/stores/global-store";
 import FileInput from "@/components/Inputs/FileInput/FileInput";
+import { validateFeedback } from "@/utils/validateFeedback";
 
 const Feedback = observer(() => {
   const { notificationStore } = globalStore;
@@ -42,13 +43,39 @@ const Feedback = observer(() => {
               file: undefined,
               isAgree: false,
             }}
-            onSubmit={(values) => {
-              setNotification(
-                "Спасибо за вашу заявку!",
-                "success",
-                "Скоро с вами свяжется наш менеджер и ответит на все ваши вопросы"
-              );
+            onSubmit={async (values) => {
+              try {
+                const res = await fetch(`${process.env.API_URL}/v1/feedback`, {
+                  method: "POST",
+                  body: JSON.stringify({
+                    name: values.name,
+                    phone: values.phone,
+                    email: values.email,
+                    comment: values.comment,
+                  }),
+                });
+                console.log(res);
+
+                if (res.status === 200) {
+                  setNotification(
+                    "ваша заявка принята",
+                    "success",
+                    "Наш менеджер свяжется с вами в ближайшее время"
+                  );
+                }
+              } catch (e) {
+                console.log(e);
+                setNotification(
+                  "ваша заявка не принята",
+                  "error",
+                  "Пожалуйста, повторите попытку ещё раз"
+                );
+              }
             }}
+            validate={validateFeedback}
+            validateOnBlur={false}
+            validateOnMount={false}
+            validateOnChange={false}
           >
             {(formik) => {
               const { values, errors, setFieldValue } = formik;
@@ -61,6 +88,7 @@ const Feedback = observer(() => {
                       dark={true}
                       type={"text"}
                       name={"name"}
+                      error={errors.name}
                       placeholder={"Имя*"}
                       onChange={(e) => {
                         const value = e.target.value || "";
@@ -72,9 +100,9 @@ const Feedback = observer(() => {
                     <MainInput
                       dark={true}
                       className={styles.input}
-                      mask={"+7 (999) 999-99-99"}
                       type={"text"}
                       name={"phone"}
+                      error={errors.phone}
                       placeholder={"Телефон*"}
                       onChange={(e) => {
                         const value = e.target.value || "";
@@ -88,6 +116,7 @@ const Feedback = observer(() => {
                       dark={true}
                       type={"text"}
                       name={"email"}
+                      error={errors.email}
                       placeholder={"Email*"}
                       onChange={(e) => {
                         const value = e.target.value || "";

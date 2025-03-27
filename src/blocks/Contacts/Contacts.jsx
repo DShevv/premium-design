@@ -5,7 +5,10 @@ import Map from "@/components/Map/Map";
 import Link from "next/link";
 import Line from "./Line/Line";
 
-const Contacts = ({ header }) => {
+const Contacts = async ({ header }) => {
+  const res = await fetch(`${process.env.API_URL}/v1/design/settings`);
+  const info = await res.json();
+
   return (
     <section className={clsx(styles.container, { [styles.noHeader]: header })}>
       <div className={styles.wrapper}>
@@ -28,33 +31,31 @@ const Contacts = ({ header }) => {
             <Line className={clsx("body-1", styles.line)}>
               Телефон
               <Link
-                href="tel:+375299999999"
+                href={`tel:${info.phones[0]}`}
                 className={clsx("h2", styles.value)}
               >
-                +375 (29) 999-99-99
+                {info.phones[0]}
               </Link>
             </Line>
             <Line className={clsx("body-1", styles.line)}>
               Email
               <Link
-                href="mailto:info@interior.ru"
+                href={`mailto:${info.email}`}
                 className={clsx("h2", styles.value)}
               >
-                info@interior.ru
+                {info.email}
               </Link>
             </Line>
             <Line className={clsx("body-1", styles.line)}>
               Адрес офиса
-              <div className={clsx("h2", styles.value)}>
-                Москва, ул. Ленина, 1
-              </div>
+              <div className={clsx("h2", styles.value)}>{info.address}</div>
             </Line>
             <Line className={clsx("body-1", styles.line)}>
               Социальные сети
               <div className={clsx("h2", styles.value)}>
                 <div className={styles.socials}>
                   <Link
-                    href={"wa.com"}
+                    href={info.whatsapp}
                     target="_blank"
                     className={styles.socialItem}
                   >
@@ -76,7 +77,7 @@ const Contacts = ({ header }) => {
                     </svg>
                   </Link>
                   <Link
-                    href={"instagram.com"}
+                    href={info.instagram}
                     target="_blank"
                     className={styles.socialItem}
                   >
@@ -95,7 +96,7 @@ const Contacts = ({ header }) => {
                     </svg>
                   </Link>
                   <Link
-                    href={"t.me"}
+                    href={info.telegram}
                     target="_blank"
                     className={styles.socialItem}
                   >

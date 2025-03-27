@@ -5,7 +5,7 @@ const api = axios.create({
   headers: {
     "Access-Control-Allow-Credentials": true,
   },
-  baseURL: `${process.env.API_URL}/api`,
+  baseURL: `${process.env.API_URL}`,
 });
 
 api.interceptors.request.use((config) => {

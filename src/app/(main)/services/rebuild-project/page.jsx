@@ -1,4 +1,3 @@
-"use client";
 import Feedback from "@/blocks/Feedback/Feedback";
 import styles from "./page.module.scss";
 import clsx from "clsx";
@@ -12,8 +11,6 @@ import stepBlock2 from "@/assets/images/steps1.png";
 import Image from "next/image";
 import OurProjects from "@/blocks/OurProjects/OurProjects";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
-import { observer } from "mobx-react-lite";
-import globalStore from "@/stores/global-store";
 import ImageZoom from "@/components/ImageZoom/ImageZoom";
 import DesignSlider from "@/blocks/DesignSlider/DesignSlider";
 import StepBlock from "@/blocks/StepBlock/StepBlock";
@@ -24,10 +21,37 @@ import image2 from "@/assets/images/hero.png";
 import image3 from "@/assets/images/hero-light.png";
 import CompareBlock from "@/blocks/CompareBlock/CompareBlock";
 import ComfortWork from "@/blocks/ComfortWork/ComfortWork";
+import { getSeoPage } from "@/services/getSeoPage";
 
-const page = observer(() => {
-  const { popupStore } = globalStore;
-  const { openPopup } = popupStore;
+export async function generateMetadata() {
+  const { seo } = await getSeoPage("rebuild-project");
+
+  return seo
+    ? {
+        title: seo.title || "Услуги",
+        description: seo.description,
+        keywords: seo.keywords,
+        alternates: {
+          canonical: process.env.HOME_URL,
+        },
+        openGraph: {
+          title: seo.og_title,
+          description: seo.og_description,
+        },
+      }
+    : {};
+}
+
+const page = async () => {
+  const res = await fetch(`${process.env.API_URL}/v1/before-after`);
+  let compareItems;
+  if (res.ok) {
+    compareItems = await res.json();
+  }
+  compareItems = compareItems.data.map((elem) => ({
+    before: elem.before_image,
+    after: elem.after_image,
+  }));
 
   return (
     <>
@@ -87,7 +111,7 @@ const page = observer(() => {
           <CircleButton
             className={styles.desktop}
             dark={true}
-            onClick={() => openPopup("feedback")}
+            openPopupName="feedback"
           >
             оставить заявку
           </CircleButton>
@@ -102,7 +126,7 @@ const page = observer(() => {
         <CircleButton
           className={styles.mobile}
           dark={true}
-          onClick={() => openPopup("feedback")}
+          openPopupName="feedback"
         >
           оставить заявку
         </CircleButton>
@@ -135,6 +159,7 @@ const page = observer(() => {
       <ComfortWork />
 
       <CompareBlock
+        items={compareItems}
         className={clsx(styles.compare, styles.slider)}
         sliderClass={styles.swiper}
         title={"До-после нашего ремонта под ключ"}
@@ -160,6 +185,6 @@ const page = observer(() => {
       <Feedback />
     </>
   );
-});
+};
 
 export default page;

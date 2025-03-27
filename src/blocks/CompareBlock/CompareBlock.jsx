@@ -15,26 +15,7 @@ import ArrowButton from "@/components/Buttons/ArrowButton/ArrowButton";
 import CompareImages from "@/components/CompareImages/CompareImages";
 import { Pagination } from "swiper/modules";
 
-const items = [
-  {
-    before: before,
-    after: after,
-  },
-  {
-    before: before,
-    after: after,
-  },
-  {
-    before: before,
-    after: after,
-  },
-  {
-    before: before,
-    after: after,
-  },
-];
-
-const CompareBlock = ({ className, sliderClass, title, inside }) => {
+const CompareBlock = ({ items, className, sliderClass, title, inside }) => {
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -49,7 +30,6 @@ const CompareBlock = ({ className, sliderClass, title, inside }) => {
   }, []);
 
   const changeIsDragging = (value) => {
-    console.log(value);
     setIsDragging(value);
   };
 

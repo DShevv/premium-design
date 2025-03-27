@@ -49,7 +49,13 @@ const CompareImages = ({ items, onDrag }) => {
       <div className={styles.imageContainer}>
         <div className={clsx("body-4", styles.label)}>дизайн “после”</div>
 
-        <Image src={items.after} alt="" className={styles.after} />
+        <Image
+          src={`${process.env.STORE_URL}${items.after}`}
+          alt=""
+          className={styles.after}
+          width={1920}
+          height={940}
+        />
       </div>
       <div
         className={styles.imageContainer}
@@ -60,7 +66,13 @@ const CompareImages = ({ items, onDrag }) => {
         }}
       >
         <div className={clsx("body-4", styles.label)}>дизайн “до”</div>
-        <Image src={items.before} alt="" className={styles.before} />
+        <Image
+          src={`${process.env.STORE_URL}${items.before}`}
+          width={1920}
+          height={940}
+          alt=""
+          className={styles.before}
+        />
       </div>
 
       <div

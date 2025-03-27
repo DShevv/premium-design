@@ -12,6 +12,7 @@ import MainButton from "@/components/Buttons/MainButton/MainButton";
 import { observer } from "mobx-react-lite";
 import globalStore from "@/stores/global-store";
 import FileInput from "@/components/Inputs/FileInput/FileInput";
+import { validateFeedback } from "@/utils/validateFeedback";
 
 const FeedbackPopup = observer(() => {
   const { popupStore, notificationStore } = globalStore;
@@ -53,11 +54,15 @@ const FeedbackPopup = observer(() => {
               }}
               onSubmit={(values) => {
                 setNotification(
-                  "Спасибо за вашу заявку!",
+                  "ваша заявка принята",
                   "success",
-                  "Скоро с вами свяжется наш менеджер и ответит на все ваши вопросы"
+                  "Наш менеджер свяжется с вами в ближайшее время"
                 );
               }}
+              validate={validateFeedback}
+              validateOnBlur={false}
+              validateOnMount={false}
+              validateOnChange={false}
             >
               {(formik) => {
                 const { values, errors, setFieldValue } = formik;
@@ -70,6 +75,7 @@ const FeedbackPopup = observer(() => {
                         dark={true}
                         type={"text"}
                         name={"name"}
+                        error={errors.name}
                         placeholder={"Имя*"}
                         onChange={(e) => {
                           const value = e.target.value || "";
@@ -81,10 +87,10 @@ const FeedbackPopup = observer(() => {
                       <MainInput
                         dark={true}
                         className={styles.input}
-                        mask={"+7 (999) 999-99-99"}
                         type={"text"}
                         name={"phone"}
                         placeholder={"Телефон*"}
+                        error={errors.phone}
                         onChange={(e) => {
                           const value = e.target.value || "";
                           setFieldValue("phone", value);
@@ -98,6 +104,7 @@ const FeedbackPopup = observer(() => {
                         type={"text"}
                         name={"email"}
                         placeholder={"Email*"}
+                        error={errors.email}
                         onChange={(e) => {
                           const value = e.target.value || "";
                           setFieldValue("email", value);

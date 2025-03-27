@@ -13,10 +13,10 @@ import { AnimatePresence, motion as m } from "motion/react";
 import service1 from "@/assets/images/services-1.png";
 import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
 
-const MenuPopup = observer(() => {
+const MenuPopup = observer(({ info }) => {
   const { popupStore } = globalStore;
   const { menu, closePopup, openPopup } = popupStore;
-  const [isActive, setActive] = useState(true);
+  const [isActive, setActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const itemRefs = useRef([]);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
@@ -76,11 +76,10 @@ const MenuPopup = observer(() => {
             }}
           >
             главная
+            <SvgArrowRight />
           </Link>
           <Link
-            className={clsx("h2", styles.link, styles.desktop, {
-              [styles.active]: isActive,
-            })}
+            className={clsx("h2", styles.link, styles.desktop, {})}
             href={"/services"}
             onMouseEnter={() => setActive(true)}
             onClick={() => {
@@ -112,7 +111,7 @@ const MenuPopup = observer(() => {
               document.body.style.position = "static";
             }}
           >
-            Портфолио
+            Портфолио <SvgArrowRight />
           </Link>
           <Link
             className={clsx("h2", styles.link)}
@@ -122,7 +121,7 @@ const MenuPopup = observer(() => {
               document.body.style.position = "static";
             }}
           >
-            О компании
+            О компании <SvgArrowRight />
           </Link>
 
           <Link
@@ -133,7 +132,7 @@ const MenuPopup = observer(() => {
               document.body.style.position = "static";
             }}
           >
-            Контакты
+            Контакты <SvgArrowRight />
           </Link>
         </div>
         <AnimatePresence>
@@ -154,7 +153,7 @@ const MenuPopup = observer(() => {
                   document.body.style.position = "static";
                 }}
               >
-                главная
+                главная <SvgArrowRight />
               </Link>
 
               <div
@@ -178,7 +177,7 @@ const MenuPopup = observer(() => {
                   document.body.style.position = "static";
                 }}
               >
-                Портфолио
+                Портфолио <SvgArrowRight />
               </Link>
 
               <Link
@@ -189,7 +188,7 @@ const MenuPopup = observer(() => {
                   document.body.style.position = "static";
                 }}
               >
-                О компании
+                О компании <SvgArrowRight />
               </Link>
 
               <Link
@@ -200,7 +199,7 @@ const MenuPopup = observer(() => {
                   document.body.style.position = "static";
                 }}
               >
-                Контакты
+                Контакты <SvgArrowRight />
               </Link>
             </m.div>
           )}
@@ -324,7 +323,7 @@ const MenuPopup = observer(() => {
             </m.div>
           )}
 
-          {isActive && (
+          {
             <m.div
               key={"side"}
               layout
@@ -407,7 +406,7 @@ const MenuPopup = observer(() => {
                 </div>
               </Link>
             </m.div>
-          )}
+          }
         </AnimatePresence>
 
         <div className={styles.info}>
@@ -415,30 +414,27 @@ const MenuPopup = observer(() => {
             <div className={styles.line}>
               <div className={clsx("body-2", styles.title)}>Телефон:</div>
               <Link
-                href={"tel:+375299999999"}
+                href={`tel:${info.phones[0]}`}
                 className={clsx("h4", styles.value)}
               >
-                +375 (29) 999-99-99
+                {info.phones[0]}
               </Link>
             </div>
 
             <div className={styles.line}>
               <div className={clsx("body-2", styles.title)}>Адрес офиса:</div>
-              <div
-                href={"tel:+375299999999"}
-                className={clsx("h4", styles.value)}
-              >
-                Российская федерация, г. Москва, ул. Ленина, 1
+              <div className={clsx("h4", styles.value)}>
+                Российская федерация, {info.address}
               </div>
             </div>
 
             <div className={styles.line}>
               <div className={clsx("body-2", styles.title)}>Email:</div>
               <Link
-                href={"mailto:info@interior.ru"}
+                href={`mailto:${info.email}`}
                 className={clsx("h4", styles.value)}
               >
-                info@interior.ru
+                {info.email}
               </Link>
             </div>
 
@@ -448,7 +444,7 @@ const MenuPopup = observer(() => {
               </div>
               <div className={styles.socials}>
                 <Link
-                  href={"wa.com"}
+                  href={info.whatsapp}
                   target="_blank"
                   className={styles.socialItem}
                 >
@@ -470,7 +466,7 @@ const MenuPopup = observer(() => {
                   </svg>
                 </Link>
                 <Link
-                  href={"instagram.com"}
+                  href={info.instagram}
                   target="_blank"
                   className={styles.socialItem}
                 >
@@ -489,7 +485,7 @@ const MenuPopup = observer(() => {
                   </svg>
                 </Link>
                 <Link
-                  href={"t.me"}
+                  href={info.telegram}
                   target="_blank"
                   className={styles.socialItem}
                 >

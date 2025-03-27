@@ -3,7 +3,7 @@ import styles from "./Footer.module.scss";
 import clsx from "clsx";
 import Logo from "@/components/Logo/Logo";
 
-const Footer = () => {
+const Footer = ({ info }) => {
   return (
     <footer className={styles.container}>
       <div className={styles.content}>
@@ -47,23 +47,26 @@ const Footer = () => {
 
           <div className={clsx("body-2", styles.line)}>
             Телефон:
-            <Link href="tel:+375299999999" className={clsx("h3", styles.value)}>
-              +375 (29) 999-99-99
+            <Link
+              href={`tel:${info.phones[0]}`}
+              className={clsx("h3", styles.value)}
+            >
+              {info.phones[0]}
             </Link>
           </div>
           <div className={clsx("body-2", styles.line)}>
             Email:
             <Link
-              href="mailto:info@interior.ru"
+              href={`mailto:${info.email}`}
               className={clsx("h3", styles.value)}
             >
-              info@interior.ru
+              {info.email}
             </Link>
           </div>
           <div className={clsx("body-2", styles.line)}>
             Адрес офиса:
             <div className={clsx("h3", styles.value)}>
-              Российская федерация, г. Москва, ул. Ленина, 1
+              Российская федерация, {info.address}
             </div>
           </div>
           <div className={clsx("body-2", styles.line)}>
@@ -71,7 +74,7 @@ const Footer = () => {
             <div className={clsx("h3", styles.value)}>
               <div className={styles.socials}>
                 <Link
-                  href={"wa.com"}
+                  href={info.whatsapp}
                   target="_blank"
                   className={styles.socialItem}
                 >
@@ -93,7 +96,7 @@ const Footer = () => {
                   </svg>
                 </Link>
                 <Link
-                  href={"instagram.com"}
+                  href={info.instagram}
                   target="_blank"
                   className={styles.socialItem}
                 >
@@ -112,7 +115,7 @@ const Footer = () => {
                   </svg>
                 </Link>
                 <Link
-                  href={"t.me"}
+                  href={info.telegram}
                   target="_blank"
                   className={styles.socialItem}
                 >
@@ -142,7 +145,9 @@ const Footer = () => {
             </Link>
             <div className={styles.dev}>
               Дизайн и разработка:{" "}
-              <Link href={"https://cropas.by"}>Cropas.by</Link>
+              <Link target="_blank" href={"https://cropas.by"}>
+                Cropas.by
+              </Link>
             </div>
           </div>
         </div>
@@ -155,7 +160,10 @@ const Footer = () => {
           Политика конфиденциальности{" "}
         </Link>
         <div className={styles.dev}>
-          Дизайн и разработка: <Link href={"https://cropas.by"}>Cropas.by</Link>
+          Дизайн и разработка:{" "}
+          <Link href={"https://cropas.by"} target="_blank">
+            Cropas.by
+          </Link>
         </div>
       </div>
     </footer>

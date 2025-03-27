@@ -1,3 +1,4 @@
+"use client";
 import clsx from "clsx";
 import styles from "./InlineButton.module.scss";
 import Link from "next/link";

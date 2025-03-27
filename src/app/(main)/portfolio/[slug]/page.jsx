@@ -10,7 +10,6 @@ import portfolio3 from "@/assets/images/portfolio4.png";
 import portfolio4 from "@/assets/images/portfolio5.png";
 import portfolio5 from "@/assets/images/portfolio6.png";
 import Image from "next/image";
-import CompareBlock from "@/blocks/CompareBlock/CompareBlock";
 import BackButton from "@/components/Buttons/BackButton/BackButton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useCallback, useRef } from "react";

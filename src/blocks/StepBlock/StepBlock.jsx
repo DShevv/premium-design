@@ -1,3 +1,4 @@
+"use client";
 import clsx from "clsx";
 import styles from "./StepBlock.module.scss";
 import { AnimatePresence, motion as m } from "motion/react";

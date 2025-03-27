@@ -1,4 +1,3 @@
-"use client";
 import Contacts from "@/blocks/Contacts/Contacts";
 import Feedback from "@/blocks/Feedback/Feedback";
 import styles from "./page.module.scss";
@@ -11,6 +10,26 @@ import image3 from "@/assets/images/rebuild-head.jpg";
 import image4 from "@/assets/images/works-1.png";
 import Image from "next/image";
 import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
+import { getSeoPage } from "@/services/getSeoPage";
+
+export async function generateMetadata() {
+  const { seo } = await getSeoPage("services");
+
+  return seo
+    ? {
+        title: seo.title || "Услуги",
+        description: seo.description,
+        keywords: seo.keywords,
+        alternates: {
+          canonical: process.env.HOME_URL,
+        },
+        openGraph: {
+          title: seo.og_title,
+          description: seo.og_description,
+        },
+      }
+    : {};
+}
 
 const page = () => {
   return (
@@ -46,7 +65,7 @@ const page = () => {
         </div>
 
         <div className={styles.container}>
-          <Link href={"design-project"} className={styles.item}>
+          <Link href={"/services/design-project"} className={styles.item}>
             <div className={styles.bg}>
               <Image src={image1} alt="" />
             </div>
@@ -54,7 +73,7 @@ const page = () => {
             <div className={clsx(styles.name, "h4")}>Дизайн-проект</div>
             <InlineButton className={styles.more}>Подробнее</InlineButton>
           </Link>
-          <Link href={"design-complect"} className={styles.item}>
+          <Link href={"/services/design-complect"} className={styles.item}>
             <div className={styles.bg}>
               <Image src={image2} alt="" />
             </div>
@@ -64,7 +83,7 @@ const page = () => {
             </div>
             <InlineButton className={styles.more}>Подробнее</InlineButton>
           </Link>
-          <Link href={"rebuild-project"} className={styles.item}>
+          <Link href={"/services/rebuild-project"} className={styles.item}>
             <div className={styles.bg}>
               <Image src={image3} alt="" />
             </div>
@@ -74,7 +93,7 @@ const page = () => {
             </div>
             <InlineButton className={styles.more}>Подробнее</InlineButton>
           </Link>
-          <Link href={"rebuild-complect"} className={styles.item}>
+          <Link href={"/services/rebuild-complect"} className={styles.item}>
             <div className={styles.bg}>
               <Image src={image4} alt="" />
             </div>

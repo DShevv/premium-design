@@ -44,6 +44,11 @@
 
 .header .dark {
   color: var(--bg);
+  mix-blend-mode: initial;
+}
+
+.header .dark {
+  color: var(--bg);
 }
 
 .header .dark svg {

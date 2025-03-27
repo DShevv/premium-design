@@ -3,6 +3,26 @@ import Feedback from "@/blocks/Feedback/Feedback";
 import styles from "./page.module.scss";
 import clsx from "clsx";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import { getSeoPage } from "@/services/getSeoPage";
+
+export async function generateMetadata() {
+  const { seo } = await getSeoPage("policy");
+
+  return seo
+    ? {
+        title: seo.title || "Политика",
+        description: seo.description,
+        keywords: seo.keywords,
+        alternates: {
+          canonical: process.env.HOME_URL,
+        },
+        openGraph: {
+          title: seo.og_title,
+          description: seo.og_description,
+        },
+      }
+    : {};
+}
 
 const page = () => {
   return (

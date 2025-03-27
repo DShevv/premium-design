@@ -166,7 +166,6 @@ const SearchInput = ({
   }, [value]);
 
   useEffect(() => {
-    console.log(isResult);
     setResults(isResult);
   }, [isResult]);
 
