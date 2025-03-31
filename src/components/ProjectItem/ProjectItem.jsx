@@ -35,7 +35,7 @@ const ProjectItem = ({ item, className }) => {
   const ref = useRef(null);
   const router = useRouter();
   const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
-
+  console.log(item);
   return (
     <>
       <div className={clsx(className, styles.desktop)}>
@@ -52,7 +52,7 @@ const ProjectItem = ({ item, className }) => {
           href={`/portfolio/${slugifyWithOpts(item.title)}_${item.id}`}
         >
           <Image
-            src={`${process.env.STORE_URL}/${item.image}`}
+            src={`${process.env.STORE_URL}/${item.photo_path}`}
             alt=""
             height={760}
             width={400}
@@ -79,7 +79,7 @@ const ProjectItem = ({ item, className }) => {
           href={`/portfolio/${slugifyWithOpts(item.title)}_${item.id}`}
         >
           <Image
-            src={`${process.env.STORE_URL}/${item.image}`}
+            src={`${process.env.STORE_URL}/${item.photo_path}`}
             alt=""
             height={760}
             width={400}
