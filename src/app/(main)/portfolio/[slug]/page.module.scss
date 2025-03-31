@@ -59,7 +59,6 @@
   padding: vw-1920(12) vw-1920(26) vw-1920(10) vw-1920(26);
   border: 1px solid var(--green-2);
   transition: all 0.2s ease;
-  cursor: pointer;
   color: var(--bg);
   white-space: nowrap;
 }
@@ -93,6 +92,22 @@
   color: var(--text);
 }
 
+.side h3 {
+  font-family: var(--font-family);
+  font-weight: 200;
+  font-size: vw-1920(18);
+  line-height: 130%;
+  margin-top: vw-1920(20);
+  margin-bottom: vw-1920(12);
+}
+
+.side p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: vw-1920(20);
+  line-height: 130%;
+}
+
 .line {
   margin-top: vw-1920(20);
   display: flex;
@@ -111,11 +126,11 @@
   gap: vw-1920(48);
 }
 
-.step:nth-child(2) {
+.step:nth-child(2n) {
   flex-direction: row-reverse;
 }
 
-.step:last-of-type {
+.step.last {
   flex-direction: column;
   gap: vw-1920(36);
 }
@@ -163,94 +178,6 @@
   margin-top: vw-1920(-16);
 }
 
-.swiperBlock {
-  position: relative;
-}
-
-.navigation {
-  position: absolute;
-  width: calc(100% + vw-1920(146));
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: space-between;
-  z-index: 5;
-}
-
-.next {
-  transform: rotate(180deg);
-}
-
-.navigation .next,
-.navigation .prev {
-  width: vw-1920(47);
-  height: vw-1920(47);
-}
-
-.navigation .next svg,
-.navigation .prev svg {
-  width: vw-1920(24);
-  height: vw-1920(24);
-}
-
-.swiperBlock > .pagination.paginationImportant {
-  position: absolute;
-  left: 50%;
-  bottom: vw-1920(36);
-  transform: translateX(-50%);
-  top: initial;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: fit-content;
-}
-
-.bullet {
-  background-color: transparent;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.bulletActive {
-  border: 1px solid rgba(251, 247, 244, 0.5);
-  width: 16px;
-  height: 16px;
-}
-
-.bullet::after {
-  content: "";
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: rgba(251, 247, 244, 0.5);
-  transition: all 0.2s ease;
-}
-
-.bullet.bulletActive::after {
-  width: 8px;
-  height: 8px;
-  background-color: var(--text);
-}
-
-.swiper {
-  height: vw-1920(700);
-}
-
-.slide img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
 @media (max-width: 1440px) {
   .wrapper {
     max-width: vw-1440(1200);
@@ -272,11 +199,6 @@
     gap: vw-1440(64);
     max-width: vw-1440(1200);
     margin-top: vw-1440(48);
-  }
-
-  .side {
-    flex: 0 0 vw-1440(384);
-    padding: vw-1440(32);
   }
 
   .line {
@@ -306,32 +228,20 @@
   .content .back {
     margin-top: 0;
   }
-
-  .navigation {
-    position: absolute;
-    width: calc(100% + vw-1440(146));
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: space-between;
-    z-index: 5;
+  .side {
+    flex: 0 0 vw-1440(384);
+    padding: vw-1440(32);
   }
 
-  .next {
-    transform: rotate(180deg);
+  .side h3 {
+    font-size: vw-1440(18);
+    margin-top: vw-1440(20);
+    margin-bottom: vw-1440(12);
   }
 
-  .navigation .next,
-  .navigation .prev {
-    width: vw-1440(47);
-    height: vw-1440(47);
-  }
-
-  .navigation .next svg,
-  .navigation .prev svg {
-    width: vw-1440(24);
-    height: vw-1440(24);
+  .side p {
+    font-family: var(--font-family);
+    font-size: vw-1440(20);
   }
 }
 
@@ -422,47 +332,18 @@
     height: auto;
   }
 
-  .navigation {
-    width: 102px;
-    top: calc(100% + 12px);
-    transform: none;
-    left: initial;
-    right: 0;
-  }
-
-  .navigation .next,
-  .navigation .prev {
-    width: 47px;
-    height: 47px;
-  }
-
-  .navigation .next svg,
-  .navigation .prev svg {
-    width: 24px;
-    height: 24px;
-  }
-
   .content .back {
     margin-top: 32px;
   }
 
-  .swiperBlock .pagination.paginationImportant {
-    top: calc(100% + 15px);
-    bottom: initial;
-    left: 0px;
-    right: initial;
-    transform: none;
+  .side h3 {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 12px;
   }
 
-  .bulletActive {
-    border: 1px solid rgba(11, 61, 62, 0.5);
-  }
-
-  .bullet::after {
-    background-color: rgba(11, 61, 62, 0.5);
-  }
-
-  .bullet.bulletActive::after {
-    background-color: var(--green-1);
+  .side p {
+    font-family: var(--font-family);
+    font-size: 17px;
   }
 }

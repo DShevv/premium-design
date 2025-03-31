@@ -11,7 +11,7 @@ import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import ProjectItem from "../../components/ProjectItem/ProjectItem";
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import ArrowButton from "@/components/Buttons/ArrowButton/ArrowButton";
 
 const items = [
@@ -39,6 +39,7 @@ const items = [
 
 const OurProjects = ({ title }) => {
   const sliderRef = useRef(null);
+  const [slides, setSlides] = useState([]);
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
@@ -48,6 +49,18 @@ const OurProjects = ({ title }) => {
   const handleNext = useCallback(() => {
     if (!sliderRef.current) return;
     sliderRef.current.swiper.slideNext();
+  }, []);
+
+  useEffect(() => {
+    async function fetchPortfolio() {
+      const posts = await fetch(`${process.env.API_URL}/v1/portfolio`).then(
+        (res) => res.json()
+      );
+
+      setSlides(posts.data);
+    }
+
+    fetchPortfolio();
   }, []);
 
   return (
@@ -82,7 +95,7 @@ const OurProjects = ({ title }) => {
           loop={true}
           className={styles.swiper}
         >
-          {items.map((elem, index) => (
+          {slides.map((elem, index) => (
             <SwiperSlide key={index} className={styles.slide}>
               <ProjectItem item={elem} />
             </SwiperSlide>
@@ -90,7 +103,7 @@ const OurProjects = ({ title }) => {
         </Swiper>
 
         <div className={styles.mobileContainer}>
-          {items.map((elem, index) => (
+          {slides.map((elem, index) => (
             <ProjectItem key={index} item={elem} />
           ))}
         </div>

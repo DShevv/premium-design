@@ -1,4 +1,3 @@
-"use client";
 import Feedback from "@/blocks/Feedback/Feedback";
 import styles from "./page.module.scss";
 import clsx from "clsx";
@@ -11,25 +10,51 @@ import portfolio4 from "@/assets/images/portfolio5.png";
 import portfolio5 from "@/assets/images/portfolio6.png";
 import Image from "next/image";
 import BackButton from "@/components/Buttons/BackButton/BackButton";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useCallback, useRef } from "react";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
 import ArrowButton from "@/components/Buttons/ArrowButton/ArrowButton";
+import PortfolioSlider from "@/blocks/PortfolioSlider/PortfolioSlider";
+import { slugifyWithOpts } from "@/utils/helper";
+import { parsePortfolioContent } from "@/utils/parsePortfolioContent";
 
-const page = () => {
-  const sliderRef = useRef(null);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const seo = await fetch(
+    `${process.env.API_URL}/v1/portfolio/${slug.split("_")[1]}`
+  ).then((res) => res.json());
 
-  const handlePrev = useCallback(() => {
-    if (!sliderRef.current) return;
-    sliderRef.current.swiper.slidePrev();
-  }, []);
+  return seo
+    ? {
+        title: seo.title || "Портфолио",
+        description: seo.subtitle,
+        keywords: seo.keywords ?? "",
+        alternates: {
+          canonical: process.env.HOME_URL,
+        },
+        openGraph: {
+          title: seo.title || "Портфолио",
+          description: seo.subtitle,
+        },
+      }
+    : {};
+}
 
-  const handleNext = useCallback(() => {
-    if (!sliderRef.current) return;
-    sliderRef.current.swiper.slideNext();
-  }, []);
+export async function generateStaticParams() {
+  const posts = await fetch(`${process.env.API_URL}/v1/portfolio`).then((res) =>
+    res.json()
+  );
+  console.log(posts);
+  return posts.data.map((post) => ({
+    slug: `${slugifyWithOpts(post.title)}_${post.id}`,
+  }));
+}
+
+const page = async ({ params }) => {
+  const { slug } = await params;
+  const workCase = await fetch(
+    `${process.env.API_URL}/v1/portfolio/${slug.split("_")[1]}`
+  ).then((res) => res.json());
+  const parsedContent = parsePortfolioContent(workCase.content);
+  console.log(parsedContent);
+  console.log(workCase);
 
   return (
     <>
@@ -88,7 +113,8 @@ const page = () => {
           </p>
           <div className={styles.side}>
             <h3 className={clsx("h3")}>О проекте</h3>
-            <div className={clsx("body-1-regular", styles.line)}>
+            <div dangerouslySetInnerHTML={{ __html: workCase.about }}></div>
+            {/*     <div className={clsx("body-1-regular", styles.line)}>
               <span className="body-2">Название проекта:</span>
               Загородный дом в Подмосковье
             </div>
@@ -107,12 +133,48 @@ const page = () => {
             <div className={clsx("body-1-regular", styles.line)}>
               <span className="body-2">Период проектирования:</span>
               01.01.2024-01.01.2025
-            </div>
+            </div> */}
           </div>
         </div>
 
         <div className={styles.content}>
-          <div className={styles.step}>
+          {parsedContent.map((item, index) => {
+            if (item.img) {
+              return (
+                <div className={styles.step} key={index}>
+                  <Image src={item.img} alt="" width={500} height={300} />
+                  <div className={styles.text}>
+                    <h4>{item.title}</h4>
+                    <p>{item.text}</p>
+                  </div>
+                </div>
+              );
+            }
+
+            if (!item.img) {
+              return (
+                <div className={clsx(styles.step, styles.last)} key={index}>
+                  {item.text && (
+                    <div className={styles.text}>
+                      <h4>{item.title}</h4>
+                      <p>{item.text}</p>
+                    </div>
+                  )}
+                  <PortfolioSlider items={workCase.gallery_images} />
+                </div>
+              );
+            }
+
+            return (
+              <div className={styles.step} key={index}>
+                <div className={styles.text}>
+                  <h4>{item.title}</h4>
+                  <p>{item.text}</p>
+                </div>
+              </div>
+            );
+          })}
+          {/*  <div className={styles.step}>
             <Image src={portfolio1} alt="" />
             <div className={styles.text}>
               <h4>Шаг 1: Сбор информации и анализ потребностей</h4>
@@ -164,55 +226,8 @@ const page = () => {
               </p>
             </div>
 
-            <div className={styles.swiperBlock}>
-              <Swiper
-                slidesPerView={1}
-                ref={sliderRef}
-                className={styles.swiper}
-                modules={[Pagination]}
-                pagination={{
-                  el: ".swiper-pagination", // Use a valid DOM element here
-                  type: "bullets",
-                  clickable: true,
-                  bulletClass: `${styles.bullet}`,
-                  bulletActiveClass: `${styles.bulletActive}`,
-                }}
-              >
-                <SwiperSlide className={styles.slide}>
-                  <Image src={portfolio1} alt="" />
-                </SwiperSlide>
-                <SwiperSlide className={styles.slide}>
-                  <Image src={portfolio2} alt="" />
-                </SwiperSlide>
-                <SwiperSlide className={styles.slide}>
-                  <Image src={portfolio3} alt="" />
-                </SwiperSlide>
-                <SwiperSlide className={styles.slide}>
-                  <Image src={portfolio4} alt="" />
-                </SwiperSlide>
-                <SwiperSlide className={styles.slide}>
-                  <Image src={portfolio5} alt="" />
-                </SwiperSlide>
-              </Swiper>
-              <div
-                className={clsx(
-                  "swiper-pagination",
-                  styles.pagination,
-                  styles.paginationImportant
-                )}
-              ></div>
-              <div className={styles.navigation}>
-                <ArrowButton
-                  className={clsx(styles.prev)}
-                  onClick={handlePrev}
-                />
-                <ArrowButton
-                  className={clsx(styles.next)}
-                  onClick={handleNext}
-                />
-              </div>
-            </div>
-          </div>
+            <PortfolioSlider items={workCase.gallery_images} />
+          </div> */}
 
           <BackButton type="link" href={"/portfolio"} className={styles.back}>
             К портфолио

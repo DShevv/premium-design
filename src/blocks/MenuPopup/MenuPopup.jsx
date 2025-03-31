@@ -12,6 +12,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion as m } from "motion/react";
 import service1 from "@/assets/images/services-1.png";
 import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
+import MenuButton from "@/components/Buttons/MenuButton/MenuButton";
 
 const MenuPopup = observer(({ info }) => {
   const { popupStore } = globalStore;
@@ -63,12 +64,23 @@ const MenuPopup = observer(({ info }) => {
       className={clsx(styles.bgWrapper, { [styles.active]: menu })}
       onClick={(e) => {
         setActive(false);
+        closePopup("menu");
       }}
     >
-      <div className={clsx(styles.container, { [styles.active]: isActive })}>
-        <div className={clsx(styles.menu, styles.desktop)}>
+      <div
+        className={clsx(styles.container, { [styles.active]: isActive })}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <MenuButton
+          className={clsx(styles.menuButton, {
+            [styles.dark]: menu,
+          })}
+          onClick={() => closePopup("menu")}
+          isOpened={menu}
+        ></MenuButton>
+        <div className={clsx(styles.menu)}>
           <Link
-            className={clsx("h2", styles.link)}
+            className={clsx("h3", styles.link)}
             href={"/"}
             onClick={() => {
               closePopup("menu");
@@ -76,10 +88,9 @@ const MenuPopup = observer(({ info }) => {
             }}
           >
             главная
-            <SvgArrowRight />
           </Link>
           <Link
-            className={clsx("h2", styles.link, styles.desktop, {})}
+            className={clsx("h3", styles.link)}
             href={"/services"}
             onMouseEnter={() => setActive(true)}
             onClick={() => {
@@ -88,10 +99,9 @@ const MenuPopup = observer(({ info }) => {
             }}
           >
             Услуги
-            <SvgArrowRight />
           </Link>
-          <m.div
-            className={clsx("h2", styles.link, styles.laptop, {
+          {/*   <m.div
+            className={clsx("h3", styles.link, styles.laptop, {
               [styles.active]: isActive,
             })}
             href={"/services"}
@@ -101,41 +111,40 @@ const MenuPopup = observer(({ info }) => {
             }}
           >
             Услуги
-            <SvgArrowRight />
-          </m.div>
+          </m.div> */}
           <Link
-            className={clsx("h2", styles.link)}
+            className={clsx("h3", styles.link)}
             href={"/portfolio"}
             onClick={() => {
               closePopup("menu");
               document.body.style.position = "static";
             }}
           >
-            Портфолио <SvgArrowRight />
+            Портфолио
           </Link>
           <Link
-            className={clsx("h2", styles.link)}
+            className={clsx("h3", styles.link)}
             href={"/about"}
             onClick={() => {
               closePopup("menu");
               document.body.style.position = "static";
             }}
           >
-            О компании <SvgArrowRight />
+            О компании
           </Link>
 
           <Link
-            className={clsx("h2", styles.link)}
+            className={clsx("h3", styles.link)}
             href={"/contacts"}
             onClick={() => {
               closePopup("menu");
               document.body.style.position = "static";
             }}
           >
-            Контакты <SvgArrowRight />
+            Контакты
           </Link>
         </div>
-        <AnimatePresence>
+        {/*  <AnimatePresence>
           {!isActive && (
             <m.div
               layout
@@ -407,7 +416,7 @@ const MenuPopup = observer(({ info }) => {
               </Link>
             </m.div>
           }
-        </AnimatePresence>
+        </AnimatePresence> */}
 
         <div className={styles.info}>
           <div className={styles.contacts}>
@@ -508,9 +517,9 @@ const MenuPopup = observer(({ info }) => {
               </div>
             </div>
           </div>
-          <CircleButton dark={true} onClick={() => openPopup("feedback")}>
+          {/* <CircleButton dark={true} onClick={() => openPopup("feedback")}>
             Оставить Заявку
-          </CircleButton>
+          </CircleButton> */}
         </div>
       </div>
     </div>

@@ -43,77 +43,6 @@
   color: var(--text);
 }
 
-.service {
-  padding: vw-1920(24);
-  padding-bottom: vw-1920(48);
-  display: flex;
-  text-decoration: none;
-  justify-content: flex-start;
-  align-items: flex-end;
-  position: relative;
-  width: 100%;
-  border-bottom: 1px solid rgba(18, 19, 24, 0.2);
-  transition: all 0.2s ease;
-}
-
-.serviceBg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: calc(100% - vw-1920(24));
-  opacity: 0;
-  transition: all 0.2s ease;
-}
-
-.serviceBg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  position: relative;
-}
-
-.serviceBg::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(11, 11, 11, 0.6);
-  z-index: 2;
-}
-
-.caption {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  gap: vw-1920(8);
-  align-items: flex-start;
-  color: var(--bg);
-  opacity: 1;
-  transition: all 0.2s ease;
-  width: 100%;
-}
-
-.caption span {
-}
-
-.service:hover .serviceBg {
-  opacity: 1;
-}
-
-.service:hover .caption {
-  opacity: 1;
-  color: var(--text);
-}
-
-.link.active {
-  color: var(--bg);
-}
-
 .container {
   max-width: vw-1920(1630);
   margin: 0 auto;
@@ -121,33 +50,6 @@
   gap: vw-1920(72);
   margin-top: vw-1920(90);
   position: relative;
-}
-
-.side {
-  position: sticky;
-  top: 20px;
-  left: 0;
-  flex: 0 0 vw-1920(388);
-  width: 100%;
-  overflow: hidden;
-  height: fit-content;
-}
-
-.items {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: vw-1920(24);
-}
-
-.sideTitle {
-  color: var(--bg);
-  text-align: center;
-  margin-bottom: vw-1920(36);
-}
-
-.caption .more {
-  color: var(--beige);
 }
 
 .content {
@@ -193,40 +95,12 @@
     padding-bottom: vw-1440(48);
   }
 
-  .service {
-    padding: vw-1440(24);
-    padding-bottom: vw-1440(48);
-  }
-
   .container {
     max-width: vw-1440(1200);
     margin: 0 auto;
     display: flex;
     gap: vw-1440(36);
     margin-top: vw-1440(48);
-  }
-
-  .side {
-    flex: 0 0 vw-1440(388);
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .items {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: vw-1440(24);
-  }
-
-  .sideTitle {
-    color: var(--bg);
-    text-align: center;
-    margin-bottom: vw-1440(36);
-  }
-
-  .caption .more {
-    color: var(--beige);
   }
 
   .content {
@@ -279,60 +153,6 @@
     padding-bottom: 12px;
     max-width: calc(100% - 40px);
     margin: 0 auto;
-  }
-
-  .side {
-    flex: initial;
-  }
-
-  .side .service {
-    border: none;
-
-    border-bottom: 1px solid var(--bg);
-    height: fit-content;
-    padding: 24px;
-    padding-bottom: 48px;
-  }
-
-  .caption {
-    flex-direction: column;
-    gap: 20px;
-    opacity: 1;
-
-    align-items: flex-start;
-  }
-
-  .caption span {
-    max-width: 100%;
-  }
-
-  .caption br {
-    display: none;
-  }
-
-  .serviceBg {
-    height: calc(100% - 20px);
-  }
-
-  .caption .more {
-    display: flex;
-    color: var(--beige);
-  }
-
-  .caption .arrow {
-    display: none;
-  }
-
-  .activeService .caption span {
-    transition: all 0.3s ease;
-  }
-
-  .activeService .caption span {
-    color: var(--text);
-  }
-
-  .activeService .serviceBg {
-    opacity: 1;
   }
 
   .content {

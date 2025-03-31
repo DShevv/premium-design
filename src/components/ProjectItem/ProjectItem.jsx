@@ -42,16 +42,21 @@ const ProjectItem = ({ item, className }) => {
         <m.a
           onClick={(e) => {
             e.preventDefault();
-            router.push(`/portfolio/${slugifyWithOpts(item.title)}`);
+            router.push(`/portfolio/${slugifyWithOpts(item.title)}_${item.id}`);
           }}
           ref={ref}
           className={clsx(styles.item, styles.desktop)}
           whileHover={"hover"}
           animate={"rest"}
           initial={"rest"}
-          href={`/portfolio/${slugifyWithOpts(item.title)}`}
+          href={`/portfolio/${slugifyWithOpts(item.title)}_${item.id}`}
         >
-          <Image src={item.image} alt="" />
+          <Image
+            src={`${process.env.STORE_URL}/${item.image}`}
+            alt=""
+            height={760}
+            width={400}
+          />
 
           <m.div className={styles.caption} variants={itemVariants}>
             <div className={clsx("body-2", styles.tag)}>{item.tag}</div>
@@ -64,16 +69,21 @@ const ProjectItem = ({ item, className }) => {
         <m.a
           onClick={(e) => {
             e.preventDefault();
-            router.push(`/portfolio/${slugifyWithOpts(item.title)}`);
+            router.push(`/portfolio/${slugifyWithOpts(item.title)}_${item.id}`);
           }}
           ref={ref}
           className={clsx(styles.item, styles.mobile)}
           whileHover={"hover"}
           animate={isInView ? "hover" : "rest"}
           initial={"rest"}
-          href={`/portfolio/${slugifyWithOpts(item.title)}`}
+          href={`/portfolio/${slugifyWithOpts(item.title)}_${item.id}`}
         >
-          <Image src={item.image} alt="" />
+          <Image
+            src={`${process.env.STORE_URL}/${item.image}`}
+            alt=""
+            height={760}
+            width={400}
+          />
 
           <m.div className={styles.caption} variants={itemVariants}>
             <div className={clsx("body-2", styles.tag)}>{item.tag}</div>

@@ -11,6 +11,7 @@ import image4 from "@/assets/images/works-1.png";
 import Image from "next/image";
 import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
 import { getSeoPage } from "@/services/getSeoPage";
+import { slugifyWithOpts } from "@/utils/helper";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("services");
@@ -31,7 +32,11 @@ export async function generateMetadata() {
     : {};
 }
 
-const page = () => {
+const page = async () => {
+  const services = await fetch(
+    `${process.env.API_URL}/v1/additional-services`
+  ).then((res) => res.json());
+  console.log(services);
   return (
     <>
       <div className={styles.wrapper}>
@@ -103,6 +108,32 @@ const page = () => {
             </div>
             <InlineButton className={styles.more}>Подробнее</InlineButton>
           </Link>
+          {services &&
+            services.map((elem) => {
+              console.log(
+                `${process.env.STORE_URL}/storage/${elem.photo_path}`
+              );
+              return (
+                <Link
+                  key={elem.id}
+                  href={`/services/${slugifyWithOpts(elem.title)}_${elem.id}`}
+                  className={styles.item}
+                >
+                  <div className={styles.bg}>
+                    <Image
+                      src={`${process.env.STORE_URL}/storage/${elem.photo_path}`}
+                      alt=""
+                      width={940}
+                      height={300}
+                      unoptimized={true}
+                    />
+                  </div>
+
+                  <div className={clsx(styles.name, "h4")}>{elem.title}</div>
+                  <InlineButton className={styles.more}>Подробнее</InlineButton>
+                </Link>
+              );
+            })}
         </div>
       </div>
     </>

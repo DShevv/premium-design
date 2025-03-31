@@ -17,35 +17,7 @@ const tags = [
   "Ремонт под ключ",
 ];
 
-const items = [
-  {
-    image: picture1,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-  {
-    image: picture2,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-  {
-    image: picture3,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-  {
-    image: picture1,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-  {
-    image: picture1,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-];
-
-const PortfolioSort = () => {
+const PortfolioSort = ({ items }) => {
   const [currentTag, setTag] = useState(tags[0]);
 
   return (
@@ -77,7 +49,12 @@ const PortfolioSort = () => {
         {items.map((elem, index) => (
           <ProjectItem
             key={index}
-            item={elem}
+            item={{
+              title: elem.title,
+              id: elem.id,
+              tag: elem.tag,
+              image: elem.photo_path,
+            }}
             className={clsx(styles.item, styles.wide, {
               [styles.right]: index % 2 === 1,
             })}

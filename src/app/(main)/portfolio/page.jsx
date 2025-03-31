@@ -26,7 +26,12 @@ export async function generateMetadata() {
     : {};
 }
 
-const page = () => {
+const page = async () => {
+  const posts = await fetch(`${process.env.API_URL}/v1/portfolio`).then((res) =>
+    res.json()
+  );
+  console.log(posts);
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -43,7 +48,7 @@ const page = () => {
             },
           ]}
         />
-        <PortfolioSort />
+        <PortfolioSort items={posts.data} />
         <div className={styles.pagination}>
           <Pagination max={8} maxPerView={4} current={1} />
         </div>

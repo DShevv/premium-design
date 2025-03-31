@@ -66,7 +66,7 @@ const Services = () => {
 
         <CircleButton
           type="link"
-          href={`/services/1`}
+          href={`/services/design-project`}
           centered={true}
           className={styles.button}
         >
@@ -90,7 +90,7 @@ const Services = () => {
 
         <CircleButton
           type="link"
-          href={`/services/1`}
+          href={`/services/design-complect`}
           centered={true}
           className={styles.button}
         >
@@ -112,7 +112,7 @@ const Services = () => {
 
         <CircleButton
           type="link"
-          href={`/services/1`}
+          href={`/services/rebuild-project`}
           centered={true}
           className={styles.button}
         >
@@ -134,7 +134,7 @@ const Services = () => {
 
         <CircleButton
           type="link"
-          href={`/services/1`}
+          href={`/services/rebuild-complect`}
           centered={true}
           className={styles.button}
         >
