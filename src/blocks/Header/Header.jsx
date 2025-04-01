@@ -29,7 +29,7 @@ const Header = observer(({ info }) => {
   const toggleMenu = () => {
     if (window && menu) {
       document.body.style.position = "static";
-      document.body.style.overflowY = "auto";
+      document.body.style.overflowY = "";
     }
     if (window && !menu) {
       document.body.style.overflowY = "scroll";
@@ -39,17 +39,45 @@ const Header = observer(({ info }) => {
   };
 
   useEffect(() => {
+    if (
+      (pathname.includes("portfolio") && pathname.split("/").length > 2) ||
+      pathname.length === 1 ||
+      (pathname.includes("services") && pathname.split("/").length > 2)
+    ) {
+      setFixed(false);
+    } else {
+      console.log("isDark " + isDark, "fixed false");
+      setFixed(true);
+    }
+
     const handleScroll = () => {
-      if (window.scrollY > 1000) {
-        setFixed(true);
+      if (window.screenX < 769) {
+        if (window.scrollY > 50) {
+          setFixed(true);
+          return;
+        } else {
+          if (
+            (pathname.includes("portfolio") &&
+              pathname.split("/").length > 2) ||
+            pathname.length === 1 ||
+            (pathname.includes("services") && pathname.split("/").length > 2)
+          ) {
+            setFixed(false);
+          }
+          return;
+        }
       } else {
-        setFixed(false);
+        if (window.scrollY > 1000) {
+          setFixed(true);
+        } else {
+          setFixed(false);
+        }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   return (
     <m.header
@@ -71,7 +99,7 @@ const Header = observer(({ info }) => {
         </MenuButton>
 
         <Logo
-          className={clsx({
+          className={clsx(styles.logo, {
             [styles.dark]: menu || isDark,
           })}
         >
@@ -99,7 +127,7 @@ const Header = observer(({ info }) => {
               </Link>
               <SearchButton
                 className={clsx(styles.search, {
-                  [styles.dark]: isDark,
+                  [styles.dark]: isDark || isFixed,
                 })}
                 onClick={() => openPopup("search")}
               />

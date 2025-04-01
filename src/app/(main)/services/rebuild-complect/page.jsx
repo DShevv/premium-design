@@ -21,6 +21,7 @@ import ConfigRevenue from "@/blocks/ConfigRevenue/ConfigRevenue";
 import CompareBlock from "@/blocks/CompareBlock/CompareBlock";
 import ComfortWorkRebuild from "@/blocks/ComfortWorkRebuild/ComfortWorkRebuild";
 import { getSeoPage } from "@/services/getSeoPage";
+import DesignDrop from "@/blocks/DesignDrop/DesignDrop";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("rebuild-complect");
@@ -124,7 +125,9 @@ const page = async () => {
         </CircleButton>
       </div>
 
-      <DesignSlider
+      <DesignDrop />
+
+      {/*  <DesignSlider
         items={[
           {
             image: image1,
@@ -145,7 +148,7 @@ const page = async () => {
             text: `Это позволяет заказчику сэкономить средства без потери качеств.`,
           },
         ]}
-      />
+      /> */}
 
       <ComfortWorkRebuild />
 

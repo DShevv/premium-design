@@ -115,6 +115,10 @@
     width: vw-1440(24);
     height: vw-1440(24);
   }
+
+  .swiper {
+    height: vw-1440(700);
+  }
 }
 
 @media (max-width: 768px) {
@@ -124,6 +128,10 @@
     transform: none;
     left: initial;
     right: 0;
+  }
+
+  .swiper {
+    height: 200px;
   }
 
   .navigation .next,

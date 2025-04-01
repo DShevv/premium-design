@@ -306,6 +306,8 @@
   .menuButton {
     top: vw-1440(32);
     left: vw-1440(32);
+    z-index: -1;
+    opacity: 0;
   }
 
   .service {
@@ -371,6 +373,8 @@
     padding-top: 95px;
     gap: 32px;
     padding-left: 20px;
+    height: fit-content;
+    min-height: 100dvh;
   }
   .line {
     max-width: 418px;

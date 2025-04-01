@@ -7,22 +7,26 @@ import Notification from "@/components/Notification/Notification";
 import { getSeoPage } from "@/services/getSeoPage";
 
 export async function generateMetadata() {
-  const { seo } = await getSeoPage("main");
+  try {
+    const { seo } = await getSeoPage("main");
 
-  return seo
-    ? {
-        title: seo.title,
-        description: seo.description,
-        keywords: seo.keywords,
-        alternates: {
-          canonical: process.env.HOME_URL,
-        },
-        openGraph: {
+    return seo
+      ? {
           title: seo.title,
           description: seo.description,
-        },
-      }
-    : {};
+          keywords: seo.keywords,
+          alternates: {
+            canonical: process.env.HOME_URL,
+          },
+          openGraph: {
+            title: seo.title,
+            description: seo.description,
+          },
+        }
+      : {};
+  } catch (error) {
+    return {};
+  }
 }
 
 export default async function Layout({ children }) {

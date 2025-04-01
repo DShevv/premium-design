@@ -20,7 +20,6 @@ const PopularFaq = () => {
 
         <div className={styles.content}>
           <AccordionItem
-            isOpened={true}
             title={"На каком этапе происходит комплектация интерьера?"}
           >
             Чаще всего комплектация интерьера происходит после завершения

@@ -36,7 +36,6 @@ const page = async () => {
   const services = await fetch(
     `${process.env.API_URL}/v1/additional-services`
   ).then((res) => res.json());
-  console.log(services);
   return (
     <>
       <div className={styles.wrapper}>

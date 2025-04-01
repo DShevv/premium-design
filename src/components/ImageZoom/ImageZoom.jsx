@@ -7,7 +7,7 @@ import { AnimatePresence, motion as m } from "motion/react";
 
 const AnimatedImage = m.create(Image);
 
-const ImageZoom = ({ src, zoom = 2, className }) => {
+const ImageZoom = ({ src, zoom = 1.2, className }) => {
   const [position, setPosition] = useState({ x: 0, y: 0, visible: false });
   const containerRef = useRef(null);
 
@@ -19,9 +19,17 @@ const ImageZoom = ({ src, zoom = 2, className }) => {
     const x = ((e.clientX - left) / width) * 100;
     const y = ((e.clientY - top) / height) * 100;
 
+    const maxOffset = ((zoom - 1) * 100) / 2;
+
     setPosition({
-      x: Math.min(50, Math.max(-50, 50 - x)),
-      y: Math.min(50, Math.max(-50, 50 - y)),
+      x: Math.min(
+        maxOffset,
+        Math.max(-maxOffset, maxOffset - x * (maxOffset / 50))
+      ),
+      y: Math.min(
+        maxOffset,
+        Math.max(-maxOffset, maxOffset - y * (maxOffset / 50))
+      ),
       visible: true,
     });
   };
@@ -83,7 +91,7 @@ const ImageZoom = ({ src, zoom = 2, className }) => {
                 position: "absolute",
                 top: `${position.y}%`,
                 left: `${position.x}%`,
-                transform: `scale(${zoom})`,
+                transform: `scale(${position.visible ? zoom : 1})`,
                 width: "100%",
                 height: "100%",
               }}

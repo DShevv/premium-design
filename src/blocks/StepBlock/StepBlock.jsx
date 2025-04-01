@@ -3,6 +3,7 @@ import clsx from "clsx";
 import styles from "./StepBlock.module.scss";
 import { AnimatePresence, motion as m } from "motion/react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const AnimatedImage = m.create(Image);
 
@@ -95,6 +96,18 @@ const variantsTextReversed = {
 };
 
 const StepBlock = ({ image, subtitle, title, children, isReversed }) => {
+  const [isMobile, setMobile] = useState();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setMobile(window.innerWidth < 768);
+    }
+  }, []);
+
+  if (isMobile === undefined) {
+    return <></>;
+  }
+
   return (
     <section
       className={clsx(styles.container, { [styles.reversed]: isReversed })}
@@ -103,8 +116,7 @@ const StepBlock = ({ image, subtitle, title, children, isReversed }) => {
         <AnimatedImage
           viewport={{ once: true }}
           variants={isReversed ? variantsReversed : variants}
-          initial="initial"
-          whileInView="animate"
+          initial="animate"
           src={image}
           alt=""
           className={styles.image}
@@ -113,7 +125,7 @@ const StepBlock = ({ image, subtitle, title, children, isReversed }) => {
           className={clsx(styles.caption, styles.desktop)}
           viewport={{ once: true }}
           variants={isReversed ? variantsTextReversed : variantsText}
-          initial="initial"
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
         >
           <div className={clsx("body-1", styles.subtitle)}>{subtitle}</div>
@@ -124,7 +136,7 @@ const StepBlock = ({ image, subtitle, title, children, isReversed }) => {
           className={clsx(styles.caption, styles.mobile)}
           viewport={{ once: true }}
           variants={isReversed ? variants : variantsReversed}
-          initial="initial"
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
         >
           <div className={clsx("body-1", styles.subtitle)}>{subtitle}</div>

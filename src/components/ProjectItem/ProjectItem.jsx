@@ -35,7 +35,6 @@ const ProjectItem = ({ item, className }) => {
   const ref = useRef(null);
   const router = useRouter();
   const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
-  console.log(item);
   return (
     <>
       <div className={clsx(className, styles.desktop)}>

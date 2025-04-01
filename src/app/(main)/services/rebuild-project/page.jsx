@@ -22,6 +22,7 @@ import image3 from "@/assets/images/hero-light.png";
 import CompareBlock from "@/blocks/CompareBlock/CompareBlock";
 import ComfortWork from "@/blocks/ComfortWork/ComfortWork";
 import { getSeoPage } from "@/services/getSeoPage";
+import DesignDrop from "@/blocks/DesignDrop/DesignDrop";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("rebuild-project");
@@ -132,7 +133,9 @@ const page = async () => {
         </CircleButton>
       </div>
 
-      <DesignSlider
+      <DesignDrop />
+
+      {/* <DesignSlider
         title={"Как проходят работы по ремонту"}
         items={[
           {
@@ -154,7 +157,7 @@ const page = async () => {
             text: `Мы выезжаем на объект для  тщательного анализа,  этапов проектирования и реализации.`,
           },
         ]}
-      />
+      /> */}
 
       <ComfortWork />
 

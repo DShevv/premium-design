@@ -106,10 +106,14 @@
 
 @media (max-width: 768px) {
   .header {
-    position: fixed;
+    position: absolute;
     padding: 16px 20px;
     height: auto;
     width: 100%;
+  }
+
+  .header.fixed {
+    position: fixed;
     background-color: var(--text);
   }
 
@@ -138,8 +142,8 @@
 
   .link {
     border-radius: 50%;
-    border: 1px solid var(--bg);
-    color: var(--bg);
+    border: 1px solid var(--text);
+    color: var(--text);
     width: 47px;
     height: 47px;
     display: flex;
@@ -148,7 +152,18 @@
     mix-blend-mode: initial;
   }
 
+  .fixed .link,
+  .opened .link {
+    border: 1px solid var(--bg);
+    color: var(--bg);
+  }
+
   .link svg {
+    color: var(--text);
+  }
+
+  .fixed .link svg,
+  .opened .link svg {
     color: var(--bg);
   }
 
@@ -158,27 +173,54 @@
 
   .phone {
     width: 24px;
-    color: var(--bg);
-    border-color: var(--bg);
+    color: var(--text);
+    border-color: var(--text);
     height: 24px;
   }
 
-  .phone {
+  .fixed .phone,
+  .opened .phone {
+    color: var(--bg);
     border-color: var(--bg);
   }
 
-  .link {
-    color: var(--bg);
+  .phone {
+    border-color: var(--text);
+  }
+
+  .fixed .phone,
+  .opened .phone {
     border-color: var(--bg);
   }
 
   .header .search {
+    border-color: var(--text);
+    color: var(--text);
+  }
+
+  .header.fixed .search,
+  .header.opened .search {
     border-color: var(--bg);
     color: var(--bg);
   }
 
   .wrapper .menu > div {
+    border-color: var(--text);
+    color: var(--text);
+  }
+
+  .fixed .wrapper .menu > div,
+  .opened .wrapper .menu > div {
     border-color: var(--bg);
+    color: var(--bg);
+  }
+
+  .header .logo {
+    color: var(--text);
+  }
+
+  .fixed .logo,
+  .opened .logo {
     color: var(--bg);
   }
 }

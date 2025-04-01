@@ -30,7 +30,6 @@ const page = async () => {
   const posts = await fetch(`${process.env.API_URL}/v1/portfolio`).then((res) =>
     res.json()
   );
-  console.log(posts);
 
   return (
     <>

@@ -31,6 +31,7 @@
 .lists {
   display: flex;
   gap: vw-1920(26);
+  position: relative;
 }
 
 .item {
@@ -39,11 +40,25 @@
   overflow: hidden;
   position: relative;
   background: var(--dark-grey);
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+    height: vw-1920(150);
+    background: linear-gradient(180deg, rgba(39, 40, 45, 0) 0%, #27282d 100%);
+    pointer-events: none;
+    max-width: vw-1920(369);
+  }
 }
 
 .scrollContainer {
   overflow-y: auto;
   height: 100%;
+  position: relative;
 }
 
 .bg {
@@ -76,6 +91,7 @@
   position: relative;
   z-index: 3;
   padding: vw-1920(32);
+  padding-bottom: vw-1920(100);
   height: fit-content;
   max-width: vw-1920(369);
 }
@@ -84,10 +100,6 @@
   display: flex;
   flex-direction: column;
   gap: vw-1920(12);
-  background: linear-gradient(180deg, #fbf7f4 0%, rgba(251, 247, 244, 0.5) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .text ul,
@@ -162,6 +174,19 @@
     overflow: hidden;
     position: relative;
     background: var(--dark-grey);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 4;
+      height: vw-1440(150);
+      background: linear-gradient(180deg, rgba(39, 40, 45, 0) 0%, #27282d 100%);
+      pointer-events: none;
+      max-width: vw-1440(568);
+    }
   }
 
   .bg {
@@ -194,6 +219,7 @@
     position: relative;
     z-index: 3;
     padding: vw-1440(32);
+    padding-bottom: vw-1440(100);
     height: fit-content;
     max-width: vw-1440(568);
   }
@@ -202,10 +228,6 @@
     display: flex;
     flex-direction: column;
     gap: vw-1440(12);
-    background: linear-gradient(180deg, #fbf7f4 0%, rgba(251, 247, 244, 0.5) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   .text ul,
@@ -285,6 +307,19 @@
     overflow: hidden;
     position: relative;
     background: var(--dark-grey);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 4;
+      height: 100px;
+      background: linear-gradient(180deg, rgba(39, 40, 45, 0) 0%, #27282d 100%);
+      pointer-events: none;
+      max-width: 100%;
+    }
   }
 
   .bg {
@@ -317,6 +352,7 @@
     position: relative;
     z-index: 3;
     padding: 203px 20px 20px;
+    padding-bottom: 50px;
     height: fit-content;
     max-width: 100%;
   }
@@ -325,10 +361,6 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background: linear-gradient(180deg, #fbf7f4 0%, rgba(251, 247, 244, 0.5) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   .text ul,

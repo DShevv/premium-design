@@ -2,7 +2,7 @@
 
 .container {
   position: absolute;
-  left: calc(50% - (100% - vw-1920(1630)) / 2);
+  left: calc((100% - vw-1920(1630)) / 2 + vw-1920(1630) / 2);
   top: 50%;
   transform: translate(-50%, -50%);
 
@@ -19,7 +19,7 @@
 @media (max-width: 1440px) {
   .container {
     font-size: vw-1440(30);
-    left: calc(50% - (100% - vw-1440(1200)) / 2);
+    left: calc((100% - vw-1440(1200)) / 2 + vw-1440(1200) / 2);
   }
 }
 

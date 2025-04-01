@@ -67,7 +67,12 @@
   gap: vw-1920(16);
   align-items: center;
   opacity: 0.5;
+  transition: all 0.4s ease;
   color: var(--brown);
+}
+
+.line:first-of-type {
+  border: none;
 }
 
 .line span {
@@ -76,7 +81,6 @@
 .line.active {
   color: var(--brown);
   opacity: 1;
-  border: none;
 }
 
 .laptop {

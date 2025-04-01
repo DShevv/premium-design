@@ -65,6 +65,7 @@ const MenuPopup = observer(({ info }) => {
       onClick={(e) => {
         setActive(false);
         closePopup("menu");
+        document.body.style.position = "static";
       }}
     >
       <div
@@ -75,7 +76,11 @@ const MenuPopup = observer(({ info }) => {
           className={clsx(styles.menuButton, {
             [styles.dark]: menu,
           })}
-          onClick={() => closePopup("menu")}
+          onClick={() => {
+            closePopup("menu");
+
+            document.body.style.position = "static";
+          }}
           isOpened={menu}
         ></MenuButton>
         <div className={clsx(styles.menu)}>

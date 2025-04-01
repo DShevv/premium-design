@@ -141,17 +141,30 @@
   background-color: var(--bg);
   border-radius: 4px;
   left: 50%;
-  top: 20%;
+  top: 30%;
 
   transform: translateX(-50%);
 }
 
 .active.item {
   opacity: 1;
+  transform: translateY(0);
 }
 
-.active .text {
+.text,
+.item img {
+  position: relative;
+  transform: translateY(vw-1920(100));
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.active .text,
+.active.item img {
   color: var(--beige);
+  position: relative;
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .active .circle {
@@ -230,6 +243,14 @@
 
   .item {
     padding-left: vw-1440(52);
+  }
+
+  .text,
+  .item img {
+    position: relative;
+    transform: translateY(vw-1440(100));
+    opacity: 0;
+    transition: all 0.4s ease;
   }
 
   .right {
@@ -386,14 +407,14 @@
     margin-top: 16px;
   }
 
-  .content {
-    overflow: visible;
-  }
-
   .container,
   .wrapper,
   .content {
     overflow: visible !important;
+  }
+
+  .content {
+    position: relative;
   }
 
   .left {
@@ -504,7 +525,7 @@
     height: 100px;
     background-color: var(--bg);
     border-radius: 2px;
-    left: calc(31px);
+    left: 31px;
     top: 200px;
     transform: none;
   }

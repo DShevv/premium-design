@@ -8,6 +8,9 @@
 
 .title {
   color: var(--bg);
+  overflow-x: hidden;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .text {

@@ -34,7 +34,7 @@ const page = async () => {
   return (
     <>
       <div className={styles.wrapper}>
-        <h1 className={clsx("h1", styles.title)}>
+        <h1 className={clsx("h1", styles.title)} lang="ru">
           политика конфиденциальности
         </h1>
         <Breadcrumbs

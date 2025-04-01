@@ -20,6 +20,7 @@ import image1 from "@/assets/images/design-slider.jpg";
 import image2 from "@/assets/images/hero.png";
 import image3 from "@/assets/images/hero-light.png";
 import { getSeoPage } from "@/services/getSeoPage";
+import DesignDrop from "@/blocks/DesignDrop/DesignDrop";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("design-project");
@@ -115,7 +116,9 @@ const page = () => {
         </CircleButton>
       </div>
 
-      <DesignSlider
+      <DesignDrop />
+
+      {/* <DesignSlider
         items={[
           {
             image: image1,
@@ -133,7 +136,7 @@ const page = () => {
             text: `Мы выезжаем на объект для  тщательного анализа,  этапов проектирования и реализации.`,
           },
         ]}
-      />
+      /> */}
       <StepBlock
         image={stepBlock1}
         subtitle={"[ Авторское сопровождение ]"}

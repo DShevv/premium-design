@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const CorrectConfiguration = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndexes, setActiveIndexes] = useState([]);
   const itemRefs = useRef([]);
   const thumbRef = useRef(null);
 
@@ -20,7 +20,7 @@ const CorrectConfiguration = () => {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflowY = "visible";
+    document.body.style.overflowX = "visible";
     const handleScroll = () => {
       if (!thumbRef.current) return;
 
@@ -37,7 +37,9 @@ const CorrectConfiguration = () => {
           thumbRect.top < circleRect.bottom &&
           thumbRect.bottom > circleRect.top
         ) {
-          setActiveIndex(index);
+          setActiveIndexes((prevIndexes) =>
+            prevIndexes.includes(index) ? prevIndexes : [...prevIndexes, index]
+          );
         }
       });
     };
@@ -45,7 +47,7 @@ const CorrectConfiguration = () => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      document.body.style.overflowY = "hidden";
+      document.body.style.overflowX = "hidden";
     };
   }, []);
 
@@ -77,7 +79,7 @@ const CorrectConfiguration = () => {
             <div
               ref={(el) => setRef(el, 0)}
               className={clsx(styles.item, {
-                [styles.active]: activeIndex === 0,
+                [styles.active]: activeIndexes.includes(0),
               })}
             >
               <div className={styles.circle}></div>
@@ -89,7 +91,7 @@ const CorrectConfiguration = () => {
             <div
               ref={(el) => setRef(el, 1)}
               className={clsx(styles.item, {
-                [styles.active]: activeIndex === 1,
+                [styles.active]: activeIndexes.includes(1),
               })}
             >
               <div className={styles.circle}></div>
@@ -101,7 +103,7 @@ const CorrectConfiguration = () => {
             <div
               ref={(el) => setRef(el, 2)}
               className={clsx(styles.item, {
-                [styles.active]: activeIndex === 2,
+                [styles.active]: activeIndexes.includes(2),
               })}
             >
               <div className={styles.circle}></div>

@@ -19,6 +19,7 @@ import image3 from "@/assets/images/hero-light.png";
 import CorrectConfiguration from "@/blocks/CorrectConfiguration/CorrectConfiguration";
 import ConfigRevenue from "@/blocks/ConfigRevenue/ConfigRevenue";
 import { getSeoPage } from "@/services/getSeoPage";
+import DesignDrop from "@/blocks/DesignDrop/DesignDrop";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("design-complect");
@@ -107,7 +108,9 @@ const page = () => {
         </CircleButton>
       </div>
 
-      <DesignSlider
+      <DesignDrop />
+
+      {/*  <DesignSlider
         items={[
           {
             image: image1,
@@ -125,7 +128,7 @@ const page = () => {
             text: `Это позволяет заказчику сэкономить средства без потери качеств.`,
           },
         ]}
-      />
+      /> */}
 
       <CorrectConfiguration />
       <ConfigRevenue />

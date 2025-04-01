@@ -68,15 +68,16 @@
   align-items: center;
   opacity: 0.5;
   color: var(--brown);
+  transition: all 0.4s ease;
 }
 
-.line span {
+.line:first-of-type {
+  border: none;
 }
 
 .line.active {
   color: var(--brown);
   opacity: 1;
-  border: none;
 }
 
 .laptop {

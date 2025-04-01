@@ -8,7 +8,7 @@ import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const History = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndexes, setActiveIndexes] = useState([]);
   const itemRefs = useRef([]);
 
   const setRef = useCallback((el, index) => {
@@ -31,7 +31,11 @@ const History = () => {
             itemCenterY >= centerY - rect.height / 2 &&
             itemCenterY <= centerY + rect.height / 2
           ) {
-            setActiveIndex(index);
+            setActiveIndexes((prevIndexes) =>
+              prevIndexes.includes(index)
+                ? prevIndexes
+                : [...prevIndexes, index]
+            );
           }
         }
       });
@@ -78,7 +82,7 @@ const History = () => {
               <div
                 ref={(el) => setRef(el, 0)}
                 className={clsx("h1", styles.line, {
-                  [styles.active]: activeIndex === 0,
+                  [styles.active]: activeIndexes.includes(0),
                 })}
               >
                 20
@@ -89,7 +93,7 @@ const History = () => {
               <div
                 ref={(el) => setRef(el, 1)}
                 className={clsx("h1", styles.line, {
-                  [styles.active]: activeIndex === 1,
+                  [styles.active]: activeIndexes.includes(1),
                 })}
               >
                 90+
@@ -100,7 +104,7 @@ const History = () => {
               <div
                 ref={(el) => setRef(el, 2)}
                 className={clsx("h1", styles.line, {
-                  [styles.active]: activeIndex === 2,
+                  [styles.active]: activeIndexes.includes(2),
                 })}
               >
                 3000+
