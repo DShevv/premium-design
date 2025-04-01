@@ -53,7 +53,7 @@ const PortfolioSort = ({ items }) => {
               title: elem.title,
               id: elem.id,
               tag: elem.tag,
-              image: elem.photo_path,
+              photo_path: elem.photo_path,
             }}
             className={clsx(styles.item, styles.wide, {
               [styles.right]: index % 2 === 1,
