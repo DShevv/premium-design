@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "./Footer.module.scss";
 import clsx from "clsx";
 import Logo from "@/components/Logo/Logo";
+import { SvgLogoFooter } from "@/assets/icons/svgs";
 
 const Footer = ({ info }) => {
   return (
@@ -163,7 +164,9 @@ const Footer = ({ info }) => {
             </div>
           </div>
         </div>
-        <Logo className={styles.logo}>Logo</Logo>
+        <Logo className={styles.logo}>
+          <SvgLogoFooter />
+        </Logo>
       </div>
 
       <div className={clsx("body-5", styles.bottom)}>

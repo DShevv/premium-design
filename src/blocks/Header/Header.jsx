@@ -2,7 +2,7 @@
 import MenuButton from "@/components/Buttons/MenuButton/MenuButton";
 import styles from "./Header.module.scss";
 import Link from "next/link";
-import { SvgPhone } from "@/assets/icons/svgs";
+import { SvgLogoHeader, SvgPhone } from "@/assets/icons/svgs";
 import SearchButton from "@/components/Buttons/SearchButton/SearchButton";
 import MainButton from "@/components/Buttons/MainButton/MainButton";
 import clsx from "clsx";
@@ -111,7 +111,7 @@ const Header = observer(({ info }) => {
             [styles.dark]: menu || isDark,
           })}
         >
-          Logo
+          <SvgLogoHeader />
         </Logo>
 
         <AnimatePresence>

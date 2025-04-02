@@ -85,6 +85,11 @@
   color: var(--bg);
 }
 
+.header .logo svg {
+  width: vw-1920(90);
+  height: vw-1920(58);
+}
+
 @media (max-width: 1440px) {
   .header {
     height: vw-1440(80);
@@ -101,6 +106,11 @@
   .phone {
     width: vw-1440(24);
     height: vw-1440(24);
+  }
+
+  .header .logo svg {
+    width: vw-1440(90);
+    height: vw-1440(58);
   }
 }
 
@@ -225,6 +235,13 @@
 
   .fixed .logo,
   .opened .logo {
-    color: var(--bg);
+    color: var(--green-1);
+    display: flex;
+    align-items: center;
+  }
+
+  .header .logo svg {
+    width: 90px;
+    height: 58px;
   }
 }
