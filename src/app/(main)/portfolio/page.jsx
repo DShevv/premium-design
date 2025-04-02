@@ -27,9 +27,9 @@ export async function generateMetadata() {
 }
 
 const page = async () => {
-  const posts = await fetch(`${process.env.API_URL}/v1/portfolio`).then((res) =>
-    res.json()
-  );
+  const posts = await fetch(`${process.env.API_URL}/v1/portfolio`)
+    .then((res) => res.json())
+    .catch((err) => undefined);
 
   return (
     <>
@@ -47,10 +47,10 @@ const page = async () => {
             },
           ]}
         />
-        <PortfolioSort items={posts.data} />
-        <div className={styles.pagination}>
+        <PortfolioSort items={posts?.data} />
+        {/* <div className={styles.pagination}>
           <Pagination max={8} maxPerView={4} current={1} />
-        </div>
+        </div> */}
       </div>
     </>
   );

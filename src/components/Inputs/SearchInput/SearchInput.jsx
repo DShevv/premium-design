@@ -6,7 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
-
+import image1 from "@/assets/images/news.png";
+import image2 from "@/assets/images/rebuild-complect.png";
+import image3 from "@/assets/images/rebuild-head.jpg";
+import image4 from "@/assets/images/works-1.png";
 import Fuse from "fuse.js";
 import api from "@/http";
 import { slugifyWithOpts } from "@/utils/helper";
@@ -99,54 +102,54 @@ const SearchInput = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      /*   try {
-        let res = await api.get("/catalog/categories", {
-          next: { revalidate: 600 },
-        });
-        const { data } = res;
-        const categories = [];
-        data.forEach((elem) => {
-          categories.push(...elem.children);
-        });
+      try {
+        const posts = await fetch(`${process.env.API_URL}/v1/portfolio`)
+          .then((res) => res.json())
+          .catch((err) => undefined);
+        const services = await fetch(
+          `${process.env.API_URL}/v1/additional-services`
+        )
+          .then((res) => res.json())
+          .catch((err) => undefined);
 
-        const parentCats = [...data.filter((elem) => elem.parent_id == null)];
-        res = await api.get("/catalog/products", {
-          next: { revalidate: 600 },
-        });
-        const { data: subData } = res;
-        const products = subData;
-        const sData = [
-          ...parentCats.map((elem) => ({
-            type: "parent",
-            category: elem.name,
-            slug: slugifyWithOpts(elem.name) || "/",
+        const parsedSearch = [
+          {
+            title: "Дизайн проект",
+            url: `/services/design-project`,
+            image: image1,
+          },
+          {
+            title: "Дизайн проект с комплектацией",
+            url: `/services/design-complect`,
+            image: image2,
+          },
+          {
+            title: "Ремонт под ключ (с дизайн проектом заказчика)",
+            url: `/services/rebuild-project`,
+            image: image3,
+          },
+          {
+            title:
+              "Ремонт под ключ с комплектацией (с дизайн проектом заказчика)",
+            url: `/services/rebuild-complect`,
+            image: image4,
+          },
+          ...services.map((elem) => ({
+            title: elem.title,
+            url: `/services/${slugifyWithOpts(elem.title)}_${elem.id}`,
+            photo_path: elem.photo_path,
           })),
-          ...categories.map((elem) => ({
-            type: "category",
-            category: elem.name,
-            parentCategory: parentCats.find((parent) =>
-              parent.children.find((child) => child.id === elem.id)
-            ),
-            slug: slugifyWithOpts(elem.name) || "/",
-          })),
-          ...products.map((elem) => ({
-            type: "product",
-            id: elem.id,
-            category: elem.category,
-            parentCategory: parentCats.find((parent) =>
-              parent.children.find((child) => child.id === elem.category.id)
-            ),
-            productTitle: elem.name,
-            image: elem.photo,
-            slug: slugifyWithOpts(elem.name),
+          ...posts.data.map((elem) => ({
+            title: elem.title,
+            url: `/portfolio/${slugifyWithOpts(elem.title)}_${elem.id}`,
+            photo_path: elem.photo_path,
           })),
         ];
 
-        setData(sData);
+        setData(parsedSearch);
       } catch (error) {
         console.log(error);
-      } */
-      setData(test);
+      }
     };
     fetchData();
   }, []);
@@ -158,7 +161,10 @@ const SearchInput = ({
     }
     const timeout = setTimeout(() => {
       /* const result = fuse.search(value).slice(0, 10); */
-      const result = searchData.filter((elem) => elem.title.includes(value));
+      console.log(searchData, value);
+      const result = searchData.filter((elem) =>
+        elem.title.toLowerCase().includes(value.toLowerCase())
+      );
       setResult(result);
     }, 300);
 

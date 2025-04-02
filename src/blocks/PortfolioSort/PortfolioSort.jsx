@@ -10,15 +10,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import clsx from "clsx";
 
-const tags = [
-  "Все",
-  "Дизайн проект",
-  "Дизайн проект с комплектацией",
-  "Ремонт под ключ",
-];
-
 const PortfolioSort = ({ items }) => {
-  const [currentTag, setTag] = useState(tags[0]);
+  const [currentTag, setTag] = useState("Все");
+  const tags = items ? ["Все", ...items.map((elem) => elem.tag)] : ["Все"];
 
   return (
     <div>
@@ -32,34 +26,38 @@ const PortfolioSort = ({ items }) => {
           },
         }}
       >
-        {tags.map((elem) => (
-          <SwiperSlide key={elem} className={styles.slide}>
-            <div
-              className={clsx("h4", styles.tag, {
-                [styles.active]: currentTag === elem,
-              })}
-              onClick={() => setTag(elem)}
-            >
-              {elem}
-            </div>
-          </SwiperSlide>
-        ))}
+        {tags &&
+          tags.map((elem) => (
+            <SwiperSlide key={elem} className={styles.slide}>
+              <div
+                className={clsx("h4", styles.tag, {
+                  [styles.active]: currentTag === elem,
+                })}
+                onClick={() => setTag(elem)}
+              >
+                {elem}
+              </div>
+            </SwiperSlide>
+          ))}
       </Swiper>
       <div className={styles.container}>
-        {items.map((elem, index) => (
-          <ProjectItem
-            key={index}
-            item={{
-              title: elem.title,
-              id: elem.id,
-              tag: elem.tag,
-              photo_path: elem.photo_path,
-            }}
-            className={clsx(styles.item, styles.wide, {
-              [styles.right]: index % 2 === 1,
-            })}
-          />
-        ))}
+        {items &&
+          items
+            .filter((elem) => elem.tag === currentTag || currentTag === "Все")
+            .map((elem, index) => (
+              <ProjectItem
+                key={index}
+                item={{
+                  title: elem.title,
+                  id: elem.id,
+                  tag: elem.tag,
+                  photo_path: elem.photo_path,
+                }}
+                className={clsx(styles.item, styles.wide, {
+                  [styles.right]: index % 2 === 1,
+                })}
+              />
+            ))}
       </div>
     </div>
   );

@@ -35,8 +35,9 @@ export async function generateMetadata() {
 }
 
 const page = async () => {
-  const res = await fetch(`${process.env.API_URL}/v1/certificates`);
-  const certificates = await res.json();
+  const certificates = await fetch(`${process.env.API_URL}/v1/certificates`)
+    .then((res) => res.json())
+    .catch((err) => undefined);
 
   return (
     <>

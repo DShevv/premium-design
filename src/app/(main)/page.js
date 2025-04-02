@@ -45,7 +45,7 @@ export default async function Home() {
   if (res.ok) {
     compareItems = await res.json();
   }
-  compareItems = compareItems.data.map((elem) => ({
+  compareItems = compareItems?.data.map((elem) => ({
     before: elem.before_image,
     after: elem.after_image,
   }));

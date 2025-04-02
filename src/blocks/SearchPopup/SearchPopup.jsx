@@ -56,9 +56,17 @@ const SearchPopup = observer(() => {
 
   useEffect(() => {
     if (search) {
+      const scrollY = window.scrollY;
+      document.body.style.top = `-${scrollY}px`;
       document.body.style.position = "fixed";
+      document.body.style.width = "100%";
     } else {
-      document.body.style.position = "auto";
+      const scrollY = Math.abs(parseInt(document.body.style.top, 10)) || 0;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.overflowY = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollY);
     }
   }, [search]);
 
@@ -106,7 +114,7 @@ const SearchPopup = observer(() => {
                 results.map((elem, index) => (
                   <Link
                     key={index}
-                    href={"/services/design-project"}
+                    href={elem.url}
                     className={clsx(styles.service, {
                       [styles.activeService]: activeIndex === index,
                     })}
@@ -118,10 +126,21 @@ const SearchPopup = observer(() => {
                     }}
                   >
                     <div className={styles.serviceBg}>
-                      <Image src={service1} alt="" />
+                      <Image
+                        src={
+                          elem.image
+                            ? elem.image
+                            : elem.photo_path.includes("additional_services")
+                            ? `${process.env.STORE_URL}/storage/${elem.photo_path}`
+                            : `${process.env.STORE_URL}/${elem.photo_path}`
+                        }
+                        width={1630}
+                        height={156}
+                        alt=""
+                      />
                     </div>
                     <div className={styles.caption}>
-                      <span className="h4">Дизайн проект</span>
+                      <span className="h4">{elem.title}</span>
                       <InlineButton className={styles.more}>
                         Подробнее
                       </InlineButton>

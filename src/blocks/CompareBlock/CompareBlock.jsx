@@ -33,6 +33,10 @@ const CompareBlock = ({ items, className, sliderClass, title, inside }) => {
     setIsDragging(value);
   };
 
+  if (!items) {
+    return <></>;
+  }
+
   return (
     <section className={clsx(styles.container, className)}>
       <div
@@ -68,11 +72,12 @@ const CompareBlock = ({ items, className, sliderClass, title, inside }) => {
           bulletActiveClass: `${styles.bulletActive}`,
         }}
       >
-        {items.map((elem, index) => (
-          <SwiperSlide key={index} className={styles.slide}>
-            <CompareImages items={elem} onDrag={changeIsDragging} />
-          </SwiperSlide>
-        ))}
+        {items &&
+          items.map((elem, index) => (
+            <SwiperSlide key={index} className={styles.slide}>
+              <CompareImages items={elem} onDrag={changeIsDragging} />
+            </SwiperSlide>
+          ))}
       </Swiper>
       <div
         className={clsx(

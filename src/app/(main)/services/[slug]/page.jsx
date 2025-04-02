@@ -37,7 +37,7 @@ export async function generateStaticParams() {
   const posts = await fetch(
     `${process.env.API_URL}/v1/additional-services`
   ).then((res) => res.json());
-  console.log(posts);
+
   return posts.map((post) => ({
     slug: `${slugifyWithOpts(post.title)}_${post.id}`,
   }));
@@ -47,8 +47,10 @@ const page = async ({ params }) => {
   const { slug } = await params;
   const service = await fetch(
     `${process.env.API_URL}/v1/additional-services/${slug.split("_")[1]}`
-  ).then((res) => res.json());
-  const parsedContent = parseServiceContent(service.content);
+  )
+    .then((res) => res.json())
+    .catch((err) => undefined);
+  const parsedContent = service.content && parseServiceContent(service.content);
 
   return (
     <>

@@ -27,15 +27,23 @@ const Header = observer(({ info }) => {
   );
 
   const toggleMenu = () => {
-    if (window && menu) {
-      document.body.style.position = "static";
-      document.body.style.overflowY = "";
+    if (typeof window !== "undefined") {
+      if (!menu) {
+        const scrollY = window.scrollY;
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.position = "fixed";
+        document.body.style.overflowY = "scroll";
+        document.body.style.width = "100%";
+      } else {
+        const scrollY = Math.abs(parseInt(document.body.style.top, 10)) || 0;
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.overflowY = "";
+        document.body.style.width = "";
+        window.scrollTo(0, scrollY);
+      }
+      menu ? closePopup("menu") : openPopup("menu");
     }
-    if (window && !menu) {
-      document.body.style.overflowY = "scroll";
-      document.body.style.position = "fixed";
-    }
-    menu ? closePopup("menu") : openPopup("menu");
   };
 
   useEffect(() => {
@@ -116,15 +124,17 @@ const Header = observer(({ info }) => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
             >
-              <Link
-                href={`tel:${info.phones[0]}`}
-                className={clsx("body-3", styles.link, {
-                  [styles.dark]: isDark,
-                })}
-              >
-                <SvgPhone className={styles.phone} />
-                <span>{info.phones[0]}</span>
-              </Link>
+              {info && info.phones[0] && (
+                <Link
+                  href={`tel:${info.phones[0]}`}
+                  className={clsx("body-3", styles.link, {
+                    [styles.dark]: isDark,
+                  })}
+                >
+                  <SvgPhone className={styles.phone} />
+                  <span>{info.phones[0]}</span>
+                </Link>
+              )}
               <SearchButton
                 className={clsx(styles.search, {
                   [styles.dark]: isDark || isFixed,
@@ -155,19 +165,21 @@ const Header = observer(({ info }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2 }}
           >
-            <Link
-              href={`tel:${info.phones[0]}`}
-              className={clsx("body-3", styles.link, {
-                [styles.dark]: menu || isDark,
-              })}
-            >
-              <SvgPhone
-                className={clsx(styles.phone, {
+            {info && info.phones[0] && (
+              <Link
+                href={`tel:${info.phones[0]}`}
+                className={clsx("body-3", styles.link, {
                   [styles.dark]: menu || isDark,
                 })}
-              />
-              <span>{info.phones[0]}</span>
-            </Link>
+              >
+                <SvgPhone
+                  className={clsx(styles.phone, {
+                    [styles.dark]: menu || isDark,
+                  })}
+                />
+                <span>{info.phones[0]}</span>
+              </Link>
+            )}
             <SearchButton
               onClick={() => openPopup("search")}
               className={clsx(styles.search, {

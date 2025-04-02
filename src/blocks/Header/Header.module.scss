@@ -122,6 +122,10 @@
     justify-content: flex-end;
   }
 
+  .header.opened {
+    position: fixed;
+  }
+
   .header.opened,
   .header.dark {
     mix-blend-mode: initial;

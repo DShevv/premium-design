@@ -53,11 +53,11 @@ const OurProjects = ({ title }) => {
 
   useEffect(() => {
     async function fetchPortfolio() {
-      const posts = await fetch(`${process.env.API_URL}/v1/portfolio`).then(
-        (res) => res.json()
-      );
+      const posts = await fetch(`${process.env.API_URL}/v1/portfolio`)
+        .then((res) => res.json())
+        .catch((err) => undefined);
 
-      setSlides(posts.data);
+      posts && setSlides(posts.data);
     }
 
     fetchPortfolio();
@@ -108,10 +108,12 @@ const OurProjects = ({ title }) => {
           ))}
         </div>
 
-        <div className={styles.navigation}>
-          <ArrowButton className={clsx(styles.prev)} onClick={handlePrev} />
-          <ArrowButton className={clsx(styles.next)} onClick={handleNext} />
-        </div>
+        {slides.length > 0 && (
+          <div className={styles.navigation}>
+            <ArrowButton className={clsx(styles.prev)} onClick={handlePrev} />
+            <ArrowButton className={clsx(styles.next)} onClick={handleNext} />
+          </div>
+        )}
 
         <CircleButton
           dark={true}

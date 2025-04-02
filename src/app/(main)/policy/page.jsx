@@ -26,10 +26,10 @@ export async function generateMetadata() {
 }
 
 const page = async () => {
-  const info = await fetch(`${process.env.API_URL}/v1/design/settings`).then(
-    (res) => res.json()
-  );
-  const parsedContend = parseLegalContent(info.privacy_policy_text);
+  const info = await fetch(`${process.env.API_URL}/v1/design/settings`)
+    .then((res) => res.json())
+    .catch((err) => undefined);
+  const parsedContend = info && parseLegalContent(info.privacy_policy_text);
 
   return (
     <>
@@ -50,24 +50,25 @@ const page = async () => {
           ]}
         />
         <section className={styles.text}>
-          {parsedContend.map((item, index) => {
-            if (item.type === "h4") {
-              return (
-                <h4 key={index} className="h4">
-                  {item.content}
-                </h4>
-              );
-            }
-            if (item.type === "p-regular") {
-              return (
-                <p key={index} className="body-1-regular">
-                  {item.content}
-                </p>
-              );
-            }
+          {parsedContend &&
+            parsedContend.map((item, index) => {
+              if (item.type === "h4") {
+                return (
+                  <h4 key={index} className="h4">
+                    {item.content}
+                  </h4>
+                );
+              }
+              if (item.type === "p-regular") {
+                return (
+                  <p key={index} className="body-1-regular">
+                    {item.content}
+                  </p>
+                );
+              }
 
-            return null;
-          })}
+              return null;
+            })}
         </section>
       </div>
     </>

@@ -51,24 +51,30 @@ const page = async ({ params }) => {
   const { slug } = await params;
   const workCase = await fetch(
     `${process.env.API_URL}/v1/portfolio/${slug.split("_")[1]}`
-  ).then((res) => res.json());
-  const parsedContent = parsePortfolioContent(workCase.content);
-  console.log(parsedContent);
-  console.log(workCase);
+  )
+    .then((res) => res.json())
+    .catch((err) => undefined);
+  const parsedContent =
+    workCase.content && parsePortfolioContent(workCase.content);
 
   return (
     <>
       <div className={styles.head}>
         <div className={styles.bg}>
-          <Image src={hero} alt="" />
+          <Image
+            src={`${process.env.STORE_URL}/${workCase.photo_path}`}
+            alt=""
+            width={1630}
+            height={940}
+          />
         </div>
         <div className={styles.wrapper}>
           <div className={styles.tags}>
-            <div className={clsx(styles.tag, styles.active)}>Дизайн-проект</div>
+            <div className={clsx(styles.tag, styles.active)}>
+              {workCase.tag}
+            </div>
           </div>
-          <h1 className={clsx("h1-news", styles.title)}>
-            Загородный дом в подмосковье
-          </h1>
+          <h1 className={clsx("h1-news", styles.title)}>{workCase.title}</h1>
           <Breadcrumbs
             isWhite={true}
             items={[
@@ -81,7 +87,7 @@ const page = async ({ params }) => {
                 href: "/portfolio",
               },
               {
-                title: "Загородный дом в подмосковье",
+                title: workCase.title,
                 href: "/",
               },
             ]}
@@ -138,42 +144,43 @@ const page = async ({ params }) => {
         </div>
 
         <div className={styles.content}>
-          {parsedContent.map((item, index) => {
-            if (item.img) {
+          {parsedContent &&
+            parsedContent.map((item, index) => {
+              if (item.img) {
+                return (
+                  <div className={styles.step} key={index}>
+                    <Image src={item.img} alt="" width={500} height={300} />
+                    <div className={styles.text}>
+                      <h4>{item.title}</h4>
+                      <p>{item.text}</p>
+                    </div>
+                  </div>
+                );
+              }
+
+              if (!item.img) {
+                return (
+                  <div className={clsx(styles.step, styles.last)} key={index}>
+                    {item.text && (
+                      <div className={styles.text}>
+                        <h4>{item.title}</h4>
+                        <p>{item.text}</p>
+                      </div>
+                    )}
+                    <PortfolioSlider items={workCase.gallery_images} />
+                  </div>
+                );
+              }
+
               return (
                 <div className={styles.step} key={index}>
-                  <Image src={item.img} alt="" width={500} height={300} />
                   <div className={styles.text}>
                     <h4>{item.title}</h4>
                     <p>{item.text}</p>
                   </div>
                 </div>
               );
-            }
-
-            if (!item.img) {
-              return (
-                <div className={clsx(styles.step, styles.last)} key={index}>
-                  {item.text && (
-                    <div className={styles.text}>
-                      <h4>{item.title}</h4>
-                      <p>{item.text}</p>
-                    </div>
-                  )}
-                  <PortfolioSlider items={workCase.gallery_images} />
-                </div>
-              );
-            }
-
-            return (
-              <div className={styles.step} key={index}>
-                <div className={styles.text}>
-                  <h4>{item.title}</h4>
-                  <p>{item.text}</p>
-                </div>
-              </div>
-            );
-          })}
+            })}
           {/*  <div className={styles.step}>
             <Image src={portfolio1} alt="" />
             <div className={styles.text}>

@@ -33,9 +33,10 @@ export async function generateMetadata() {
 }
 
 const page = async () => {
-  const services = await fetch(
-    `${process.env.API_URL}/v1/additional-services`
-  ).then((res) => res.json());
+  const services = await fetch(`${process.env.API_URL}/v1/additional-services`)
+    .then((res) => res.json())
+    .catch((err) => undefined);
+
   return (
     <>
       <div className={styles.wrapper}>

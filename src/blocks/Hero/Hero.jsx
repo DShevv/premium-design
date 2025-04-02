@@ -34,7 +34,11 @@ const Hero = () => {
         </h1>
 
         <div className={styles.block}>
-          <CircleButton secondary={true} className={styles.button}>
+          <CircleButton
+            secondary={true}
+            className={styles.button}
+            openPopupName={"feedback"}
+          >
             Оставить заявку
           </CircleButton>
 

@@ -30,8 +30,9 @@ export async function generateMetadata() {
 }
 
 export default async function Layout({ children }) {
-  const res = await fetch(`${process.env.API_URL}/v1/design/settings`);
-  const info = await res.json();
+  const info = await fetch(`${process.env.API_URL}/v1/design/settings`)
+    .then((res) => res.json())
+    .catch((err) => undefined);
 
   return (
     <>

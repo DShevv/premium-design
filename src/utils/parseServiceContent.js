@@ -3,7 +3,12 @@ import parse from "html-react-parser";
 import clsx from "clsx";
 
 export function parseServiceContent(htmlString) {
-  const elements = parse(htmlString);
+  let elements = parse(htmlString);
+  console.log(elements);
+  if (!Array.isArray(elements)) {
+    elements = [elements];
+  }
+
   let parsedData = [];
   let hasQuote = false;
   let hasStrong = false;
@@ -11,10 +16,7 @@ export function parseServiceContent(htmlString) {
   elements.forEach((element) => {
     let imgSrcs = [];
 
-    if (
-      element?.type === "p" &&
-      element.props.className === "tiptap-paragraph"
-    ) {
+    if (element?.type === "p") {
       const children = Array.isArray(element.props.children)
         ? [...element.props.children]
         : [element.props.children];
