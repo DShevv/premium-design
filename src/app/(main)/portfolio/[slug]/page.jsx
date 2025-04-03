@@ -14,6 +14,7 @@ import ArrowButton from "@/components/Buttons/ArrowButton/ArrowButton";
 import PortfolioSlider from "@/blocks/PortfolioSlider/PortfolioSlider";
 import { slugifyWithOpts } from "@/utils/helper";
 import { parsePortfolioContent } from "@/utils/parsePortfolioContent";
+import { parsePortfolioAbout } from "@/utils/parsePortfolioAbout";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -41,7 +42,7 @@ export async function generateStaticParams() {
   const posts = await fetch(`${process.env.API_URL}/v1/portfolio`).then((res) =>
     res.json()
   );
-  console.log(posts);
+
   return posts.data.map((post) => ({
     slug: `${slugifyWithOpts(post.title)}_${post.id}`,
   }));
@@ -54,8 +55,8 @@ const page = async ({ params }) => {
   )
     .then((res) => res.json())
     .catch((err) => undefined);
-  const parsedContent =
-    workCase.content && parsePortfolioContent(workCase.content);
+
+  const parsedAbout = workCase.about && parsePortfolioAbout(workCase.about);
 
   return (
     <>
@@ -97,144 +98,89 @@ const page = async ({ params }) => {
 
       <div className={styles.container}>
         <div className={styles.top}>
-          <p className="body-1-regular">
-            Разработка дизайн-проекта загородного дома в Подмосковье включала
-            несколько ключевых этапов и подходов, направленных на создание
-            уникального и функционального интерьера. Вот основные шаги, которые
-            проходили при разработке проекта: Разработка дизайн-проекта
-            загородного дома в Подмосковье включала несколько ключевых этапов и
-            подходов, направленных на создание уникального и функционального
-            интерьера. Вот основные шаги, которые проходили при разработке
-            проекта:Разработка дизайн-проекта загородного дома в Подмосковье
-            включала несколько ключевых этапов и подходов, направленных на
-            создание уникального и функционального интерьера. Вот основные шаги,
-            которые проходили при разработке проекта:Разработка дизайн-проекта
-            загородного дома в Подмосковье включала несколько ключевых этапов и
-            подходов, направленных на создание уникального и функционального
-            интерьера. Вот основные шаги, которые проходили при разработке
-            проекта:Разработка дизайн-проекта загородного дома в Подмосковье
-            включала несколько ключевых этапов и подходов, направленных на
-            создание уникального и функционального интерьера. Вот основные шаги,
-            которые проходили при разработке проекта:
-          </p>
+          <div
+            className="body-1-regular"
+            dangerouslySetInnerHTML={{
+              __html: workCase.content_blocks[0].content,
+            }}
+          ></div>
           <div className={styles.side}>
             <h3 className={clsx("h3")}>О проекте</h3>
-            <div dangerouslySetInnerHTML={{ __html: workCase.about }}></div>
-            {/*     <div className={clsx("body-1-regular", styles.line)}>
-              <span className="body-2">Название проекта:</span>
-              Загородный дом в Подмосковье
-            </div>
-            <div className={clsx("body-1-regular", styles.line)}>
-              <span className="body-2">Дизайнер:</span>
-              Иван Иванов
-            </div>
-            <div className={clsx("body-1-regular", styles.line)}>
-              <span className="body-2">Концепция:</span>
-              Лофт с вставками ар-деко
-            </div>
-            <div className={clsx("body-1-regular", styles.line)}>
-              <span className="body-2">Локация:</span>
-              Барвиха
-            </div>
-            <div className={clsx("body-1-regular", styles.line)}>
-              <span className="body-2">Период проектирования:</span>
-              01.01.2024-01.01.2025
-            </div> */}
+
+            {parsedAbout.map((item, index) => {
+              if (item.type === "h3") {
+                return (
+                  <h3 className={clsx("body-2", styles.line)} key={index}>
+                    {item.content}
+                  </h3>
+                );
+              }
+              if (item.type === "p") {
+                return (
+                  <p key={index} className="body-1-regular">
+                    {item.content}
+                  </p>
+                );
+              }
+              return null;
+            })}
           </div>
         </div>
 
         <div className={styles.content}>
-          {parsedContent &&
-            parsedContent.map((item, index) => {
-              if (item.img) {
-                return (
-                  <div className={styles.step} key={index}>
-                    <Image src={item.img} alt="" width={500} height={300} />
-                    <div className={styles.text}>
-                      <h4>{item.title}</h4>
-                      <p>{item.text}</p>
-                    </div>
-                  </div>
-                );
-              }
+          {workCase.content_blocks.map((item, index) => {
+            if (index === 0) {
+              return null;
+            }
 
-              if (!item.img) {
-                return (
-                  <div className={clsx(styles.step, styles.last)} key={index}>
-                    {item.text && (
-                      <div className={styles.text}>
-                        <h4>{item.title}</h4>
-                        <p>{item.text}</p>
-                      </div>
-                    )}
-                    <PortfolioSlider items={workCase.gallery_images} />
-                  </div>
-                );
-              }
-
+            if (item.type === "image-text") {
               return (
                 <div className={styles.step} key={index}>
-                  <div className={styles.text}>
-                    <h4>{item.title}</h4>
-                    <p>{item.text}</p>
-                  </div>
+                  <Image
+                    src={`${process.env.STORE_URL}/storage/${item.content.imageUrl}`}
+                    alt=""
+                    width={664}
+                    height={469}
+                  />
+                  <div
+                    className={styles.text}
+                    dangerouslySetInnerHTML={{ __html: item.content.text }}
+                  ></div>
                 </div>
               );
-            })}
-          {/*  <div className={styles.step}>
-            <Image src={portfolio1} alt="" />
-            <div className={styles.text}>
-              <h4>Шаг 1: Сбор информации и анализ потребностей</h4>
-              <p>
-                Первый этап включает в себя сбор всех необходимых данных о
-                будущем проекте. Специалисты компании посещают объект, выполняют
-                все необходимые замеры, фиксируют особенности инженерных систем,
-                такие как отопление, вентиляция и естественное освещение. Также
-                учитываются предпочтения клиента по стилю, функциональности и
-                бюджету. Первый этап включает в себя сбор всех необходимых
-                данных о будущем проекте. Специалисты компании посещают объект,
-                выполняют все необходимые замеры, фиксируют особенности
-                инженерных систем, такие как отопление, вентиляция и
-                естественное освещение. Также учитываются предпочтения клиента
-                по стилю, функциональности и бюджету
-              </p>
-            </div>
-          </div>
+            }
 
-          <div className={styles.step}>
-            <Image src={portfolio2} alt="" />
-            <div className={styles.text}>
-              <h4>Шаг 2: Разработка общей концепции</h4>
-              <p>
-                Первый этап включает в себя сбор всех необходимых данных о
-                будущем проекте. Специалисты компании посещают объект, выполняют
-                все необходимые замеры, фиксируют особенности инженерных систем,
-                такие как отопление, вентиляция и естественное освещение. Также
-                учитываются предпочтения клиента по стилю, функциональности и
-                бюджету. Первый этап включает в себя сбор всех необходимых
-                данных о будущем проекте. Специалисты компании посещают объект,
-                выполняют все необходимые замеры, фиксируют особенности
-                инженерных систем, такие как отопление, вентиляция и
-                естественное освещение. Также учитываются предпочтения клиента
-                по стилю, функциональности и бюджету
-              </p>
-            </div>
-          </div>
-          <div className={styles.step}>
-            <div className={styles.text}>
-              <h4>Шаг 3: Планировка и зонирование</h4>
-              <p>
-                На этом этапе выполняется распределение пространства и создание
-                планировочных решений. Размещается мебель на обмерном плане, при
-                необходимости готовятся предложения по перепланировке для более
-                рационального использования имеющейся площади. Продумываются
-                возможные решения, ориентированные на удобство использования
-                каждой из комнат и зонирование помещения
-              </p>
-            </div>
+            if (item.type === "text") {
+              return (
+                <div className={styles.step} key={index}>
+                  <div
+                    className={styles.text}
+                    dangerouslySetInnerHTML={{ __html: item.content }}
+                  ></div>
+                </div>
+              );
+            }
 
+            if (item.type === "image") {
+              return (
+                <div className={styles.step} key={index}>
+                  {item.urls.map((elem, index) => (
+                    <Image
+                      className={styles.singleImage}
+                      key={index}
+                      src={`${process.env.STORE_URL}/${elem}`}
+                      alt=""
+                      width={664}
+                      height={469}
+                    />
+                  ))}
+                </div>
+              );
+            }
+          })}
+          <div className={styles.step}>
             <PortfolioSlider items={workCase.gallery_images} />
-          </div> */}
+          </div>
 
           <BackButton type="link" href={"/portfolio"} className={styles.back}>
             К портфолио

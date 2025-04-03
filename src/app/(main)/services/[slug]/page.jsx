@@ -50,14 +50,13 @@ const page = async ({ params }) => {
   )
     .then((res) => res.json())
     .catch((err) => undefined);
-  const parsedContent = service.content && parseServiceContent(service.content);
 
   return (
     <>
       <div className={styles.head}>
         <div className={styles.bg}>
           <Image
-            src={`${process.env.STORE_URL}/storage/${service.photo_path}`}
+            src={`${process.env.STORE_URL}${service.photo_path}`}
             alt=""
             width={1630}
             height={250}
@@ -89,7 +88,80 @@ const page = async ({ params }) => {
       <section className={styles.container}>
         <OtherServices />
         <div className={styles.content}>
-          {parsedContent.map((item, index) => {
+          {service.content_blocks.map((item, index) => {
+            if (item.type === "text") {
+              const parsedContent = parseServiceContent(item.content);
+
+              return (
+                <>
+                  {parsedContent.map((item, index) => {
+                    if (item.type === "h4") {
+                      return (
+                        <h4 key={index} className="h4">
+                          {item.content}
+                        </h4>
+                      );
+                    }
+                    if (item.type === "p-strong") {
+                      return (
+                        <p key={index} className="body-1-regular">
+                          {item.content}
+                        </p>
+                      );
+                    }
+                    if (item.type === "p") {
+                      return (
+                        <p key={index} className="body-1">
+                          {item.content}
+                        </p>
+                      );
+                    }
+                    if (item.type === "quote") {
+                      return (
+                        <div
+                          key={index}
+                          className={clsx(styles.quote, "body-1-regular")}
+                        >
+                          <svg
+                            width="25"
+                            height="20"
+                            viewBox="0 0 25 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              opacity="0.2"
+                              d="M8.96739 0L7.06522 20H0L3.62319 0H8.96739ZM25 0L23.0978 20H16.1232L19.6558 0H25Z"
+                              fill="#FEFCFA"
+                            />
+                          </svg>
+                          {item.content}
+                        </div>
+                      );
+                    }
+                  })}
+                </>
+              );
+            }
+
+            if (item.type === "image") {
+              return (
+                <div key={index} className={styles.imageBlock}>
+                  {item.urls.map((item, index) => (
+                    <Image
+                      key={index}
+                      src={`${process.env.STORE_URL}/${item}`}
+                      alt=""
+                      width={500}
+                      height={300}
+                    />
+                  ))}
+                </div>
+              );
+            }
+          })}
+
+          {/* {parsedContent.map((item, index) => {
             if (item.type === "h4") {
               return (
                 <h4 key={index} className="h4">
@@ -150,7 +222,7 @@ const page = async ({ params }) => {
               );
             }
             return null;
-          })}
+          })} */}
         </div>
       </section>
 

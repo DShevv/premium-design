@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 export function parseServiceContent(htmlString) {
   let elements = parse(htmlString);
-  console.log(elements);
+
   if (!Array.isArray(elements)) {
     elements = [elements];
   }

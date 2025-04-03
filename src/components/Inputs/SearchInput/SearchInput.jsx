@@ -114,6 +114,26 @@ const SearchInput = ({
 
         const parsedSearch = [
           {
+            title: "Услуги",
+            url: `/services`,
+            image: image1,
+          },
+          {
+            title: "Портфолио",
+            url: `/portfolio`,
+            image: image2,
+          },
+          {
+            title: "О компаннии",
+            url: `/about`,
+            image: image3,
+          },
+          {
+            title: "Контакты",
+            url: `/contacts`,
+            image: image4,
+          },
+          {
             title: "Дизайн проект",
             url: `/services/design-project`,
             image: image1,
@@ -161,7 +181,7 @@ const SearchInput = ({
     }
     const timeout = setTimeout(() => {
       /* const result = fuse.search(value).slice(0, 10); */
-      console.log(searchData, value);
+
       const result = searchData.filter((elem) =>
         elem.title.toLowerCase().includes(value.toLowerCase())
       );

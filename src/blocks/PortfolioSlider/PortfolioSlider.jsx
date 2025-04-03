@@ -45,7 +45,7 @@ const PortfolioSlider = ({ items }) => {
         {items.map((elem, index) => (
           <SwiperSlide className={styles.slide} key={index}>
             <Image
-              src={`${process.env.STORE_URL}${elem}`}
+              src={`${process.env.STORE_URL}/storage/${elem}`}
               alt=""
               width={1354}
               height={700}

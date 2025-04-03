@@ -110,9 +110,7 @@ const page = async () => {
           </Link>
           {services &&
             services.map((elem) => {
-              console.log(
-                `${process.env.STORE_URL}/storage/${elem.photo_path}`
-              );
+              console.log(`${process.env.STORE_URL}${elem.photo_path}`);
               return (
                 <Link
                   key={elem.id}
@@ -121,7 +119,7 @@ const page = async () => {
                 >
                   <div className={styles.bg}>
                     <Image
-                      src={`${process.env.STORE_URL}/storage/${elem.photo_path}`}
+                      src={`${process.env.STORE_URL}${elem.photo_path}`}
                       alt=""
                       width={940}
                       height={300}

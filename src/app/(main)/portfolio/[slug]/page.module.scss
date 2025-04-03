@@ -124,6 +124,7 @@
 .step {
   display: flex;
   gap: vw-1920(48);
+  align-items: center;
 }
 
 .step:nth-child(2n) {
@@ -137,6 +138,7 @@
 
 .step > img {
   width: vw-1920(664);
+  flex: 0 0 vw-1920(664);
   object-fit: cover;
   height: vw-1920(469);
 }
@@ -149,7 +151,7 @@
   color: var(--bg);
 }
 
-.content h4 {
+.content h2 {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: vw-1920(26);
@@ -176,6 +178,11 @@
 
 .content .back {
   margin-top: vw-1920(-16);
+}
+
+.step .singleImage {
+  flex: 1 1 auto;
+  width: 0;
 }
 
 @media (max-width: 1440px) {
@@ -214,7 +221,7 @@
     font-size: vw-1440(20);
   }
 
-  .content h4 {
+  .content h2 {
     font-size: vw-1440(26);
     margin-top: 0;
     margin-bottom: vw-1440(20);
@@ -222,6 +229,7 @@
 
   .step > img {
     width: vw-1440(664);
+    flex: 0 0 vw-1440(664);
     height: vw-1440(469);
   }
 
@@ -311,7 +319,7 @@
     font-size: 17px;
   }
 
-  .content h4 {
+  .content h2 {
     font-size: 18px;
 
     margin-bottom: 20px;
@@ -329,6 +337,7 @@
 
   .step > img {
     width: 100%;
+    flex: initial;
     height: auto;
   }
 
@@ -345,5 +354,10 @@
   .side p {
     font-family: var(--font-family);
     font-size: 17px;
+  }
+
+  .step .singleImage {
+    flex: 1 1 auto;
+    width: 100%;
   }
 }
