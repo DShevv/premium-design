@@ -42,7 +42,7 @@ function Map({ className }) {
           new YMapMarker(
             {
               coordinates: [27.56272, 53.900846],
-              draggable: true,
+              draggable: false,
               mapFollowsOnDrag: true,
             },
             Marker()
