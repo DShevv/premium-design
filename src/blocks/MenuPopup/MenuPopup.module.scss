@@ -11,6 +11,7 @@
   z-index: -1;
   pointer-events: none;
   transition: all 0.3s;
+  backdrop-filter: blur(30px);
 }
 
 .bgWrapper.active {
@@ -23,9 +24,10 @@
 .container {
   background-color: var(--text);
   width: vw-1920(671);
-  height: 100%;
-  padding-top: vw-1920(64);
-  padding-left: vw-1920(145);
+  height: fit-content;
+  min-height: 100dvh;
+  padding-top: vw-1920(111);
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,30 +42,33 @@
 .menu {
   display: flex;
   flex-direction: column;
-  gap: vw-1920(36);
-  width: fit-content;
+  width: 100%;
   position: relative;
 }
 
 .link {
   display: flex;
   align-items: flex-start;
-  width: fit-content;
+  width: 100%;
   justify-content: flex-start;
   color: var(--grey);
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
+  padding: vw-1920(20) 0;
+  padding-left: vw-1920(145);
 }
 
 .link:hover {
-  color: var(--bg);
+  background-color: var(--green-1);
+  color: var(--beige);
 }
 
 .info {
   display: flex;
   gap: vw-1920(116);
   padding-bottom: vw-1920(64);
+  padding-left: vw-1920(145);
 }
 
 .contacts {
@@ -75,10 +80,20 @@
 
 .line {
   max-width: vw-1920(418);
+  transition: all 0.2s ease;
+}
+
+.line:has(a):hover {
+  color: var(--green-1);
+}
+
+.line:has(a):hover .title {
+  color: var(--green-1);
 }
 
 .title {
   margin-bottom: vw-1920(16);
+  transition: all 0.2s ease;
   color: var(--grey);
 }
 
@@ -121,7 +136,7 @@
 }
 
 .socialItem:hover {
-  background-color: var(--bg);
+  background-color: var(--green-1);
   color: var(--text);
 }
 
@@ -263,11 +278,10 @@
 
   .container {
     width: vw-1440(671);
-    height: 100%;
+
     gap: vw-1440(36);
 
-    padding-top: vw-1440(64);
-    padding-left: vw-1440(145);
+    padding-top: vw-1440(111);
   }
 
   /*  .container.active {
@@ -275,16 +289,19 @@
   } */
 
   .menu {
-    gap: vw-1440(36);
   }
 
   .info {
     gap: vw-1440(116);
+
     padding-bottom: vw-1440(64);
+    padding-left: vw-1440(145);
   }
 
   .link {
-    width: vw-1440(490);
+    width: 100%;
+    padding: vw-1440(20) 0;
+    padding-left: vw-1440(145);
   }
 
   .contacts {
@@ -307,8 +324,6 @@
   .menuButton {
     top: vw-1440(32);
     left: vw-1440(32);
-    z-index: -1;
-    opacity: 0;
   }
 
   .service {
@@ -374,6 +389,7 @@
     padding-top: 95px;
     gap: 32px;
     padding-left: 20px;
+    padding-right: 20px;
     height: fit-content;
     min-height: 100dvh;
   }
@@ -410,6 +426,7 @@
     flex-wrap: nowrap;
     height: fit-content;
     gap: 20px;
+    width: 100%;
   }
 
   .container.active {
@@ -488,5 +505,10 @@
   .socialItem svg {
     width: 36px;
     height: 36px;
+  }
+
+  .menuButton {
+    z-index: -1;
+    opacity: 0;
   }
 }

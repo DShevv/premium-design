@@ -15,6 +15,7 @@ import PortfolioSlider from "@/blocks/PortfolioSlider/PortfolioSlider";
 import { slugifyWithOpts } from "@/utils/helper";
 import { parsePortfolioContent } from "@/utils/parsePortfolioContent";
 import { parsePortfolioAbout } from "@/utils/parsePortfolioAbout";
+import OurProjects from "@/blocks/OurProjects/OurProjects";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -187,6 +188,8 @@ const page = async ({ params }) => {
           </BackButton>
         </div>
       </div>
+
+      <OurProjects title={"Реализованные проекты"} />
       <Feedback />
     </>
   );

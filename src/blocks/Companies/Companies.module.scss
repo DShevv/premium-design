@@ -80,7 +80,7 @@
 }
 
 .swiperWrapper .swiper .slide img {
-  border: vw-1920(4) solid transparent;
+  border: vw-1920(4) solid rgba(18, 19, 24, 0.1);
   width: vw-1920(388);
   height: vw-1920(223);
   opacity: 0.3;
@@ -135,18 +135,26 @@
     margin-bottom: vw-1440(25);
   }
 
-  .caption {
+  .content {
+    width: vw-1440(1200);
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
   }
 
   .title {
     margin-top: vw-1440(32);
-    margin-bottom: vw-1440(79);
+    margin-bottom: 0;
   }
 
   .container {
     margin-left: calc((100% - vw-1440(1200)) / 2);
     margin-top: vw-1440(120);
     padding-bottom: vw-1440(47);
+    flex-direction: column;
+    gap: vw-1440(36);
+    align-items: flex-start;
   }
 
   .text {
@@ -160,13 +168,13 @@
   }
 
   .swiperWrapper {
-    margin-left: vw-1440(98);
+    margin-left: 0;
     max-width: vw-1440(388);
     height: vw-1440(223);
   }
 
   .swiperWrapper .swiper .slide img {
-    border: vw-1440(4) solid transparent;
+    border: vw-1440(4) solid rgba(18, 19, 24, 0.1);
     width: vw-1440(388);
     height: vw-1440(223);
     padding: vw-1440(32);
@@ -181,6 +189,7 @@
     right: vw-1440(0);
     gap: vw-1440(16);
     max-width: 100%;
+    justify-content: flex-end;
   }
   .navigation .next,
   .navigation .prev {
@@ -252,7 +261,7 @@
   }
 
   .swiperWrapper .swiper .slide img {
-    border: 1px solid transparent;
+    border: 1px solid rgba(18, 19, 24, 0.1);
     width: 232px;
     height: 153px;
     padding: 32px;
