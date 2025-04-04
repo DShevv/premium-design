@@ -164,7 +164,7 @@ const Footer = ({ info }) => {
             </div>
           </div>
         </div>
-        <Logo className={styles.logo}>
+        <Logo className={styles.logo} icon={info.logo_path_2}>
           <SvgLogoFooter />
         </Logo>
       </div>

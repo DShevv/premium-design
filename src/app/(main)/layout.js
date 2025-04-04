@@ -33,6 +33,18 @@ export default async function Layout({ children }) {
   const info = await fetch(`${process.env.API_URL}/v1/design/settings`)
     .then((res) => res.json())
     .catch((err) => undefined);
+  const headerLogo = await fetch(
+    `${process.env.STORE_URL}/storage/${info.logo_path}`
+  )
+    .then((res) => res.text())
+    .catch((err) => undefined);
+  const footerLogo = await fetch(
+    `${process.env.STORE_URL}/storage/${info.logo_path_2}`
+  )
+    .then((res) => res.text())
+    .catch((err) => undefined);
+  info.logo_path = headerLogo;
+  info.logo_path_2 = footerLogo;
 
   return (
     <>

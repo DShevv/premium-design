@@ -110,6 +110,7 @@ const Header = observer(({ info }) => {
           className={clsx(styles.logo, {
             [styles.dark]: menu || isDark,
           })}
+          icon={info.logo_path}
         >
           <SvgLogoHeader />
         </Logo>
