@@ -90,6 +90,14 @@
   height: vw-1920(58);
 }
 
+.fixed .logo svg {
+  color: var(--green-1);
+}
+
+.fixed .logo {
+  mix-blend-mode: normal;
+}
+
 @media (max-width: 1440px) {
   .header {
     height: vw-1440(80);

@@ -4,11 +4,12 @@
   position: relative;
   max-width: initial;
   margin: 0 auto;
-  margin-left: calc((100% - vw-1920(1630)) / 2);
   margin-top: vw-1920(160);
   display: flex;
   overflow: hidden;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: vw-1920(64);
   padding-bottom: vw-1920(22);
 }
 
@@ -27,12 +28,14 @@
 .title {
   margin-top: vw-1920(32);
   color: var(--bg);
-  margin-bottom: vw-1920(79);
 }
 
 .content {
   position: relative;
   overflow: visible;
+  width: 100%;
+  max-width: vw-1920(1630);
+  margin: auto;
 }
 
 .slider {
@@ -61,7 +64,7 @@
 }
 
 .swiperWrapper {
-  margin-left: vw-1920(48);
+  margin-left: calc((100% - vw-1920(1630)) / 2);
   max-width: vw-1920(388);
   overflow: visible;
   height: vw-1920(223);
@@ -98,12 +101,11 @@
 .navigation {
   position: absolute;
   bottom: vw-1920(0);
-  left: vw-1920(0);
+  right: vw-1920(0);
   display: flex;
   gap: vw-1920(16);
   z-index: 2;
   max-width: vw-1920((654));
-  width: 100%;
 }
 
 .navigation .next,
@@ -149,7 +151,6 @@
   }
 
   .container {
-    margin-left: calc((100% - vw-1440(1200)) / 2);
     margin-top: vw-1440(120);
     padding-bottom: vw-1440(47);
     flex-direction: column;
@@ -168,7 +169,7 @@
   }
 
   .swiperWrapper {
-    margin-left: 0;
+    margin-left: calc((100% - vw-1440(1200)) / 2);
     max-width: vw-1440(388);
     height: vw-1440(223);
   }
@@ -234,7 +235,9 @@
   .text p {
     margin-bottom: 12px;
   }
-
+  .content {
+    margin: 0;
+  }
   .container {
     margin-left: 20px;
     margin-top: 72px;
