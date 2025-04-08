@@ -45,19 +45,21 @@
   flex-direction: column;
   width: 100%;
   position: relative;
+  padding-left: vw-1920(145);
+  gap: vw-1920(26);
 }
 
 .link {
   display: flex;
   align-items: flex-start;
-  width: 100%;
+  width: fit-content;
   justify-content: flex-start;
   color: var(--grey);
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
-  padding: vw-1920(20) 0;
-  padding-left: vw-1920(145);
+  padding: vw-1920(8) vw-1920(16) vw-1920(2);
+  border-radius: vw-1920(32);
 }
 
 .link:hover {
@@ -290,6 +292,8 @@
   } */
 
   .menu {
+    padding-left: vw-1440(145);
+    gap: vw-1440(26);
   }
 
   .info {
@@ -300,9 +304,9 @@
   }
 
   .link {
-    width: 100%;
-    padding: vw-1440(20) 0;
-    padding-left: vw-1440(145);
+    width: fit-content;
+    padding: vw-1440(8) vw-1440(16) vw-1440(2);
+    border-radius: vw-1440(32);
   }
 
   .contacts {
@@ -400,7 +404,7 @@
 
   .menu {
     flex-direction: column;
-    gap: 24px;
+    gap: 18px;
     height: fit-content;
   }
 
@@ -410,7 +414,13 @@
   }
 
   .link {
-    width: 100%;
+    width: fit-content;
+    padding: 4px 10px 0px;
+    border-radius: 32px;
+  }
+
+  .link:hover {
+    color: var(--text);
   }
 
   .info {
