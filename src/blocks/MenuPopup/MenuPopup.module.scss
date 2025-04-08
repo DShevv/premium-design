@@ -11,7 +11,7 @@
   z-index: -1;
   pointer-events: none;
   transition: all 0.3s;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(15px);
 }
 
 .bgWrapper.active {
@@ -45,7 +45,7 @@
   flex-direction: column;
   width: 100%;
   position: relative;
-  padding-left: vw-1920(145);
+  padding-left: vw-1920(129);
   gap: vw-1920(26);
 }
 
@@ -71,7 +71,7 @@
   display: flex;
   gap: vw-1920(116);
   padding-bottom: vw-1920(64);
-  padding-left: vw-1920(145);
+  padding-left: vw-1920(129);
 }
 
 .contacts {
@@ -292,7 +292,7 @@
   } */
 
   .menu {
-    padding-left: vw-1440(145);
+    padding-left: vw-1440(129);
     gap: vw-1440(26);
   }
 
@@ -300,7 +300,7 @@
     gap: vw-1440(116);
 
     padding-bottom: vw-1440(64);
-    padding-left: vw-1440(145);
+    padding-left: vw-1440(129);
   }
 
   .link {
@@ -406,6 +406,8 @@
     flex-direction: column;
     gap: 18px;
     height: fit-content;
+    padding-left: 0;
+    margin-left: -10px;
   }
 
   .link svg {
@@ -427,6 +429,7 @@
     flex-direction: column-reverse;
     gap: 32px;
     padding-bottom: 48px;
+    padding-left: 0;
   }
 
   .title {
