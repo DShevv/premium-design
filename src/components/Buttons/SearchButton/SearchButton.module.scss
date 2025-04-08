@@ -42,6 +42,11 @@
 
     border: solid vw-1440(1) var(--text);
   }
+
+  .button svg {
+    width: vw-1440(24);
+    height: vw-1440(24);
+  }
 }
 
 @media (max-width: 768px) {
@@ -50,5 +55,10 @@
     height: 47px;
 
     border: solid 1px var(--text);
+  }
+
+  .button svg {
+    width: 24px;
+    height: 24px;
   }
 }
