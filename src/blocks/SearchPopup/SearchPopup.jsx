@@ -6,7 +6,12 @@ import Image from "next/image";
 import { observer } from "mobx-react-lite";
 import globalStore from "@/stores/global-store";
 import IconButton from "@/components/Buttons/IconButton/IconButton";
-import { SvgArrowCorner, SvgArrowRight, SvgPhone } from "@/assets/icons/svgs";
+import {
+  SvgArrowCorner,
+  SvgArrowRight,
+  SvgLogoHeader,
+  SvgPhone,
+} from "@/assets/icons/svgs";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion as m } from "motion/react";
@@ -16,7 +21,7 @@ import Logo from "@/components/Logo/Logo";
 import MenuButton from "@/components/Buttons/MenuButton/MenuButton";
 import SearchInput from "@/components/Inputs/SearchInput/SearchInput";
 
-const SearchPopup = observer(() => {
+const SearchPopup = observer(({ info }) => {
   const { popupStore } = globalStore;
   const { search, closePopup } = popupStore;
   const [activeIndex, setActiveIndex] = useState(null);
@@ -77,7 +82,9 @@ const SearchPopup = observer(() => {
     >
       <div className={clsx(styles.container)}>
         <div className={styles.header}>
-          <Logo className={styles.logo}>Logo</Logo>
+          <Logo className={clsx(styles.logo)} icon={info.logo_path}>
+            <SvgLogoHeader />
+          </Logo>
           <MenuButton
             className={clsx(styles.laptop, styles.dark)}
             onClick={() => closePopup("search")}

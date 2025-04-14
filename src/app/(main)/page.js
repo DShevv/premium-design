@@ -40,7 +40,9 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  const res = await fetch(`${process.env.API_URL}/v1/before-after`);
+  const res = await fetch(`${process.env.API_URL}/v1/before-after`, {
+    next: { revalidate: 600 },
+  });
   let compareItems;
   if (res.ok) {
     compareItems = await res.json();

@@ -53,7 +53,9 @@ const OurProjects = ({ title }) => {
 
   useEffect(() => {
     async function fetchPortfolio() {
-      const posts = await fetch(`${process.env.API_URL}/v1/portfolio`)
+      const posts = await fetch(`${process.env.API_URL}/v1/portfolio`, {
+        next: { revalidate: 600 },
+      })
         .then((res) => res.json())
         .catch((err) => undefined);
 

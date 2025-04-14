@@ -26,7 +26,9 @@ export async function generateMetadata() {
 }
 
 const page = async () => {
-  const info = await fetch(`${process.env.API_URL}/v1/design/settings`)
+  const info = await fetch(`${process.env.API_URL}/v1/design/settings`, {
+    next: { revalidate: 600 },
+  })
     .then((res) => res.json())
     .catch((err) => undefined);
   const parsedContend = info && parseLegalContent(info.privacy_policy_text);

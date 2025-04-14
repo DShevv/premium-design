@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from "./Hero.module.scss";
 import picture from "@/assets/images/hero-light.png";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { motion as m, useMotionValue, useSpring } from "motion/react";
 import clsx from "clsx";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
@@ -14,10 +14,25 @@ const Hero = () => {
   const smoothX = useSpring(mouseX, { stiffness: 80, damping: 20 });
   const smoothY = useSpring(mouseY, { stiffness: 80, damping: 20 });
 
+  const heroRef = useRef(null); // <--- Ссылаемся на весь блок Hero
+
   useEffect(() => {
     const updateMousePosition = (e) => {
-      mouseX.set(e.clientX - 360);
-      mouseY.set(e.clientY - 360);
+      const bounds = heroRef.current?.getBoundingClientRect();
+      if (!bounds) return;
+
+      const x = e.clientX - bounds.left;
+      const y = e.clientY - bounds.top;
+
+      // Если курсор ниже блока Hero — сброс
+      if (e.clientY > bounds.bottom) {
+        mouseX.set(0);
+        mouseY.set(0);
+      } else {
+        // Вычитаем половину ширины/высоты spotlight центра, если нужно
+        mouseX.set(x - 360);
+        mouseY.set(y - 360);
+      }
     };
 
     window.addEventListener("mousemove", updateMousePosition);
@@ -27,7 +42,7 @@ const Hero = () => {
   }, [mouseX, mouseY]);
 
   return (
-    <section className={styles.container}>
+    <section className={styles.container} ref={heroRef}>
       <div className={styles.wrapper}>
         <h1 className={clsx("h1", styles.title)}>
           Воплощаем мечты в реальность
@@ -59,7 +74,7 @@ const Hero = () => {
         <m.div
           className={styles.spotlight}
           style={{ x: smoothX, y: smoothY }}
-        ></m.div>
+        />
         <Image src={picture} alt="" />
       </div>
     </section>

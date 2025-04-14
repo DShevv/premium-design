@@ -13,11 +13,32 @@ import { observer } from "mobx-react-lite";
 import globalStore from "@/stores/global-store";
 import FileInput from "@/components/Inputs/FileInput/FileInput";
 import { validateFeedBack } from "@/utils/validateFeedBack";
+import { useEffect } from "react";
 
 const FeedbackPopup = observer(() => {
   const { popupStore, notificationStore } = globalStore;
   const { feedback, closePopup } = popupStore;
   const { setNotification } = notificationStore;
+
+  useEffect(() => {
+    if (feedback) {
+      // Блокируем прокрутку
+      const scrollPosition = window.scrollY;
+
+      document.body.style.position = "fixed";
+      document.body.style.overflowY = "scroll";
+      document.body.style.top = `-${scrollPosition}px`;
+      document.body.style.width = "100%"; // Чтобы предотвратить изменение ширины экрана
+
+      return () => {
+        document.body.style.position = "";
+        document.body.style.overflowY = "auto";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        window.scrollTo(0, scrollPosition); // Восстанавливаем прокрутку в изначальное положение
+      };
+    }
+  }, [feedback]);
 
   return (
     <div

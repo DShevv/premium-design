@@ -14,7 +14,10 @@ import { parseServiceContent } from "@/utils/parseServiceContent";
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const seo = await fetch(
-    `${process.env.API_URL}/v1/additional-services/${slug.split("_")[1]}`
+    `${process.env.API_URL}/v1/additional-services/${slug.split("_")[1]}`,
+    {
+      next: { revalidate: 600 },
+    }
   ).then((res) => res.json());
 
   return seo
@@ -34,9 +37,9 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-  const posts = await fetch(
-    `${process.env.API_URL}/v1/additional-services`
-  ).then((res) => res.json());
+  const posts = await fetch(`${process.env.API_URL}/v1/additional-services`, {
+    next: { revalidate: 600 },
+  }).then((res) => res.json());
 
   return posts.map((post) => ({
     slug: `${slugifyWithOpts(post.title)}_${post.id}`,
@@ -46,7 +49,10 @@ export async function generateStaticParams() {
 const page = async ({ params }) => {
   const { slug } = await params;
   const service = await fetch(
-    `${process.env.API_URL}/v1/additional-services/${slug.split("_")[1]}`
+    `${process.env.API_URL}/v1/additional-services/${slug.split("_")[1]}`,
+    {
+      next: { revalidate: 600 },
+    }
   )
     .then((res) => res.json())
     .catch((err) => undefined);

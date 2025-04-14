@@ -30,16 +30,24 @@ export async function generateMetadata() {
 }
 
 export default async function Layout({ children }) {
-  const info = await fetch(`${process.env.API_URL}/v1/design/settings`)
+  const info = await fetch(`${process.env.API_URL}/v1/design/settings`, {
+    next: { revalidate: 600 },
+  })
     .then((res) => res.json())
     .catch((err) => undefined);
   const headerLogo = await fetch(
-    `${process.env.STORE_URL}/storage/${info.logo_path}`
+    `${process.env.STORE_URL}/storage/${info.logo_path}`,
+    {
+      next: { revalidate: 600 },
+    }
   )
     .then((res) => res.text())
     .catch((err) => undefined);
   const footerLogo = await fetch(
-    `${process.env.STORE_URL}/storage/${info.logo_path_2}`
+    `${process.env.STORE_URL}/storage/${info.logo_path_2}`,
+    {
+      next: { revalidate: 600 },
+    }
   )
     .then((res) => res.text())
     .catch((err) => undefined);
@@ -54,7 +62,7 @@ export default async function Layout({ children }) {
       <Footer info={info} />
       <MenuPopup info={info} />
       <FeedbackPopup />
-      <SearchPopup />
+      <SearchPopup info={info} />
       <Notification />
     </>
   );

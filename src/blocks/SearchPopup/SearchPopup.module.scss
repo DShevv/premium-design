@@ -122,6 +122,10 @@
 .header .logo {
   position: static;
   transform: none;
+  display: flex;
+  align-items: center;
+  color: var(--green-1);
+  mix-blend-mode: normal;
 }
 
 .header {

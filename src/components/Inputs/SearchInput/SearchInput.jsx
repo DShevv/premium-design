@@ -103,11 +103,16 @@ const SearchInput = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const posts = await fetch(`${process.env.API_URL}/v1/portfolio`)
+        const posts = await fetch(`${process.env.API_URL}/v1/portfolio`, {
+          next: { revalidate: 600 },
+        })
           .then((res) => res.json())
           .catch((err) => undefined);
         const services = await fetch(
-          `${process.env.API_URL}/v1/additional-services`
+          `${process.env.API_URL}/v1/additional-services`,
+          {
+            next: { revalidate: 600 },
+          }
         )
           .then((res) => res.json())
           .catch((err) => undefined);

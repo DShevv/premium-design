@@ -33,7 +33,12 @@ export async function generateMetadata() {
 }
 
 const page = async () => {
-  const services = await fetch(`${process.env.API_URL}/v1/additional-services`)
+  const services = await fetch(
+    `${process.env.API_URL}/v1/additional-services`,
+    {
+      next: { revalidate: 600 },
+    }
+  )
     .then((res) => res.json())
     .catch((err) => undefined);
 
