@@ -38,6 +38,15 @@
   outline: none;
   min-width: 0px;
   background-color: transparent;
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  &[type="number"]::-webkit-inner-spin-button,
+  &[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
 }
 
 .field.dark {

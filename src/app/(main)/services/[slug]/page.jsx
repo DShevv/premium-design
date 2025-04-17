@@ -57,6 +57,10 @@ const page = async ({ params }) => {
     .then((res) => res.json())
     .catch((err) => undefined);
 
+  if (!service) {
+    notFound();
+  }
+
   return (
     <>
       <div className={styles.head}>

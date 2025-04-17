@@ -45,33 +45,40 @@ const Feedback = observer(() => {
             }}
             onSubmit={async (values, { resetForm }) => {
               try {
+                const formData = new FormData();
+                formData.append("name", values.name);
+                formData.append("phone", values.phone);
+                formData.append("email", values.email);
+                formData.append("comment", values.comment);
+                console.log(values.file);
+
+                if (values.file) {
+                  formData.append("file", values.file, values.file.name);
+                }
+
                 const res = await fetch(`${process.env.API_URL}/v1/feedback`, {
                   method: "POST",
                   headers: {
                     accept: "application/json",
-                    "Content-Type": "application/json",
                   },
-                  body: JSON.stringify({
-                    name: values.name,
-                    phone: values.phone,
-                    email: values.email,
-                    comment: values.comment,
-                  }),
+                  body: formData,
                 });
-                console.log(res);
 
                 if (res.status === 201) {
                   setNotification(
                     "ваша заявка принята",
                     "success",
-                    "Наш менеджер свяжется с вами в ближайшее время"
+                    "Наш менеджер свяжется с вами в ближайшее время"
                   );
                   resetForm();
+                }
+                if (!res.ok) {
+                  throw new Error("Ошибка при отправке заявки");
                 }
               } catch (e) {
                 console.log(e);
                 setNotification(
-                  "ваша заявка не принята",
+                  "ваша заявка не принята",
                   "error",
                   "Пожалуйста, повторите попытку ещё раз"
                 );
@@ -105,7 +112,7 @@ const Feedback = observer(() => {
                     <MainInput
                       dark={true}
                       className={styles.input}
-                      type={"text"}
+                      type={"number"}
                       name={"phone"}
                       error={errors.phone}
                       placeholder={"Телефон*"}
@@ -143,6 +150,7 @@ const Feedback = observer(() => {
 
                   <div className={styles.field}>
                     <FileInput
+                      value={values.file}
                       setFieldValue={(value) => setFieldValue("file", value)}
                     />
                   </div>

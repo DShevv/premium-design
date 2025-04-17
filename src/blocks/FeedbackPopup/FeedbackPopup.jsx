@@ -22,20 +22,19 @@ const FeedbackPopup = observer(() => {
 
   useEffect(() => {
     if (feedback) {
-      // Блокируем прокрутку
       const scrollPosition = window.scrollY;
 
       document.body.style.position = "fixed";
       document.body.style.overflowY = "scroll";
       document.body.style.top = `-${scrollPosition}px`;
-      document.body.style.width = "100%"; // Чтобы предотвратить изменение ширины экрана
+      document.body.style.width = "100%";
 
       return () => {
         document.body.style.position = "";
         document.body.style.overflowY = "auto";
         document.body.style.top = "";
         document.body.style.width = "";
-        window.scrollTo(0, scrollPosition); // Восстанавливаем прокрутку в изначальное положение
+        window.scrollTo(0, scrollPosition);
       };
     }
   }, [feedback]);
@@ -75,37 +74,46 @@ const FeedbackPopup = observer(() => {
               }}
               onSubmit={async (values, { resetForm }) => {
                 try {
+                  const formData = new FormData();
+                  formData.append("name", values.name);
+                  formData.append("phone", values.phone);
+                  formData.append("email", values.email);
+                  formData.append("comment", values.comment);
+                  console.log(values.file);
+
+                  if (values.file) {
+                    formData.append("file", values.file, values.file.name);
+                  }
+
                   const res = await fetch(
                     `${process.env.API_URL}/v1/feedback`,
                     {
                       method: "POST",
                       headers: {
                         accept: "application/json",
-                        "Content-Type": "application/json",
                       },
-                      body: JSON.stringify({
-                        name: values.name,
-                        phone: values.phone,
-                        email: values.email,
-                        comment: values.comment,
-                      }),
+                      body: formData,
                     }
                   );
+
                   console.log(res);
 
                   if (res.status === 201) {
                     setNotification(
                       "ваша заявка принята",
                       "success",
-                      "Наш менеджер свяжется с вами в ближайшее время"
+                      "Наш менеджер свяжется с вами в ближайшее время"
                     );
                     resetForm();
                     closePopup("feedback");
                   }
+                  if (!res.ok) {
+                    throw new Error("Ошибка при отправке заявки");
+                  }
                 } catch (e) {
                   console.log(e);
                   setNotification(
-                    "ваша заявка не принята",
+                    "ваша заявка не принята",
                     "error",
                     "Пожалуйста, повторите попытку ещё раз"
                   );
@@ -127,6 +135,7 @@ const FeedbackPopup = observer(() => {
                         dark={true}
                         type={"text"}
                         name={"name"}
+                        value={values.name}
                         error={errors.name}
                         placeholder={"Имя*"}
                         onChange={(e) => {
@@ -139,8 +148,9 @@ const FeedbackPopup = observer(() => {
                       <MainInput
                         dark={true}
                         className={styles.input}
-                        type={"text"}
+                        type={"number"}
                         name={"phone"}
+                        value={values.phone}
                         placeholder={"Телефон*"}
                         error={errors.phone}
                         onChange={(e) => {
@@ -155,6 +165,7 @@ const FeedbackPopup = observer(() => {
                         dark={true}
                         type={"text"}
                         name={"email"}
+                        value={values.email}
                         placeholder={"Email*"}
                         error={errors.email}
                         onChange={(e) => {
@@ -172,6 +183,10 @@ const FeedbackPopup = observer(() => {
                         placeholder={
                           "Комментарий (желаемый тип ремонта, площадь и т.д.)"
                         }
+                        onChange={(e) => {
+                          const value = e.target.value || "";
+                          setFieldValue("comment", value);
+                        }}
                       />
                     </div>
 

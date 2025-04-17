@@ -16,7 +16,7 @@ import { slugifyWithOpts } from "@/utils/helper";
 import { parsePortfolioContent } from "@/utils/parsePortfolioContent";
 import { parsePortfolioAbout } from "@/utils/parsePortfolioAbout";
 import OurProjects from "@/blocks/OurProjects/OurProjects";
-
+import { notFound } from "next/navigation";
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const seo = await fetch(
@@ -62,6 +62,10 @@ const page = async ({ params }) => {
   )
     .then((res) => res.json())
     .catch((err) => undefined);
+
+  if (!workCase) {
+    notFound();
+  }
 
   const parsedAbout = workCase.about && parsePortfolioAbout(workCase.about);
 

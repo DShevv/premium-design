@@ -8,6 +8,8 @@ const MainInput = ({
   placeholder,
   type,
   mask,
+  value,
+  onChange,
   error,
   disabled,
   className,
@@ -30,6 +32,8 @@ const MainInput = ({
         placeholder={placeholder}
         disabled={disabled}
         mask={mask}
+        value={value}
+        onChange={onChange}
         {...other}
       />
       {error && <div className={clsx("body-5", styles.message)}>* {error}</div>}

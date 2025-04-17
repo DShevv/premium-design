@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./Companies.module.scss";
 import clsx from "clsx";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { useCallback, useRef, useState } from "react";
 import ArrowButton from "@/components/Buttons/ArrowButton/ArrowButton";
@@ -44,12 +45,17 @@ const Companies = ({ items }) => {
           className={styles.swiper}
           ref={sliderRef}
           slidesPerView={"auto"}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: true,
+          }}
           centeredSlides={true}
           spaceBetween={16}
           speed={600}
           onSlideChange={(slider) => {
             setActiveIndex(slider.activeIndex);
           }}
+          modules={[Autoplay]}
         >
           {items &&
             items.map((elem, index) => (

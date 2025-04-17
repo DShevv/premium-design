@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   width: fit-content;
-  gap: vw-1920(8);
   cursor: pointer;
   border: 1px solid rgba(254, 252, 250, 0.2);
   padding: vw-1920(16);
@@ -21,6 +20,10 @@
 .container:hover {
   background-color: var(--text);
   color: var(--bg);
+
+  .icon {
+    color: var(--bg);
+  }
 }
 
 .container svg {
@@ -41,6 +44,18 @@
   height: 0;
 }
 
+.label {
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.icon {
+  height: vw-1920(30);
+}
+
 @media (max-width: 1440px) {
   .container {
     gap: vw-1440(8);
@@ -57,6 +72,10 @@
   .container svg {
     transition: all 0.2s ease;
     width: vw-1440(30);
+    height: vw-1440(30);
+  }
+
+  .icon {
     height: vw-1440(30);
   }
 }
@@ -78,5 +97,70 @@
     transition: all 0.2s ease;
     width: 30px;
     height: 30px;
+  }
+
+  .icon {
+    height: 30px;
+  }
+}
+
+.hasFile {
+  color: var(--text);
+
+  .icon {
+    color: var(--text);
+  }
+}
+
+.loading {
+  cursor: wait;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  animation: rotate 2s linear infinite;
+  width: vw-1920(30);
+  height: vw-1920(30);
+
+  @media (max-width: 1440px) {
+    width: vw-1440(30);
+    height: vw-1440(30);
+  }
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.path {
+  stroke: currentColor;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
   }
 }
