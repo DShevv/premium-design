@@ -8,7 +8,7 @@ import "@/blocks/Footer/Footer.module.scss";
 export async function generateMetadata() {
   try {
     const info = await fetch(`${process.env.API_URL}/v1/design/settings`, {
-      next: { revalidate: 600 },
+      next: { revalidate: 60 },
     })
       .then((res) => res.json())
       .catch((err) => undefined);

@@ -21,6 +21,7 @@ import image2 from "@/assets/images/hero.png";
 import image3 from "@/assets/images/hero-light.png";
 import { getSeoPage } from "@/services/getSeoPage";
 import DesignDrop from "@/blocks/DesignDrop/DesignDrop";
+import SeoText from "@/blocks/SeoText/SeoText";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("design-project");
@@ -173,6 +174,7 @@ const page = () => {
       <PopularFaq />
 
       <OurProjects title={"Реализованные дизайн-проекты"} />
+      <SeoText page="design-project" />
       <Feedback />
     </>
   );

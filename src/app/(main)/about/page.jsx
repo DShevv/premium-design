@@ -14,6 +14,7 @@ import BuyAssets from "@/blocks/BuyAssets/BuyAssets";
 import Companies from "@/blocks/Companies/Companies";
 import VideoBlock from "@/blocks/VideoBlock/VideoBlock";
 import { getSeoPage } from "@/services/getSeoPage";
+import SeoText from "@/blocks/SeoText/SeoText";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("about");
@@ -36,7 +37,7 @@ export async function generateMetadata() {
 
 const page = async () => {
   const certificates = await fetch(`${process.env.API_URL}/v1/certificates`, {
-    next: { revalidate: 600 },
+    next: { revalidate: 60 },
   })
     .then((res) => res.json())
     .catch((err) => undefined);
@@ -68,6 +69,7 @@ const page = async () => {
       <BuyAssets />
       <Companies items={certificates} />
       <Principles />
+      <SeoText page="about" />
       <Feedback />
     </>
   );

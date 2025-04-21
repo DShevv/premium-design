@@ -31,14 +31,14 @@ export async function generateMetadata() {
 
 export default async function Layout({ children }) {
   const info = await fetch(`${process.env.API_URL}/v1/design/settings`, {
-    next: { revalidate: 600 },
+    next: { revalidate: 60 },
   })
     .then((res) => res.json())
     .catch((err) => undefined);
   const headerLogo = await fetch(
     `${process.env.STORE_URL}/storage/${info.logo_path}`,
     {
-      next: { revalidate: 600 },
+      next: { revalidate: 60 },
     }
   )
     .then((res) => res.text())
@@ -46,7 +46,7 @@ export default async function Layout({ children }) {
   const footerLogo = await fetch(
     `${process.env.STORE_URL}/storage/${info.logo_path_2}`,
     {
-      next: { revalidate: 600 },
+      next: { revalidate: 60 },
     }
   )
     .then((res) => res.text())

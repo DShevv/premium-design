@@ -17,12 +17,14 @@ import { parsePortfolioContent } from "@/utils/parsePortfolioContent";
 import { parsePortfolioAbout } from "@/utils/parsePortfolioAbout";
 import OurProjects from "@/blocks/OurProjects/OurProjects";
 import { notFound } from "next/navigation";
+import { getSeoPage } from "@/services/getSeoPage";
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const seo = await fetch(
     `${process.env.API_URL}/v1/portfolio/${slug.split("_")[1]}`,
     {
-      next: { revalidate: 600 },
+      next: { revalidate: 60 },
     }
   ).then((res) => res.json());
 
@@ -44,7 +46,7 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
   const posts = await fetch(`${process.env.API_URL}/v1/portfolio`, {
-    next: { revalidate: 600 },
+    next: { revalidate: 60 },
   }).then((res) => res.json());
 
   return posts.data.map((post) => ({
@@ -57,7 +59,7 @@ const page = async ({ params }) => {
   const workCase = await fetch(
     `${process.env.API_URL}/v1/portfolio/${slug.split("_")[1]}`,
     {
-      next: { revalidate: 600 },
+      next: { revalidate: 60 },
     }
   )
     .then((res) => res.json())
@@ -200,6 +202,7 @@ const page = async ({ params }) => {
       </div>
 
       <OurProjects title={"Реализованные проекты"} />
+      <SeoText page={slugifyWithOpts(workCase.title)} />
       <Feedback />
     </>
   );

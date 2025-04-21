@@ -1,0 +1,141 @@
+@import "../../assets/sass/_functions.scss";
+
+.container {
+  position: relative;
+  margin-top: vw-1920(160);
+  color: var(--bg);
+
+  p:has(em) {
+    color: var((--brown));
+
+    em {
+      font-style: normal;
+    }
+  }
+
+  h2 {
+    margin-top: vw-1920(32);
+    margin-bottom: vw-1920(48);
+    color: var(--bg);
+    max-width: vw-1920(780);
+
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: vw-1920(60);
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: vw-1920(8);
+    font-family: var(--font-family);
+    font-weight: 200;
+    font-size: vw-1920(20);
+    line-height: 130%;
+  }
+
+  h3 {
+    margin-top: vw-1920(24);
+    margin-bottom: vw-1920(12);
+
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: vw-1920(32);
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+
+  ul {
+    margin-left: vw-1920(26);
+    margin-bottom: vw-1920(24);
+
+    li {
+      font-family: var(--font-family);
+      font-weight: 200;
+      font-size: vw-1920(18);
+      line-height: 130%;
+    }
+  }
+}
+
+.wrapper {
+  max-width: vw-1920(1630);
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    margin-top: vw-1440(160);
+
+    h2 {
+      margin-top: vw-1440(32);
+      margin-bottom: vw-1440(48);
+      font-size: vw-1440(60);
+      max-width: vw-1440(780);
+    }
+
+    p {
+      font-size: vw-1440(20);
+      margin-bottom: vw-1440(8);
+    }
+
+    h3 {
+      margin-top: vw-1440(24);
+      margin-bottom: vw-1440(12);
+      font-size: vw-1440(32);
+    }
+
+    ul {
+      margin-left: vw-1440(26);
+      margin-bottom: vw-1440(24);
+
+      li {
+        font-size: vw-1440(18);
+      }
+    }
+  }
+
+  .wrapper {
+    max-width: vw-1440(1200);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 72px;
+    width: 100%;
+
+    h2 {
+      margin-top: 16px;
+      margin-bottom: 24px;
+      font-size: 28px;
+      max-width: 100%;
+    }
+
+    p {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    h3 {
+      margin-top: 16px;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    ul {
+      margin-left: 26px;
+      margin-bottom: 16px;
+
+      li {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .wrapper {
+    width: calc(100% - 40px);
+    max-width: 100%;
+  }
+}

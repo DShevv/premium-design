@@ -20,6 +20,7 @@ import CorrectConfiguration from "@/blocks/CorrectConfiguration/CorrectConfigura
 import ConfigRevenue from "@/blocks/ConfigRevenue/ConfigRevenue";
 import { getSeoPage } from "@/services/getSeoPage";
 import DesignDrop from "@/blocks/DesignDrop/DesignDrop";
+import SeoText from "@/blocks/SeoText/SeoText";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("design-complect");
@@ -136,6 +137,7 @@ const page = () => {
       <PopularFaq />
 
       <OurProjects title={"Реализованные дизайн-проекты"} />
+      <SeoText page="design-complect" />
       <Feedback />
     </>
   );

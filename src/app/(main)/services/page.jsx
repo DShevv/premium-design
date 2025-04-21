@@ -12,6 +12,7 @@ import Image from "next/image";
 import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
 import { getSeoPage } from "@/services/getSeoPage";
 import { slugifyWithOpts } from "@/utils/helper";
+import SeoText from "@/blocks/SeoText/SeoText";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("services");
@@ -36,7 +37,7 @@ const page = async () => {
   const services = await fetch(
     `${process.env.API_URL}/v1/additional-services`,
     {
-      next: { revalidate: 600 },
+      next: { revalidate: 60 },
     }
   )
     .then((res) => res.json())
@@ -138,6 +139,7 @@ const page = async () => {
               );
             })}
         </div>
+        <SeoText page="services" />
       </div>
     </>
   );

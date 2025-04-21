@@ -152,7 +152,7 @@ const Footer = ({ info }) => {
             </div>
           </div>
           <div className={clsx("body-5", styles.infoPolicy)}>
-            <div className={styles.copyrights}>© 2025 interior.ru</div>
+            <div className={styles.copyrights}>© 2025 ottorenovation.by</div>
             <Link href={"/policy"} className={styles.policy}>
               Политика конфиденциальности{" "}
             </Link>
@@ -170,7 +170,7 @@ const Footer = ({ info }) => {
       </div>
 
       <div className={clsx("body-5", styles.bottom)}>
-        <div className={styles.copyrights}>© 2025 interior.ru</div>
+        <div className={styles.copyrights}>© 2025 ottorenovation.by</div>
         <Link href={"/policy"} className={styles.policy}>
           Политика конфиденциальности{" "}
         </Link>

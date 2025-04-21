@@ -4,6 +4,7 @@ import styles from "./page.module.scss";
 import clsx from "clsx";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import { getSeoPage } from "@/services/getSeoPage";
+import SeoText from "@/blocks/SeoText/SeoText";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("contacts");
@@ -43,6 +44,7 @@ const page = () => {
         />
       </div>
       <Contacts header={true} />
+      <SeoText page="contacts" />
       <Feedback />
     </>
   );

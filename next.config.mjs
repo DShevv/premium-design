@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    API_URL: "https://intapi.webspaceteam.site/api",
-    STORE_URL: "https://intapi.webspaceteam.site",
-    HOME_URL: "https://webspaceteam.site",
+    API_URL: "https://api.ottorenovation.by/api",
+    STORE_URL: "https://api.ottorenovation.by",
+    HOME_URL: "https://ottorenovation.by",
   },
   images: {
     remotePatterns: [
@@ -15,7 +15,13 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "intapi.webspaceteam.site",
+        hostname: "api.ottorenovation.by",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "ottorenovation.by",
         port: "",
         pathname: "/**",
       },

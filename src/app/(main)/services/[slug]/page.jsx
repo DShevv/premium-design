@@ -10,13 +10,13 @@ import OtherServices from "@/blocks/OtherServices/OtherServices";
 import service1 from "@/assets/images/services-1.png";
 import { slugifyWithOpts } from "@/utils/helper";
 import { parseServiceContent } from "@/utils/parseServiceContent";
-
+import { getSeoPage } from "@/services/getSeoPage";
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const seo = await fetch(
     `${process.env.API_URL}/v1/additional-services/${slug.split("_")[1]}`,
     {
-      next: { revalidate: 600 },
+      next: { revalidate: 60 },
     }
   ).then((res) => res.json());
 
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
   const posts = await fetch(`${process.env.API_URL}/v1/additional-services`, {
-    next: { revalidate: 600 },
+    next: { revalidate: 60 },
   }).then((res) => res.json());
 
   return posts.map((post) => ({
@@ -51,7 +51,7 @@ const page = async ({ params }) => {
   const service = await fetch(
     `${process.env.API_URL}/v1/additional-services/${slug.split("_")[1]}`,
     {
-      next: { revalidate: 600 },
+      next: { revalidate: 60 },
     }
   )
     .then((res) => res.json())
@@ -237,6 +237,7 @@ const page = async ({ params }) => {
       </section>
 
       <OurProjects title={"Реализованные дизайн-проекты"} />
+      <SeoText page={slugifyWithOpts(service.title)} />
       <Feedback />
     </>
   );

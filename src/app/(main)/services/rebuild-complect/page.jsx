@@ -22,7 +22,7 @@ import CompareBlock from "@/blocks/CompareBlock/CompareBlock";
 import ComfortWorkRebuild from "@/blocks/ComfortWorkRebuild/ComfortWorkRebuild";
 import { getSeoPage } from "@/services/getSeoPage";
 import DesignDrop from "@/blocks/DesignDrop/DesignDrop";
-
+import SeoText from "@/blocks/SeoText/SeoText";
 export async function generateMetadata() {
   const { seo } = await getSeoPage("rebuild-complect");
 
@@ -44,7 +44,7 @@ export async function generateMetadata() {
 
 const page = async () => {
   const res = await fetch(`${process.env.API_URL}/v1/before-after`, {
-    next: { revalidate: 600 },
+    next: { revalidate: 60 },
   });
   let compareItems;
   if (res.ok) {
@@ -178,6 +178,7 @@ const page = async () => {
       <PopularFaq />
 
       <OurProjects title={"Реализованные дизайн-проекты"} />
+      <SeoText page="rebuild-complect" />
       <Feedback />
     </>
   );

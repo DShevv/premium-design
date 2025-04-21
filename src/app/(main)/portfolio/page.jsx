@@ -6,6 +6,7 @@ import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import Pagination from "@/components/Pagination/Pagination";
 import PortfolioSort from "@/blocks/PortfolioSort/PortfolioSort";
 import { getSeoPage } from "@/services/getSeoPage";
+import SeoText from "@/blocks/SeoText/SeoText";
 
 export async function generateMetadata() {
   const { seo } = await getSeoPage("portfolio");
@@ -28,7 +29,7 @@ export async function generateMetadata() {
 
 const page = async () => {
   const posts = await fetch(`${process.env.API_URL}/v1/portfolio`, {
-    next: { revalidate: 600 },
+    next: { revalidate: 60 },
   })
     .then((res) => res.json())
     .catch((err) => undefined);
@@ -53,6 +54,7 @@ const page = async () => {
         {/* <div className={styles.pagination}>
           <Pagination max={8} maxPerView={4} current={1} />
         </div> */}
+        <SeoText page="portfolio" />
       </div>
     </>
   );

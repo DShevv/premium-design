@@ -5,6 +5,7 @@ import Hero from "@/blocks/Hero/Hero";
 import History from "@/blocks/History/History";
 import News from "@/blocks/News/News";
 import OurProjects from "@/blocks/OurProjects/OurProjects";
+import SeoText from "@/blocks/SeoText/SeoText";
 import Services from "@/blocks/Services/Services";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import ArrowButton from "@/components/Buttons/ArrowButton/ArrowButton";
@@ -41,7 +42,7 @@ export async function generateMetadata() {
 
 export default async function Home() {
   const res = await fetch(`${process.env.API_URL}/v1/before-after`, {
-    next: { revalidate: 600 },
+    next: { revalidate: 60 },
   });
   let compareItems;
   if (res.ok) {
@@ -60,6 +61,7 @@ export default async function Home() {
       <History />
       <CompareBlock items={compareItems} />
       <Contacts />
+      <SeoText page="main" />
       <Feedback />
     </>
   );
