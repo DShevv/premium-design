@@ -50,10 +50,12 @@ const page = async () => {
   if (res.ok) {
     compareItems = await res.json();
   }
-  compareItems = compareItems?.data.map((elem) => ({
-    before: elem.before_image,
-    after: elem.after_image,
-  }));
+  compareItems = compareItems?.data
+    .filter((elem) => elem.active)
+    .map((elem) => ({
+      before: elem.before_image,
+      after: elem.after_image,
+    }));
   return (
     <>
       <div className={styles.head}>

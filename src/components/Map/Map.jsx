@@ -5,12 +5,12 @@ import clsx from "clsx";
 import styles from "./Map.module.scss";
 import Marker from "@/components/Marker/Marker";
 
-function Map({ className }) {
+function Map({ address, className }) {
   const mapRef = useRef(null);
 
   useEffect(() => {
     async function initMap() {
-      if (mapRef.current) {
+      if (mapRef.current && address) {
         await ymaps3.ready;
 
         const {
@@ -20,14 +20,14 @@ function Map({ className }) {
           YMapMarker,
         } = ymaps3;
 
-        const { YMapDefaultMarker } = await ymaps3.import(
-          "@yandex/ymaps3-markers@0.0.1"
-        );
+        const searchResponse = await ymaps3.search({ text: address });
+
+        const coordinates = searchResponse[0].geometry.coordinates;
 
         const map = new YMap(
           mapRef.current,
           {
-            location: { center: [27.56272, 53.900846], zoom: 16 },
+            location: { center: coordinates, zoom: 16 },
             mode: "vector",
           },
           [
@@ -41,7 +41,7 @@ function Map({ className }) {
         map.addChild(
           new YMapMarker(
             {
-              coordinates: [27.56272, 53.900846],
+              coordinates: coordinates,
               draggable: false,
               mapFollowsOnDrag: true,
             },

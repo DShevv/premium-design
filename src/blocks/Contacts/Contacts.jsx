@@ -28,7 +28,7 @@ const Contacts = async ({ header }) => {
 
         <div className={styles.content}>
           <div className={styles.map}>
-            <Map />
+            <Map address={info?.address} />
           </div>
           <div className={styles.info}>
             <Line className={clsx("body-1", styles.line)}>
@@ -65,7 +65,7 @@ const Contacts = async ({ header }) => {
                 <div className={styles.socials}>
                   {info && info.whatsapp && (
                     <Link
-                      href={info.whatsapp}
+                      href={`https://wa.me/${info.whatsapp}`}
                       target="_blank"
                       className={styles.socialItem}
                     >
@@ -89,7 +89,7 @@ const Contacts = async ({ header }) => {
                   )}
                   {info && info.instagram && (
                     <Link
-                      href={info.instagram}
+                      href={`https://www.instagram.com/${info.instagram}`}
                       target="_blank"
                       className={styles.socialItem}
                     >
@@ -110,7 +110,7 @@ const Contacts = async ({ header }) => {
                   )}
                   {info && info.telegram && (
                     <Link
-                      href={info.telegram}
+                      href={`https://t.me/${info.telegram}`}
                       target="_blank"
                       className={styles.socialItem}
                     >

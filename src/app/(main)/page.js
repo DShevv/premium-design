@@ -48,10 +48,21 @@ export default async function Home() {
   if (res.ok) {
     compareItems = await res.json();
   }
-  compareItems = compareItems?.data.map((elem) => ({
-    before: elem.before_image,
-    after: elem.after_image,
-  }));
+  console.log("bef", compareItems);
+
+  compareItems = compareItems?.data
+    .filter((elem) => elem.active)
+    .map((elem) => ({
+      before: elem.before_image,
+      after: elem.after_image,
+    }));
+  console.log("compareItems", compareItems);
+
+  const info = await fetch(`${process.env.API_URL}/v1/design/settings`, {
+    next: { revalidate: 60 },
+  })
+    .then((res) => res.json())
+    .catch((err) => undefined);
 
   return (
     <>

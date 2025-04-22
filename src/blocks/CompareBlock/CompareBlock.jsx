@@ -33,7 +33,7 @@ const CompareBlock = ({ items, className, sliderClass, title, inside }) => {
     setIsDragging(value);
   };
 
-  if (!items) {
+  if (!items || items.length === 0) {
     return <></>;
   }
 

@@ -443,9 +443,7 @@ const MenuPopup = observer(({ info }) => {
             <div className={styles.line}>
               <div className={clsx("body-2", styles.title)}>Адрес офиса:</div>
               {info && info.address && (
-                <div className={clsx("h4", styles.value)}>
-                  Российская федерация, {info.address}
-                </div>
+                <div className={clsx("h4", styles.value)}>{info.address}</div>
               )}
             </div>
 
@@ -468,7 +466,7 @@ const MenuPopup = observer(({ info }) => {
               <div className={styles.socials}>
                 {info && info.whatsapp && (
                   <Link
-                    href={info.whatsapp}
+                    href={`https://wa.me/${info.whatsapp}`}
                     target="_blank"
                     className={styles.socialItem}
                   >
@@ -492,7 +490,7 @@ const MenuPopup = observer(({ info }) => {
                 )}
                 {info && info.instagram && (
                   <Link
-                    href={info.instagram}
+                    href={`https://www.instagram.com/${info.instagram}`}
                     target="_blank"
                     className={styles.socialItem}
                   >
@@ -513,7 +511,7 @@ const MenuPopup = observer(({ info }) => {
                 )}
                 {info && info.telegram && (
                   <Link
-                    href={info.telegram}
+                    href={`https://t.me/${info.telegram}`}
                     target="_blank"
                     className={styles.socialItem}
                   >
