@@ -59,7 +59,7 @@ const page = async () => {
   const banner = await fetch(
     `${process.env.API_URL}/v1/design/about-company-banner`,
     {
-      next: { revalidate: 0 },
+      next: { revalidate: 60 },
     }
   )
     .then((res) => res.json())

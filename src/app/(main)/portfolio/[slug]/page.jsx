@@ -18,6 +18,7 @@ import { parsePortfolioAbout } from "@/utils/parsePortfolioAbout";
 import OurProjects from "@/blocks/OurProjects/OurProjects";
 import { notFound } from "next/navigation";
 import { getSeoPage } from "@/services/getSeoPage";
+import SeoText from "@/blocks/SeoText/SeoText";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -111,12 +112,14 @@ const page = async ({ params }) => {
 
       <div className={styles.container}>
         <div className={styles.top}>
-          <div
-            className="body-1-regular"
-            dangerouslySetInnerHTML={{
-              __html: workCase.content_blocks[0].content,
-            }}
-          ></div>
+          {workCase.content_blocks[0] && (
+            <div
+              className="body-1-regular"
+              dangerouslySetInnerHTML={{
+                __html: workCase.content_blocks[0].content,
+              }}
+            ></div>
+          )}
           <div className={styles.side}>
             <h3 className={clsx("h3")}>О проекте</h3>
 

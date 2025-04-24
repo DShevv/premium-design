@@ -11,6 +11,7 @@ import service1 from "@/assets/images/services-1.png";
 import { slugifyWithOpts } from "@/utils/helper";
 import { parseServiceContent } from "@/utils/parseServiceContent";
 import { getSeoPage } from "@/services/getSeoPage";
+import SeoText from "@/blocks/SeoText/SeoText";
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const seo = await fetch(
