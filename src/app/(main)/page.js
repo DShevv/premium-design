@@ -48,7 +48,6 @@ export default async function Home() {
   if (res.ok) {
     compareItems = await res.json();
   }
-  console.log("bef", compareItems);
 
   compareItems = compareItems?.data
     .filter((elem) => elem.active)
@@ -56,7 +55,6 @@ export default async function Home() {
       before: elem.before_image,
       after: elem.after_image,
     }));
-  console.log("compareItems", compareItems);
 
   const info = await fetch(`${process.env.API_URL}/v1/design/settings`, {
     next: { revalidate: 60 },
@@ -64,12 +62,27 @@ export default async function Home() {
     .then((res) => res.json())
     .catch((err) => undefined);
 
+  const hero = await fetch(`${process.env.API_URL}/v1/design/main-banner`, {
+    next: { revalidate: 60 },
+  })
+    .then((res) => res.json())
+    .catch((err) => undefined);
+
+  const history = await fetch(
+    `${process.env.API_URL}/v1/design/about-company`,
+    {
+      next: { revalidate: 60 },
+    }
+  )
+    .then((res) => res.json())
+    .catch((err) => undefined);
+
   return (
     <>
-      <Hero />
+      <Hero info={hero.banner} />
       <Services />
       <OurProjects />
-      <History />
+      <History info={history.about_company} />
       <CompareBlock items={compareItems} />
       <Contacts />
       <SeoText page="main" />

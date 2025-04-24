@@ -30,16 +30,17 @@
 
 .content {
   display: grid;
-  gap: vw-1920(26);
+  gap: vw-1920(48);
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: vw-1920(320) vw-1920(320);
 }
 
 .image {
   grid-row: span 2 / span 2;
-  grid-column: span 4 / span 4;
+  grid-column: span 6 / span 6;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .imageSmall {

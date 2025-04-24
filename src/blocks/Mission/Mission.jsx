@@ -6,7 +6,7 @@ import picture from "@/assets/images/portfolio4.png";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const Mission = () => {
+const Mission = ({ info, direction }) => {
   const [activeIndexes, setActiveIndexes] = useState([]);
   const itemRefs = useRef([]);
 
@@ -47,64 +47,41 @@ const Mission = () => {
   return (
     <section className={styles.container}>
       <div className={clsx("body-1", styles.caption, styles.laptop)}>
-        <span>[ Наша миссия ]</span>
-        <h2 className={clsx("h2", styles.title)}>
-          Создаем <br /> уникальные решения
-        </h2>
+        <span>[ {info.tag} ]</span>
+        <h2 className={clsx("h2", styles.title)}>{info.title}</h2>
       </div>
       <div className={styles.content}>
-        <div className={styles.text}>
+        <div className={styles.text} style={{ order: direction ? "unset" : 1 }}>
           <div className={clsx("body-1", styles.caption, styles.desktop)}>
-            <span>[ Наша миссия ]</span>
-            <h2 className={clsx("h2", styles.title)}>
-              Создаем <br /> уникальные решения
-            </h2>
+            <span>[ {info.tag} ]</span>
+            <h2 className={clsx("h2", styles.title)}>{info.title}</h2>
           </div>
 
           <p className={clsx("body-1")}>
-            Мы реализуем проекты по всей стране и по всему миру, создавая
-            уникальные решения, которые превращают мечты в реальность без
-            использования волшебной палочки. Наше основное внимание уделяется
-            структурному дизайну, в то время как дизайн интерьера направлен
-            на создание уютной и вдохновляющей внутренней атмосферы.
+            {info.description.replaceAll("<p>", "").replaceAll("</p>", "")}
           </p>
           <div className={styles.info}>
-            <div
-              ref={(el) => setRef(el, 0)}
-              className={clsx("h1", styles.line, {
-                [styles.active]: activeIndexes.includes(0),
-              })}
-            >
-              20
-              <span className="h4">
-                лет в сфере <br /> строительства
-              </span>
-            </div>
-            <div
-              ref={(el) => setRef(el, 1)}
-              className={clsx("h1", styles.line, {
-                [styles.active]: activeIndexes.includes(1),
-              })}
-            >
-              90+
-              <span className="h4">
-                реализованных <br /> проектов
-              </span>
-            </div>
-            <div
-              ref={(el) => setRef(el, 2)}
-              className={clsx("h1", styles.line, {
-                [styles.active]: activeIndexes.includes(2),
-              })}
-            >
-              3000+
-              <span className="h4">
-                построенных <br /> квадратных метров
-              </span>
-            </div>
+            {info.stats.map((stat, index) => (
+              <div
+                key={index}
+                ref={(el) => setRef(el, index)}
+                className={clsx("h1", styles.line, {
+                  [styles.active]: activeIndexes.includes(index),
+                })}
+              >
+                {stat.value}
+                <span className="h4">{stat.description}</span>
+              </div>
+            ))}
           </div>
         </div>
-        <Image className={styles.image} src={picture} alt="" />
+        <Image
+          className={styles.image}
+          src={`${process.env.STORE_URL}/storage/${info.photo_path}`}
+          alt=""
+          width={802}
+          height={872}
+        />
       </div>
     </section>
   );

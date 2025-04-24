@@ -7,7 +7,7 @@ import { motion as m, useMotionValue, useSpring } from "motion/react";
 import clsx from "clsx";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 
-const Hero = () => {
+const Hero = ({ info }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -41,12 +41,12 @@ const Hero = () => {
     };
   }, [mouseX, mouseY]);
 
+  if (!info) return null;
+
   return (
     <section className={styles.container} ref={heroRef}>
       <div className={styles.wrapper}>
-        <h1 className={clsx("h1", styles.title)}>
-          Воплощаем мечты в реальность
-        </h1>
+        <h1 className={clsx("h1", styles.title)}>{info.title}</h1>
 
         <div className={styles.block}>
           <CircleButton
@@ -59,12 +59,10 @@ const Hero = () => {
 
           <div className={styles.caption}>
             <div className={clsx("h4", styles.subtitle)}>
-              Жизнь в новых тонах
+              {info.mini_block_title}
             </div>
             <p className={clsx("body-1", styles.text)}>
-              Мы задаем тон в тенденциях и следуем нашей цели: обеспечить
-              доступность качественного дизайна для всех, тем самым улучшая
-              эстетику повседневной жизни.
+              {info.mini_block_text.replaceAll("<p>", "").replaceAll("</p>", "")}
             </p>
           </div>
         </div>
@@ -75,7 +73,7 @@ const Hero = () => {
           className={styles.spotlight}
           style={{ x: smoothX, y: smoothY }}
         />
-        <Image src={picture} alt="" />
+        <Image src={info.photo_path} alt="" width={1920} height={1080} />
       </div>
     </section>
   );

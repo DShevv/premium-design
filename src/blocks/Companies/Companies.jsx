@@ -7,6 +7,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { useCallback, useRef, useState } from "react";
 import ArrowButton from "@/components/Buttons/ArrowButton/ArrowButton";
+import Link from "next/link";
 
 const Companies = ({ items }) => {
   const sliderRef = useRef(null);
@@ -21,6 +22,8 @@ const Companies = ({ items }) => {
     if (!sliderRef.current) return;
     sliderRef.current.swiper.slideNext();
   }, []);
+
+  if (!items || items.length === 0) return null;
 
   return (
     <section className={styles.container}>
@@ -65,12 +68,14 @@ const Companies = ({ items }) => {
                   [styles.active]: activeIndex === index,
                 })}
               >
-                <Image
-                  src={`${process.env.STORE_URL}/storage/${elem.photo_path}`}
-                  alt={elem.title}
-                  width={388}
-                  height={223}
-                />
+                <Link href={elem.url} target="_blank">
+                  <Image
+                    src={`${process.env.STORE_URL}/storage/${elem.logo_path}`}
+                    alt={elem.name}
+                    width={388}
+                    height={223}
+                  />
+                </Link>
               </SwiperSlide>
             ))}
         </Swiper>

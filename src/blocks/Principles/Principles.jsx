@@ -11,7 +11,7 @@ import pic6 from "@/assets/images/about.png";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const Principles = () => {
+const Principles = ({ values }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const itemRefs = useRef([]);
 
@@ -45,114 +45,44 @@ const Principles = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  if (!values) return null;
+
   return (
     <section className={clsx(styles.container)}>
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <div className={clsx("body-1", styles.caption)}>
             <span>[ Наши ценности ]</span>
-            <h2 className={clsx("h2", styles.title)}>
-              В своей работе мы следуем 6 принципам
-            </h2>
+            <h2 className={clsx("h2", styles.title)}>{values.section.title}</h2>
           </div>
         </div>
 
         <div className={styles.content}>
-          <div
-            ref={(el) => setRef(el, 0)}
-            className={clsx(styles.item, {
-              [styles.active]: activeIndex === 0,
-            })}
-          >
-            <div className={styles.bg}>
-              <Image src={pic1} alt="" />
+          {values.values.map((elem, index) => (
+            <div
+              key={index}
+              ref={(el) => setRef(el, index)}
+              className={clsx(styles.item, {
+                [styles.active]: activeIndex === index,
+                [styles.thin]: index % 6 === 4,
+                [styles.wide]:
+                  index % 6 === 1 || index % 6 === 3 || index % 6 === 5,
+              })}
+            >
+              <div className={styles.bg}>
+                <Image
+                  src={`${process.env.STORE_URL}/storage/${elem.photo_path}`}
+                  alt=""
+                  width={490}
+                  height={200}
+                />
+              </div>
+              <div className={clsx("h4", styles.name)}>{elem.title}</div>
+              <div className={clsx("body-1", styles.text)}>
+                {elem.description.replaceAll("<p>", "").replaceAll("</p>", "")}
+              </div>
             </div>
-            <div className={clsx("h4", styles.name)}>Индивидуальный подход</div>
-            <div className={clsx("body-1", styles.text)}>
-              Мы создаем уникальный интерьер, учитывая все желания и потребности
-              заказчика, а зачастую и с прогнозом его развития.
-            </div>
-          </div>
-          <div
-            ref={(el) => setRef(el, 1)}
-            className={clsx(styles.item, styles.wide, {
-              [styles.active]: activeIndex === 1,
-            })}
-          >
-            <div className={styles.bg}>
-              <Image src={pic2} alt="" />
-            </div>
-            <div className={clsx("h4", styles.name)}>
-              Функциональность и комфорт
-            </div>
-            <div className={clsx("body-1", styles.text)}>
-              Мы уделяем особое внимание функциональности интерьера, создавая
-              практичные и удобные решения для жилья.
-            </div>
-          </div>
-          <div
-            ref={(el) => setRef(el, 2)}
-            className={clsx(styles.item, {
-              [styles.active]: activeIndex === 2,
-            })}
-          >
-            <div className={styles.bg}>
-              <Image src={pic3} alt="" />
-            </div>
-            <div className={clsx("h4", styles.name)}>
-              Долговечность и качество
-            </div>
-            <div className={clsx("body-1", styles.text)}>
-              Мы используем только высококачественные материалы и передовые
-              технологии, чтобы гарантировать долговечность наших решений.
-            </div>
-          </div>
-          <div
-            ref={(el) => setRef(el, 3)}
-            className={clsx(styles.item, styles.wide, {
-              [styles.active]: activeIndex === 3,
-            })}
-          >
-            <div className={styles.bg}>
-              <Image src={pic4} alt="" />
-            </div>
-            <div className={clsx("h4", styles.name)}>Комплексный подход</div>
-            <div className={clsx("body-1", styles.text)}>
-              Мы предлагаем полный цикл работ, включая разработку проекта,
-              выполнение ремонтных работ, доставку материалов и управление
-              логистикой.
-            </div>
-          </div>
-          <div
-            ref={(el) => setRef(el, 4)}
-            className={clsx(styles.item, styles.thin, {
-              [styles.active]: activeIndex === 4,
-            })}
-          >
-            <div className={styles.bg}>
-              <Image src={pic5} alt="" />
-            </div>
-            <div className={clsx("h4", styles.name)}>Внимание к деталям</div>
-            <div className={clsx("body-1", styles.text)}>
-              Мы придаем большое значение мелочам, которые делают интерьер
-              уникальным и особенным.
-            </div>
-          </div>
-          <div
-            ref={(el) => setRef(el, 5)}
-            className={clsx(styles.item, styles.wide, {
-              [styles.active]: activeIndex === 5,
-            })}
-          >
-            <div className={styles.bg}>
-              <Image src={pic6} alt="" />
-            </div>
-            <div className={clsx("h4", styles.name)}>Современные тенденции</div>
-            <div className={clsx("body-1", styles.text)}>
-              Мы следим за последними тенденциями в дизайне и архитектуре,
-              интегрируя их в наши проекты.
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

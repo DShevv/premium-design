@@ -6,11 +6,7 @@ import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import ProgressHistory from "@/blocks/ProgressHistory/ProgressHistory";
 import Mission from "@/blocks/Mission/Mission";
 import Principles from "@/blocks/Principles/Principles";
-import Workers from "@/blocks/Workers/Workers";
 import AchievementsSlider from "@/blocks/AchivmentsSlider/AchievementsSlider";
-import YourImagine from "@/blocks/YourImagine/YourImagine";
-import DreamRework from "@/blocks/DreamRework/DreamRework";
-import BuyAssets from "@/blocks/BuyAssets/BuyAssets";
 import Companies from "@/blocks/Companies/Companies";
 import VideoBlock from "@/blocks/VideoBlock/VideoBlock";
 import { getSeoPage } from "@/services/getSeoPage";
@@ -36,9 +32,36 @@ export async function generateMetadata() {
 }
 
 const page = async () => {
-  const certificates = await fetch(`${process.env.API_URL}/v1/certificates`, {
+  const certificates = await fetch(`${process.env.API_URL}/v1/brands`, {
     next: { revalidate: 60 },
   })
+    .then((res) => res.json())
+    .catch((err) => undefined);
+
+  const aboutBlocks = await fetch(
+    `${process.env.API_URL}/v1/design/about-company-blocks`,
+    {
+      next: { revalidate: 60 },
+    }
+  )
+    .then((res) => res.json())
+    .catch((err) => undefined);
+
+  const companyValues = await fetch(
+    `${process.env.API_URL}/v1/design/company-values`,
+    {
+      next: { revalidate: 60 },
+    }
+  )
+    .then((res) => res.json())
+    .catch((err) => undefined);
+
+  const banner = await fetch(
+    `${process.env.API_URL}/v1/design/about-company-banner`,
+    {
+      next: { revalidate: 0 },
+    }
+  )
     .then((res) => res.json())
     .catch((err) => undefined);
 
@@ -61,14 +84,14 @@ const page = async () => {
           />
         </div>
       </div>
-      <VideoBlock />
+      <VideoBlock info={banner.banner} />
 
-      <Mission />
-      <YourImagine />
-      <DreamRework />
-      <BuyAssets />
-      <Companies items={certificates} />
-      <Principles />
+      {aboutBlocks.blocks.map((block, index) => (
+        <Mission key={block.id} info={block} direction={index % 2 === 0} />
+      ))}
+
+      <Companies items={certificates.data} />
+      <Principles values={companyValues} />
       <SeoText page="about" />
       <Feedback />
     </>

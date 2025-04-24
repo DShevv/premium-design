@@ -2,10 +2,13 @@
 import { useRef, useState } from "react";
 import styles from "./VideoBlock.module.scss";
 import clsx from "clsx";
+import Image from "next/image";
 
-const VideoBlock = () => {
+const VideoBlock = ({ info }) => {
   const videoRef = useRef(null);
   const [isPlaying, setPlaying] = useState(false);
+
+  if (!info) return null;
 
   return (
     <div
@@ -20,41 +23,65 @@ const VideoBlock = () => {
         }
       }}
     >
-      <video ref={videoRef} src={"/video.mp4"} className={styles.video}></video>
-      <div className={styles.play}>
-        {isPlaying ? (
-          <svg
-            fill="#121318"
-            viewBox="0 0 32 32"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></g>
-            <g id="SVGRepo_iconCarrier">
-              <title>pause</title>
-              <path d="M5.92 24.096q0 0.832 0.576 1.408t1.44 0.608h4.032q0.832 0 1.44-0.608t0.576-1.408v-16.16q0-0.832-0.576-1.44t-1.44-0.576h-4.032q-0.832 0-1.44 0.576t-0.576 1.44v16.16zM18.016 24.096q0 0.832 0.608 1.408t1.408 0.608h4.032q0.832 0 1.44-0.608t0.576-1.408v-16.16q0-0.832-0.576-1.44t-1.44-0.576h-4.032q-0.832 0-1.408 0.576t-0.608 1.44v16.16z"></path>
-            </g>
-          </svg>
-        ) : (
-          <svg
-            width="45"
-            height="52"
-            viewBox="0 0 45 52"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M40.6201 32.7068L10.7255 50.3566C5.91349 53.1977 0 49.4997 0 43.6496V8.34985C0 2.49981 5.91349 -1.19796 10.7255 1.64304L40.6201 19.2928C45.5709 22.2163 45.5709 29.7834 40.6201 32.7068Z"
+      {info.media_type === "video" && (
+        <video
+          ref={videoRef}
+          src={`${process.env.STORE_URL}/storage/${info.video_path}`}
+          className={styles.video}
+        ></video>
+      )}
+      {info.media_type === "video_url" && (
+        <embed
+          src={`https://www.youtube.com/v/${info.video_url.split("v=")[1]}`}
+          className={styles.video}
+        ></embed>
+      )}
+
+      {info.media_type === "photo" && (
+        <Image
+          src={`${process.env.STORE_URL}/storage/${info.photo_path}`}
+          alt={"banner"}
+          width={1920}
+          height={1080}
+          className={styles.video}
+        />
+      )}
+      {info.media_type === "video" && (
+        <div className={styles.play}>
+          {isPlaying ? (
+            <svg
               fill="#121318"
-            />
-          </svg>
-        )}
-      </div>
+              viewBox="0 0 32 32"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <title>pause</title>
+                <path d="M5.92 24.096q0 0.832 0.576 1.408t1.44 0.608h4.032q0.832 0 1.44-0.608t0.576-1.408v-16.16q0-0.832-0.576-1.44t-1.44-0.576h-4.032q-0.832 0-1.44 0.576t-0.576 1.44v16.16zM18.016 24.096q0 0.832 0.608 1.408t1.408 0.608h4.032q0.832 0 1.44-0.608t0.576-1.408v-16.16q0-0.832-0.576-1.44t-1.44-0.576h-4.032q-0.832 0-1.408 0.576t-0.608 1.44v16.16z"></path>
+              </g>
+            </svg>
+          ) : (
+            <svg
+              width="45"
+              height="52"
+              viewBox="0 0 45 52"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M40.6201 32.7068L10.7255 50.3566C5.91349 53.1977 0 49.4997 0 43.6496V8.34985C0 2.49981 5.91349 -1.19796 10.7255 1.64304L40.6201 19.2928C45.5709 22.2163 45.5709 29.7834 40.6201 32.7068Z"
+                fill="#121318"
+              />
+            </svg>
+          )}
+        </div>
+      )}
     </div>
   );
 };

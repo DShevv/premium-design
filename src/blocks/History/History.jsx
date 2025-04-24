@@ -6,16 +6,21 @@ import picture from "@/assets/images/history.png";
 import pictureSmall from "@/assets/images/history-small.png";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { parseHistoryContent } from "@/utils/parseHistoryContent";
 
-const History = () => {
+const History = ({ info }) => {
   const [activeIndexes, setActiveIndexes] = useState([]);
   const itemRefs = useRef([]);
+
+  const parsedContent = parseHistoryContent(info.description);
 
   const setRef = useCallback((el, index) => {
     if (el) {
       itemRefs.current[index] = el;
     }
   }, []);
+
+  if (!info) return null;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +56,7 @@ const History = () => {
         <div className={styles.header}>
           <div className={clsx("body-1", styles.caption)}>
             <span>[ О компании ]</span>
-            <h2 className={clsx("h2", styles.title)}>Наша большая история</h2>
+            <h2 className={clsx("h2", styles.title)}>{info.title}</h2>
           </div>
           <CircleButton
             type="link"
@@ -64,55 +69,33 @@ const History = () => {
         </div>
 
         <div className={styles.content}>
-          <Image className={styles.imageSmall} src={pictureSmall} alt="" />
-          <Image className={styles.image} src={picture} alt="" />
+          <Image
+            className={styles.image}
+            src={info.photo_path}
+            alt=""
+            width={802}
+            height={668}
+          />
           <div className={styles.text}>
-            <p className="body-1-regular">
-              Мы специализируемся на создании дизайнов интерьеров премиум
-              сегмента, где каждая деталь отражает наш подход
-              к сбалансированному сочетанию функциональности и красоты.
-            </p>
-            <p className="body-1">
-              Наши работы, вдохновленные этой задачей, воплощают в себе
-              современные тенденции и классические элементы, создавая уникальную
-              атмосферу, которая соответствует высоким стандартам наших
-              клиентов.
-            </p>
+            {parsedContent.map((item, index) => (
+              <p key={index} className={clsx(item.type, styles.text)}>
+                {item.content}
+              </p>
+            ))}
+
             <div className={styles.info}>
-              <div
-                ref={(el) => setRef(el, 0)}
-                className={clsx("h1", styles.line, {
-                  [styles.active]: activeIndexes.includes(0),
-                })}
-              >
-                20
-                <span className="h4">
-                  лет в сфере <br /> строительства
-                </span>
-              </div>
-              <div
-                ref={(el) => setRef(el, 1)}
-                className={clsx("h1", styles.line, {
-                  [styles.active]: activeIndexes.includes(1),
-                })}
-              >
-                90+
-                <span className="h4">
-                  реализованных <br /> проектов
-                </span>
-              </div>
-              <div
-                ref={(el) => setRef(el, 2)}
-                className={clsx("h1", styles.line, {
-                  [styles.active]: activeIndexes.includes(2),
-                })}
-              >
-                3000+
-                <span className="h4">
-                  построенных <br className="mobile" /> квадратных{" "}
-                  <br className="desktop" /> метров
-                </span>
-              </div>
+              {info.stats.map((item, index) => (
+                <div
+                  key={index}
+                  ref={(el) => setRef(el, index)}
+                  className={clsx("h1", styles.line, {
+                    [styles.active]: activeIndexes.includes(index),
+                  })}
+                >
+                  {item.value}
+                  <span className="h4">{item.description}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
