@@ -1,6 +1,10 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET() {
   const res = await fetch(`${process.env.API_URL}/v1/seo/sitemap.xml`, {
-    next: { cache: "no-cache" },
+    next: { revalidate: 0 },
+    cache: "no-store",
   }); // API должен возвращать XML
   const sitemapXml = await res.text();
 
