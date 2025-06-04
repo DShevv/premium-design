@@ -89,7 +89,6 @@ const page = async () => {
       {aboutBlocks.blocks.map((block, index) => (
         <Mission key={block.id} info={block} direction={index % 2 === 0} />
       ))}
-
       <Companies items={certificates.data} />
       <Principles values={companyValues} />
       <SeoText page="about" />

@@ -43,6 +43,15 @@ const page = async () => {
     .then((res) => res.json())
     .catch((err) => undefined);
 
+  const text = await fetch(
+    `${process.env.API_URL}/v1/additional-services/page/description`,
+    {
+      next: { revalidate: 60 },
+    }
+  )
+    .then((res) => res.json())
+    .catch((err) => undefined);
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -62,21 +71,14 @@ const page = async () => {
               ]}
             />
           </div>
-          <div className={clsx("body-1", styles.text)}>
-            Наша компания предоставляет полный спектр услуг в сфере обустройства
-            пространств, сосредоточившись на трёх ключевых направлениях:
-            профессиональная разработка дизайн-проектов с 3D-визуализацией,
-            реализация ремонта «под ключ» (включая демонтажные работы, монтаж
-            инженерных коммуникаций, черновую и чистовую отделку), а также
-            комплексная закупка сертифицированных материалов с оптимизацией
-            бюджета (от напольных покрытий до декоративных элементов)
-            с предоставлением детализированной сметы и поэтапным контролем
-            качества.
-          </div>
+          <div
+            className={clsx("body-1", styles.text)}
+            dangerouslySetInnerHTML={{ __html: text.description }}
+          />
         </div>
 
         <div className={styles.container}>
-          <Link href={"/services/design-project"} className={styles.item}>
+          {/*           <Link href={"/services/design-project"} className={styles.item}>
             <div className={styles.bg}>
               <Image src={image1} alt="" />
             </div>
@@ -113,10 +115,9 @@ const page = async () => {
               Ремонт под ключ с комплектацией (с дизайн проектом заказчика)
             </div>
             <InlineButton className={styles.more}>Подробнее</InlineButton>
-          </Link>
+          </Link> */}
           {services &&
             services.map((elem) => {
-              console.log(`${process.env.STORE_URL}${elem.photo_path}`);
               return (
                 <Link
                   key={elem.id}

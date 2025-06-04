@@ -3,8 +3,9 @@ import styles from "./Footer.module.scss";
 import clsx from "clsx";
 import Logo from "@/components/Logo/Logo";
 import { SvgLogoFooter } from "@/assets/icons/svgs";
+import { slugifyWithOpts } from "@/utils/helper";
 
-const Footer = ({ info }) => {
+const Footer = ({ info, services }) => {
   return (
     <footer className={styles.container}>
       <div className={styles.content}>
@@ -23,24 +24,15 @@ const Footer = ({ info }) => {
 
         <ul className={styles.list}>
           <div className={clsx("body-3", styles.title)}>[ услуги ]</div>
-          <li className={clsx("body-1-regular", styles.item)}>
-            <Link href={"/services/design-project"}>Дизайн проект</Link>
-          </li>
-          <li className={clsx("body-1-regular", styles.item)}>
-            <Link href={"/services/design-complect"}>
-              Дизайн проект с комплектацией
-            </Link>
-          </li>
-          <li className={clsx("body-1-regular", styles.item)}>
-            <Link href={"/services/rebuild-project"}>
-              Ремонт под ключ (с дизайн проектом заказчика)
-            </Link>
-          </li>
-          <li className={clsx("body-1-regular", styles.item)}>
-            <Link href={"/services/rebuild-complect"}>
-              Ремонт под ключ с комплектацией (с дизайн проектом заказчика)
-            </Link>
-          </li>
+          {services.slice(0, 4).map((item) => (
+            <li key={item.id} className={clsx("body-1-regular", styles.item)}>
+              <Link
+                href={`/services/${slugifyWithOpts(item.title)}_${item.id}`}
+              >
+                {item.title}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         <div className={styles.info}>

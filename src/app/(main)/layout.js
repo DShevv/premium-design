@@ -54,12 +54,23 @@ export default async function Layout({ children }) {
   info.logo_path = headerLogo;
   info.logo_path_2 = footerLogo;
 
+  const services = await fetch(
+    `${process.env.API_URL}/v1/additional-services`,
+    {
+      next: { revalidate: 60 },
+    }
+  );
+  let servicesItems;
+  if (services.ok) {
+    servicesItems = await services.json();
+  }
+
   return (
     <>
       <Header info={info} />
       <main>{children}</main>
 
-      <Footer info={info} />
+      <Footer info={info} services={servicesItems} />
       <MenuPopup info={info} />
       <FeedbackPopup />
       <SearchPopup info={info} />

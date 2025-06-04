@@ -5,11 +5,18 @@ import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
-import service1 from "@/assets/images/services-1.png";
+import { slugifyWithOpts } from "@/utils/helper";
 
 const OtherServices = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const itemRefs = useRef([]);
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    fetch(`${process.env.API_URL}/v1/additional-services`)
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, []);
 
   const setRef = useCallback((el, index) => {
     if (el) {
@@ -45,75 +52,30 @@ const OtherServices = () => {
     <div className={styles.side}>
       <div className={clsx("h3", styles.sideTitle)}>другие услуги</div>
       <div className={styles.items}>
-        <Link
-          href={"/services/design-project"}
-          className={clsx(styles.service, {
-            [styles.activeService]: activeIndex === 0,
-          })}
-          ref={(el) => setRef(el, 0)}
-          data-index={0}
-        >
-          <div className={styles.serviceBg}>
-            <Image src={service1} alt="" />
-          </div>
-          <div className={styles.caption}>
-            <span className="h4">Дизайн проект</span>
-            <InlineButton className={styles.more}>Подробнее</InlineButton>
-          </div>
-        </Link>
-        <Link
-          href={"/services/design-complect"}
-          className={clsx(styles.service, {
-            [styles.activeService]: activeIndex === 1,
-          })}
-          data-index={1}
-          ref={(el) => setRef(el, 1)}
-        >
-          <div className={styles.serviceBg}>
-            <Image src={service1} alt="" />
-          </div>
-          <div className={styles.caption}>
-            <span className="h4">Дизайн проект с комплектацией</span>
-            <InlineButton className={styles.more}>Подробнее</InlineButton>
-          </div>
-        </Link>
-        <Link
-          href={"/services/design"}
-          className={clsx(styles.service, {
-            [styles.activeService]: activeIndex === 2,
-          })}
-          data-index={2}
-          ref={(el) => setRef(el, 2)}
-        >
-          <div className={styles.serviceBg}>
-            <Image src={service1} alt="" />
-          </div>
-          <div className={styles.caption}>
-            <span className="h4">
-              Ремонт под ключ (с дизайн проектом заказчика)
-            </span>
-            <InlineButton className={styles.more}>Подробнее</InlineButton>
-          </div>
-        </Link>
-        <Link
-          href={"/services/design"}
-          className={clsx(styles.service, {
-            [styles.activeService]: activeIndex === 3,
-          })}
-          data-index={3}
-          ref={(el) => setRef(el, 3)}
-        >
-          <div className={styles.serviceBg}>
-            <Image src={service1} alt="" />
-          </div>
-          <div className={styles.caption}>
-            <span className="h4">
-              Ремонт под ключ с комплектацией (с дизайн проектом заказчика)
-            </span>
-
-            <InlineButton className={styles.more}>Подробнее</InlineButton>
-          </div>
-        </Link>
+        {services.map((item, index) => (
+          <Link
+            href={`/services/${slugifyWithOpts(item.title)}_${item.id}`}
+            className={clsx(styles.service, {
+              [styles.activeService]: activeIndex === index,
+            })}
+            ref={(el) => setRef(el, index)}
+            data-index={index}
+            key={item.id}
+          >
+            <div className={styles.serviceBg}>
+              <Image
+                src={`${process.env.STORE_URL}/${item.photo_path}`}
+                alt={item.title}
+                width={1024}
+                height={768}
+              />
+            </div>
+            <div className={styles.caption}>
+              <span className="h4">{item.title}</span>
+              <InlineButton className={styles.more}>Подробнее</InlineButton>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

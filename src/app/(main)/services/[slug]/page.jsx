@@ -12,6 +12,11 @@ import { slugifyWithOpts } from "@/utils/helper";
 import { parseServiceContent } from "@/utils/parseServiceContent";
 import { getSeoPage } from "@/services/getSeoPage";
 import SeoText from "@/blocks/SeoText/SeoText";
+import Mission from "@/blocks/Mission/Mission";
+import CompareBlock from "@/blocks/CompareBlock/CompareBlock";
+import Companies from "@/blocks/Companies/Companies";
+import Principles from "@/blocks/Principles/Principles";
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const seo = await fetch(
@@ -62,6 +67,26 @@ const page = async ({ params }) => {
     notFound();
   }
 
+  const res = await fetch(`${process.env.API_URL}/v1/before-after`, {
+    next: { revalidate: 60 },
+  });
+  let compareItems;
+  if (res.ok) {
+    compareItems = await res.json();
+  }
+  compareItems = compareItems?.data
+    .filter((elem) => elem.active)
+    .map((elem) => ({
+      before: elem.before_image,
+      after: elem.after_image,
+    }));
+
+  const certificates = await fetch(`${process.env.API_URL}/v1/brands`, {
+    next: { revalidate: 60 },
+  })
+    .then((res) => res.json())
+    .catch((err) => undefined);
+
   return (
     <>
       <div className={styles.head}>
@@ -105,24 +130,24 @@ const page = async ({ params }) => {
 
               return (
                 <>
-                  {parsedContent.map((item, index) => {
+                  {parsedContent.map((item, idx) => {
                     if (item.type === "h4") {
                       return (
-                        <h4 key={index} className="h4">
+                        <h4 key={idx} className="h4">
                           {item.content}
                         </h4>
                       );
                     }
                     if (item.type === "p-strong") {
                       return (
-                        <p key={index} className="body-1-regular">
+                        <p key={idx} className="body-1-regular">
                           {item.content}
                         </p>
                       );
                     }
                     if (item.type === "p") {
                       return (
-                        <p key={index} className="body-1">
+                        <p key={idx} className="body-1">
                           {item.content}
                         </p>
                       );
@@ -130,7 +155,7 @@ const page = async ({ params }) => {
                     if (item.type === "quote") {
                       return (
                         <div
-                          key={index}
+                          key={idx}
                           className={clsx(styles.quote, "body-1-regular")}
                         >
                           <svg
@@ -158,15 +183,37 @@ const page = async ({ params }) => {
             if (item.type === "image") {
               return (
                 <div key={index} className={styles.imageBlock}>
-                  {item.urls.map((item, index) => (
+                  {item.urls.map((item, idx) => (
                     <Image
-                      key={index}
+                      key={`${idx}-${index}`}
                       src={`${process.env.STORE_URL}/${item}`}
                       alt=""
                       width={500}
                       height={300}
                     />
                   ))}
+                </div>
+              );
+            }
+
+            if (item.type === "image-text") {
+              return (
+                <div
+                  className={clsx(styles.step, {
+                    [styles.left]: item.content.layout !== "image-left",
+                  })}
+                  key={index}
+                >
+                  <Image
+                    src={`${process.env.STORE_URL}/storage/${item.content.imageUrl}`}
+                    alt=""
+                    width={664}
+                    height={469}
+                  />
+                  <div
+                    className={styles.text}
+                    dangerouslySetInnerHTML={{ __html: item.content.text }}
+                  ></div>
                 </div>
               );
             }
@@ -238,6 +285,35 @@ const page = async ({ params }) => {
       </section>
 
       <OurProjects title={"Реализованные дизайн-проекты"} />
+      {service.content_blocks
+        .filter(
+          (item) =>
+            item.type === "before-after" ||
+            item.type === "brands" ||
+            item.type === "values"
+        )
+        .map((item, index) => {
+          if (item.type === "before-after") {
+            return <CompareBlock items={compareItems} key={index} />;
+          }
+          if (item.type === "brands") {
+            return <Companies items={certificates.data} key={index} />;
+          }
+          if (item.type === "values") {
+            const values = {
+              section: {
+                title: item.content.mainTitle,
+              },
+              values: item.content.subBlocks.map((elem) => ({
+                title: elem.title,
+                description: elem.description,
+                photo_path: elem.photoPath.replace("storage/", ""),
+              })),
+            };
+
+            return <Principles key={index} values={values} />;
+          }
+        })}
       <SeoText page={slugifyWithOpts(service.title)} />
       <Feedback />
     </>

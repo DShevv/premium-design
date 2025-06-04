@@ -55,6 +55,10 @@
 .content {
   flex: 1 1 auto;
   color: var(--bg);
+
+  p {
+    margin-bottom: vw-1920(12);
+  }
 }
 
 .content h4 {
@@ -85,6 +89,76 @@
   display: flex;
   flex-direction: column;
   gap: vw-1920(24);
+  margin-top: vw-1920(32);
+}
+
+.step {
+  display: flex;
+  gap: vw-1920(26);
+  align-items: center;
+
+  &.left {
+    flex-direction: row-reverse;
+  }
+}
+
+.step:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+.step.last {
+  flex-direction: column;
+  gap: vw-1920(36);
+}
+
+.step > img {
+  width: vw-1920(572);
+  flex: 0 0 vw-1920(572);
+  object-fit: cover;
+  height: vw-1920(469);
+}
+
+.step .singleImage {
+  flex: 1 1 auto;
+  width: 0;
+}
+
+.step .text {
+  h4 {
+    font-family: var(--font-family);
+    margin-top: vw-1920(0);
+    font-weight: 400;
+    font-size: vw-1920(26);
+    line-height: 140%;
+    text-transform: uppercase;
+    color: var(--bg);
+
+    @media (max-width: 1440px) {
+      margin-top: vw-1920(0);
+      font-size: vw-1440(26);
+    }
+
+    @media (max-width: 768px) {
+      margin-top: vw-1920(0);
+      font-size: 18px;
+    }
+  }
+
+  p {
+    font-family: var(--font-family);
+    font-weight: 200;
+    font-size: vw-1920(20);
+    line-height: 130%;
+    color: var(--bg);
+
+    @media (max-width: 1440px) {
+      font-size: vw-1440(20);
+    }
+
+    @media (max-width: 768px) {
+      font-size: 17px;
+    }
+  }
 }
 
 @media (max-width: 1440px) {
@@ -105,6 +179,10 @@
 
   .content {
     max-width: vw-1440(776);
+
+    p {
+      margin-bottom: vw-1440(12);
+    }
   }
 
   .content h4 {
@@ -129,12 +207,23 @@
   }
 
   .quote {
+    margin-top: vw-1440(32);
     padding: vw-1920(36);
     background: var(--dark-grey);
     color: var(--text);
     display: flex;
     flex-direction: column;
     gap: vw-1440(24);
+  }
+
+  .step {
+    gap: vw-1440(36);
+  }
+
+  .step > img {
+    width: vw-1440(375);
+    flex: 0 0 vw-1440(375);
+    height: vw-1440(320);
   }
 }
 
@@ -157,6 +246,10 @@
 
   .content {
     max-width: 100%;
+
+    p {
+      margin-bottom: 12px;
+    }
   }
 
   .content h4 {
@@ -181,6 +274,7 @@
   }
 
   .quote {
+    margin-top: 24px;
     padding: 24px;
     background: var(--dark-grey);
     color: var(--text);
@@ -193,5 +287,20 @@
     margin-top: 36px;
     flex-direction: column-reverse;
     gap: 72px;
+  }
+
+  .step {
+    flex-direction: column !important;
+    gap: 24px;
+  }
+
+  .step > img {
+    width: 100%;
+    flex: initial;
+    height: 200px;
+  }
+  .step .singleImage {
+    flex: 1 1 auto;
+    width: 100%;
   }
 }

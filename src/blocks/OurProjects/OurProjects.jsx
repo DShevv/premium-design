@@ -14,29 +14,6 @@ import ProjectItem from "../../components/ProjectItem/ProjectItem";
 import { useCallback, useEffect, useRef, useState } from "react";
 import ArrowButton from "@/components/Buttons/ArrowButton/ArrowButton";
 
-const items = [
-  {
-    image: picture1,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-  {
-    image: picture2,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-  {
-    image: picture3,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-  {
-    image: picture1,
-    tag: "Дизайн-проект",
-    title: "Трёхэтажная квартира в москве",
-  },
-];
-
 const OurProjects = ({ title }) => {
   const sliderRef = useRef(null);
   const [slides, setSlides] = useState([]);

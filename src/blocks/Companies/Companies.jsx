@@ -50,11 +50,12 @@ const Companies = ({ items }) => {
           slidesPerView={"auto"}
           autoplay={{
             delay: 2500,
-            disableOnInteraction: true,
+            disableOnInteraction: false,
           }}
-          centeredSlides={true}
+          loop={true}
           spaceBetween={16}
           speed={600}
+          watchSlidesProgress={true}
           onSlideChange={(slider) => {
             setActiveIndex(slider.activeIndex);
           }}

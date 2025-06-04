@@ -49,6 +49,17 @@ export default async function Home() {
     compareItems = await res.json();
   }
 
+  const services = await fetch(
+    `${process.env.API_URL}/v1/additional-services`,
+    {
+      next: { revalidate: 60 },
+    }
+  );
+  let servicesItems;
+  if (services.ok) {
+    servicesItems = await services.json();
+  }
+
   compareItems = compareItems?.data
     .filter((elem) => elem.active)
     .map((elem) => ({
@@ -80,7 +91,7 @@ export default async function Home() {
   return (
     <>
       <Hero info={hero.banner} />
-      <Services />
+      <Services items={servicesItems} />
       <OurProjects />
       <History info={history.about_company} />
       <CompareBlock items={compareItems} />

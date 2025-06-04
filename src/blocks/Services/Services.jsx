@@ -8,8 +8,9 @@ import picture3 from "@/assets/images/slider-3.png";
 import picture4 from "@/assets/images/slider-4.png";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { slugifyWithOpts } from "@/utils/helper";
 
-const Services = () => {
+const Services = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const itemRefs = useRef([]);
 
@@ -48,35 +49,38 @@ const Services = () => {
 
   return (
     <section className={styles.container}>
-      <div
-        className={clsx(styles.item, {
-          [styles.active]: activeIndex === 0,
-        })}
-        ref={(el) => setRef(el, 0)}
-        data-index={0}
-      >
-        <div className={styles.bg}>
-          <Image src={picture1} alt="" />
-        </div>
-        <div className={clsx("h3", styles.title)}>
-          Дизайн-
-          <br />
-          проект
-        </div>
+      {items &&
+        items.splice(0, 4).map((item, index) => (
+          <div
+            key={item.id}
+            className={clsx(styles.item, {
+              [styles.active]: activeIndex === index,
+            })}
+            ref={(el) => setRef(el, index)}
+            data-index={index}
+          >
+            <div className={styles.bg}>
+              <Image
+                src={`${process.env.STORE_URL}/${item.photo_path}`}
+                alt={item.title}
+                width={1024}
+                height={768}
+              />
+            </div>
+            <div className={clsx("h3", styles.title)}>{item.title}</div>
 
-        <CircleButton
-          type="link"
-          href={`/services/design-project`}
-          centered={true}
-          className={styles.button}
-        >
-          Дизайн-
-          <br />
-          проект
-        </CircleButton>
-      </div>
+            <CircleButton
+              type="link"
+              href={`/services/${slugifyWithOpts(item.title)}_${item.id}`}
+              centered={true}
+              className={styles.button}
+            >
+              {item.title}
+            </CircleButton>
+          </div>
+        ))}
 
-      <div
+      {/* <div
         className={clsx(styles.item, {
           [styles.active]: activeIndex === 1,
         })}
@@ -140,7 +144,7 @@ const Services = () => {
         >
           Установка сантехники
         </CircleButton>
-      </div>
+      </div> */}
     </section>
   );
 };
