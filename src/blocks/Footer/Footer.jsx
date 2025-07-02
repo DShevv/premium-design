@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./Footer.module.scss";
 import clsx from "clsx";
 import Logo from "@/components/Logo/Logo";
-import { SvgLogoFooter } from "@/assets/icons/svgs";
+import { SvgLogoFooter, SvgViber } from "@/assets/icons/svgs";
 import { slugifyWithOpts } from "@/utils/helper";
 
 const Footer = ({ info, services }) => {
@@ -55,6 +55,7 @@ const Footer = ({ info, services }) => {
               <Link
                 href={`mailto:${info.email}`}
                 className={clsx("h3", styles.value)}
+                style={{ textTransform: "none" }}
               >
                 {info.email}
               </Link>
@@ -136,6 +137,15 @@ const Footer = ({ info, services }) => {
                         strokeLinejoin="round"
                       />
                     </svg>
+                  </Link>
+                )}
+                {info && info.viber && (
+                  <Link
+                    href={`viber://chat?number=${info.viber}`}
+                    target="_blank"
+                    className={styles.socialItem}
+                  >
+                    <SvgViber />
                   </Link>
                 )}
               </div>

@@ -13,6 +13,7 @@ import { AnimatePresence, motion as m } from "motion/react";
 import service1 from "@/assets/images/services-1.png";
 import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
 import MenuButton from "@/components/Buttons/MenuButton/MenuButton";
+import { SvgViber } from "@/assets/icons/svgs";
 
 const MenuPopup = observer(({ info }) => {
   const { popupStore } = globalStore;
@@ -453,6 +454,7 @@ const MenuPopup = observer(({ info }) => {
                 <Link
                   href={`mailto:${info.email}`}
                   className={clsx("h4", styles.value)}
+                  style={{ textTransform: "none" }}
                 >
                   {info.email}
                 </Link>
@@ -530,6 +532,15 @@ const MenuPopup = observer(({ info }) => {
                         strokeLinejoin="round"
                       />
                     </svg>
+                  </Link>
+                )}
+                {info && info.viber && (
+                  <Link
+                    href={`viber://chat?number=${info.viber}`}
+                    target="_blank"
+                    className={styles.socialItem}
+                  >
+                    <SvgViber />
                   </Link>
                 )}
               </div>

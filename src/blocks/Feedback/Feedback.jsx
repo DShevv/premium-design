@@ -70,11 +70,11 @@ const Feedback = observer(() => {
                     "success",
                     "Наш менеджер свяжется с вами в ближайшее время"
                   );
-                  resetForm();
                 }
                 if (!res.ok) {
                   throw new Error("Ошибка при отправке заявки");
                 }
+                resetForm();
               } catch (e) {
                 console.log(e);
                 setNotification(
@@ -102,6 +102,7 @@ const Feedback = observer(() => {
                       name={"name"}
                       error={errors.name}
                       placeholder={"Имя*"}
+                      value={values.name}
                       onChange={(e) => {
                         const value = e.target.value || "";
                         setFieldValue("name", value);
@@ -116,6 +117,7 @@ const Feedback = observer(() => {
                       name={"phone"}
                       error={errors.phone}
                       placeholder={"Телефон*"}
+                      value={values.phone}
                       onChange={(e) => {
                         const value = e.target.value || "";
                         setFieldValue("phone", value);
@@ -130,6 +132,7 @@ const Feedback = observer(() => {
                       name={"email"}
                       error={errors.email}
                       placeholder={"Email*"}
+                      value={values.email}
                       onChange={(e) => {
                         const value = e.target.value || "";
                         setFieldValue("email", value);
@@ -145,6 +148,7 @@ const Feedback = observer(() => {
                       placeholder={
                         "Комментарий (желаемый тип ремонта, площадь и т.д.)"
                       }
+                      value={values.comment}
                     />
                   </div>
 

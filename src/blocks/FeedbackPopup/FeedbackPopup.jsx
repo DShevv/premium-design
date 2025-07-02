@@ -138,6 +138,7 @@ const FeedbackPopup = observer(() => {
                         value={values.name}
                         error={errors.name}
                         placeholder={"Имя*"}
+                        value={values.name}
                         onChange={(e) => {
                           const value = e.target.value || "";
                           setFieldValue("name", value);
@@ -153,6 +154,7 @@ const FeedbackPopup = observer(() => {
                         value={values.phone}
                         placeholder={"Телефон*"}
                         error={errors.phone}
+                        value={values.phone}
                         onChange={(e) => {
                           const value = e.target.value || "";
                           setFieldValue("phone", value);
@@ -168,6 +170,7 @@ const FeedbackPopup = observer(() => {
                         value={values.email}
                         placeholder={"Email*"}
                         error={errors.email}
+                        value={values.email}
                         onChange={(e) => {
                           const value = e.target.value || "";
                           setFieldValue("email", value);
@@ -183,6 +186,7 @@ const FeedbackPopup = observer(() => {
                         placeholder={
                           "Комментарий (желаемый тип ремонта, площадь и т.д.)"
                         }
+                        value={values.comment}
                         onChange={(e) => {
                           const value = e.target.value || "";
                           setFieldValue("comment", value);
@@ -193,6 +197,7 @@ const FeedbackPopup = observer(() => {
                     <div className={styles.field}>
                       <FileInput
                         className={styles.file}
+                        value={values.file}
                         setFieldValue={(value) => setFieldValue("file", value)}
                       />
                     </div>

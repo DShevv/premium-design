@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Map from "@/components/Map/Map";
 import Link from "next/link";
 import Line from "./Line/Line";
+import { SvgViber } from "@/assets/icons/svgs";
 
 const Contacts = async ({ header }) => {
   const info = await fetch(`${process.env.API_URL}/v1/design/settings`, {
@@ -48,6 +49,7 @@ const Contacts = async ({ header }) => {
                 <Link
                   href={`mailto:${info.email}`}
                   className={clsx("h2", styles.value)}
+                  style={{ textTransform: "none" }}
                 >
                   {info.email}
                 </Link>
@@ -129,6 +131,15 @@ const Contacts = async ({ header }) => {
                           strokeLinejoin="round"
                         />
                       </svg>
+                    </Link>
+                  )}
+                  {info && info.viber && (
+                    <Link
+                      href={`viber://chat?number=${info.viber}`}
+                      target="_blank"
+                      className={styles.socialItem}
+                    >
+                      <SvgViber />
                     </Link>
                   )}
                 </div>

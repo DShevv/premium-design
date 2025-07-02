@@ -78,9 +78,12 @@ const Principles = ({ values }) => {
                 />
               </div>
               <div className={clsx("h4", styles.name)}>{elem.title}</div>
-              <div className={clsx("body-1", styles.text)}>
-                {elem.description.replaceAll("<p>", "").replaceAll("</p>", "")}
-              </div>
+              <div
+                className={clsx("body-1", styles.text)}
+                dangerouslySetInnerHTML={{
+                  __html: elem.description,
+                }}
+              />
             </div>
           ))}
         </div>
