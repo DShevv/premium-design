@@ -27,7 +27,7 @@ const Feedback = observer(() => {
 
         <div className={styles.wrapper}>
           <h3 className={clsx("h3", styles.title)}>
-            Сделайте шаг в мир (название){" "}
+            Сделайте шаг в мир дизайна{" "}
           </h3>
           <p className={clsx("body-1", styles.text)}>
             Место, где ваши идеи обретают форму в оригинальном исполнении нашей

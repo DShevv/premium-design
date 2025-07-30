@@ -12,7 +12,9 @@ import clsx from "clsx";
 
 const PortfolioSort = ({ items }) => {
   const [currentTag, setTag] = useState("Все");
-  const tags = items ? ["Все", ...items.map((elem) => elem.tag)] : ["Все"];
+  const tags = items
+    ? ["Все", ...new Set(items.map((elem) => elem.tag))]
+    : ["Все"];
 
   return (
     <div>

@@ -284,7 +284,7 @@ const page = async ({ params }) => {
         </div>
       </section>
 
-      <OurProjects title={"Реализованные дизайн-проекты"} />
+      <OurProjects title={"Реализованные проекты"} />
       {service.content_blocks
         .filter(
           (item) =>

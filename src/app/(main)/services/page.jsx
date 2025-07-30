@@ -78,7 +78,7 @@ const page = async () => {
         </div>
 
         <div className={styles.container}>
-          {/*           <Link href={"/services/design-project"} className={styles.item}>
+          <Link href={"/services/design-project"} className={styles.item}>
             <div className={styles.bg}>
               <Image src={image1} alt="" />
             </div>
@@ -115,7 +115,7 @@ const page = async () => {
               Ремонт под ключ с комплектацией (с дизайн проектом заказчика)
             </div>
             <InlineButton className={styles.more}>Подробнее</InlineButton>
-          </Link> */}
+          </Link>
           {services &&
             services.map((elem) => {
               return (

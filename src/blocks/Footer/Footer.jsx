@@ -24,15 +24,24 @@ const Footer = ({ info, services }) => {
 
         <ul className={styles.list}>
           <div className={clsx("body-3", styles.title)}>[ услуги ]</div>
-          {services.slice(0, 4).map((item) => (
-            <li key={item.id} className={clsx("body-1-regular", styles.item)}>
-              <Link
-                href={`/services/${slugifyWithOpts(item.title)}_${item.id}`}
-              >
-                {item.title}
-              </Link>
-            </li>
-          ))}
+          <li className={clsx("body-1-regular", styles.item)}>
+            <Link href={"/services/design-project"}>Дизайн проект</Link>
+          </li>
+          <li className={clsx("body-1-regular", styles.item)}>
+            <Link href={"/services/design-complect"}>
+              Дизайн проект с комплектацией
+            </Link>
+          </li>
+          <li className={clsx("body-1-regular", styles.item)}>
+            <Link href={"/services/rebuild-project"}>
+              Ремонт под ключ (с дизайн проектом заказчика)
+            </Link>
+          </li>
+          <li className={clsx("body-1-regular", styles.item)}>
+            <Link href={"/services/rebuild-complect"}>
+              Ремонт под ключ с комплектацией (с дизайн проектом заказчика)
+            </Link>
+          </li>
         </ul>
 
         <div className={styles.info}>

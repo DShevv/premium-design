@@ -36,7 +36,15 @@ const OurProjects = ({ title }) => {
         .then((res) => res.json())
         .catch((err) => undefined);
 
-      posts && setSlides(posts.data);
+      if (posts) {
+        let data = posts.data;
+        if (data.length < 6 && data.length > 0) {
+          while (data.length < 6) {
+            data = [...data, ...posts.data];
+          }
+        }
+        setSlides(data);
+      }
     }
 
     fetchPortfolio();

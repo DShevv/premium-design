@@ -87,6 +87,27 @@ const SearchInput = ({
             url: `/contacts`,
             image: image4,
           },
+          {
+            title: "Дизайн проект",
+            url: `/services/design-project`,
+            image: image1,
+          },
+          {
+            title: "Дизайн проект с комплектацией",
+            url: `/services/design-complect`,
+            image: image2,
+          },
+          {
+            title: "Ремонт под ключ (с дизайн проектом заказчика)",
+            url: `/services/rebuild-project`,
+            image: image3,
+          },
+          {
+            title:
+              "Ремонт под ключ с комплектацией (с дизайн проектом заказчика)",
+            url: `/services/rebuild-complect`,
+            image: image4,
+          },
           ...services.map((elem) => ({
             title: elem.title,
             url: `/services/${slugifyWithOpts(elem.title)}_${elem.id}`,

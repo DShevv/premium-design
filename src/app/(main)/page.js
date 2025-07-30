@@ -55,10 +55,6 @@ export default async function Home() {
       next: { revalidate: 60 },
     }
   );
-  let servicesItems;
-  if (services.ok) {
-    servicesItems = await services.json();
-  }
 
   compareItems = compareItems?.data
     .filter((elem) => elem.active)
@@ -91,7 +87,7 @@ export default async function Home() {
   return (
     <>
       <Hero info={hero.banner} />
-      <Services items={servicesItems} />
+      <Services />
       <OurProjects />
       <History info={history.about_company} />
       <CompareBlock items={compareItems} />
