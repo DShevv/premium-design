@@ -49,7 +49,7 @@ const Services = ({ items }) => {
 
   return (
     <section className={styles.container}>
-      {items &&
+      {/* {items &&
         items.splice(0, 4).map((item, index) => (
           <div
             key={item.id}
@@ -78,9 +78,31 @@ const Services = ({ items }) => {
               {item.title}
             </CircleButton>
           </div>
-        ))}
+        ))} */}
 
-      {/* <div
+      <div
+        className={clsx(styles.item, {
+          [styles.active]: activeIndex === 1,
+        })}
+        ref={(el) => setRef(el, 1)}
+        data-index={1}
+      >
+        <div className={styles.bg}>
+          <Image src={picture1} alt="" />
+        </div>
+        <div className={clsx("h3", styles.title)}>Дизайн проект</div>
+
+        <CircleButton
+          type="link"
+          href={`/services/design-project`}
+          centered={true}
+          className={styles.button}
+        >
+          Дизайн проект
+        </CircleButton>
+      </div>
+
+      <div
         className={clsx(styles.item, {
           [styles.active]: activeIndex === 1,
         })}
@@ -90,7 +112,9 @@ const Services = ({ items }) => {
         <div className={styles.bg}>
           <Image src={picture2} alt="" />
         </div>
-        <div className={clsx("h3", styles.title)}>Дизайнерский свет</div>
+        <div className={clsx("h3", styles.title)}>
+          Дизайн проект с комплектацией
+        </div>
 
         <CircleButton
           type="link"
@@ -98,7 +122,7 @@ const Services = ({ items }) => {
           centered={true}
           className={styles.button}
         >
-          Дизайнерский свет
+          Дизайн проект с комплектацией
         </CircleButton>
       </div>
 
@@ -112,7 +136,7 @@ const Services = ({ items }) => {
         <div className={styles.bg}>
           <Image src={picture3} alt="" />
         </div>
-        <div className={clsx("h3", styles.title)}>Черновая отделка</div>
+        <div className={clsx("h3", styles.title)}>Ремонт под ключ</div>
 
         <CircleButton
           type="link"
@@ -120,7 +144,7 @@ const Services = ({ items }) => {
           centered={true}
           className={styles.button}
         >
-          Черновая отделка
+          Ремонт под ключ
         </CircleButton>
       </div>
 
@@ -134,7 +158,9 @@ const Services = ({ items }) => {
         <div className={styles.bg}>
           <Image src={picture4} alt="" />
         </div>
-        <div className={clsx("h3", styles.title)}>Установка сантехники</div>
+        <div className={clsx("h3", styles.title)}>
+          Ремонт под ключ с комплектацией
+        </div>
 
         <CircleButton
           type="link"
@@ -142,9 +168,9 @@ const Services = ({ items }) => {
           centered={true}
           className={styles.button}
         >
-          Установка сантехники
+          Ремонт под ключ с комплектацией
         </CircleButton>
-      </div> */}
+      </div>
     </section>
   );
 };
