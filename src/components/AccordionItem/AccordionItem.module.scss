@@ -43,6 +43,30 @@
 .inner {
   padding: vw-1920(12) 0;
   color: var(--text);
+
+  ul,
+  ol {
+    margin-left: vw-1920(26);
+    display: flex;
+    flex-direction: column;
+    gap: vw-1920(2);
+    margin-top: vw-1920(12);
+    margin-bottom: vw-1920(12);
+
+    @media (max-width: 1440px) {
+      gap: vw-1440(2);
+      margin-left: vw-1440(26);
+      margin-top: vw-1440(12);
+      margin-bottom: vw-1440(12);
+    }
+
+    @media (max-width: 768px) {
+      gap: 2px;
+      margin-left: 26px;
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+  }
 }
 
 @media (max-width: 1440px) {
