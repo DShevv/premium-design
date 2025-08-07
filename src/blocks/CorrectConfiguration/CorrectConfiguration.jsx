@@ -85,7 +85,7 @@ const CorrectConfiguration = () => {
               <div className={styles.circle}></div>
               <Image src={pic1} alt="" />
               <div className={clsx("h4", styles.text)}>
-                Гармоничный и комфортный интерьер
+                Доступ к эксклюзивным европейским брендам
               </div>
             </div>
             <div
@@ -96,9 +96,7 @@ const CorrectConfiguration = () => {
             >
               <div className={styles.circle}></div>
               <Image src={pic2} alt="" />
-              <div className={clsx("h4", styles.text)}>
-                Оптимальное использование пространства
-              </div>
+              <div className={clsx("h4", styles.text)}>Гарантия качества</div>
             </div>
             <div
               ref={(el) => setRef(el, 2)}

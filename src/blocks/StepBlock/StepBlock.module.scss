@@ -31,6 +31,10 @@
   width: 100%;
   background: var(--dark-grey);
   padding: vw-1920(48);
+
+  ul {
+    margin-left: vw-1920(24);
+  }
 }
 
 .reversed .caption {
@@ -74,6 +78,10 @@
     width: 100%;
     background: var(--dark-grey);
     padding: vw-1440(42);
+
+    ul {
+      margin-left: vw-1440(24);
+    }
   }
 
   .reversed .caption {
@@ -119,6 +127,10 @@
     width: 100%;
     background: var(--dark-grey);
     padding: 32px;
+
+    ul {
+      margin-left: 24px;
+    }
   }
 
   .reversed .caption {

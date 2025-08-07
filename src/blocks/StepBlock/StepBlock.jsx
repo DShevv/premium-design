@@ -130,7 +130,7 @@ const StepBlock = ({ image, subtitle, title, children, isReversed }) => {
         >
           <div className={clsx("body-1", styles.subtitle)}>{subtitle}</div>
           <h2 className={clsx("h2", styles.title)}>{title}</h2>
-          <p className={"body-1-regular"}>{children}</p>
+          <div className={"body-1-regular"}>{children}</div>
         </m.div>
         <m.div
           className={clsx(styles.caption, styles.mobile)}
@@ -141,7 +141,7 @@ const StepBlock = ({ image, subtitle, title, children, isReversed }) => {
         >
           <div className={clsx("body-1", styles.subtitle)}>{subtitle}</div>
           <h2 className={clsx("h2", styles.title)}>{title}</h2>
-          <p className={"body-1-regular"}>{children}</p>
+          <div className={"body-1-regular"}>{children}</div>
         </m.div>
       </div>
     </section>
