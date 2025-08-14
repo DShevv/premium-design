@@ -6,7 +6,10 @@ import hero from "@/assets/images/steps2.png";
 import zoom1 from "@/assets/images/works-2.png";
 import zoom2 from "@/assets/images/portfolio2.png";
 import stepBlock1 from "@/assets/images/portfolio4.png";
-import stepBlock2 from "@/assets/images/steps1.png";
+import stepBlock2 from "@/assets/images/design-project/price.jpg";
+import project1 from "@/assets/images/project-1.jpg";
+import project3 from "@/assets/images/project-3.jpg";
+
 import Image from "next/image";
 import OurProjects from "@/blocks/OurProjects/OurProjects";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
@@ -22,7 +25,14 @@ import image3 from "@/assets/images/hero-light.png";
 import { getSeoPage } from "@/services/getSeoPage";
 import DesignDrop from "@/blocks/DesignDrop/DesignDrop";
 import SeoText from "@/blocks/SeoText/SeoText";
-import image11 from "@/assets/images/about.png";
+import image11 from "@/assets/images/design-project/1.png";
+import image12 from "@/assets/images/design-project/2.jpg";
+import image13 from "@/assets/images/design-project/3.png";
+import image14 from "@/assets/images/design-project/4.jpg";
+import image15 from "@/assets/images/design-project/5.png";
+import image16 from "@/assets/images/design-project/6.jpg";
+import image17 from "@/assets/images/design-project/7.jpg";
+import image18 from "@/assets/images/design-project/8.jpg";
 
 const workSteps = [
   {
@@ -36,7 +46,7 @@ const workSteps = [
   {
     id: 2,
     title: "Работа над планировочными решениями",
-    image: image11,
+    image: image12,
     number: 2,
     description:
       "Мы разрабатываем 3–4 варианта планировочного решения, каждый из которых адаптируется под ваши предпочтения, образ жизни и архитектурные особенности пространства. Такой подход позволяет выбрать оптимальную конфигурацию, идеально сочетающую эстетику, функциональность и комфорт.",
@@ -44,7 +54,7 @@ const workSteps = [
   {
     id: 3,
     title: "Обсуждение, согласование концепций",
-    image: image11,
+    image: image13,
     number: 3,
     description:
       "Для каждого помещения мы проводим детальное обсуждение концепции, учитывая функциональные задачи, эстетические предпочтения и особенности пространства. Такой подход гарантирует согласование решений, максимально отражающих ваш стиль и образ жизни.",
@@ -52,7 +62,7 @@ const workSteps = [
   {
     id: 4,
     title: "Создание 3D визуализаций",
-    image: image11,
+    image: image14,
     number: 4,
     description:
       "Создание 3D визуализаций позволяет вам заранее «увидеть» будущее пространство и оценить эстетические и функциональные решения в реалистичной форме. Мы тщательно прорисовываем материалы, свет, мебель и композицию, чтобы каждая деталь соответствовала концепции и вашему видению.",
@@ -60,7 +70,7 @@ const workSteps = [
   {
     id: 5,
     title: "Внесение финальных правок по визуализациям, согласование",
-    image: image11,
+    image: image15,
     number: 5,
     description:
       "После создания визуализаций мы внимательно анализируем каждую деталь вместе с вами, чтобы внести финальные корректировки. Этот этап гарантирует, что все элементы проекта — от материалов до расстановки мебели — полностью соответствуют вашему видению и ожиданиям.",
@@ -68,7 +78,7 @@ const workSteps = [
   {
     id: 6,
     title: "Работа над технической документацией",
-    image: image11,
+    image: image16,
     number: 6,
     description:
       "На этапе работы над технической документацией мы формируем полный пакет чертежей и спецификаций, необходимый для реализации проекта. Все детали — от планов электрики и сантехники до монтажных схем и ведомостей материалов — выполняются с высокой точностью и соответствием согласованной концепции, обеспечивая беспроблемную реализацию и контроль качества.",
@@ -76,7 +86,7 @@ const workSteps = [
   {
     id: 7,
     title: "Верстка и печать альбома",
-    image: image11,
+    image: image17,
     number: 7,
     description:
       "На финальном этапе осуществляется верстка и печать альбома проекта — мы компонуем материалы, чертежи, визуализации и технические сведения в единый документ, отражающий концепцию интерьера. Каждый разворот оформляется в соответствии с эстетикой проекта и бренда, а печатный альбом становится удобным инструментом для согласования, презентаций и дальнейшей реализации.",
@@ -84,7 +94,7 @@ const workSteps = [
   {
     id: 8,
     title: "Сдача проекта и наши поздравления",
-    image: image11,
+    image: image18,
     number: 8,
     description:
       "На завершающем этапе происходит официальная сдача проекта заказчику. Мы благодарим клиента за доверие и совместную работу. Этот момент — не просто финал, а начало новых возможностей. Мы рады быть частью истории, которую создаёт наш клиент.",
@@ -259,8 +269,9 @@ const page = () => {
         </div>
 
         <div className={styles.imageBox}>
-          <ImageZoom src={zoom1} className={styles.zoomed} id="first" />
+          <ImageZoom src={project1} className={styles.zoomed} id="first" />
           <ImageZoom src={zoom2} className={styles.zoomed} id="second" />
+          <ImageZoom src={project3} className={styles.zoomed} id="third" />
         </div>
 
         <CircleButton

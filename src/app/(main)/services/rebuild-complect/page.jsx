@@ -2,9 +2,11 @@ import Feedback from "@/blocks/Feedback/Feedback";
 import styles from "./page.module.scss";
 import clsx from "clsx";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import hero from "@/assets/images/rebuild2.png";
-import zoom1 from "@/assets/images/history-small.png";
-import zoom2 from "@/assets/images/rebuild-complect.png";
+import hero from "@/assets/images/rebuild-complect/bg.jpg";
+import live from "@/assets/images/rebuild-complect/live.jpg";
+import optimize from "@/assets/images/rebuild-complect/optimize.jpg";
+import zoom1 from "@/assets/images/rebuild-complect/hero1.jpg";
+import zoom2 from "@/assets/images/rebuild-complect/hero2.jpg";
 import Image from "next/image";
 import OurProjects from "@/blocks/OurProjects/OurProjects";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
@@ -64,7 +66,7 @@ const page = async () => {
         </div>
         <div className={styles.wrapper}>
           <h1 className={clsx("h1-news", styles.title)}>
-            Ремонт под ключ с комплектацией (с дизайн проектом заказчика){" "}
+            Дизайн.Ремонт. Комплектация{" "}
           </h1>
           <Breadcrumbs
             isWhite={true}
@@ -78,8 +80,7 @@ const page = async () => {
                 href: "/services",
               },
               {
-                title:
-                  "Ремонт под ключ с комплектацией (с дизайн проектом заказчика)",
+                title: "Дизайн.Ремонт. Комплектация",
                 href: "/",
               },
             ]}
@@ -91,19 +92,19 @@ const page = async () => {
         <div className={styles.heroHeader}>
           <div className={styles.text}>
             <span className="body-1-regular">
-              Мы осуществляем ремонт квартир, включая новостройки, коттеджи,
-              загородные дома, офисы и другие помещения в Москве и Подмосковье.
-              Наши специалисты учитывают все детали, от текстуры и цвета
-              материалов до формы и стиля мебели, чтобы каждый элемент идеально
-              вписывался в общую концепцию проекта. Гарантируем особое внимание
-              к деталям при проведении ремонтных работ.
+              Хотите сэкономить свои силы, время и нервы на стройке и получить
+              именно то, о чём мечтали? Тогда заказывайте у нас полный цикл
+              работ- от бетона до уюта . Мы сопровождаем ваш проект от самой
+              идеи до момента, когда вы открываете дверь в свой новый дом — тот
+              самый, о котором мечтали.
             </span>
             <span className="body-1">
-              Комплектация дизайн-проекта — один из ключевых этапов создания
-              уникального и функционального интерьера. Мы тщательно подбираем
-              материалы, мебель и декоративные элементы для гармоничного
-              оформления. Чтобы ваш дом всегда был местом, куда хочется
-              возвращаться, воспользуйтесь услугами нашей компании.
+              Мы не просто разрабатываем индивидуальный дизайн-проект и
+              выполняем ремонт — мы полностью комплектуем ваш интерьер мебелью,
+              техникой, светом, текстилем и декором. Каждый штрих продуман с
+              заботой о вашем комфорте и стиле жизни.После сдачи вы получаете
+              готовое жилое пространство, в которое можно сразу заехать и начать
+              жить — без забот, без доделок, без суеты.
             </span>
           </div>
           <CircleButton
@@ -129,7 +130,7 @@ const page = async () => {
         </CircleButton>
       </div>
 
-      <DesignDrop />
+      {/* <DesignDrop /> */}
 
       {/*  <DesignSlider
         items={[
@@ -156,28 +157,39 @@ const page = async () => {
 
       <ComfortWorkRebuild />
 
-      <CompareBlock
+      {/*    <CompareBlock
         items={compareItems}
         className={clsx(styles.compare, styles.slider)}
         sliderClass={styles.swiper}
         title={"До-после нашего ремонта под ключ"}
-      />
+      /> */}
 
       <StepBlock
-        image={hero}
-        subtitle={"[ Бесплатный расчет ]"}
-        title={"Учтем все нюансы и дадим вам точный расчет"}
+        image={live}
+        subtitle={"[ Оставьте заботы ]"}
+        title={"Живите, а не контролируйте"}
       >
-        Для определения точной стоимости именно вашего дизайнерского ремонта под
-        ключ, мы предлагаем бесплатно составить для вас подробную смету на
-        ремонтные работы. Расчет может будет выполнен основе вашего
-        существующего дизайн-проекта. Просчет обязательно сопровождается выездом
-        нашего специалиста на объект для консультации. Этот шаг позволяет нам
-        учесть все особенности вашего помещения и гарантировать максимальную
-        точность расчета.
+        Представьте, что ваша будущая квартира создаётся без вашей головной
+        боли. Вы не звоните мастерам, не спорите с поставщиками, не отслеживаете
+        этапы — мы всё это делаем за вас. Ваше пространство рождается как по
+        щелчку: вы приходите — и оно готово к жизни, красивое, удобное и
+        полностью укомплектованное.
       </StepBlock>
 
-      <PopularFaq />
+      <StepBlock
+        image={optimize}
+        subtitle={"[ Разумно вкладывайте ]"}
+        title={"Оптимизация бюджета: разумный подход к большим результатам"}
+        isReversed={true}
+      >
+        Мы знаем, как важно вложить средства с умом — особенно в такой сложный и
+        многослойный процесс, как создание интерьера. Поэтому мы используем
+        комплексный подход, при котором каждое решение проходит сквозь призму
+        эффективности: от архитектурной концепции до закупки последней детали
+        декора.
+      </StepBlock>
+
+      {/*  <PopularFaq /> */}
 
       <OurProjects title={"Реализованные проекты"} />
       <SeoText page="rebuild-complect" />

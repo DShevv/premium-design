@@ -2,9 +2,9 @@
 import Image from "next/image";
 import styles from "./CorrectConfiguration.module.scss";
 import clsx from "clsx";
-import pic1 from "@/assets/images/config1.png";
-import pic2 from "@/assets/images/portfolio3.png";
-import pic3 from "@/assets/images/works-2.png";
+import pic1 from "@/assets/images/design-complect/correct-1.jpg";
+import pic2 from "@/assets/images/design-complect/correct-2.jpeg";
+import pic3 from "@/assets/images/design-complect/correct-3.png";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 

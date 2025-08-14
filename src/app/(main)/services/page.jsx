@@ -92,7 +92,7 @@ const page = async () => {
             </div>
 
             <div className={clsx(styles.name, "h4")}>
-              Дизайн проект с комплектацией
+              Комплектация дизайн проекта
             </div>
             <InlineButton className={styles.more}>Подробнее</InlineButton>
           </Link>
@@ -101,9 +101,7 @@ const page = async () => {
               <Image src={image3} alt="" />
             </div>
 
-            <div className={clsx(styles.name, "h4")}>
-              Ремонт под ключ (с дизайн проектом заказчика)
-            </div>
+            <div className={clsx(styles.name, "h4")}>Ремонт «Под ключ»</div>
             <InlineButton className={styles.more}>Подробнее</InlineButton>
           </Link>
           <Link href={"/services/rebuild-complect"} className={styles.item}>

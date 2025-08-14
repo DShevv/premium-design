@@ -29,17 +29,15 @@ const Footer = ({ info, services }) => {
           </li>
           <li className={clsx("body-1-regular", styles.item)}>
             <Link href={"/services/design-complect"}>
-              Дизайн проект с комплектацией
+              Комплектация дизайн проекта
             </Link>
           </li>
           <li className={clsx("body-1-regular", styles.item)}>
-            <Link href={"/services/rebuild-project"}>
-              Ремонт под ключ (с дизайн проектом заказчика)
-            </Link>
+            <Link href={"/services/rebuild-project"}>Ремонт «Под ключ»</Link>
           </li>
           <li className={clsx("body-1-regular", styles.item)}>
             <Link href={"/services/rebuild-complect"}>
-              Ремонт под ключ с комплектацией (с дизайн проектом заказчика)
+              Дизайн.Ремонт. Комплектация
             </Link>
           </li>
         </ul>

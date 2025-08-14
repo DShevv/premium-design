@@ -3,9 +3,9 @@ import Image from "next/image";
 import styles from "./Services.module.scss";
 import clsx from "clsx";
 import picture1 from "@/assets/images/slider-1.png";
-import picture2 from "@/assets/images/slider-2.png";
+import picture2 from "@/assets/images/slider-2.jpg";
 import picture3 from "@/assets/images/slider-3.png";
-import picture4 from "@/assets/images/slider-4.png";
+import picture4 from "@/assets/images/slider-4.jpg";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { slugifyWithOpts } from "@/utils/helper";
@@ -90,7 +90,7 @@ const Services = ({ items }) => {
         <div className={styles.bg}>
           <Image src={picture1} alt="" />
         </div>
-        <div className={clsx("h3", styles.title)}>Дизайн проект</div>
+        <div className={clsx("h3", styles.title)}>Дизайн-проект</div>
 
         <CircleButton
           type="link"
@@ -98,7 +98,7 @@ const Services = ({ items }) => {
           centered={true}
           className={styles.button}
         >
-          Дизайн проект
+          Дизайн-проект
         </CircleButton>
       </div>
 
@@ -112,9 +112,7 @@ const Services = ({ items }) => {
         <div className={styles.bg}>
           <Image src={picture2} alt="" />
         </div>
-        <div className={clsx("h3", styles.title)}>
-          Дизайн проект с комплектацией
-        </div>
+        <div className={clsx("h3", styles.title)}>Комплектация</div>
 
         <CircleButton
           type="link"
@@ -122,7 +120,7 @@ const Services = ({ items }) => {
           centered={true}
           className={styles.button}
         >
-          Дизайн проект с комплектацией
+          Комплектация
         </CircleButton>
       </div>
 
@@ -136,7 +134,7 @@ const Services = ({ items }) => {
         <div className={styles.bg}>
           <Image src={picture3} alt="" />
         </div>
-        <div className={clsx("h3", styles.title)}>Ремонт под ключ</div>
+        <div className={clsx("h3", styles.title)}>Ремонт «Под ключ»</div>
 
         <CircleButton
           type="link"
@@ -144,7 +142,7 @@ const Services = ({ items }) => {
           centered={true}
           className={styles.button}
         >
-          Ремонт под ключ
+          Ремонт «Под ключ»
         </CircleButton>
       </div>
 
@@ -159,7 +157,7 @@ const Services = ({ items }) => {
           <Image src={picture4} alt="" />
         </div>
         <div className={clsx("h3", styles.title)}>
-          Ремонт под ключ с комплектацией
+          Все Включено «От бетона до уюта»
         </div>
 
         <CircleButton
@@ -168,7 +166,7 @@ const Services = ({ items }) => {
           centered={true}
           className={styles.button}
         >
-          Ремонт под ключ с комплектацией
+          Все Включено «От бетона до уюта»
         </CircleButton>
       </div>
     </section>

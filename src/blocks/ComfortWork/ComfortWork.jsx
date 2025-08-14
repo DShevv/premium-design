@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import styles from "./ComfortWork.module.scss";
 import Image from "next/image";
-import image1 from "@/assets/images/history-small.png";
+import image1 from "@/assets/images/rebuild-project/work.jpg";
 import {
   SvgDialog,
   SvgDocument,

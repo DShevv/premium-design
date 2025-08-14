@@ -2,10 +2,10 @@
 import Image from "next/image";
 import styles from "./ComfortWorkRebuild.module.scss";
 import clsx from "clsx";
-import pic1 from "@/assets/images/rebuild1.png";
-import pic2 from "@/assets/images/portfolio4.png";
-import pic3 from "@/assets/images/rebuild2.png";
-import pic4 from "@/assets/images/works-3.png";
+import pic1 from "@/assets/images/rebuild-complect/1.jpg";
+import pic2 from "@/assets/images/rebuild-complect/2.jpg";
+import pic3 from "@/assets/images/rebuild-complect/3.jpg";
+import pic4 from "@/assets/images/rebuild-complect/4.jpg";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -65,11 +65,10 @@ const ComfortWorkRebuild = () => {
             <div className={styles.bg}>
               <Image src={pic1} alt="" />
             </div>
-            <div className={clsx("h4", styles.name)}>Закупка материалов</div>
+            <div className={clsx("h4", styles.name)}>Дизайн</div>
             <div className={clsx("body-1", styles.text)}>
-              Закупкой и доставкой всех материалов занимается специалист
-              по снабжению, который отвечает за графики закупки и коммерческие
-              предложения.
+              Индивидуальный проект, сочетающий эстетику и удобство. Планировки,
+              визуализации, подбор материалов.
             </div>
           </div>
           <div
@@ -81,11 +80,10 @@ const ComfortWorkRebuild = () => {
             <div className={styles.bg}>
               <Image src={pic1} alt="" />
             </div>
-            <div className={clsx("h4", styles.name)}>Закупка материалов</div>
+            <div className={clsx("h4", styles.name)}>Дизайн</div>
             <div className={clsx("body-1", styles.text)}>
-              Закупкой и доставкой всех материалов занимается специалист
-              по снабжению, который отвечает за графики закупки и коммерческие
-              предложения.
+              Индивидуальный проект, сочетающий эстетику и удобство. Планировки,
+              визуализации, подбор материалов.
             </div>
           </div>
           <div
@@ -97,11 +95,10 @@ const ComfortWorkRebuild = () => {
             <div className={styles.bg}>
               <Image src={pic2} alt="" />
             </div>
-            <div className={clsx("h4", styles.name)}>Подробная смета</div>
+            <div className={clsx("h4", styles.name)}>Ремонт</div>
             <div className={clsx("body-1", styles.text)}>
-              Перед началом ремонта составляется смета с точными объемами
-              и расценками. После согласования готовится смета на материалы
-              и графики закупки.
+              Качественно, по графику, без сюрпризов. Работаем по согласованному
+              проекту с чётким контролем.
             </div>
           </div>
           <div
@@ -113,11 +110,10 @@ const ComfortWorkRebuild = () => {
             <div className={styles.bg}>
               <Image src={pic3} alt="" />
             </div>
-            <div className={clsx("h4", styles.name)}>Контроль качества</div>
+            <div className={clsx("h4", styles.name)}>Комплектация</div>
             <div className={clsx("body-1", styles.text)}>
-              Инженер контролирует качество и технический аспект проекта.
-              Клиенты могут общаться с ним для разъяснений и демонстрации
-              качества работ.
+              Всё закупим и доставим: сантехника, мебель, техника, свет,
+              текстиль. Квартира полностью готова к жизни.
             </div>
           </div>
           <div
@@ -129,10 +125,11 @@ const ComfortWorkRebuild = () => {
             <div className={styles.bg}>
               <Image src={pic4} alt="" />
             </div>
-            <div className={clsx("h4", styles.name)}>Коммуникации</div>
+            <div className={clsx("h4", styles.name)}>Гарантии в одном лице</div>
             <div className={clsx("body-1", styles.text)}>
-              Все коммуникации со строителями ведет прораб, инженер и дизайнер.
-              Инженер также общается с ТЭС/ЖЭС, минимизируя время клиента.
+              Только мы ведём проект от начала до конца. Мы отвечаем за
+              коммуникацию, сроки, качество и результат. Это не просто удобно —
+              это Ваша гарантия того, что всё будет выполнено, как вы ожидали.
             </div>
           </div>
           <div
@@ -144,10 +141,11 @@ const ComfortWorkRebuild = () => {
             <div className={styles.bg}>
               <Image src={pic4} alt="" />
             </div>
-            <div className={clsx("h4", styles.name)}>Коммуникации</div>
+            <div className={clsx("h4", styles.name)}>Гарантии в одном лице</div>
             <div className={clsx("body-1", styles.text)}>
-              Все коммуникации со строителями ведет прораб, инженер и дизайнер.
-              Инженер также общается с ТЭС/ЖЭС, минимизируя время клиента.
+              Только мы ведём проект от начала до конца. Мы отвечаем за
+              коммуникацию, сроки, качество и результат. Это не просто удобно —
+              это Ваша гарантия того, что всё будет выполнено, как вы ожидали.
             </div>
           </div>
         </div>

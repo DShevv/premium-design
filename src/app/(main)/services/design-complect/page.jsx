@@ -2,9 +2,9 @@ import Feedback from "@/blocks/Feedback/Feedback";
 import styles from "./page.module.scss";
 import clsx from "clsx";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import hero from "@/assets/images/steps2.png";
-import zoom1 from "@/assets/images/design-complect.png";
-import zoom2 from "@/assets/images/steps1.png";
+import hero from "@/assets/images/design-complect/bg.jpg";
+import zoom1 from "@/assets/images/design-complect/hero-1.jpg";
+import zoom2 from "@/assets/images/design-complect/hero-2.jpg";
 import Image from "next/image";
 import OurProjects from "@/blocks/OurProjects/OurProjects";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
@@ -215,7 +215,7 @@ const page = async () => {
         </div>
         <div className={styles.wrapper}>
           <h1 className={clsx("h1-news", styles.title)}>
-            Дизайн проект с комплектацией
+            Комплектация дизайн проекта
           </h1>
           <Breadcrumbs
             isWhite={true}
@@ -229,7 +229,7 @@ const page = async () => {
                 href: "/services",
               },
               {
-                title: "Дизайн проект с комплектацией",
+                title: "Комплектация дизайн проекта",
                 href: "/",
               },
             ]}
@@ -276,7 +276,7 @@ const page = async () => {
         </CircleButton>
       </div>
 
-      <DesignDrop items={workSteps} />
+      {/*  <DesignDrop items={workSteps} /> */}
 
       {/*  <DesignSlider
         items={[

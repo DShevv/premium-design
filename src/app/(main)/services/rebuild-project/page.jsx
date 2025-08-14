@@ -2,10 +2,11 @@ import Feedback from "@/blocks/Feedback/Feedback";
 import styles from "./page.module.scss";
 import clsx from "clsx";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import hero from "@/assets/images/rebuild-head.jpg";
-import zoom1 from "@/assets/images/rebuild2.png";
-import zoom2 from "@/assets/images/rebuild1.png";
-import zoom3 from "@/assets/images/design-slider.jpg";
+import hero from "@/assets/images/rebuild-project/bg.jpg";
+import conditions from "@/assets/images/rebuild-project/conditions.jpg";
+import zoom1 from "@/assets/images/rebuild-project/hero1.jpg";
+import zoom2 from "@/assets/images/rebuild-project/hero2.jpg";
+import zoom3 from "@/assets/images/rebuild-project/hero3.jpg";
 import stepBlock1 from "@/assets/images/portfolio4.png";
 import stepBlock2 from "@/assets/images/steps1.png";
 import Image from "next/image";
@@ -24,7 +25,14 @@ import ComfortWork from "@/blocks/ComfortWork/ComfortWork";
 import { getSeoPage } from "@/services/getSeoPage";
 import DesignDrop from "@/blocks/DesignDrop/DesignDrop";
 import SeoText from "@/blocks/SeoText/SeoText";
-import image11 from "@/assets/images/about.png";
+import image11 from "@/assets/images/rebuild-project/1.jpg";
+import image12 from "@/assets/images/rebuild-project/2.png";
+import image13 from "@/assets/images/rebuild-project/3.png";
+import image14 from "@/assets/images/rebuild-project/4.jpg";
+import image15 from "@/assets/images/rebuild-project/5.jpg";
+import image16 from "@/assets/images/rebuild-project/6.jpg";
+import image17 from "@/assets/images/rebuild-project/7.jpg";
+import image18 from "@/assets/images/rebuild-project/8.jpg";
 
 const workSteps = [
   {
@@ -38,7 +46,7 @@ const workSteps = [
   {
     id: 2,
     title: "Подготовительная работа и выезд на объект",
-    image: image11,
+    image: image12,
     number: 2,
     description:
       "Выезжаем на объект для точных замеров, оценки состояния помещения и фотофиксации всех деталей. Уточняем ваши пожелания, сроки и изучаем дизайн-проект с технической документацией.",
@@ -46,7 +54,7 @@ const workSteps = [
   {
     id: 3,
     title: "Коммерческое предложение",
-    image: image11,
+    image: image13,
     number: 3,
     description:
       "Готовим подробную смету работ, подбираем материалы и рассчитываем общую стоимость ремонта.",
@@ -54,7 +62,7 @@ const workSteps = [
   {
     id: 4,
     title: "Заключение договора",
-    image: image11,
+    image: image14,
     number: 4,
     description:
       "Оформляем договор, в котором фиксируем сроки, этапы работ и окончательный бюджет проекта.",
@@ -62,7 +70,7 @@ const workSteps = [
   {
     id: 5,
     title: "Начало работ",
-    image: image11,
+    image: image15,
     number: 5,
     description:
       "В течение 2 рабочих дней после подписания договора наша команда приступает к реализации вашего проекта",
@@ -70,7 +78,7 @@ const workSteps = [
   {
     id: 6,
     title: "Контроль",
-    image: image11,
+    image: image16,
     number: 6,
     description:
       "Каждую неделю вы получаете фото- и текстовый отчёт о проделанных работах и текущем статусе. Раз в месяц подписываем акт, подтверждающий объёмы и качество выполненного ремонта.",
@@ -78,7 +86,7 @@ const workSteps = [
   {
     id: 7,
     title: "Финальная приёмка",
-    image: image11,
+    image: image17,
     number: 7,
     description:
       "После окончания работ организуем приёмку объекта, передаём ключи.",
@@ -86,7 +94,7 @@ const workSteps = [
   {
     id: 8,
     title: "Гарантии и поддержка",
-    image: image11,
+    image: image18,
     number: 8,
     description:
       "Предоставляем официальную гарантию на все виды выполненных работ.",
@@ -238,9 +246,7 @@ const page = async () => {
           <Image src={hero} alt="" />
         </div>
         <div className={styles.wrapper}>
-          <h1 className={clsx("h1-news", styles.title)}>
-            Ремонт под ключ (с дизайн проектом заказчика)
-          </h1>
+          <h1 className={clsx("h1-news", styles.title)}>Ремонт «Под ключ»</h1>
           <Breadcrumbs
             isWhite={true}
             items={[
@@ -253,7 +259,7 @@ const page = async () => {
                 href: "/services",
               },
               {
-                title: "Ремонт под ключ (с дизайн проектом заказчика)",
+                title: "Ремонт «Под ключ»",
                 href: "/",
               },
             ]}
@@ -346,7 +352,7 @@ const page = async () => {
       />
 
       <StepBlock
-        image={hero}
+        image={conditions}
         subtitle={"[ Как мы работаем ]"}
         title={"Условия работы"}
       >

@@ -93,12 +93,12 @@ const SearchInput = ({
             image: image1,
           },
           {
-            title: "Дизайн проект с комплектацией",
+            title: "Комплектация дизайн проекта",
             url: `/services/design-complect`,
             image: image2,
           },
           {
-            title: "Ремонт под ключ (с дизайн проектом заказчика)",
+            title: "Ремонт «Под ключ»",
             url: `/services/rebuild-project`,
             image: image3,
           },
