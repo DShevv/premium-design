@@ -4,10 +4,10 @@ import styles from "./page.module.scss";
 import clsx from "clsx";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import Link from "next/link";
-import image1 from "@/assets/images/news.png";
-import image2 from "@/assets/images/rebuild-complect.png";
-import image3 from "@/assets/images/rebuild-head.jpg";
-import image4 from "@/assets/images/works-1.png";
+import image1 from "@/assets/images/design.jpg";
+import image2 from "@/assets/images/design-complect.jpg";
+import image3 from "@/assets/images/rebuild.jpg";
+import image4 from "@/assets/images/design-rebuild.jpg";
 import Image from "next/image";
 import InlineButton from "@/components/Buttons/InlineButton/InlineButton";
 import { getSeoPage } from "@/services/getSeoPage";
@@ -83,7 +83,7 @@ const page = async () => {
               <Image src={image1} alt="" />
             </div>
 
-            <div className={clsx(styles.name, "h4")}>Дизайн-проект</div>
+            <div className={clsx(styles.name, "h4")}>Дизайн проект</div>
             <InlineButton className={styles.more}>Подробнее</InlineButton>
           </Link>
           <Link href={"/services/design-complect"} className={styles.item}>
@@ -110,7 +110,7 @@ const page = async () => {
             </div>
 
             <div className={clsx(styles.name, "h4")}>
-              Ремонт под ключ с комплектацией (с дизайн проектом заказчика)
+              Дизайн.Ремонт. Комплектация
             </div>
             <InlineButton className={styles.more}>Подробнее</InlineButton>
           </Link>

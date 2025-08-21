@@ -2,7 +2,7 @@ import Feedback from "@/blocks/Feedback/Feedback";
 import styles from "./page.module.scss";
 import clsx from "clsx";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import hero from "@/assets/images/steps2.png";
+import hero from "@/assets/images/design-project/bg.jpg";
 import zoom1 from "@/assets/images/works-2.png";
 import zoom2 from "@/assets/images/portfolio2.png";
 import stepBlock1 from "@/assets/images/portfolio4.png";

@@ -157,7 +157,7 @@ const Services = ({ items }) => {
           <Image src={picture4} alt="" />
         </div>
         <div className={clsx("h3", styles.title)}>
-          Все Включено «От бетона до уюта»
+          Дизайн. Ремонт. Комплектация
         </div>
 
         <CircleButton
@@ -166,7 +166,7 @@ const Services = ({ items }) => {
           centered={true}
           className={styles.button}
         >
-          Все Включено «От бетона до уюта»
+          Дизайн. Ремонт. Комплектация
         </CircleButton>
       </div>
     </section>
